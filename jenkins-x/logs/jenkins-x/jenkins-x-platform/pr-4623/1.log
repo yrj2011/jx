@@ -1,0 +1,14 @@
+Step: build-step-credential-initializer:
+
+{"level":"warn","ts":1547193094.9198394,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1547193094.9202802,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Step: build-step-git-source-0:
+
+{"level":"warn","ts":1547193096.3201053,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1547193098.476977,"logger":"fallback-logger","caller":"git-init/main.go:92","msg":"Successfully cloned \"https://github.com/jenkins-x/jenkins-x-platform.git\" @ \"38219e621202efdc753ebd4aad0ac8d45031c2ae\" in path \"/workspace\""}
+Step: build-step-jenkins:
+
+Picked up _JAVA_OPTIONS: -Xmx400m
+Started
+Running in Durability level: PERFORMANCE_OPTIMIZED
+  19.027 [id=33]	WARNING	i.f.k.c.i.VersionUsageUtils#alert: The client is using resource type 'customresourcedefinitions' with unstable version 'v1beta1'
