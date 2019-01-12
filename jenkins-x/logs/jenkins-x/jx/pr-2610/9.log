@@ -1,0 +1,9 @@
+Step: build-step-credential-initializer:
+
+Unable to retrieve container logs for docker://d02c58b6189c172cf15fa68f25dbf15ebfa60d420d9dca425a30b6a630b7c11f
+Step: build-step-git-source-0:
+
+Unable to retrieve container logs for docker://28384426f206134e85c8691f2c9096739e0bcea4f297492fd3510cbc96b7cb4c
+Step: build-step-jenkins:
+
+Unable to retrieve container logs for docker://6e8aea0affe24e59dd38408e3d78377344cb69701bd4e74090e6795680245619
