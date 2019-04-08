@@ -1,0 +1,65 @@
+Step: build-step-credential-initializer-s8xgn:
+
+{"level":"warn","ts":1554744413.1215396,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/backport-container-name-fix\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1554744413.1257071,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Step: build-step-git-source-jenkins-x-**-pr-3570-lint-h2z2j:
+
+{"level":"warn","ts":1554744414.8899524,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/backport-container-name-fix\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1554744420.341602,"logger":"fallback-logger","caller":"git-init/main.go:99","msg":"Successfully cloned \"https://github.com/jenkins-x/**\" @ \"7bfbcac13fb55fa5d26aa2fdd7db5fc10461f023\" in path \"/workspace/source\""}
+Step: build-step-place-tools:
+
+Step: build-step-git-merge:
+
+Warning failed to load version: failed to parse version -dev+548a93a-dev+981c48321: No Major.Minor.Patch elements found
+Using SHAs from PULL_REFS=master:ffe62e5adf804fd2172ae4688f6ea4c98883d1c2,3570:7bfbcac13fb55fa5d26aa2fdd7db5fc10461f023
+ran git fetch --unshallow origin 7bfbcac13fb55fa5d26aa2fdd7db5fc10461f023: ffe62e5adf804fd2172ae4688f6ea4c98883d1c2: in 
+ran git checkout master in 
+ran git reset --hard ffe62e5adf804fd2172ae4688f6ea4c98883d1c2 in 
+ran clean --force -d . in 
+ran git merge 7bfbcac13fb55fa5d26aa2fdd7db5fc10461f023 in 
+Step: build-step-init-**:
+
+Created user fake API Token for Git server GitHub at https://github.com
+Step: build-step-init-helm:
+
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+Happy Helming!
+Step: build-step-lint:
+
+Running validation scripts...
+RUN hack/gofmt.sh
+[0;32mPASSED[0m hack/gofmt.sh
+RUN hack/linter.sh
+Installing GolangCI-Lint
+golangci/golangci-lint info checking GitHub for tag 'v1.15.0'
+golangci/golangci-lint info found version: 1.15.0 for v1.15.0/linux/amd64
+golangci/golangci-lint info installed /home/jenkins/go/bin/golangci-lint
+level=error msg="Running error: context loading failed: failed to load program with go/packages: could not determine GOARCH and Go compiler"
+level=error msg="Deadline exceeded: try increase it by passing --deadline option"
+[0;32mPASSED[0m hack/linter.sh
+RUN hack/check-openapi.sh
+CGO_ENABLED=0 GO111MODULE=on go build  -o build/codegen cmd/codegen/codegen.go
+Generating OpenAPI structs for Kubernetes Clients
+./build/codegen openapi --output-package=pkg/client --input-package=github.com/jenkins-x/**/pkg/apis --group-with-version=jenkins.io:v1
+error: ensuring GOPATH is set correctly: input /workspace/source/github.com/jenkins-x/**/pkg/apis is not in GOPATH (/home/jenkins/go)
+make: *** [generate-openapi] Error 1
+[0;32mPASSED[0m hack/check-openapi.sh
+Step: build-step-source-mkdir-jenkins-x-**-pr-3570-lint-pfgs8:
+
+{"level":"warn","ts":1554745003.3167434,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1554745003.4596567,"logger":"fallback-logger","caller":"bash/main.go:65","msg":"Successfully executed command \"mkdir -p /pvc/ci/workspace\""}
+Step: build-step-source-copy-jenkins-x-**-pr-3570-lint-x6klk:
+
+{"level":"warn","ts":1554745004.3630927,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1554745006.3971326,"logger":"fallback-logger","caller":"bash/main.go:65","msg":"Successfully executed command \"cp -r /workspace/source/. /pvc/ci/workspace\""}
