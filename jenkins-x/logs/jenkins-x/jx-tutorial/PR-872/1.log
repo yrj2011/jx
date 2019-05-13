@@ -1,0 +1,16 @@
+Step: build-step-git-source-jenkins-x-**-tutorial-pr-872-te-kwsxn:
+
+{"level":"warn","ts":1557755952.368833,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1557755953.925973,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/jenkins-x/**-tutorial @ fdf5306938df56226f88feb2ad13cf024803ae1b in path /workspace/source"}
+Step: build-step-git-merge:
+
+Warning failed to load version: failed to parse version -dev+548a93a-dev+981c48321: No Major.Minor.Patch elements found
+Using SHAs from PULL_REFS=master:35aef49d981b193cdc03280fcfb41e0d5ff245f4,872:fdf5306938df56226f88feb2ad13cf024803ae1b
+ran git fetch --unshallow origin fdf5306938df56226f88feb2ad13cf024803ae1b: 35aef49d981b193cdc03280fcfb41e0d5ff245f4: in 
+ran git checkout master in 
+ran git reset --hard 35aef49d981b193cdc03280fcfb41e0d5ff245f4 in 
+ran clean --force -d . in 
+ran git merge fdf5306938df56226f88feb2ad13cf024803ae1b in 
+Step: build-step-build-dummy-build:
+
+PR
