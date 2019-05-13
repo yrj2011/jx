@@ -1,0 +1,49 @@
+Step: build-step-git-source-jenkins-x-environment-tekton-mo-4657j:
+
+{"level":"warn","ts":1557753776.0186327,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1557753777.5079277,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/jenkins-x/environment-tekton-mole-dev @ v0.0.163 in path /workspace/source"}
+Step: build-step-git-merge:
+
+Warning failed to load version: failed to parse version -dev+548a93a-dev+981c48321: No Major.Minor.Patch elements found
+Using SHAs from PULL_REFS=master:ebbf915fc4481040667cf9563946b291de462a58,107:33739515807139aae772de62e7e7c937b68cd88f
+ran git fetch origin 33739515807139aae772de62e7e7c937b68cd88f: ebbf915fc4481040667cf9563946b291de462a58: in 
+Unshallowed git repo in 
+ran git checkout master in 
+ran git reset --hard ebbf915fc4481040667cf9563946b291de462a58 in 
+ran clean --force -d . in 
+ran git merge 33739515807139aae772de62e7e7c937b68cd88f in 
+Step: build-step-helm-build:
+
+rm -rf charts
+rm -rf requirements.lock
+helm init --client-only
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+Happy Helming!
+helm repo add jenkins-x http://chartmuseum.jenkins-x.io
+"jenkins-x" has been added to your repositories
+helm repo add bitnami https://charts.bitnami.com/bitnami
+"bitnami" has been added to your repositories
+helm repo add stable https://kubernetes-charts.storage.googleapis.com
+"stable" has been added to your repositories
+** step helm build
+{"level":"warning","msg":"No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080\n","time":"2019-05-13T13:23:07Z"}
+{"level":"info","msg":"Adding missing Helm repo: jenkins-x-chartmuseum http://jenkins-x-chartmuseum:8080\n","time":"2019-05-13T13:23:08Z"}
+{"level":"info","msg":"Successfully added Helm repository jenkins-x-chartmuseum.\n","time":"2019-05-13T13:23:14Z"}
+{"level":"info","msg":"Adding missing Helm repo: chartmuseum.**.charts-****.cloudbees.com https://chartmuseum.**.charts-****.cloudbees.com\n","time":"2019-05-13T13:23:14Z"}
+{"level":"info","msg":"Successfully added Helm repository chartmuseum.**.charts-****.cloudbees.com.\n","time":"2019-05-13T13:23:16Z"}
+helm lint .
+==> Linting .
+Lint OK
+
+1 chart(s) linted, no failures
