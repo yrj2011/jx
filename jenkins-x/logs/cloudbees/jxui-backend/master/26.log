@@ -1,0 +1,56 @@
+Step: build-step-git-source-cloudbees-**ui-backend-master-t-5qtfb:
+
+{"level":"warn","ts":1557868953.1231163,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1557868955.1073415,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/cloudbees/**ui-backend @ v0.0.242 in path /workspace/source"}
+Step: build-step-git-merge:
+
+Warning failed to load version: failed to parse version -dev+9e73adc0b: No Major.Minor.Patch elements found
+time="2019-05-14T21:22:35Z" level=info msg="got "
+Using SHAs from PULL_REFS=master:8eaa3d7f49d7b048245a41cf60948b0afc4c6e7c
+time="2019-05-14T21:22:35Z" level=warning msg="no SHAs to merge, falling back to initial cloned commit"
+Step: build-step-**-credential-kaniko:
+
+/builder/home/kaniko-secret.json
+Step: build-step-**-credential-github:
+
+/builder/home/github.token
+Step: build-step-warm-cache:
+
+Step: build-step-build-image:
+
+[36mINFO[0m[0000] Downloading base image gcr.io/jenkinsxio/builder-go:0.1.451 
+[36mINFO[0m[0000] Error while retrieving image from cache: getting file info: stat /workspace/sha256:12c0f2473bd221571af32df4303a1c12d78fbc6ca2841bda0a355f04dcf2e01b: no such file or directory 
+[36mINFO[0m[0000] Downloading base image gcr.io/jenkinsxio/builder-go:0.1.451 
+[36mINFO[0m[0001] Using files from context: [/workspace/source/go/src/github.com/cloudbees/**ui-backend] 
+[36mINFO[0m[0001] Checking for cached layer gcr.io/jenkinsxio/cache-core:e431d71bf9bf596c6861a5c8484465b8e7450e1b57c4db6907f5186a96631ef3... 
+[36mINFO[0m[0002] Using caching version of cmd: RUN make all; exit 0 
+[36mINFO[0m[0002] Checking for cached layer gcr.io/jenkinsxio/cache-core:81412ee5b23fa5b40d339130850eaa365fadea6ad3c94bcc9a73926f657f0eb8... 
+[36mINFO[0m[0002] No cached layer found for cmd RUN make all; exit 0 
+[36mINFO[0m[0002] Unpacking rootfs as cmd RUN make all; exit 0 requires it. 
+[36mINFO[0m[0145] Taking snapshot of full filesystem...        
+[36mINFO[0m[0191] ARG MAKE_TARGET=release                      
+[36mINFO[0m[0191] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0191] Using files from context: [/workspace/source/go/src/github.com/cloudbees/**ui-backend] 
+[36mINFO[0m[0191] COPY . /home/jenkins/go/src/github.com/cloudbees/**ui-backend 
+[36mINFO[0m[0191] Taking snapshot of files...                  
+[36mINFO[0m[0191] WORKDIR /home/jenkins/go/src/github.com/cloudbees/**ui-backend 
+[36mINFO[0m[0191] cmd: workdir                                 
+[36mINFO[0m[0191] Changed working directory to /home/jenkins/go/src/github.com/cloudbees/**ui-backend 
+[36mINFO[0m[0191] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0191] RUN make all; exit 0                         
+[36mINFO[0m[0191] Found cached layer, extracting to filesystem 
+[36mINFO[0m[0191] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0191] RUN make all; exit 0                         
+[36mINFO[0m[0191] cmd: /bin/sh                                 
+[36mINFO[0m[0191] args: [-c make all; exit 0]                  
+make: *** No rule to make target `all'.  Stop.
+[36mINFO[0m[0191] Taking snapshot of full filesystem...        
+[36mINFO[0m[0221] No files were changed, appending empty layer to config. No layer added to image. 
+[36mINFO[0m[0221] RUN make all                                 
+[36mINFO[0m[0221] cmd: /bin/sh                                 
+[36mINFO[0m[0221] args: [-c make all]                          
+[36mINFO[0m[0221] Pushing layer gcr.io/jenkinsxio/cache-core:81412ee5b23fa5b40d339130850eaa365fadea6ad3c94bcc9a73926f657f0eb8 to cache now 
+make: *** No rule to make target `all'.  Stop.
+error building image: error building stage: waiting for process to exit: exit status 2
+Step: build-step-updatebot:
+
