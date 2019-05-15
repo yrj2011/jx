@@ -1,0 +1,2834 @@
+Step: build-step-git-source-jenkins-x-**-pr-3938-integratio-62rjs:
+
+{"level":"warn","ts":1557899358.429215,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1557899362.342816,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/jenkins-x/** @ 9b51268b2232515046d29e88b580260c2bc0c66b in path /workspace/source"}
+Step: build-step-git-merge:
+
+Warning failed to load version: failed to parse version -dev+9e73adc0b: No Major.Minor.Patch elements found
+time="2019-05-15T05:50:45Z" level=info msg="got "
+Using SHAs from PULL_REFS=master:c4b62723da1258354c2b3d16413a91544fae747e,3938:9b51268b2232515046d29e88b580260c2bc0c66b
+ran git fetch --unshallow origin 9b51268b2232515046d29e88b580260c2bc0c66b: c4b62723da1258354c2b3d16413a91544fae747e: in 
+ran git checkout master in 
+ran git reset --hard c4b62723da1258354c2b3d16413a91544fae747e in 
+ran clean --force -d . in 
+ran git merge 9b51268b2232515046d29e88b580260c2bc0c66b in 
+Step: build-step-init-**:
+
+Created user fake API Token for Git server GitHub at https://github.com
+Step: build-step-init-helm:
+
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+Happy Helming!
+Step: build-step-check:
+
+CGO_ENABLED=0 GO111MODULE=on go build -ldflags " -X github.com/jenkins-x/**/pkg/version.Version=0.0.0-SNAPSHOT-PR-3938-5 -X github.com/jenkins-x/**/pkg/version.Revision='2e58869' -X github.com/jenkins-x/**/pkg/version.Branch='master' -X github.com/jenkins-x/**/pkg/version.BuildDate='20190515-05:54:00' -X github.com/jenkins-x/**/pkg/version.GoVersion='1.11.5'" -o build/** cmd/**/**.go
+go: finding github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7
+go: finding github.com/chromedp/cdproto v0.0.0-20180720050708-57cf4773008d
+go: finding github.com/denormal/go-gitignore v0.0.0-20180713143441-75ce8f3e513c
+go: finding github.com/Pallinder/go-randomdata v0.0.0-20180616180521-15df0648130a
+go: finding github.com/antham/chyle v1.4.0
+go: finding github.com/google/go-cmp v0.2.0
+go: finding github.com/aws/aws-sdk-go v1.17.10
+go: finding github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415
+go: finding github.com/docker/go-units v0.3.3
+go: finding github.com/golang/protobuf v1.2.0
+go: finding golang.org/x/oauth2 v0.0.0-20181203162652-d668ce993890
+go: finding github.com/hashicorp/vault v1.1.2
+go: finding github.com/danwakefield/fnmatch v0.0.0-20160403171240-cbb64ac3d964
+go: finding github.com/huandu/xstrings v1.0.0
+go: finding github.com/Masterminds/sprig v0.0.0-20180403013413-6b2a58267f6a
+go: finding github.com/stretchr/testify v1.3.0
+go: finding github.com/beevik/etree v1.0.1
+go: finding github.com/cloudflare/cfssl v0.0.0-20190409034051-768cd563887f
+go: finding github.com/flynn/go-shlex v0.0.0-20150515145356-3f9db97f8568
+go: finding github.com/go-openapi/loads v0.19.0
+go: finding github.com/gliderlabs/ssh v0.1.1
+go: finding github.com/iancoleman/orderedmap v0.0.0-20181121102841-22c6ecc9fe13
+go: finding github.com/golang/snappy v0.0.0-20180518054509-2e65f85255db
+go: finding k8s.io/apiextensions-apiserver v0.0.0-20181128195303-1f84094d7e8e
+go: finding github.com/alexflint/go-filemutex v0.0.0-20171028004239-d358565f3c3f
+go: finding github.com/nlopes/slack v0.0.0-20180721202243-347a74b1ea30
+go: finding github.com/mitchellh/mapstructure v1.1.2
+go: finding github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578
+go: finding github.com/spf13/cobra v0.0.0-00000000000000-c46add8a6528
+go: finding github.com/konsorten/go-windows-terminal-sequences v1.0.2
+go: finding github.com/knative/pkg v0.0.0-20190402181056-ff46edef0ae5
+go: finding github.com/cpuguy83/go-md2man v1.0.8
+go: finding google.golang.org/api v0.1.0
+go: finding github.com/go-openapi/spec v0.19.0
+go: finding github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8
+go: finding github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af
+go: finding golang.org/x/sync v0.0.0-20181221193216-37e7f081c4d4
+go: finding github.com/jenkins-x/sonobuoy v0.11.7-0.20190318120422-253758214767
+go: finding github.com/petergtz/pegomock v2.2.0+incompatible
+go: finding github.com/go-openapi/swag v0.17.0
+go: finding github.com/mattn/go-colorable v0.0.8
+go: finding gocloud.dev v0.9.0
+go: finding github.com/Masterminds/semver v1.3.1
+go: finding github.com/lusis/go-slackbot v0.0.0-20180109053408-401027ccfef5
+go: finding github.com/google/uuid v1.1.0
+go: finding github.com/chromedp/chromedp v0.1.1
+go: finding github.com/mattbaird/jsonpatch v0.0.0-20171005235357-81af80346b1a
+go: finding github.com/hinshun/vt10x v0.0.0-20180809195222-d55458df857c
+go: finding google.golang.org/grpc v1.17.0
+go: finding github.com/Azure/go-autorest v10.15.5+incompatible
+go: finding github.com/prometheus/common v0.0.0-20181015124227-bcb74de08d37
+go: finding github.com/rifflock/lfshook v0.0.0-20180227222202-bf539943797a
+go: finding github.com/spf13/cobra v0.0.3
+go: finding google.golang.org/api v0.0.0-20181017004218-3f6e8463aa1d
+go: finding cloud.google.com/go v0.34.0
+go: finding github.com/jbrukh/bayesian v0.0.0-20161210175230-bf3f261f9a9c
+go: finding gopkg.in/src-d/go-git-fixtures.v3 v3.3.0
+go: finding github.com/hashicorp/go-version v0.0.0-20180322230233-23480c066577
+go: finding github.com/golang/protobuf v1.1.0
+go: finding github.com/grpc-ecosystem/grpc-gateway v1.5.1
+go: finding github.com/gfleury/go-bitbucket-v1 v0.0.0-20190216152406-3a732135aa4d
+go: finding github.com/go-openapi/jsonreference v0.17.0
+go: finding github.com/blang/semver v3.5.1+incompatible
+go: finding github.com/Azure/draft v0.15.0
+go: finding github.com/andygrunwald/go-jira v1.5.0
+go: finding sigs.k8s.io/yaml v1.1.0
+go: finding github.com/shirou/w32 v0.0.0-20160930032740-bb4de0191aa4
+go: finding code.gitea.io/sdk v0.0.0-20180702024448-79a281c4e34a
+go: finding github.com/wbrefvem/go-bitbucket v0.0.0-20190128183802-fc08fd046abb
+go: finding github.com/hashicorp/hcl v0.0.0-20180404174102-ef8a98b0bbce
+go: finding github.com/mitchellh/mapstructure v0.0.0-20180511142126-bb74f1db0675
+go: finding golang.org/x/oauth2 v0.0.0-20180620175406-ef147856a6dd
+go: finding k8s.io/client-go v2.0.0-alpha.0.0.20190115164855-701b91367003+incompatible
+go: finding github.com/gogo/protobuf v1.0.0
+go: finding gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127
+go: finding github.com/ory/dockertest v3.3.4+incompatible
+go: finding github.com/mailru/easyjson v0.0.0-20180606163543-3fdea8d05856
+go: finding github.com/onsi/ginkgo v1.7.0
+go: finding golang.org/x/text v0.3.0
+go: finding github.com/kisielk/gotool v1.0.0
+go: finding github.com/globalsign/mgo v0.0.0-20180905125535-1ca0a4f7cbcb
+go: finding github.com/Netflix/go-expect v0.0.0-20180814212900-124a37274874
+go: finding k8s.io/test-infra v0.0.0-20190131093439-a22cef183a8f
+go: finding github.com/gorilla/mux v1.6.2
+go: finding github.com/IBM-Cloud/bluemix-go v0.0.0-20181008063305-d718d474c7c2
+go: finding github.com/onsi/ginkgo v1.5.0
+go: finding github.com/go-ole/go-ole v1.2.1
+go: finding gopkg.in/yaml.v2 v2.2.1
+go: finding github.com/dsnet/compress v0.0.0-20171208185109-cc9eb1d7ad76
+go: finding github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+go: finding github.com/kubernetes-incubator/reference-docs v0.0.0-20190410022412-9642bd3f4de5
+go: finding github.com/spf13/pflag v0.0.0-20170508184408-e57e3eeb33f7
+go: finding github.com/viniciuschiele/tarx v0.0.0-20151205142357-6e3da540444d
+go: finding gopkg.in/warnings.v0 v0.1.2
+go: finding google.golang.org/appengine v1.3.0
+go: finding github.com/go-openapi/strfmt v0.17.0
+go: finding github.com/pmezard/go-difflib v1.0.0
+go: finding github.com/xeipuuv/gojsonschema v1.1.0
+go: finding github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239
+go: finding gopkg.in/inf.v0 v0.9.1
+go: finding github.com/ugorji/go/codec v0.0.0-20181012064053-8333dd449516
+go: finding golang.org/x/net v0.0.0-20180724234803-3673e40ba225
+go: finding github.com/xeipuuv/gojsonpointer v0.0.0-20180127040702-4e3ac2762d5f
+go: finding github.com/client9/misspell v0.3.4
+go: finding github.com/mattn/go-zglob v0.0.0-20180607075734-49693fbb3fe3
+go: finding github.com/jtnord/logrus v1.4.2-0.20190423161236-606ffcaf8f5d
+go: finding google.golang.org/api v0.0.0-20181021000519-a2651947f503
+go: finding github.com/satori/go.uuid v1.2.1-0.20180103174451-36e9d2ebbde5
+go: finding golang.org/x/crypto v0.0.0-20181015023909-0c41d7ab0a0e
+go: finding golang.org/x/net v0.0.0-20180826012351-8a410e7b638d
+go: finding github.com/trivago/tgo v1.0.1
+go: finding github.com/jonboulle/clockwork v0.1.0
+go: finding github.com/djherbis/atime v1.0.0
+go: finding github.com/docker/go-connections v0.3.0
+go: finding github.com/coreos/go-semver v0.2.0
+go: finding github.com/tidwall/match v0.0.0-20171002075945-1731857f09b1
+go: finding k8s.io/kube-openapi v0.0.0-20180711000925-0cf8f7e6ed1d
+go: finding github.com/inconshreveable/mousetrap v1.0.0
+go: finding github.com/kr/pty v1.1.2
+go: finding github.com/aokoli/goutils v1.0.1
+go: finding github.com/erikstmartin/go-testdb v0.0.0-20160219214506-8d10e4a1bae5
+go: finding github.com/elazarl/goproxy v0.0.0-20181111060418-2ce16c963a8a
+go: finding github.com/influxdata/influxdb v0.0.0-20161215172503-049f9b42e9a5
+go: finding gopkg.in/AlecAivazis/survey.v1 v1.8.3
+go: finding github.com/disintegration/imaging v1.4.2
+go: finding github.com/spf13/jwalterweatherman v0.0.0-20180109140146-7c0cea34c8ec
+go: finding github.com/golang/groupcache v0.0.0-20180513044358-24b0969c4cb7
+go: finding github.com/mitchellh/go-homedir v1.1.0
+go: finding github.com/hpcloud/tail v1.0.0
+go: finding google.golang.org/appengine v1.2.0
+go: finding github.com/nwaples/rardecode v1.0.0
+go: finding github.com/jtolds/gls v4.2.1+incompatible
+go: finding contrib.go.opencensus.io/integrations/ocsql v0.1.2
+go: finding github.com/opencontainers/runc v0.1.1
+go: finding github.com/hashicorp/go-sockaddr v1.0.2
+go: finding github.com/rollout/rox-go v0.0.0-20181220111955-29ddae74a8c4
+go: finding github.com/stretchr/ob** v0.1.1
+go: finding github.com/smartystreets/goconvey v0.0.0-20180222194500-ef6db91d284a
+go: finding github.com/gobwas/glob v0.2.3
+go: finding github.com/BurntSushi/toml v0.3.0
+go: finding github.com/kr/pretty v0.1.0
+go: finding github.com/pascaldekloe/goe v0.0.0-20180627143212-57f6aae5913c
+go: finding github.com/coreos/bbolt v1.3.1-coreos.6
+go: finding github.com/sergi/go-diff v1.0.0
+go: finding github.com/jinzhu/inflection v0.0.0-20151009084129-3272df6c21d0
+go: finding github.com/patrickmn/go-cache v2.1.0+incompatible
+go: finding golang.org/x/oauth2 v0.0.0-20181017192945-9dcd33a902f4
+go: finding gopkg.in/pipe.v2 v2.0.0-20140414041502-3c2ca4d52544
+go: finding github.com/gorilla/websocket v1.4.0
+go: finding github.com/go-openapi/jsonreference v0.0.0-20161105162150-36d33bfe519e
+go: finding github.com/Azure/azure-storage-blob-go v0.0.0-20180507052152-66ba96e49ebb
+go: finding golang.org/x/crypto v0.0.0-20190123085648-057139ce5d2b
+go: finding github.com/gorilla/context v1.1.1
+go: finding github.com/pelletier/go-buffruneio v0.2.0
+go: finding github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
+go: finding github.com/google/go-github v0.0.0-20170604030111-7a51fb928f52
+go: finding k8s.io/kube-openapi v0.0.0-20190228160746-b3a7cee44a30
+go: finding github.com/cenkalti/backoff v2.1.1+incompatible
+go: finding github.com/hashicorp/go-multierror v0.0.0-20171204182908-b7773ae21874
+go: finding github.com/dgrijalva/jwt-go v3.2.0+incompatible
+go: finding github.com/gophercloud/gophercloud v0.0.0-20181215224939-bdd8b1ecd793
+go: finding github.com/golang/mock v1.1.1
+go: finding github.com/hashicorp/errwrap v1.0.0
+go: finding github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
+go: finding github.com/spf13/pflag v1.0.1
+go: finding github.com/NYTimes/gziphandler v0.0.0-20160419202541-63027b26b87e
+go: finding github.com/coreos/etcd v3.3.10+incompatible
+go: finding k8s.io/kubernetes v1.11.3
+go: finding github.com/imdario/mergo v0.3.5
+go: finding github.com/mattn/go-isatty v0.0.2
+go: finding github.com/gopherjs/gopherjs v0.0.0-20181017120253-0766667cb4d1
+go: finding github.com/jenkins-x/draft-repo v0.0.0-20180417100212-2f66cc518135
+go: finding gopkg.in/src-d/go-billy.v4 v4.2.0
+go: finding github.com/docker/docker v0.0.0-20171206114025-5e5fadb3c020
+go: finding github.com/smartystreets/assertions v0.0.0-20180927180507-b2de0cb4f26d
+go: finding github.com/go-sql-driver/mysql v1.4.0
+go: finding golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3
+go: finding github.com/qor/inflection v0.0.0-20180308033659-04140366298a
+go: finding github.com/golang/groupcache v0.0.0-20180924190550-6f2cf27854a4
+go: finding github.com/gorilla/sessions v1.1.3
+go: finding k8s.io/apimachinery v0.0.0-20190122181752-bebe27e40fb7
+go: finding github.com/prometheus/common v0.2.0
+go: finding github.com/go-openapi/analysis v0.0.0-20180825180245-b006789cd277
+go: finding github.com/antham/envh v1.2.0
+go: finding github.com/fatih/color v1.5.0
+go: finding github.com/bwmarrin/snowflake v0.0.0-20170221160716-02cc386c183a
+go: finding github.com/knative/build v0.5.0
+go: finding github.com/magiconair/properties v1.8.0
+go: finding github.com/xanzy/go-gitlab v0.0.0-20180814191223-f3bc634ab936
+go: finding github.com/Jeffail/gabs v1.1.1
+go: finding github.com/gorilla/websocket v1.2.0
+go: finding github.com/spf13/afero v1.1.1
+go: finding go.opencensus.io v0.17.0
+go: finding github.com/golang/lint v0.0.0-20180702182130-06c8688daad7
+go: finding github.com/prometheus/client_golang v0.9.0
+go: finding github.com/streadway/amqp v0.0.0-20181107104731-27835f1a64e9
+go: finding github.com/gorilla/securecookie v1.1.1
+go: finding github.com/gregjones/httpcache v0.0.0-20160524185540-16db777d8ebe
+go: finding github.com/pkg/errors v0.8.0
+go: finding github.com/googleapis/gnostic v0.1.0
+go: finding github.com/gopherjs/gopherjs v0.0.0-20181103185306-d547d1d9531e
+go: finding github.com/alecthomas/jsonschema v0.0.0-20190504002508-159cbd5dba26
+go: finding github.com/inconshreveable/mousetrap v0.0.0-20141017200713-76626ae9c91c
+go: finding github.com/c2h5oh/datasize v0.0.0-20171227191756-4eba002a5eae
+go: finding golang.org/x/net v0.0.0-20181102091132-c10e9556a7bc
+go: finding github.com/evanphx/json-patch v4.1.0+incompatible
+go: finding github.com/go-ini/ini v1.39.0
+go: finding github.com/stretchr/testify v1.2.1
+go: finding go.uber.org/zap v1.9.1
+go: finding github.com/google/btree v0.0.0-20180813153112-4030bb1f1f0c
+go: finding github.com/google/uuid v1.0.0
+go: finding github.com/Azure/azure-pipeline-go v0.1.8
+go: finding github.com/hashicorp/go-version v1.1.0
+go: finding github.com/Azure/azure-pipeline-go v0.0.0-20180507050906-098e490af5dc
+go: finding gopkg.in/ini.v1 v1.39.0
+go: finding gopkg.in/cenkalti/backoff.v1 v1.1.0
+go: finding github.com/grpc-ecosystem/go-grpc-middleware v1.0.0
+go: finding github.com/json-iterator/go v0.0.0-20180701071628-ab8a2e0c74be
+go: finding github.com/gophercloud/gophercloud v0.0.0-20180629215909-9e34f4686044
+go: finding github.com/mitchellh/go-wordwrap v1.0.0
+go: finding github.com/rollout/sse v0.0.0-20181105093643-e422b54b3b28
+go: finding github.com/go-sql-driver/mysql v0.0.0-20160411075031-7ebe0a500653
+go: finding github.com/GoogleCloudPlatform/cloudsql-proxy v0.0.0-20181009230506-ac834ce67862
+go: finding github.com/gogo/protobuf v1.1.1
+go: finding gopkg.in/robfig/cron.v2 v2.0.0-20150107220207-be2e0b0deed5
+go: finding github.com/asaskevich/govalidator v0.0.0-20180720115003-f9ffefc3facf
+go: finding gopkg.in/alecthomas/kingpin.v2 v2.2.6
+go: finding google.golang.org/genproto v0.0.0-20181202183823-bd91e49a0898
+go: finding github.com/codeship/codeship-go v0.0.0-20180717142545-7793ca823354
+go: finding golang.org/x/sys v0.0.0-20180830151530-49385e6e1522
+go: finding github.com/tmc/grpc-websocket-proxy v0.0.0-20171017195756-830351dc03c6
+go: finding github.com/stretchr/testify v1.2.2
+go: finding cloud.google.com/go v0.26.0
+go: finding github.com/Microsoft/go-winio v0.4.6
+go: finding github.com/kr/logfmt v0.0.0-20140226030751-b84e30acd515
+go: finding github.com/peterbourgon/diskv v0.0.0-20171120014656-2973218375c3
+go: finding golang.org/x/net v0.0.0-20181106065722-10aee1819953
+go: finding k8s.io/api v0.0.0-20181128191700-6db15a15d2d3
+go: finding github.com/mattn/go-isatty v0.0.3
+go: finding github.com/pkg/browser v0.0.0-20170505125900-c90ca0c84f15
+go: finding github.com/docker/spdystream v0.0.0-20170912183627-bc6354cbbc29
+go: finding gopkg.in/src-d/go-git.v4 v4.5.0
+go: finding gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405
+go: finding golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f
+go: finding github.com/peterbourgon/diskv v2.0.1+incompatible
+go: finding github.com/satori/go.uuid v0.0.0-20160713180306-0aa62d5ddceb
+go: finding github.com/Azure/azure-sdk-for-go v21.1.0+incompatible
+go: finding k8s.io/metrics v0.0.0-20181128195641-3954d62a524d
+go: finding github.com/shurcooL/githubv4 v0.0.0-20180925043049-51d7b505e2e9
+go: finding github.com/knative/build v0.2.0
+go: finding google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8
+go: finding github.com/dnaeon/go-vcr v1.0.1
+go: finding go.uber.org/multierr v1.1.0
+go: finding golang.org/x/sys v0.0.0-20181011152604-fa43e7bc11ba
+go: finding github.com/jenkins-x/golang-jenkins v0.0.0-20180919102630-65b83ad42314
+go: finding github.com/kr/text v0.1.0
+go: finding golang.org/x/sys v0.0.0-20180905080454-ebe1bf3edb33
+go: finding github.com/hashicorp/golang-lru v0.0.0-20180201235237-0fb14efe8c47
+go: finding github.com/spf13/viper v1.0.2
+go: finding github.com/Netflix/go-expect v0.0.0-20180615182759-c93bf25de8e8
+go: finding github.com/banzaicloud/bank-vaults v0.0.0-20190508130850-5673d28c46bd
+go: finding github.com/mattn/go-sqlite3 v0.0.0-20160514122348-38ee283dabf1
+go: finding github.com/xiang90/probing v0.0.0-20160813154853-07dd2e8dfe18
+go: finding golang.org/x/sync v0.0.0-20181108010431-42b317875d0f
+go: finding golang.org/x/sys v0.0.0-20180627142611-7138fd3d9dc8
+go: finding google.golang.org/genproto v0.0.0-20181016170114-94acd270e44e
+go: finding github.com/ryanuber/go-glob v0.0.0-20170128012129-256dc444b735
+go: finding github.com/sethgrid/pester v0.0.0-20180430140037-03e26c9abbbf
+go: finding github.com/hashicorp/errwrap v0.0.0-20141028054710-7554cd9344ce
+go: finding github.com/knq/sysutil v0.0.0-20180306023629-0218e141a794
+go: finding github.com/opencontainers/go-digest v1.0.0-rc1
+go: finding github.com/knative/serving v0.5.0
+go: finding github.com/knative/pkg v0.0.0-20181205230426-0e41760cea1d
+go: finding github.com/fatih/color v1.7.0
+go: finding github.com/aws/aws-sdk-go v1.16.18
+go: finding github.com/aws/aws-k8s-tester v0.0.0-20190114231546-b411acf57dfe
+go: finding github.com/ghodss/yaml v1.0.0
+go: finding github.com/googleapis/gax-go v2.0.0+incompatible
+go: finding github.com/imdario/mergo v0.3.4
+go: finding github.com/pborman/uuid v1.2.0
+go: finding github.com/mattn/go-sqlite3 v1.10.0
+go: finding github.com/google/btree v0.0.0-20180124185431-e89373fe6b4a
+go: finding gopkg.in/src-d/go-git.v4 v4.1.1
+go: finding github.com/sethvargo/go-password v0.1.2
+go: finding github.com/shurcooL/graphql v0.0.0-20180924043259-e4a3a37e6d42
+go: finding github.com/mattn/go-colorable v0.0.9
+go: finding github.com/prometheus/procfs v0.0.0-20181005140218-185b4288413d
+go: finding github.com/jetstack/cert-manager v0.5.2
+go: finding go.opencensus.io v0.18.0
+go: finding github.com/google/go-containerregistry v0.0.0-20190317040536-ebbba8469d06
+go: finding github.com/go-stack/stack v1.8.0
+go: finding github.com/gregjones/httpcache v0.0.0-20181110185634-c63ab54fda8f
+go: finding google.golang.org/genproto v0.0.0-20180831171423-11092d34479b
+go: finding k8s.io/utils v0.0.0-20181019225348-5e321f9a457c
+go: finding github.com/golang/snappy v0.0.0-20170215233205-553a64147049
+go: finding k8s.io/helm v2.7.2+incompatible
+go: finding github.com/hashicorp/go-sockaddr v1.0.0
+go: finding github.com/coreos/pkg v0.0.0-20180928190104-399ea9e2e55f
+go: finding golang.org/x/sys v0.0.0-20180909124046-d0be0721c37e
+go: finding gopkg.in/gemnasium/logrus-airbrake-hook.v2 v2.1.2
+go: finding github.com/go-openapi/errors v0.17.0
+go: finding github.com/MakeNowJust/heredoc v0.0.0-20171113091838-e9091a26100e
+go: finding github.com/golang/groupcache v0.0.0-20181024230925-c65c006176ff
+go: finding github.com/hashicorp/go-cleanhttp v0.5.1
+go: finding gopkg.in/ini.v1 v1.42.0
+go: finding gopkg.in/go-playground/assert.v1 v1.2.1
+go: finding github.com/google/go-querystring v1.0.0
+go: finding golang.org/x/net v0.0.0-20181005035420-146acd28ed58
+go: finding github.com/mgutz/ansi v0.0.0-20170206155736-9520e82c474b
+go: finding github.com/gin-contrib/sse v0.0.0-20170109093832-22d885f9ecc7
+go: finding google.golang.org/api v0.0.0-20180910000450-7ca32eb868bf
+go: finding gopkg.in/h2non/gock.v0 v0.0.0-20160419120746-1baf36abac00
+go: finding golang.org/x/time v0.0.0-20180412165947-fbb02b2291d2
+go: finding github.com/gin-gonic/gin v0.0.0-20180512030042-bf7803815b0b
+go: finding github.com/go-errors/errors v1.0.1
+go: finding github.com/imdario/mergo v0.3.6
+go: finding golang.org/x/sys v0.0.0-20190411185658-b44545bcd369
+go: finding github.com/fsouza/fake-gcs-server v0.0.0-20180612165233-e85be23bdaa8
+go: finding github.com/prometheus/client_model v0.0.0-20180712105110-5c3871d89910
+go: finding github.com/rodaine/hclencoder v0.0.0-20180926060551-0680c4321930
+go: finding github.com/kevinburke/ssh_config v0.0.0-20180317175531-9fc7bb800b55
+go: finding google.golang.org/grpc v1.14.0
+go: finding contrib.go.opencensus.io/exporter/stackdriver v0.6.0
+go: finding golang.org/x/net v0.0.0-20180906233101-161cd47e91fd
+go: finding k8s.io/code-generator v0.0.0-20190416052311-01a054e913a9
+go: finding honnef.co/go/tools v0.0.0-20180728063816-88497007e858
+go: finding github.com/go-openapi/jsonpointer v0.17.0
+go: finding github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc
+go: finding github.com/jinzhu/now v0.0.0-20180511015916-ed742868f2ae
+go: finding github.com/emirpasic/gods v1.9.0
+go: finding github.com/go-openapi/jsonpointer v0.0.0-20170102174223-779f45308c19
+go: finding github.com/shurcooL/go v0.0.0-20180423040247-9e1955d9fb6e
+go: finding github.com/google/wire v0.2.0
+go: finding github.com/coreos/etcd v3.2.13+incompatible
+go: finding github.com/davecgh/go-spew v1.1.0
+go: finding github.com/xlab/handysort v0.0.0-20150421192137-fb3537ed64a1
+go: finding gopkg.in/airbrake/gobrake.v2 v2.0.9
+go: finding github.com/Masterminds/sprig v2.15.0+incompatible
+go: finding github.com/ulikunitz/xz v0.5.6
+go: finding github.com/coreos/go-systemd v0.0.0-20190212144455-93d5ec2c7f76
+go: finding github.com/davecgh/go-spew v1.1.1
+go: finding gonum.org/v1/netlib v0.0.0-20190331212654-76723241ea4e
+go: finding github.com/modern-go/reflect2 v0.0.0-20180701023420-4b7aa43c6742
+go: finding github.com/src-d/gcfg v1.3.0
+go: finding github.com/appscode/jsonpatch v0.0.0-20190108182946-7c0e3b262f30
+go: finding github.com/pelletier/go-toml v1.2.0
+go: finding github.com/hashicorp/go-version v1.0.0
+go: finding github.com/operator-framework/operator-sdk v0.6.0
+go: finding github.com/hashicorp/hcl v1.0.0
+go: finding github.com/go-logr/logr v0.1.0
+go: finding github.com/coreos/etcd-operator v0.9.3
+go: finding github.com/prometheus/client_golang v0.8.0
+go: finding github.com/hashicorp/go-retryablehttp v0.5.3
+go: finding github.com/bazelbuild/buildtools v0.0.0-20180226164855-80c7f0d45d7e
+go: finding github.com/xanzy/ssh-agent v0.2.0
+go: finding golang.org/x/sys v0.0.0-20181116152217-5ac8a444bdc5
+go: finding github.com/go-openapi/spec v0.0.0-20171219195406-fa03337d7da5
+go: finding github.com/google/go-querystring v0.0.0-20150414214848-547ef5ac9797
+go: finding github.com/remyoudompheng/bigfft v0.0.0-20170806203942-52369c62f446
+go: finding google.golang.org/appengine v1.1.0
+go: finding github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51
+go: finding github.com/qor/qor v0.0.0-20180518090926-f171bc73933e
+go: finding k8s.io/klog v0.0.0-20190306015804-8e90cee79f82
+go: finding github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2
+go: finding github.com/pierrec/lz4 v0.0.0-20181005164709-635575b42742
+go: finding github.com/onsi/gomega v1.4.2
+go: finding github.com/ryanuber/columnize v2.1.0+incompatible
+go: finding github.com/Masterminds/semver v1.4.2
+go: finding github.com/jpillora/backoff v0.0.0-20180909062703-3050d21c67d7
+go: finding github.com/gosimple/slug v1.1.1
+go: finding github.com/fsnotify/fsnotify v1.4.7
+go: finding github.com/soheilhy/cmux v0.1.4
+go: finding github.com/imdario/mergo v0.0.0-20180119215619-163f41321a19
+go: finding golang.org/x/tools v0.0.0-20190328211700-ab21143f2384
+go: finding sigs.k8s.io/controller-runtime v0.1.9
+go: finding github.com/emicklei/go-restful v2.9.3+incompatible
+go: finding k8s.io/gengo v0.0.0-20190116091435-f8a0810f38af
+go: finding github.com/jinzhu/gorm v1.9.1
+go: finding golang.org/x/sys v0.0.0-20180606202747-9527bec2660b
+go: finding github.com/pkg/profile v1.2.1
+go: finding github.com/smartystreets/goconvey v0.0.0-20190306220146-200a235640ff
+go: finding github.com/rainycape/unidecode v0.0.0-20150907023854-cb7f23ec59be
+go: finding github.com/gogo/protobuf v0.0.0-20171007142547-342cbe0a0415
+go: finding github.com/matttproud/golang_protobuf_extensions v1.0.1
+go: finding github.com/coreos/bbolt v1.3.2
+go: finding github.com/petar/GoLLRB v0.0.0-20130427215148-53be0d36a84c
+go: finding golang.org/x/net v0.0.0-20181017193950-04a2e542c03f
+go: finding golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be
+go: finding github.com/json-iterator/go v1.1.5
+go: finding github.com/jinzhu/now v0.0.0-20181116074157-8ec929ed50c3
+go: finding github.com/mailru/easyjson v0.0.0-20171120080333-32fa128f234d
+go: finding gonum.org/v1/gonum v0.0.0-20190331200053-3d26580ed485
+go: finding github.com/prometheus/procfs v0.0.0-20180725123919-05ee40e3a273
+go: finding github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99
+go: finding github.com/google/uuid v0.0.0-20171113160352-8c31c18f31ed
+go: finding gopkg.in/go-playground/validator.v8 v8.18.2
+go: finding github.com/gregjones/httpcache v0.0.0-20180305231024-9cad4c3443a7
+go: finding github.com/apache/thrift v0.0.0-20180902110319-2566ecd5d999
+go: finding github.com/StackExchange/wmi v0.0.0-20180116203802-5d049714c4a6
+go: finding go.etcd.io/bbolt v1.3.2
+go: finding contrib.go.opencensus.io/exporter/stackdriver v0.9.1
+go: finding golang.org/x/image v0.0.0-20180628062038-cc896f830ced
+go: finding github.com/spf13/pflag v1.0.3
+go: finding github.com/spf13/cobra v0.0.2
+go: finding github.com/pierrec/lz4 v2.0.5+incompatible
+go: finding github.com/stretchr/ob** v0.1.0
+go: finding github.com/docker/go-units v0.3.2
+go: finding contrib.go.opencensus.io/exporter/aws v0.0.0-20180906190126-dd54a7ef511e
+go: finding github.com/spf13/viper v1.2.1
+go: finding modernc.org/mathutil v1.0.0
+go: finding github.com/andygrunwald/go-gerrit v0.0.0-20181026193842-43cfd7a94eb4
+go: finding k8s.io/test-infra v0.0.0-20181019233642-2e10a0bbe9b3
+go: finding github.com/hashicorp/golang-lru v0.5.0
+go: finding github.com/go-openapi/swag v0.0.0-20171111214437-cf0bdb963811
+go: finding github.com/prometheus/client_golang v0.9.2
+go: finding google.golang.org/appengine v1.0.0
+go: finding github.com/go-yaml/yaml v2.1.0+incompatible
+go: finding github.com/ugorji/go v1.1.1
+go: finding github.com/aws/aws-sdk-go v1.15.31
+go: finding google.golang.org/genproto v0.0.0-20190219182410-082222b4a5c5
+go: finding github.com/deckarep/golang-set v0.0.0-20171013212420-1d4478f51bed
+go: finding golang.org/x/net v0.0.0-20180530234432-1e491301e022
+go: finding modernc.org/golex v1.0.0
+go: finding github.com/prometheus/common v0.0.0-20180801064454-c7de2306084e
+go: finding github.com/spf13/pflag v1.0.2
+go: finding github.com/google/gofuzz v0.0.0-20170612174753-24818f796faf
+go: finding github.com/coreos/prometheus-operator v0.29.0
+go: finding github.com/hashicorp/go-cleanhttp v0.5.0
+go: finding cloud.google.com/go v0.23.0
+go: finding github.com/julienschmidt/httprouter v1.2.0
+go: finding github.com/aliyun/aliyun-oss-go-sdk v0.0.0-20171213061034-52de7239022c
+go: finding github.com/jinzhu/inflection v0.0.0-20180308033659-04140366298a
+go: finding gonum.org/v1/netlib v0.0.0-20190313105609-8cb42192e0e0
+go: finding golang.org/x/crypto v0.0.0-20180621125126-a49355c7e3f8
+go: finding github.com/hashicorp/go-multierror v1.0.0
+go: finding github.com/prometheus/client_golang v0.9.1
+go: finding github.com/google/go-github v17.0.0+incompatible
+go: finding github.com/konsorten/go-windows-terminal-sequences v1.0.1
+go: finding k8s.io/klog v0.2.0
+go: finding github.com/fatih/structs v1.1.0
+go: finding github.com/go-ini/ini v1.34.0
+go: finding github.com/lib/pq v1.0.0
+go: finding github.com/dimchansky/utfbom v1.1.0
+go: finding github.com/dustin/go-humanize v1.0.0
+go: finding cloud.google.com/go v0.30.0
+go: finding google.golang.org/grpc v1.12.0
+go: finding gopkg.in/fsnotify.v1 v1.4.7
+go: finding github.com/acarl005/stripansi v0.0.0-20180116102854-5a71ef0e047d
+go: finding github.com/russross/blackfriday v1.5.1
+go: finding github.com/spf13/afero v1.1.2
+go: finding go.uber.org/atomic v1.3.2
+go: finding github.com/hashicorp/go-rootcerts v1.0.0
+go: finding golang.org/x/net v0.0.0-20181201002055-351d144fa1fc
+go: finding github.com/jmespath/go-jmespath v0.0.0-20160202185014-0b12d6b521d8
+go: finding github.com/Azure/azure-storage-blob-go v0.0.0-20181023070848-cf01652132cc
+go: finding google.golang.org/grpc v1.16.0
+go: finding github.com/googleapis/gnostic v0.2.0
+go: finding modernc.org/xc v1.0.0
+go: finding github.com/tidwall/gjson v1.1.0
+go: finding github.com/modern-go/reflect2 v1.0.1
+go: finding github.com/markbates/inflect v1.0.4
+go: finding modernc.org/strutil v1.0.0
+go: finding github.com/mholt/archiver v3.1.1+incompatible
+go: finding github.com/aws/aws-sdk-go v1.15.27
+go: finding github.com/knative/build v0.1.2
+go: finding github.com/cockroachdb/cmux v0.0.0-20170110192607-30d10be49292
+go: finding cloud.google.com/go v0.24.0
+go: finding golang.org/x/exp v0.0.0-20190125153040-c74c464bbbf2
+go: finding github.com/kr/pty v1.1.1
+go: finding sigs.k8s.io/testing_frameworks v0.1.1
+go: finding github.com/nbio/st v0.0.0-20140626010706-e9e8d9816f32
+go: finding github.com/hinshun/vt10x v0.0.0-20180616224451-1954e6464174
+go: finding github.com/gobuffalo/envy v1.6.5
+go: finding github.com/jtolds/gls v4.20.0+incompatible
+go: finding github.com/go-sql-driver/mysql v1.4.1
+go: finding github.com/BurntSushi/toml v0.3.1
+go: finding github.com/spf13/jwalterweatherman v1.0.0
+go: finding vbom.ml/util v0.0.0-20170409195630-256737ac55c4
+go: finding github.com/google/subcommands v0.0.0-20181012225330-46f0354f6315
+go: finding github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973
+go: finding golang.org/x/lint v0.0.0-20180702182130-06c8688daad7
+go: finding github.com/aliyun/alibaba-cloud-sdk-go v0.0.0-20190308093441-53f19b3c6bee
+go: finding golang.org/x/tools v0.0.0-20181017214349-06f26fdaaa28
+go: finding github.com/satori/go.uuid v1.2.0
+go: finding github.com/microcosm-cc/bluemonday v0.0.0-20180327211928-995366fdf961
+go: finding github.com/onsi/ginkgo v1.6.0
+go: finding github.com/go-logr/zapr v0.1.0
+go: finding github.com/antham/strumt v0.0.0-20171215230529-6776189777d3
+go: finding github.com/mitchellh/go-homedir v1.0.0
+go: finding github.com/opencontainers/image-spec v1.0.1
+go: finding github.com/go-kit/kit v0.8.0
+go: finding github.com/prometheus/common v0.0.0-20181020173914-7e9e6cabbd39
+go: finding github.com/chromedp/cdproto v0.0.0-20180703215205-c125a34ea3b3
+go: finding golang.org/x/net v0.0.0-20180702212446-ed29d75add3d
+go: finding github.com/stoewer/go-strcase v1.0.1
+go: finding github.com/prometheus/common v0.0.0-20181126121408-4724e9255275
+go: finding github.com/go-logfmt/logfmt v0.3.0
+go: finding golang.org/x/tools v0.0.0-20190206041539-40960b6deb8e
+go: finding go.opencensus.io v0.15.0
+go: finding github.com/prometheus/procfs v0.0.0-20181204211112-1dc9a6cbc91a
+go: finding github.com/onsi/gomega v1.4.3
+go: finding github.com/slok/kubewebhook v0.2.0
+go: finding github.com/mitchellh/mapstructure v1.0.0
+go: finding github.com/google/martian v2.1.0+incompatible
+go: finding golang.org/x/sys v0.0.0-20180906133057-8cf3aee42992
+go: finding github.com/grpc-ecosystem/grpc-gateway v1.5.0
+go: finding github.com/aws/aws-sdk-go v1.15.57
+go: finding github.com/go-openapi/spec v0.17.0
+go: finding github.com/mwitkow/go-conntrack v0.0.0-20161129095857-cc309e4a2223
+go: finding github.com/spf13/cast v1.2.0
+go: finding k8s.io/gengo v0.0.0-20190327210449-e17681d19d3a
+go: finding golang.org/x/exp v0.0.0-20190121172915-509febef88a4
+go: finding github.com/tektoncd/pipeline v0.3.1
+go: finding golang.org/x/oauth2 v0.0.0-20180603041954-1e0a3fa8ba9a
+go: finding github.com/evanphx/json-patch v4.0.0+incompatible
+go: finding github.com/uber/jaeger-lib v1.5.0
+go: finding google.golang.org/genproto v0.0.0-20180601223552-81158efcc9f2
+go: finding github.com/mailru/easyjson v0.0.0-20180823135443-60711f1a8329
+go: finding github.com/coreos/go-systemd v0.0.0-20181012123002-c6f51f82210d
+go: finding github.com/docker/go-connections v0.4.0
+go: finding github.com/ryanuber/go-glob v0.0.0-20160226084822-572520ed46db
+go: finding github.com/andygrunwald/go-gerrit v0.0.0-20171029143327-95b11af228a1
+go: finding github.com/uber-go/atomic v1.3.2
+go: finding golang.org/x/tools v0.0.0-20180828015842-6cd1fcedba52
+go: finding github.com/PuerkitoBio/purell v1.1.0
+go: finding gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7
+go: finding github.com/openzipkin/zipkin-go v0.1.1
+go: finding go.etcd.io/etcd v0.0.0-20181031231232-83304cfc808c
+go: finding github.com/mitchellh/ioprogress v0.0.0-20180201004757-6a23b12fa88e
+go: finding github.com/mitchellh/cli v1.0.0
+go: finding github.com/denisenkom/go-mssqldb v0.0.0-20190111225525-2fea367d496d
+go: finding github.com/codahale/hdrhistogram v0.0.0-20161010025455-3a0bb77429bd
+go: finding github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf
+go: finding github.com/appscode/jsonpatch v0.0.0-20180911074601-5af499cf01c8
+go: finding github.com/lusis/slack-test v0.0.0-20180109053238-3c758769bfa6
+go: finding github.com/prometheus/client_golang v0.9.0-pre1.0.20180924113449-f69c853d21c1
+go: finding github.com/mattn/go-isatty v0.0.4
+go: finding github.com/kr/pty v1.0.0
+go: finding github.com/olekukonko/tablewriter v0.0.0-20170122224234-a0225b3f23b5
+go: finding golang.org/x/exp v0.0.0-20190312203227-4b39c73a6495
+go: finding github.com/urfave/cli v1.18.0
+go: finding github.com/denisenkom/go-mssqldb v0.0.0-20190204142019-df6d76eb9289
+go: finding github.com/matttproud/golang_protobuf_extensions v1.0.0
+go: finding github.com/shirou/gopsutil v0.0.0-20180901134234-eb1f1ab16f2e
+go: finding golang.org/x/net v0.0.0-20180921000356-2f5d2388922f
+go: finding github.com/jinzhu/gorm v0.0.0-20170316141641-572d0a0ab1eb
+go: finding golang.org/x/sys v0.0.0-20181004145325-8469e314837c
+go: finding github.com/census-instrumentation/opencensus-proto v0.1.0
+go: finding github.com/prometheus/procfs v0.0.0-20180920065004-418d78d0b9a7
+go: finding github.com/baiyubin/aliyun-sts-go-sdk v0.0.0-20180326062324-cfa1a18b161f
+go: finding google.golang.org/grpc v1.15.0
+go: finding github.com/pborman/uuid v0.0.0-20180906182336-adf5a7427709
+go: finding github.com/tmc/grpc-websocket-proxy v0.0.0-20170815181823-89b8d40f7ca8
+go: finding github.com/gorilla/websocket v0.0.0-20170926233335-4201258b820c
+go: finding github.com/uber/jaeger-client-go v2.14.0+incompatible
+go: finding github.com/docker/distribution v0.0.0-20170726174610-edc3ab29cdff
+go: finding go.etcd.io/bbolt v1.3.1-etcd.7
+go: finding github.com/coreos/pkg v0.0.0-20160727233714-3ac0863d7acf
+go: finding golang.org/x/sys v0.0.0-20190312061237-fead79001313
+go: finding github.com/grpc-ecosystem/grpc-gateway v1.4.1
+go: finding contrib.go.opencensus.io/exporter/ocagent v0.2.0
+go: finding gopkg.in/cheggaaa/pb.v1 v1.0.25
+go: finding golang.org/x/sys v0.0.0-20180823144017-11551d06cbcc
+go: finding github.com/dustin/go-humanize v0.0.0-20171111073723-bb3d318650d4
+go: finding github.com/mattn/go-runewidth v0.0.2
+go: finding golang.org/x/tools v0.0.0-20190312151545-0bb0c0a6e846
+go: finding github.com/coreos/go-systemd v0.0.0-20180511133405-39ca1b05acc7
+go: finding github.com/prometheus/client_model v0.0.0-20170216185247-6f3806018612
+go: finding google.golang.org/genproto v0.0.0-20180608181217-32ee49c4dd80
+go: finding github.com/joho/godotenv v1.3.0
+go: finding golang.org/x/crypto v0.0.0-20180608092829-8ac0e0d97ce4
+go: finding golang.org/x/image v0.0.0-20190227222117-0694c2d4d067
+go: finding golang.org/x/net v0.0.0-20181114220301-adae6a3d119a
+go: finding github.com/opentracing/opentracing-go v1.0.2
+go: finding github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802
+go: finding golang.org/x/net v0.0.0-20190311183353-d8887717615a
+go: finding github.com/go-ini/ini v1.25.4
+go: finding github.com/bgentry/speakeasy v0.1.0
+go: finding golang.org/x/mobile v0.0.0-20190312151609-d3739f865fa6
+go: finding github.com/posener/complete v1.1.1
+go: finding github.com/prometheus/common v0.0.0-20180518154759-7600349dcfe1
+go: finding github.com/census-instrumentation/opencensus-proto v0.0.2-0.20180913191712-f303ae3f8d6a
+go: finding gopkg.in/check.v1 v1.0.0-20161208181325-20d25e280405
+go: finding github.com/prometheus/procfs v0.0.0-20180612222113-7d6f385de8be
+go: finding modernc.org/cc v1.0.0
+go: finding google.golang.org/api v0.0.0-20180603000442-8e296ef26005
+go: finding github.com/armon/go-radix v0.0.0-20180808171621-7fddfc383310
+go: finding github.com/golang/groupcache v0.0.0-20160516000752-02826c3e7903
+go: finding golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2
+go: finding golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a
+go: downloading github.com/jenkins-x/golang-jenkins v0.0.0-20180919102630-65b83ad42314
+go: downloading k8s.io/apimachinery v0.0.0-20190122181752-bebe27e40fb7
+go: downloading github.com/pkg/errors v0.8.0
+go: downloading github.com/jenkins-x/sonobuoy v0.11.7-0.20190318120422-253758214767
+go: downloading k8s.io/client-go v2.0.0-alpha.0.0.20190115164855-701b91367003+incompatible
+go: downloading gopkg.in/AlecAivazis/survey.v1 v1.8.3
+go: downloading github.com/hashicorp/vault v1.1.2
+go: downloading github.com/blang/semver v3.5.1+incompatible
+go: downloading github.com/knative/build v0.5.0
+go: downloading github.com/antham/chyle v1.4.0
+go: downloading github.com/tektoncd/pipeline v0.3.1
+go: downloading golang.org/x/oauth2 v0.0.0-20181203162652-d668ce993890
+go: downloading k8s.io/api v0.0.0-20181128191700-6db15a15d2d3
+go: downloading github.com/denormal/go-gitignore v0.0.0-20180713143441-75ce8f3e513c
+go: downloading github.com/google/go-github v17.0.0+incompatible
+go: downloading golang.org/x/sync v0.0.0-20181221193216-37e7f081c4d4
+go: downloading k8s.io/test-infra v0.0.0-20190131093439-a22cef183a8f
+go: downloading github.com/aws/aws-sdk-go v1.17.10
+go: downloading gopkg.in/src-d/go-git.v4 v4.5.0
+go: downloading github.com/chromedp/chromedp v0.1.1
+go: downloading github.com/spf13/cobra v0.0.3
+go: downloading sigs.k8s.io/yaml v1.1.0
+go: downloading k8s.io/apiextensions-apiserver v0.0.0-20181128195303-1f84094d7e8e
+go: downloading github.com/IBM-Cloud/bluemix-go v0.0.0-20181008063305-d718d474c7c2
+go: downloading k8s.io/metrics v0.0.0-20181128195641-3954d62a524d
+go: downloading github.com/jtnord/logrus v1.4.2-0.20190423161236-606ffcaf8f5d
+go: downloading github.com/knative/pkg v0.0.0-20190402181056-ff46edef0ae5
+go: downloading github.com/rollout/rox-go v0.0.0-20181220111955-29ddae74a8c4
+go: downloading github.com/mholt/archiver v3.1.1+incompatible
+go: downloading github.com/codeship/codeship-go v0.0.0-20180717142545-7793ca823354
+go: downloading github.com/cpuguy83/go-md2man v1.0.8
+go: downloading github.com/stoewer/go-strcase v1.0.1
+go: downloading github.com/gogo/protobuf v1.1.1
+go: downloading gopkg.in/inf.v0 v0.9.1
+go: downloading github.com/hashicorp/go-version v1.1.0
+go: downloading github.com/Pallinder/go-randomdata v0.0.0-20180616180521-15df0648130a
+go: downloading github.com/google/gofuzz v0.0.0-20170612174753-24818f796faf
+go: downloading github.com/gregjones/httpcache v0.0.0-20181110185634-c63ab54fda8f
+go: downloading gocloud.dev v0.9.0
+go: downloading github.com/fatih/color v1.7.0
+go: downloading github.com/onsi/ginkgo v1.7.0
+go: downloading github.com/golang/protobuf v1.2.0
+go: downloading github.com/google/go-querystring v1.0.0
+go: downloading github.com/nwaples/rardecode v1.0.0
+go: downloading k8s.io/helm v2.7.2+incompatible
+go: downloading github.com/stretchr/testify v1.3.0
+go: downloading github.com/mattn/go-colorable v0.0.9
+go: downloading github.com/dsnet/compress v0.0.0-20171208185109-cc9eb1d7ad76
+go: downloading github.com/banzaicloud/bank-vaults v0.0.0-20190508130850-5673d28c46bd
+go: downloading github.com/pierrec/lz4 v2.0.5+incompatible
+go: downloading github.com/jenkins-x/draft-repo v0.0.0-20180417100212-2f66cc518135
+go: downloading github.com/pborman/uuid v1.2.0
+go: downloading github.com/peterbourgon/diskv v2.0.1+incompatible
+go: downloading github.com/pkg/browser v0.0.0-20170505125900-c90ca0c84f15
+go: downloading github.com/gorilla/websocket v1.4.0
+go: downloading github.com/gophercloud/gophercloud v0.0.0-20181215224939-bdd8b1ecd793
+go: downloading github.com/cloudflare/cfssl v0.0.0-20190409034051-768cd563887f
+go: downloading github.com/knative/serving v0.5.0
+go: downloading github.com/rodaine/hclencoder v0.0.0-20180926060551-0680c4321930
+go: downloading github.com/sethvargo/go-password v0.1.2
+go: downloading github.com/danwakefield/fnmatch v0.0.0-20160403171240-cbb64ac3d964
+go: downloading github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+go: downloading github.com/google/btree v0.0.0-20180813153112-4030bb1f1f0c
+go: downloading github.com/mailru/easyjson v0.0.0-20180823135443-60711f1a8329
+go: downloading github.com/google/uuid v1.1.0
+go: downloading github.com/satori/go.uuid v1.2.1-0.20180103174451-36e9d2ebbde5
+go: downloading github.com/cenkalti/backoff v2.1.1+incompatible
+go: downloading github.com/json-iterator/go v1.1.5
+go: downloading github.com/golang/snappy v0.0.0-20180518054509-2e65f85255db
+go: downloading golang.org/x/text v0.3.0
+go: downloading github.com/andygrunwald/go-jira v1.5.0
+go: downloading github.com/modern-go/reflect2 v1.0.1
+go: downloading github.com/mattbaird/jsonpatch v0.0.0-20171005235357-81af80346b1a
+go: downloading github.com/trivago/tgo v1.0.1
+go: downloading github.com/Azure/go-autorest v10.15.5+incompatible
+go: downloading github.com/alexflint/go-filemutex v0.0.0-20171028004239-d358565f3c3f
+go: downloading gopkg.in/yaml.v2 v2.2.1
+go: downloading github.com/imdario/mergo v0.3.6
+go: downloading github.com/Azure/azure-storage-blob-go v0.0.0-20181023070848-cf01652132cc
+go: downloading github.com/ulikunitz/xz v0.5.6
+go: downloading github.com/Azure/azure-pipeline-go v0.1.8
+go: downloading github.com/hashicorp/hcl v1.0.0
+go: downloading github.com/ghodss/yaml v1.0.0
+go: downloading github.com/c2h5oh/datasize v0.0.0-20171227191756-4eba002a5eae
+go: downloading google.golang.org/api v0.1.0
+go: downloading github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
+go: downloading github.com/googleapis/gnostic v0.2.0
+go: downloading github.com/gobwas/glob v0.2.3
+go: downloading github.com/pmezard/go-difflib v1.0.0
+go: downloading github.com/iancoleman/orderedmap v0.0.0-20181121102841-22c6ecc9fe13
+go: downloading github.com/sergi/go-diff v1.0.0
+go: downloading github.com/shurcooL/githubv4 v0.0.0-20180925043049-51d7b505e2e9
+go: downloading github.com/davecgh/go-spew v1.1.1
+go: downloading github.com/Masterminds/semver v1.4.2
+go: downloading github.com/fatih/structs v1.1.0
+go: downloading github.com/BurntSushi/toml v0.3.1
+go: downloading github.com/chromedp/cdproto v0.0.0-20180720050708-57cf4773008d
+go: downloading golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2
+go: downloading github.com/gorilla/mux v1.6.2
+go: downloading github.com/jetstack/cert-manager v0.5.2
+go: downloading github.com/dgrijalva/jwt-go v3.2.0+incompatible
+go: downloading github.com/MakeNowJust/heredoc v0.0.0-20171113091838-e9091a26100e
+go: downloading github.com/rifflock/lfshook v0.0.0-20180227222202-bf539943797a
+go: downloading github.com/russross/blackfriday v1.5.1
+go: downloading golang.org/x/net v0.0.0-20190311183353-d8887717615a
+go: downloading github.com/Azure/draft v0.15.0
+go: downloading github.com/google/go-cmp v0.2.0
+go: downloading github.com/mitchellh/mapstructure v1.1.2
+go: downloading github.com/fsnotify/fsnotify v1.4.7
+go: downloading github.com/emirpasic/gods v1.9.0
+go: downloading github.com/hpcloud/tail v1.0.0
+go: downloading github.com/beevik/etree v1.0.1
+go: downloading github.com/hashicorp/go-cleanhttp v0.5.1
+go: downloading github.com/shurcooL/graphql v0.0.0-20180924043259-e4a3a37e6d42
+go: downloading golang.org/x/time v0.0.0-20180412165947-fbb02b2291d2
+go: downloading gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7
+go: downloading github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99
+go: downloading k8s.io/kubernetes v1.11.3
+go: downloading github.com/go-openapi/spec v0.19.0
+go: downloading github.com/mattn/go-isatty v0.0.4
+go: downloading github.com/go-openapi/jsonreference v0.17.0
+go: downloading github.com/viniciuschiele/tarx v0.0.0-20151205142357-6e3da540444d
+go: downloading github.com/hashicorp/go-sockaddr v1.0.2
+go: downloading k8s.io/kube-openapi v0.0.0-20190228160746-b3a7cee44a30
+go: downloading github.com/go-openapi/jsonpointer v0.17.0
+go: downloading github.com/src-d/gcfg v1.3.0
+go: downloading github.com/gorilla/sessions v1.1.3
+go: downloading github.com/andygrunwald/go-gerrit v0.0.0-20181026193842-43cfd7a94eb4
+go: downloading github.com/prometheus/client_golang v0.9.2
+go: downloading google.golang.org/grpc v1.17.0
+go: downloading gopkg.in/warnings.v0 v0.1.2
+go: downloading github.com/prometheus/common v0.2.0
+go: downloading gopkg.in/src-d/go-billy.v4 v4.2.0
+go: downloading github.com/hashicorp/go-rootcerts v1.0.0
+go: downloading github.com/hashicorp/errwrap v1.0.0
+go: downloading cloud.google.com/go v0.34.0
+go: downloading github.com/hashicorp/go-retryablehttp v0.5.3
+go: downloading github.com/jbrukh/bayesian v0.0.0-20161210175230-bf3f261f9a9c
+go: downloading github.com/Jeffail/gabs v1.1.1
+go: downloading github.com/knq/sysutil v0.0.0-20180306023629-0218e141a794
+go: downloading github.com/prometheus/client_model v0.0.0-20180712105110-5c3871d89910
+go: downloading github.com/spf13/cast v1.2.0
+go: downloading github.com/shirou/gopsutil v0.0.0-20180901134234-eb1f1ab16f2e
+go: downloading github.com/PuerkitoBio/purell v1.1.0
+go: downloading golang.org/x/sys v0.0.0-20190411185658-b44545bcd369
+go: downloading github.com/matttproud/golang_protobuf_extensions v1.0.1
+go: downloading github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578
+go: downloading github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8
+go: downloading code.gitea.io/sdk v0.0.0-20180702024448-79a281c4e34a
+go: downloading gopkg.in/robfig/cron.v2 v2.0.0-20150107220207-be2e0b0deed5
+go: downloading github.com/wbrefvem/go-bitbucket v0.0.0-20190128183802-fc08fd046abb
+go: downloading github.com/google/wire v0.2.0
+go: downloading github.com/go-openapi/swag v0.17.0
+go: downloading github.com/emicklei/go-restful v2.9.3+incompatible
+go: downloading github.com/xanzy/go-gitlab v0.0.0-20180814191223-f3bc634ab936
+go: downloading github.com/prometheus/procfs v0.0.0-20181204211112-1dc9a6cbc91a
+go: downloading github.com/go-errors/errors v1.0.1
+go: downloading github.com/evanphx/json-patch v4.1.0+incompatible
+go: downloading github.com/gfleury/go-bitbucket-v1 v0.0.0-20190216152406-3a732135aa4d
+go: downloading github.com/nlopes/slack v0.0.0-20180721202243-347a74b1ea30
+go: downloading github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51
+go: downloading github.com/alecthomas/jsonschema v0.0.0-20190504002508-159cbd5dba26
+go: downloading github.com/mgutz/ansi v0.0.0-20170206155736-9520e82c474b
+go: downloading google.golang.org/genproto v0.0.0-20190219182410-082222b4a5c5
+go: downloading gopkg.in/fsnotify.v1 v1.4.7
+go: downloading github.com/xeipuuv/gojsonschema v1.1.0
+go: downloading github.com/disintegration/imaging v1.4.2
+go: downloading github.com/gorilla/securecookie v1.1.1
+go: downloading github.com/ryanuber/go-glob v0.0.0-20170128012129-256dc444b735
+go: downloading github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973
+go: downloading github.com/hashicorp/go-multierror v1.0.0
+go: downloading github.com/google/go-containerregistry v0.0.0-20190317040536-ebbba8469d06
+go: downloading golang.org/x/image v0.0.0-20190227222117-0694c2d4d067
+go: downloading github.com/gorilla/context v1.1.1
+go: downloading github.com/spf13/pflag v1.0.3
+go: downloading github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af
+go: downloading github.com/hashicorp/golang-lru v0.5.0
+go: downloading github.com/xanzy/ssh-agent v0.2.0
+go: downloading github.com/shurcooL/go v0.0.0-20180423040247-9e1955d9fb6e
+go: downloading github.com/docker/spdystream v0.0.0-20170912183627-bc6354cbbc29
+go: downloading github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415
+go: downloading github.com/spf13/viper v1.2.1
+go: downloading github.com/spf13/jwalterweatherman v1.0.0
+go: downloading github.com/rollout/sse v0.0.0-20181105093643-e422b54b3b28
+go: downloading github.com/xeipuuv/gojsonpointer v0.0.0-20180127040702-4e3ac2762d5f
+go: downloading github.com/kevinburke/ssh_config v0.0.0-20180317175531-9fc7bb800b55
+go: downloading github.com/spf13/afero v1.1.2
+go: downloading github.com/magiconair/properties v1.8.0
+go: downloading github.com/pelletier/go-buffruneio v0.2.0
+go: downloading github.com/mitchellh/go-homedir v1.1.0
+go: downloading github.com/pelletier/go-toml v1.2.0
+go: downloading gopkg.in/cenkalti/backoff.v1 v1.1.0
+go: downloading github.com/googleapis/gax-go v2.0.0+incompatible
+go: downloading go.opencensus.io v0.18.0
+go: finding k8s.io/api v0.0.0-20190126160303-ccdd560a045f
+go: finding github.com/banzaicloud/bank-vaults v0.0.0-00010101000000-000000000000
+go: finding k8s.io/client-go v9.0.0+incompatible
+go: finding github.com/heptio/sonobuoy v0.12.0
+go: finding github.com/sirupsen/logrus v1.4.1
+go: finding k8s.io/apiextensions-apiserver v0.0.0-20190308081736-3a66ae4d2f93
+go: finding k8s.io/metrics v0.0.0-20180620010437-b11cf31b380b
+go: finding github.com/Azure/go-autorest v11.2.8+incompatible
+CGO_ENABLED=0 GO111MODULE=on go test -p 1 -count=1 -coverprofile=cover.out -failfast -short ./...
+go: downloading github.com/petergtz/pegomock v2.2.0+incompatible
+go: downloading github.com/Netflix/go-expect v0.0.0-20180814212900-124a37274874
+go: downloading github.com/onsi/gomega v1.4.3
+go: downloading github.com/kr/pty v1.1.2
+go: downloading github.com/acarl005/stripansi v0.0.0-20180116102854-5a71ef0e047d
+go: downloading github.com/hinshun/vt10x v0.0.0-20180809195222-d55458df857c
+go: downloading go.uber.org/zap v1.9.1
+go: downloading github.com/docker/docker v0.0.0-20171206114025-5e5fadb3c020
+go: downloading github.com/Azure/azure-sdk-for-go v21.1.0+incompatible
+go: downloading go.uber.org/multierr v1.1.0
+go: downloading go.uber.org/atomic v1.3.2
+go: downloading github.com/docker/go-connections v0.4.0
+go: downloading github.com/docker/go-units v0.3.3
+go: downloading github.com/opencontainers/image-spec v1.0.1
+go: downloading github.com/opencontainers/go-digest v1.0.0-rc1
+go: finding github.com/banzaicloud/bank-vaults v0.0.0-00010101000000-000000000000
+go: finding github.com/Azure/azure-sdk-for-go v23.2.0+incompatible
+?   	github.com/jenkins-x/**/cmd/codegen	[no test files]
+?   	github.com/jenkins-x/**/cmd/codegen/app	[no test files]
+?   	github.com/jenkins-x/**/cmd/codegen/generator	[no test files]
+ok  	github.com/jenkins-x/**/cmd/codegen/util	0.015s	coverage: 6.1% of statements
+?   	github.com/jenkins-x/**/cmd/ip	[no test files]
+?   	github.com/jenkins-x/**/cmd/**	[no test files]
+?   	github.com/jenkins-x/**/cmd/**/app	[no test files]
+?   	github.com/jenkins-x/**/pkg/addon	[no test files]
+?   	github.com/jenkins-x/**/pkg/apis/jenkins.io	[no test files]
+?   	github.com/jenkins-x/**/pkg/apis/jenkins.io/v1	[no test files]
+?   	github.com/jenkins-x/**/pkg/apps	[no test files]
+ok  	github.com/jenkins-x/**/pkg/auth	0.022s	coverage: 33.2% of statements
+?   	github.com/jenkins-x/**/pkg/auth/mocks	[no test files]
+ok  	github.com/jenkins-x/**/pkg/buildnum	0.042s	coverage: 35.8% of statements
+?   	github.com/jenkins-x/**/pkg/buildnum/mocks	[no test files]
+?   	github.com/jenkins-x/**/pkg/buildnum/mocks/matchers	[no test files]
+ok  	github.com/jenkins-x/**/pkg/builds	0.049s	coverage: 49.6% of statements
+?   	github.com/jenkins-x/**/pkg/chats	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/clientset/versioned	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/clientset/versioned/fake	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/clientset/versioned/scheme	[no test files]
+ok  	github.com/jenkins-x/**/pkg/client/clientset/versioned/typed/jenkins.io/v1	0.055s	coverage: 47.4% of statements
+?   	github.com/jenkins-x/**/pkg/client/clientset/versioned/typed/jenkins.io/v1/fake	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/informers/externalversions	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/informers/externalversions/internalinterfaces	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/informers/externalversions/jenkins.io	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/informers/externalversions/jenkins.io/v1	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/listers/jenkins.io/v1	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi/all	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi/core	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi/k8s_io_api_batch_v1	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi/k8s_io_api_core_v1	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi/k8s_io_api_rbac_v1	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi/k8s_io_apimachinery_intstr_unversioned	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi/k8s_io_apimachinery_meta_v1	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi/k8s_io_apimachinery_resource_unversioned	[no test files]
+?   	github.com/jenkins-x/**/pkg/cloud	[no test files]
+ok  	github.com/jenkins-x/**/pkg/cloud/aks	0.011s	coverage: 81.2% of statements
+ok  	github.com/jenkins-x/**/pkg/cloud/amazon	0.051s	coverage: 8.7% of statements
+?   	github.com/jenkins-x/**/pkg/cloud/amazon/vault	[no test files]
+ok  	github.com/jenkins-x/**/pkg/cloud/buckets	0.014s	coverage: 6.4% of statements
+ok  	github.com/jenkins-x/**/pkg/cloud/gke	0.017s	coverage: 2.1% of statements
+?   	github.com/jenkins-x/**/pkg/cloud/gke/externaldns	[no test files]
+?   	github.com/jenkins-x/**/pkg/cloud/gke/storage	[no test files]
+?   	github.com/jenkins-x/**/pkg/cloud/gke/vault	[no test files]
+?   	github.com/jenkins-x/**/pkg/cloud/iks	[no test files]
+?   	github.com/jenkins-x/**/pkg/cloud/oke	[no test files]
+?   	github.com/jenkins-x/**/pkg/collector	[no test files]
+ok  	github.com/jenkins-x/**/pkg/config	0.034s	coverage: 20.0% of statements
+ok  	github.com/jenkins-x/**/pkg/cve	0.024s	coverage: 0.0% of statements
+?   	github.com/jenkins-x/**/pkg/draft	[no test files]
+?   	github.com/jenkins-x/**/pkg/environments	[no test files]
+?   	github.com/jenkins-x/**/pkg/expose	[no test files]
+ok  	github.com/jenkins-x/**/pkg/extensions	0.263s	coverage: 22.8% of statements
+ok  	github.com/jenkins-x/**/pkg/features	1.139s	coverage: 44.9% of statements
+?   	github.com/jenkins-x/**/pkg/flagger	[no test files]
+ok  	github.com/jenkins-x/**/pkg/gits	0.693s	coverage: 7.6% of statements
+?   	github.com/jenkins-x/**/pkg/gits/mocks	[no test files]
+?   	github.com/jenkins-x/**/pkg/gits/mocks/matchers	[no test files]
+ok  	github.com/jenkins-x/**/pkg/helm	0.448s	coverage: 35.0% of statements
+?   	github.com/jenkins-x/**/pkg/helm/mocks	[no test files]
+ok  	github.com/jenkins-x/**/pkg/io	0.083s	coverage: 66.7% of statements
+ok  	github.com/jenkins-x/**/pkg/io/secrets	0.058s	coverage: 85.0% of statements
+?   	github.com/jenkins-x/**/pkg/issues	[no test files]
+ok  	github.com/jenkins-x/**/pkg/jenkins	0.161s	coverage: 8.7% of statements
+?   	github.com/jenkins-x/**/pkg/jenkins/fake	[no test files]
+ok  	github.com/jenkins-x/**/pkg/jenkinsfile	0.016s	coverage: 6.0% of statements
+?   	github.com/jenkins-x/**/pkg/jenkinsfile/gitresolver	[no test files]
+ok  	github.com/jenkins-x/**/pkg/**/cmd	49.428s	coverage: 17.8% of statements
+?   	github.com/jenkins-x/**/pkg/**/cmd/bdd	[no test files]
+?   	github.com/jenkins-x/**/pkg/**/cmd/clients	[no test files]
+ok  	github.com/jenkins-x/**/pkg/**/cmd/clients/fake	0.050s	coverage: 4.0% of statements
+?   	github.com/jenkins-x/**/pkg/**/cmd/clients/mocks	[no test files]
+?   	github.com/jenkins-x/**/pkg/**/cmd/cmd_test_helpers	[no test files]
+ok  	github.com/jenkins-x/**/pkg/**/cmd/opts	3.242s	coverage: 3.4% of statements
+?   	github.com/jenkins-x/**/pkg/**/cmd/templates	[no test files]
+?   	github.com/jenkins-x/**/pkg/kserving	[no test files]
+ok  	github.com/jenkins-x/**/pkg/kube	1.221s	coverage: 28.0% of statements
+ok  	github.com/jenkins-x/**/pkg/kube/cluster	0.046s	coverage: 72.2% of statements
+?   	github.com/jenkins-x/**/pkg/kube/mocks	[no test files]
+?   	github.com/jenkins-x/**/pkg/kube/mocks/matchers	[no test files]
+ok  	github.com/jenkins-x/**/pkg/kube/pki	10.048s	coverage: 20.9% of statements
+?   	github.com/jenkins-x/**/pkg/kube/resources	[no test files]
+?   	github.com/jenkins-x/**/pkg/kube/resources/mocks	[no test files]
+?   	github.com/jenkins-x/**/pkg/kube/serviceaccount	[no test files]
+?   	github.com/jenkins-x/**/pkg/kube/services	[no test files]
+ok  	github.com/jenkins-x/**/pkg/kube/vault	0.115s	coverage: 55.8% of statements
+?   	github.com/jenkins-x/**/pkg/log	[no test files]
+?   	github.com/jenkins-x/**/pkg/maven	[no test files]
+?   	github.com/jenkins-x/**/pkg/nodes	[no test files]
+ok  	github.com/jenkins-x/**/pkg/packages	0.010s	coverage: 38.8% of statements
+?   	github.com/jenkins-x/**/pkg/pipeline_events	[no test files]
+ok  	github.com/jenkins-x/**/pkg/pipelinescheduler	0.024s	coverage: 84.4% of statements
+ok  	github.com/jenkins-x/**/pkg/pipelinescheduler/prow	0.032s	coverage: 90.6% of statements
+?   	github.com/jenkins-x/**/pkg/pipelinescheduler/testhelpers	[no test files]
+ok  	github.com/jenkins-x/**/pkg/prow	0.073s	coverage: 76.2% of statements
+ok  	github.com/jenkins-x/**/pkg/prow/config	0.022s	coverage: 9.6% of statements
+ok  	github.com/jenkins-x/**/pkg/quickstarts	0.018s	coverage: 18.4% of statements
+ok  	github.com/jenkins-x/**/pkg/reports	0.011s	coverage: 39.7% of statements
+?   	github.com/jenkins-x/**/pkg/spring	[no test files]
+ok  	github.com/jenkins-x/**/pkg/surveyutils	0.226s	coverage: 66.2% of statements
+?   	github.com/jenkins-x/**/pkg/table	[no test files]
+ok  	github.com/jenkins-x/**/pkg/tekton	0.135s	coverage: 38.9% of statements
+ok  	github.com/jenkins-x/**/pkg/tekton/syntax	0.356s	coverage: 77.9% of statements
+?   	github.com/jenkins-x/**/pkg/tekton/tekton_helpers_test	[no test files]
+ok  	github.com/jenkins-x/**/pkg/terraform	0.011s	coverage: 6.8% of statements
+?   	github.com/jenkins-x/**/pkg/testkube	[no test files]
+?   	github.com/jenkins-x/**/pkg/tests	[no test files]
+ok  	github.com/jenkins-x/**/pkg/users	0.100s	coverage: 43.5% of statements
+ok  	github.com/jenkins-x/**/pkg/util	10.022s	coverage: 27.1% of statements
+ok  	github.com/jenkins-x/**/pkg/util/json	0.013s	coverage: 72.7% of statements
+?   	github.com/jenkins-x/**/pkg/util/mocks	[no test files]
+ok  	github.com/jenkins-x/**/pkg/util/system	0.023s	coverage: 33.3% of statements
+ok  	github.com/jenkins-x/**/pkg/vault	0.017s	coverage: 16.2% of statements
+?   	github.com/jenkins-x/**/pkg/vault/mocks	[no test files]
+?   	github.com/jenkins-x/**/pkg/vault/mocks/matchers	[no test files]
+ok  	github.com/jenkins-x/**/pkg/version	0.011s	coverage: 51.8% of statements
+?   	github.com/jenkins-x/**/pkg/workflow	[no test files]
+Step: build-step-build-binary:
+
+go: finding github.com/mholt/archiver v3.1.1+incompatible
+go: finding github.com/go-ole/go-ole v1.2.1
+go: finding github.com/davecgh/go-spew v1.1.1
+go: finding github.com/alexflint/go-filemutex v0.0.0-20171028004239-d358565f3c3f
+go: finding github.com/ory/dockertest v3.3.4+incompatible
+go: finding github.com/kevinburke/ssh_config v0.0.0-20180317175531-9fc7bb800b55
+go: finding golang.org/x/sys v0.0.0-20190411185658-b44545bcd369
+go: finding github.com/docker/go-connections v0.4.0
+go: finding github.com/xanzy/go-gitlab v0.0.0-20180814191223-f3bc634ab936
+go: finding github.com/antham/chyle v1.4.0
+go: finding github.com/xeipuuv/gojsonschema v1.1.0
+go: finding github.com/stretchr/testify v1.2.2
+go: finding github.com/cpuguy83/go-md2man v1.0.8
+go: finding github.com/Masterminds/semver v1.3.1
+go: finding github.com/pascaldekloe/goe v0.0.0-20180627143212-57f6aae5913c
+go: finding github.com/fatih/color v1.5.0
+go: finding github.com/antham/strumt v0.0.0-20171215230529-6776189777d3
+go: finding github.com/golang/snappy v0.0.0-20180518054509-2e65f85255db
+go: finding github.com/jbrukh/bayesian v0.0.0-20161210175230-bf3f261f9a9c
+go: finding github.com/onsi/ginkgo v1.7.0
+go: finding gopkg.in/src-d/go-git.v4 v4.5.0
+go: finding github.com/antham/envh v1.2.0
+go: finding github.com/huandu/xstrings v1.0.0
+go: finding github.com/chromedp/cdproto v0.0.0-20180720050708-57cf4773008d
+go: finding github.com/banzaicloud/bank-vaults v0.0.0-20190508130850-5673d28c46bd
+go: finding github.com/pborman/uuid v1.2.0
+go: finding github.com/aokoli/goutils v1.0.1
+go: finding github.com/imdario/mergo v0.3.6
+go: finding github.com/docker/docker v0.0.0-20171206114025-5e5fadb3c020
+go: finding github.com/aws/aws-sdk-go v1.17.10
+go: finding github.com/MakeNowJust/heredoc v0.0.0-20171113091838-e9091a26100e
+go: finding github.com/nlopes/slack v0.0.0-20180721202243-347a74b1ea30
+go: finding github.com/stretchr/testify v1.3.0
+go: finding github.com/inconshreveable/mousetrap v0.0.0-20141017200713-76626ae9c91c
+go: finding github.com/google/uuid v1.0.0
+go: finding github.com/flynn/go-shlex v0.0.0-20150515145356-3f9db97f8568
+go: finding github.com/mattn/go-colorable v0.0.8
+go: finding gopkg.in/AlecAivazis/survey.v1 v1.8.3
+go: finding github.com/spf13/pflag v0.0.0-20170508184408-e57e3eeb33f7
+go: finding github.com/microcosm-cc/bluemonday v0.0.0-20180327211928-995366fdf961
+go: finding github.com/erikstmartin/go-testdb v0.0.0-20160219214506-8d10e4a1bae5
+go: finding k8s.io/helm v2.7.2+incompatible
+go: finding github.com/jpillora/backoff v0.0.0-20180909062703-3050d21c67d7
+go: finding github.com/gfleury/go-bitbucket-v1 v0.0.0-20190216152406-3a732135aa4d
+go: finding github.com/appscode/jsonpatch v0.0.0-20190108182946-7c0e3b262f30
+go: finding github.com/aws/aws-sdk-go v1.15.31
+go: finding github.com/mattbaird/jsonpatch v0.0.0-20171005235357-81af80346b1a
+go: finding github.com/kr/pty v1.1.1
+go: finding github.com/coreos/go-semver v0.2.0
+go: finding github.com/emirpasic/gods v1.9.0
+go: finding github.com/russross/blackfriday v1.5.1
+go: finding sigs.k8s.io/yaml v1.1.0
+go: finding github.com/Pallinder/go-randomdata v0.0.0-20180616180521-15df0648130a
+go: finding github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415
+go: finding gopkg.in/src-d/go-git-fixtures.v3 v3.3.0
+go: finding github.com/pkg/errors v0.8.0
+go: finding github.com/coreos/etcd v3.2.13+incompatible
+go: finding github.com/jtnord/logrus v1.4.2-0.20190423161236-606ffcaf8f5d
+go: finding github.com/satori/go.uuid v1.2.1-0.20180103174451-36e9d2ebbde5
+go: finding github.com/elazarl/goproxy v0.0.0-20181111060418-2ce16c963a8a
+go: finding github.com/spf13/cobra v0.0.3
+go: finding github.com/markbates/inflect v1.0.4
+go: finding github.com/nbio/st v0.0.0-20140626010706-e9e8d9816f32
+go: finding github.com/aliyun/alibaba-cloud-sdk-go v0.0.0-20190308093441-53f19b3c6bee
+go: finding github.com/acarl005/stripansi v0.0.0-20180116102854-5a71ef0e047d
+go: finding github.com/jinzhu/now v0.0.0-20180511015916-ed742868f2ae
+go: finding github.com/jenkins-x/draft-repo v0.0.0-20180417100212-2f66cc518135
+go: finding github.com/davecgh/go-spew v1.1.0
+go: finding github.com/gosimple/slug v1.1.1
+go: finding github.com/src-d/gcfg v1.3.0
+go: finding gopkg.in/gemnasium/logrus-airbrake-hook.v2 v2.1.2
+go: finding github.com/hashicorp/hcl v1.0.0
+go: finding github.com/dimchansky/utfbom v1.1.0
+go: finding github.com/aliyun/aliyun-oss-go-sdk v0.0.0-20171213061034-52de7239022c
+go: finding github.com/hashicorp/go-version v1.1.0
+go: finding github.com/jenkins-x/sonobuoy v0.11.7-0.20190318120422-253758214767
+go: finding github.com/go-openapi/loads v0.19.0
+go: finding golang.org/x/time v0.0.0-20180412165947-fbb02b2291d2
+go: finding github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2
+go: finding github.com/coreos/etcd-operator v0.9.3
+go: finding github.com/jetstack/cert-manager v0.5.2
+go: finding github.com/mattn/go-isatty v0.0.3
+go: finding github.com/mattn/go-sqlite3 v1.10.0
+go: finding github.com/peterbourgon/diskv v2.0.1+incompatible
+go: finding github.com/operator-framework/operator-sdk v0.6.0
+go: finding github.com/knative/build v0.5.0
+go: finding github.com/Netflix/go-expect v0.0.0-20180814212900-124a37274874
+go: finding github.com/imdario/mergo v0.3.4
+go: finding github.com/kr/pretty v0.1.0
+go: finding github.com/cockroachdb/cmux v0.0.0-20170110192607-30d10be49292
+go: finding github.com/prometheus/client_golang v0.9.2
+go: finding github.com/mitchellh/mapstructure v1.1.2
+go: finding github.com/google/uuid v0.0.0-20171113160352-8c31c18f31ed
+go: finding github.com/tidwall/gjson v1.1.0
+go: finding gocloud.dev v0.9.0
+go: finding github.com/fsnotify/fsnotify v1.4.7
+go: finding github.com/hinshun/vt10x v0.0.0-20180809195222-d55458df857c
+go: finding github.com/Azure/go-autorest v10.15.5+incompatible
+go: finding github.com/satori/go.uuid v1.2.0
+go: finding github.com/emicklei/go-restful v2.9.3+incompatible
+go: finding github.com/golang/protobuf v1.2.0
+go: finding github.com/go-logr/logr v0.1.0
+go: finding github.com/hinshun/vt10x v0.0.0-20180616224451-1954e6464174
+go: finding github.com/golang/groupcache v0.0.0-20181024230925-c65c006176ff
+go: finding go.uber.org/zap v1.9.1
+go: finding google.golang.org/genproto v0.0.0-20190219182410-082222b4a5c5
+go: finding github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
+go: finding gopkg.in/ini.v1 v1.42.0
+go: finding github.com/gregjones/httpcache v0.0.0-20180305231024-9cad4c3443a7
+go: finding github.com/pierrec/lz4 v2.0.5+incompatible
+go: finding github.com/konsorten/go-windows-terminal-sequences v1.0.1
+go: finding github.com/spf13/pflag v1.0.3
+go: finding github.com/spf13/viper v1.0.2
+go: finding github.com/hashicorp/go-version v0.0.0-20180322230233-23480c066577
+go: finding github.com/StackExchange/wmi v0.0.0-20180116203802-5d049714c4a6
+go: finding github.com/evanphx/json-patch v4.0.0+incompatible
+go: finding github.com/hashicorp/go-rootcerts v1.0.0
+go: finding github.com/prometheus/client_model v0.0.0-20180712105110-5c3871d89910
+go: finding github.com/googleapis/gnostic v0.2.0
+go: finding github.com/gorilla/mux v1.6.2
+go: finding github.com/grpc-ecosystem/grpc-gateway v1.5.1
+go: finding github.com/sethvargo/go-password v0.1.2
+go: finding github.com/sethgrid/pester v0.0.0-20180430140037-03e26c9abbbf
+go: finding gopkg.in/warnings.v0 v0.1.2
+go: finding contrib.go.opencensus.io/integrations/ocsql v0.1.2
+go: finding go.opencensus.io v0.18.0
+go: finding github.com/rollout/rox-go v0.0.0-20181220111955-29ddae74a8c4
+go: finding github.com/go-openapi/errors v0.17.0
+go: finding github.com/alcortesm/tgz v0.0.0-20161220082320-9c5fe88206d7
+go: finding github.com/imdario/mergo v0.3.5
+go: finding golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f
+go: finding github.com/gogo/protobuf v1.1.1
+go: finding github.com/onsi/ginkgo v1.5.0
+go: finding github.com/google/wire v0.2.0
+go: finding github.com/ghodss/yaml v1.0.0
+go: finding github.com/viniciuschiele/tarx v0.0.0-20151205142357-6e3da540444d
+go: finding github.com/blang/semver v3.5.1+incompatible
+go: finding k8s.io/kubernetes v1.11.3
+go: finding golang.org/x/oauth2 v0.0.0-20180620175406-ef147856a6dd
+go: finding github.com/go-openapi/swag v0.17.0
+go: finding github.com/c2h5oh/datasize v0.0.0-20171227191756-4eba002a5eae
+go: finding github.com/spf13/pflag v1.0.1
+go: finding github.com/go-logr/zapr v0.1.0
+go: finding gopkg.in/pipe.v2 v2.0.0-20140414041502-3c2ca4d52544
+go: finding github.com/go-ini/ini v1.39.0
+go: finding golang.org/x/sys v0.0.0-20180606202747-9527bec2660b
+go: finding k8s.io/gengo v0.0.0-20190327210449-e17681d19d3a
+go: finding k8s.io/metrics v0.0.0-20181128195641-3954d62a524d
+go: finding github.com/gorilla/websocket v1.4.0
+go: finding golang.org/x/sys v0.0.0-20180627142611-7138fd3d9dc8
+go: finding github.com/gopherjs/gopherjs v0.0.0-20181017120253-0766667cb4d1
+go: finding github.com/go-ini/ini v1.34.0
+go: finding google.golang.org/grpc v1.15.0
+go: finding github.com/google/go-cmp v0.2.0
+go: finding k8s.io/apimachinery v0.0.0-20190122181752-bebe27e40fb7
+go: finding github.com/modern-go/reflect2 v0.0.0-20180701023420-4b7aa43c6742
+go: finding github.com/go-ini/ini v1.25.4
+go: finding github.com/mitchellh/mapstructure v0.0.0-20180511142126-bb74f1db0675
+go: finding gopkg.in/src-d/go-git.v4 v4.1.1
+go: finding golang.org/x/net v0.0.0-20181017193950-04a2e542c03f
+go: finding github.com/andygrunwald/go-gerrit v0.0.0-20181026193842-43cfd7a94eb4
+go: finding github.com/grpc-ecosystem/go-grpc-middleware v1.0.0
+go: finding github.com/stretchr/ob** v0.1.1
+go: finding gopkg.in/airbrake/gobrake.v2 v2.0.9
+go: finding github.com/andygrunwald/go-jira v1.5.0
+go: finding google.golang.org/grpc v1.14.0
+go: finding github.com/jtolds/gls v4.2.1+incompatible
+go: finding github.com/docker/go-units v0.3.3
+go: finding github.com/rodaine/hclencoder v0.0.0-20180926060551-0680c4321930
+go: finding github.com/gobuffalo/envy v1.6.5
+go: finding github.com/dsnet/compress v0.0.0-20171208185109-cc9eb1d7ad76
+go: finding github.com/smartystreets/goconvey v0.0.0-20180222194500-ef6db91d284a
+go: finding github.com/Masterminds/sprig v0.0.0-20180403013413-6b2a58267f6a
+go: finding github.com/lib/pq v1.0.0
+go: finding github.com/coreos/bbolt v1.3.2
+go: finding contrib.go.opencensus.io/exporter/stackdriver v0.9.1
+go: finding golang.org/x/sys v0.0.0-20180830151530-49385e6e1522
+go: finding github.com/baiyubin/aliyun-sts-go-sdk v0.0.0-20180326062324-cfa1a18b161f
+go: finding github.com/danwakefield/fnmatch v0.0.0-20160403171240-cbb64ac3d964
+go: finding github.com/joho/godotenv v1.3.0
+go: finding github.com/go-openapi/strfmt v0.17.0
+go: finding github.com/google/btree v0.0.0-20180813153112-4030bb1f1f0c
+go: finding github.com/golang/lint v0.0.0-20180702182130-06c8688daad7
+go: finding github.com/go-openapi/jsonpointer v0.17.0
+go: finding github.com/tmc/grpc-websocket-proxy v0.0.0-20171017195756-830351dc03c6
+go: finding github.com/prometheus/common v0.2.0
+go: finding github.com/asaskevich/govalidator v0.0.0-20180720115003-f9ffefc3facf
+go: finding github.com/smartystreets/assertions v0.0.0-20180927180507-b2de0cb4f26d
+go: finding github.com/denisenkom/go-mssqldb v0.0.0-20190204142019-df6d76eb9289
+go: finding honnef.co/go/tools v0.0.0-20180728063816-88497007e858
+go: finding cloud.google.com/go v0.26.0
+go: finding github.com/nwaples/rardecode v1.0.0
+go: finding gopkg.in/go-playground/assert.v1 v1.2.1
+go: finding github.com/pmezard/go-difflib v1.0.0
+go: finding github.com/jonboulle/clockwork v0.1.0
+go: finding github.com/jenkins-x/golang-jenkins v0.0.0-20180919102630-65b83ad42314
+go: finding gopkg.in/cenkalti/backoff.v1 v1.1.0
+go: finding github.com/go-openapi/spec v0.17.0
+go: finding github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af
+go: finding github.com/xiang90/probing v0.0.0-20160813154853-07dd2e8dfe18
+go: finding github.com/mgutz/ansi v0.0.0-20170206155736-9520e82c474b
+go: finding k8s.io/klog v0.2.0
+go: finding go.opencensus.io v0.17.0
+go: finding github.com/apache/thrift v0.0.0-20180902110319-2566ecd5d999
+go: finding go.etcd.io/bbolt v1.3.2
+go: finding github.com/mwitkow/go-conntrack v0.0.0-20161129095857-cc309e4a2223
+go: finding github.com/Netflix/go-expect v0.0.0-20180615182759-c93bf25de8e8
+go: finding golang.org/x/sync v0.0.0-20181221193216-37e7f081c4d4
+go: finding golang.org/x/oauth2 v0.0.0-20181203162652-d668ce993890
+go: finding github.com/ryanuber/go-glob v0.0.0-20160226084822-572520ed46db
+go: finding golang.org/x/net v0.0.0-20180530234432-1e491301e022
+go: finding contrib.go.opencensus.io/exporter/ocagent v0.2.0
+go: finding github.com/kubernetes-incubator/reference-docs v0.0.0-20190410022412-9642bd3f4de5
+go: finding github.com/coreos/prometheus-operator v0.29.0
+go: finding github.com/golang/snappy v0.0.0-20170215233205-553a64147049
+go: finding k8s.io/client-go v2.0.0-alpha.0.0.20190115164855-701b91367003+incompatible
+go: finding github.com/prometheus/procfs v0.0.0-20181204211112-1dc9a6cbc91a
+go: finding golang.org/x/sync v0.0.0-20181108010431-42b317875d0f
+go: finding github.com/fatih/structs v1.1.0
+go: finding github.com/dnaeon/go-vcr v1.0.1
+go: finding github.com/kr/pty v1.1.2
+go: finding github.com/coreos/pkg v0.0.0-20180928190104-399ea9e2e55f
+go: finding github.com/tektoncd/pipeline v0.3.1
+go: finding github.com/client9/misspell v0.3.4
+go: finding gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127
+go: finding github.com/gliderlabs/ssh v0.1.1
+go: finding github.com/Azure/azure-sdk-for-go v21.1.0+incompatible
+go: finding google.golang.org/api v0.1.0
+go: finding github.com/rifflock/lfshook v0.0.0-20180227222202-bf539943797a
+go: finding github.com/hashicorp/go-sockaddr v1.0.2
+go: finding github.com/coreos/bbolt v1.3.1-coreos.6
+go: finding github.com/gin-contrib/sse v0.0.0-20170109093832-22d885f9ecc7
+go: finding github.com/prometheus/common v0.0.0-20181015124227-bcb74de08d37
+go: finding contrib.go.opencensus.io/exporter/stackdriver v0.6.0
+go: finding golang.org/x/net v0.0.0-20181005035420-146acd28ed58
+go: finding golang.org/x/text v0.3.0
+go: finding github.com/grpc-ecosystem/grpc-gateway v1.5.0
+go: finding github.com/go-stack/stack v1.8.0
+go: finding github.com/jinzhu/gorm v1.9.1
+go: finding sigs.k8s.io/controller-runtime v0.1.9
+go: finding github.com/magiconair/properties v1.8.0
+go: finding google.golang.org/appengine v1.1.0
+go: finding github.com/mitchellh/go-homedir v1.0.0
+go: finding google.golang.org/grpc v1.12.0
+go: finding golang.org/x/net v0.0.0-20180826012351-8a410e7b638d
+go: finding github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+go: finding github.com/rollout/sse v0.0.0-20181105093643-e422b54b3b28
+go: finding github.com/coreos/go-systemd v0.0.0-20181012123002-c6f51f82210d
+go: finding golang.org/x/net v0.0.0-20181114220301-adae6a3d119a
+go: finding github.com/prometheus/client_golang v0.8.0
+go: finding github.com/petar/GoLLRB v0.0.0-20130427215148-53be0d36a84c
+go: finding k8s.io/test-infra v0.0.0-20190131093439-a22cef183a8f
+go: finding github.com/cloudflare/cfssl v0.0.0-20190409034051-768cd563887f
+go: finding github.com/Jeffail/gabs v1.1.1
+go: finding github.com/go-sql-driver/mysql v1.4.0
+go: finding github.com/codeship/codeship-go v0.0.0-20180717142545-7793ca823354
+go: finding golang.org/x/tools v0.0.0-20180828015842-6cd1fcedba52
+go: finding google.golang.org/grpc v1.17.0
+go: finding cloud.google.com/go v0.24.0
+go: finding github.com/golang/groupcache v0.0.0-20180924190550-6f2cf27854a4
+go: finding golang.org/x/net v0.0.0-20181106065722-10aee1819953
+go: finding github.com/mattn/go-colorable v0.0.9
+go: finding github.com/jinzhu/inflection v0.0.0-20151009084129-3272df6c21d0
+go: finding github.com/denormal/go-gitignore v0.0.0-20180713143441-75ce8f3e513c
+go: finding github.com/satori/go.uuid v0.0.0-20160713180306-0aa62d5ddceb
+go: finding github.com/hashicorp/hcl v0.0.0-20180404174102-ef8a98b0bbce
+go: finding cloud.google.com/go v0.30.0
+go: finding github.com/onsi/gomega v1.4.3
+go: finding github.com/BurntSushi/toml v0.3.0
+go: finding github.com/docker/go-connections v0.3.0
+go: finding github.com/census-instrumentation/opencensus-proto v0.1.0
+go: finding gopkg.in/src-d/go-billy.v4 v4.2.0
+go: finding github.com/BurntSushi/toml v0.3.1
+go: finding github.com/google/go-querystring v0.0.0-20150414214848-547ef5ac9797
+go: finding github.com/cenkalti/backoff v2.1.1+incompatible
+go: finding github.com/prometheus/procfs v0.0.0-20181005140218-185b4288413d
+go: finding github.com/docker/go-units v0.3.2
+go: finding github.com/pkg/browser v0.0.0-20170505125900-c90ca0c84f15
+go: finding github.com/docker/spdystream v0.0.0-20170912183627-bc6354cbbc29
+go: finding github.com/Azure/azure-storage-blob-go v0.0.0-20180507052152-66ba96e49ebb
+go: finding github.com/soheilhy/cmux v0.1.4
+go: finding google.golang.org/genproto v0.0.0-20181016170114-94acd270e44e
+go: finding golang.org/x/crypto v0.0.0-20181015023909-0c41d7ab0a0e
+go: finding github.com/google/subcommands v0.0.0-20181012225330-46f0354f6315
+go: finding github.com/ugorji/go/codec v0.0.0-20181012064053-8333dd449516
+go: finding github.com/go-openapi/analysis v0.0.0-20180825180245-b006789cd277
+go: finding github.com/jinzhu/now v0.0.0-20181116074157-8ec929ed50c3
+go: finding gopkg.in/go-playground/validator.v8 v8.18.2
+go: finding github.com/pelletier/go-toml v1.2.0
+go: finding github.com/Azure/azure-pipeline-go v0.0.0-20180507050906-098e490af5dc
+go: finding github.com/gobwas/glob v0.2.3
+go: finding github.com/hashicorp/golang-lru v0.0.0-20180201235237-0fb14efe8c47
+go: finding github.com/prometheus/client_golang v0.9.1
+go: finding github.com/go-errors/errors v1.0.1
+go: finding github.com/google/btree v0.0.0-20180124185431-e89373fe6b4a
+go: finding github.com/ugorji/go v1.1.1
+go: finding github.com/fsouza/fake-gcs-server v0.0.0-20180612165233-e85be23bdaa8
+go: finding github.com/konsorten/go-windows-terminal-sequences v1.0.2
+go: finding github.com/petergtz/pegomock v2.2.0+incompatible
+go: finding github.com/go-sql-driver/mysql v1.4.1
+go: finding gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7
+go: finding github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578
+go: finding github.com/google/go-containerregistry v0.0.0-20190317040536-ebbba8469d06
+go: finding github.com/mattn/go-sqlite3 v0.0.0-20160514122348-38ee283dabf1
+go: finding github.com/aws/aws-k8s-tester v0.0.0-20190114231546-b411acf57dfe
+go: finding github.com/mailru/easyjson v0.0.0-20171120080333-32fa128f234d
+go: finding github.com/knative/build v0.2.0
+go: finding github.com/Masterminds/sprig v2.15.0+incompatible
+go: finding github.com/prometheus/common v0.0.0-20181126121408-4724e9255275
+go: finding golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3
+go: finding github.com/lusis/slack-test v0.0.0-20180109053238-3c758769bfa6
+go: finding github.com/streadway/amqp v0.0.0-20181107104731-27835f1a64e9
+go: finding github.com/hashicorp/go-multierror v0.0.0-20171204182908-b7773ae21874
+go: finding github.com/Azure/azure-pipeline-go v0.1.8
+go: finding github.com/mattn/go-isatty v0.0.2
+go: finding github.com/go-yaml/yaml v2.1.0+incompatible
+go: finding k8s.io/api v0.0.0-20181128191700-6db15a15d2d3
+go: finding golang.org/x/net v0.0.0-20181102091132-c10e9556a7bc
+go: finding github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973
+go: finding github.com/shirou/w32 v0.0.0-20160930032740-bb4de0191aa4
+go: finding go.opencensus.io v0.15.0
+go: finding github.com/golang/mock v1.1.1
+go: finding github.com/shirou/gopsutil v0.0.0-20180901134234-eb1f1ab16f2e
+go: finding github.com/xeipuuv/gojsonpointer v0.0.0-20180127040702-4e3ac2762d5f
+go: finding github.com/hashicorp/go-sockaddr v1.0.0
+go: finding github.com/alecthomas/jsonschema v0.0.0-20190504002508-159cbd5dba26
+go: finding golang.org/x/sys v0.0.0-20181116152217-5ac8a444bdc5
+go: finding github.com/googleapis/gax-go v2.0.0+incompatible
+go: finding github.com/prometheus/common v0.0.0-20180801064454-c7de2306084e
+go: finding github.com/stretchr/testify v1.2.1
+go: finding github.com/googleapis/gnostic v0.1.0
+go: finding github.com/imdario/mergo v0.0.0-20180119215619-163f41321a19
+go: finding github.com/deckarep/golang-set v0.0.0-20171013212420-1d4478f51bed
+go: finding github.com/spf13/cast v1.2.0
+go: finding github.com/opencontainers/runc v0.1.1
+go: finding github.com/google/martian v2.1.0+incompatible
+go: finding github.com/jinzhu/inflection v0.0.0-20180308033659-04140366298a
+go: finding github.com/gorilla/context v1.1.1
+go: finding go.uber.org/atomic v1.3.2
+go: finding github.com/gopherjs/gopherjs v0.0.0-20181103185306-d547d1d9531e
+go: finding golang.org/x/net v0.0.0-20180906233101-161cd47e91fd
+go: finding github.com/gin-gonic/gin v0.0.0-20180512030042-bf7803815b0b
+go: finding google.golang.org/grpc v1.16.0
+go: finding github.com/denisenkom/go-mssqldb v0.0.0-20190111225525-2fea367d496d
+go: finding github.com/mitchellh/go-homedir v1.1.0
+go: finding vbom.ml/util v0.0.0-20170409195630-256737ac55c4
+go: finding github.com/Microsoft/go-winio v0.4.6
+go: finding github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8
+go: finding github.com/PuerkitoBio/purell v1.1.0
+go: finding github.com/spf13/afero v1.1.1
+go: finding github.com/shurcooL/graphql v0.0.0-20180924043259-e4a3a37e6d42
+go: finding github.com/go-openapi/swag v0.0.0-20171111214437-cf0bdb963811
+go: finding github.com/shurcooL/go v0.0.0-20180423040247-9e1955d9fb6e
+go: finding github.com/xanzy/ssh-agent v0.2.0
+go: finding github.com/go-openapi/jsonpointer v0.0.0-20170102174223-779f45308c19
+go: finding github.com/knative/pkg v0.0.0-20181205230426-0e41760cea1d
+go: finding github.com/gorilla/securecookie v1.1.1
+go: finding github.com/dgrijalva/jwt-go v3.2.0+incompatible
+go: finding golang.org/x/oauth2 v0.0.0-20181017192945-9dcd33a902f4
+go: finding github.com/hashicorp/golang-lru v0.5.0
+go: finding golang.org/x/sys v0.0.0-20180905080454-ebe1bf3edb33
+go: finding github.com/knative/build v0.1.2
+go: finding github.com/go-openapi/jsonreference v0.17.0
+go: finding golang.org/x/net v0.0.0-20181201002055-351d144fa1fc
+go: finding golang.org/x/crypto v0.0.0-20190123085648-057139ce5d2b
+go: finding github.com/knative/serving v0.5.0
+go: finding google.golang.org/api v0.0.0-20181017004218-3f6e8463aa1d
+go: finding github.com/globalsign/mgo v0.0.0-20180905125535-1ca0a4f7cbcb
+go: finding github.com/go-openapi/spec v0.19.0
+go: finding github.com/inconshreveable/mousetrap v1.0.0
+go: finding github.com/google/go-github v17.0.0+incompatible
+go: finding golang.org/x/lint v0.0.0-20180702182130-06c8688daad7
+go: finding github.com/json-iterator/go v1.1.5
+go: finding github.com/mitchellh/go-wordwrap v1.0.0
+go: finding github.com/anmitsu/go-shlex v0.0.0-20161002113705-648efa622239
+go: finding github.com/mailru/easyjson v0.0.0-20180823135443-60711f1a8329
+go: finding github.com/qor/qor v0.0.0-20180518090926-f171bc73933e
+go: finding github.com/bwmarrin/snowflake v0.0.0-20170221160716-02cc386c183a
+go: finding google.golang.org/api v0.0.0-20181021000519-a2651947f503
+go: finding github.com/modern-go/reflect2 v1.0.1
+go: finding google.golang.org/genproto v0.0.0-20181202183823-bd91e49a0898
+go: finding github.com/gophercloud/gophercloud v0.0.0-20181215224939-bdd8b1ecd793
+go: finding google.golang.org/api v0.0.0-20180603000442-8e296ef26005
+go: finding github.com/mattn/go-zglob v0.0.0-20180607075734-49693fbb3fe3
+go: finding github.com/golang/groupcache v0.0.0-20180513044358-24b0969c4cb7
+go: finding golang.org/x/sys v0.0.0-20181011152604-fa43e7bc11ba
+go: finding gopkg.in/yaml.v2 v2.2.1
+go: finding github.com/fatih/color v1.7.0
+go: finding github.com/spf13/cobra v0.0.0-00000000000000-c46add8a6528
+go: finding google.golang.org/appengine v1.3.0
+go: finding github.com/gorilla/sessions v1.1.3
+go: finding github.com/onsi/ginkgo v1.6.0
+go: finding github.com/andygrunwald/go-gerrit v0.0.0-20171029143327-95b11af228a1
+go: finding cloud.google.com/go v0.34.0
+go: finding github.com/IBM-Cloud/bluemix-go v0.0.0-20181008063305-d718d474c7c2
+go: finding github.com/pierrec/lz4 v0.0.0-20181005164709-635575b42742
+go: finding github.com/golang/protobuf v1.1.0
+go: finding github.com/gogo/protobuf v1.0.0
+go: finding github.com/go-kit/kit v0.8.0
+go: finding github.com/census-instrumentation/opencensus-proto v0.0.2-0.20180913191712-f303ae3f8d6a
+go: finding github.com/gregjones/httpcache v0.0.0-20181110185634-c63ab54fda8f
+go: finding gopkg.in/robfig/cron.v2 v2.0.0-20150107220207-be2e0b0deed5
+go: finding github.com/trivago/tgo v1.0.1
+go: finding github.com/google/uuid v1.1.0
+go: finding github.com/pelletier/go-buffruneio v0.2.0
+go: finding github.com/matttproud/golang_protobuf_extensions v1.0.1
+go: finding github.com/hpcloud/tail v1.0.0
+go: finding github.com/stoewer/go-strcase v1.0.1
+go: finding github.com/slok/kubewebhook v0.2.0
+go: finding github.com/openzipkin/zipkin-go v0.1.1
+go: finding github.com/NYTimes/gziphandler v0.0.0-20160419202541-63027b26b87e
+go: finding k8s.io/apiextensions-apiserver v0.0.0-20181128195303-1f84094d7e8e
+go: finding github.com/aws/aws-sdk-go v1.16.18
+go: finding golang.org/x/sys v0.0.0-20181004145325-8469e314837c
+go: finding github.com/google/go-github v0.0.0-20170604030111-7a51fb928f52
+go: finding github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf
+go: finding github.com/iancoleman/orderedmap v0.0.0-20181121102841-22c6ecc9fe13
+go: finding k8s.io/test-infra v0.0.0-20181019233642-2e10a0bbe9b3
+go: finding github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51
+go: finding github.com/beevik/etree v1.0.1
+go: finding github.com/julienschmidt/httprouter v1.2.0
+go: finding github.com/opencontainers/go-digest v1.0.0-rc1
+go: finding github.com/hashicorp/go-retryablehttp v0.5.3
+go: finding github.com/wbrefvem/go-bitbucket v0.0.0-20190128183802-fc08fd046abb
+go: finding golang.org/x/tools v0.0.0-20181017214349-06f26fdaaa28
+go: finding k8s.io/kube-openapi v0.0.0-20190228160746-b3a7cee44a30
+go: finding github.com/hashicorp/go-multierror v1.0.0
+go: finding github.com/jmespath/go-jmespath v0.0.0-20160202185014-0b12d6b521d8
+go: finding github.com/go-openapi/jsonreference v0.0.0-20161105162150-36d33bfe519e
+go: finding github.com/opentracing/opentracing-go v1.0.2
+go: finding github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc
+go: finding k8s.io/kube-openapi v0.0.0-20180711000925-0cf8f7e6ed1d
+go: finding github.com/go-logfmt/logfmt v0.3.0
+go: finding cloud.google.com/go v0.23.0
+go: finding github.com/onsi/gomega v1.4.2
+go: finding github.com/hashicorp/vault v1.1.2
+go: finding github.com/google/go-querystring v1.0.0
+go: finding github.com/spf13/pflag v1.0.2
+go: finding github.com/smartystreets/goconvey v0.0.0-20190306220146-200a235640ff
+go: finding github.com/xlab/handysort v0.0.0-20150421192137-fb3537ed64a1
+go: finding gopkg.in/inf.v0 v0.9.1
+go: finding github.com/go-openapi/spec v0.0.0-20171219195406-fa03337d7da5
+go: finding github.com/coreos/etcd v3.3.10+incompatible
+go: finding github.com/dustin/go-humanize v1.0.0
+go: finding github.com/GoogleCloudPlatform/cloudsql-proxy v0.0.0-20181009230506-ac834ce67862
+go: finding github.com/patrickmn/go-cache v2.1.0+incompatible
+go: finding github.com/influxdata/influxdb v0.0.0-20161215172503-049f9b42e9a5
+go: finding github.com/jinzhu/gorm v0.0.0-20170316141641-572d0a0ab1eb
+go: finding github.com/djherbis/atime v1.0.0
+go: finding github.com/spf13/viper v1.2.1
+go: finding github.com/bazelbuild/buildtools v0.0.0-20180226164855-80c7f0d45d7e
+go: finding golang.org/x/exp v0.0.0-20190121172915-509febef88a4
+go: finding github.com/chromedp/chromedp v0.1.1
+go: finding github.com/prometheus/procfs v0.0.0-20180725123919-05ee40e3a273
+go: finding github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
+go: finding go.uber.org/multierr v1.1.0
+go: finding github.com/uber/jaeger-client-go v2.14.0+incompatible
+go: finding golang.org/x/net v0.0.0-20180702212446-ed29d75add3d
+go: finding code.gitea.io/sdk v0.0.0-20180702024448-79a281c4e34a
+go: finding golang.org/x/net v0.0.0-20180724234803-3673e40ba225
+go: finding gopkg.in/ini.v1 v1.39.0
+go: finding golang.org/x/crypto v0.0.0-20180621125126-a49355c7e3f8
+go: finding github.com/tidwall/match v0.0.0-20171002075945-1731857f09b1
+go: finding github.com/qor/inflection v0.0.0-20180308033659-04140366298a
+go: finding github.com/gophercloud/gophercloud v0.0.0-20180629215909-9e34f4686044
+go: finding github.com/peterbourgon/diskv v0.0.0-20171120014656-2973218375c3
+go: finding github.com/spf13/cobra v0.0.2
+go: finding github.com/ryanuber/go-glob v0.0.0-20170128012129-256dc444b735
+go: finding github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99
+go: finding go.etcd.io/etcd v0.0.0-20181031231232-83304cfc808c
+go: finding golang.org/x/sys v0.0.0-20180909124046-d0be0721c37e
+go: finding contrib.go.opencensus.io/exporter/aws v0.0.0-20180906190126-dd54a7ef511e
+go: finding github.com/uber/jaeger-lib v1.5.0
+go: finding google.golang.org/appengine v1.0.0
+go: finding github.com/hashicorp/errwrap v0.0.0-20141028054710-7554cd9344ce
+go: finding github.com/mailru/easyjson v0.0.0-20180606163543-3fdea8d05856
+go: finding github.com/opencontainers/image-spec v1.0.1
+go: finding github.com/disintegration/imaging v1.4.2
+go: finding github.com/google/gofuzz v0.0.0-20170612174753-24818f796faf
+go: finding github.com/prometheus/common v0.0.0-20181020173914-7e9e6cabbd39
+go: finding github.com/chromedp/cdproto v0.0.0-20180703215205-c125a34ea3b3
+go: finding github.com/hashicorp/errwrap v1.0.0
+go: finding github.com/prometheus/client_golang v0.9.0-pre1.0.20180924113449-f69c853d21c1
+go: finding github.com/mitchellh/mapstructure v1.0.0
+go: finding github.com/jtolds/gls v4.20.0+incompatible
+go: finding google.golang.org/genproto v0.0.0-20180601223552-81158efcc9f2
+go: finding github.com/urfave/cli v1.18.0
+go: finding golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be
+go: finding github.com/codahale/hdrhistogram v0.0.0-20161010025455-3a0bb77429bd
+go: finding github.com/coreos/go-systemd v0.0.0-20180511133405-39ca1b05acc7
+go: finding golang.org/x/sys v0.0.0-20180906133057-8cf3aee42992
+go: finding github.com/spf13/jwalterweatherman v1.0.0
+go: finding github.com/gregjones/httpcache v0.0.0-20160524185540-16db777d8ebe
+go: finding github.com/mattn/go-runewidth v0.0.2
+go: finding google.golang.org/api v0.0.0-20180910000450-7ca32eb868bf
+go: finding gopkg.in/h2non/gock.v0 v0.0.0-20160419120746-1baf36abac00
+go: finding github.com/uber-go/atomic v1.3.2
+go: finding github.com/json-iterator/go v0.0.0-20180701071628-ab8a2e0c74be
+go: finding github.com/Masterminds/semver v1.4.2
+go: finding github.com/evanphx/json-patch v4.1.0+incompatible
+go: finding github.com/tmc/grpc-websocket-proxy v0.0.0-20170815181823-89b8d40f7ca8
+go: finding github.com/prometheus/procfs v0.0.0-20180612222113-7d6f385de8be
+go: finding github.com/grpc-ecosystem/grpc-gateway v1.4.1
+go: finding github.com/prometheus/client_model v0.0.0-20170216185247-6f3806018612
+go: finding github.com/go-sql-driver/mysql v0.0.0-20160411075031-7ebe0a500653
+go: finding github.com/bgentry/speakeasy v0.1.0
+go: finding github.com/kisielk/gotool v1.0.0
+go: finding github.com/coreos/go-systemd v0.0.0-20190212144455-93d5ec2c7f76
+go: finding github.com/pkg/profile v1.2.1
+go: finding github.com/olekukonko/tablewriter v0.0.0-20170122224234-a0225b3f23b5
+go: finding github.com/shurcooL/githubv4 v0.0.0-20180925043049-51d7b505e2e9
+go: finding github.com/spf13/jwalterweatherman v0.0.0-20180109140146-7c0cea34c8ec
+go: finding github.com/aws/aws-sdk-go v1.15.57
+go: finding github.com/lusis/go-slackbot v0.0.0-20180109053408-401027ccfef5
+go: finding golang.org/x/image v0.0.0-20180628062038-cc896f830ced
+go: finding gopkg.in/fsnotify.v1 v1.4.7
+go: finding github.com/knative/pkg v0.0.0-20190402181056-ff46edef0ae5
+go: finding github.com/ryanuber/columnize v2.1.0+incompatible
+go: finding github.com/kr/pty v1.0.0
+go: finding gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405
+go: finding github.com/stretchr/ob** v0.1.0
+go: finding gopkg.in/cheggaaa/pb.v1 v1.0.25
+go: finding github.com/dustin/go-humanize v0.0.0-20171111073723-bb3d318650d4
+go: finding github.com/spf13/afero v1.1.2
+go: finding k8s.io/code-generator v0.0.0-20190416052311-01a054e913a9
+go: finding github.com/coreos/pkg v0.0.0-20160727233714-3ac0863d7acf
+go: finding github.com/kr/logfmt v0.0.0-20140226030751-b84e30acd515
+go: finding go.etcd.io/bbolt v1.3.1-etcd.7
+go: finding github.com/ulikunitz/xz v0.5.6
+go: finding github.com/appscode/jsonpatch v0.0.0-20180911074601-5af499cf01c8
+go: finding google.golang.org/appengine v1.2.0
+go: finding github.com/gorilla/websocket v0.0.0-20170926233335-4201258b820c
+go: finding golang.org/x/oauth2 v0.0.0-20180603041954-1e0a3fa8ba9a
+go: finding github.com/rainycape/unidecode v0.0.0-20150907023854-cb7f23ec59be
+go: finding k8s.io/gengo v0.0.0-20190116091435-f8a0810f38af
+go: finding github.com/hashicorp/go-version v1.0.0
+go: finding github.com/hashicorp/go-cleanhttp v0.5.1
+go: finding gonum.org/v1/gonum v0.0.0-20190331200053-3d26580ed485
+go: finding k8s.io/klog v0.0.0-20190306015804-8e90cee79f82
+go: finding github.com/sergi/go-diff v1.0.0
+go: finding github.com/aws/aws-sdk-go v1.15.27
+go: finding github.com/knq/sysutil v0.0.0-20180306023629-0218e141a794
+go: finding github.com/Azure/draft v0.15.0
+go: finding github.com/gorilla/websocket v1.2.0
+go: finding google.golang.org/genproto v0.0.0-20180608181217-32ee49c4dd80
+go: finding github.com/prometheus/procfs v0.0.0-20180920065004-418d78d0b9a7
+go: finding github.com/kr/text v0.1.0
+go: finding github.com/mattn/go-isatty v0.0.4
+go: finding github.com/mitchellh/cli v1.0.0
+go: finding github.com/gogo/protobuf v0.0.0-20171007142547-342cbe0a0415
+go: finding github.com/prometheus/client_golang v0.9.0
+go: finding github.com/mitchellh/ioprogress v0.0.0-20180201004757-6a23b12fa88e
+go: finding golang.org/x/tools v0.0.0-20190206041539-40960b6deb8e
+go: finding golang.org/x/exp v0.0.0-20190125153040-c74c464bbbf2
+go: finding sigs.k8s.io/testing_frameworks v0.1.1
+go: finding google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8
+go: finding golang.org/x/crypto v0.0.0-20180608092829-8ac0e0d97ce4
+go: finding github.com/prometheus/common v0.0.0-20180518154759-7600349dcfe1
+go: finding golang.org/x/net v0.0.0-20180921000356-2f5d2388922f
+go: finding github.com/hashicorp/go-cleanhttp v0.5.0
+go: finding google.golang.org/genproto v0.0.0-20180831171423-11092d34479b
+go: finding github.com/posener/complete v1.1.1
+go: finding gopkg.in/alecthomas/kingpin.v2 v2.2.6
+go: finding golang.org/x/sys v0.0.0-20180823144017-11551d06cbcc
+go: finding golang.org/x/tools v0.0.0-20190328211700-ab21143f2384
+go: finding github.com/golang/groupcache v0.0.0-20160516000752-02826c3e7903
+go: finding github.com/docker/distribution v0.0.0-20170726174610-edc3ab29cdff
+go: finding github.com/Azure/azure-storage-blob-go v0.0.0-20181023070848-cf01652132cc
+go: finding github.com/armon/go-radix v0.0.0-20180808171621-7fddfc383310
+go: finding github.com/pborman/uuid v0.0.0-20180906182336-adf5a7427709
+go: finding gonum.org/v1/netlib v0.0.0-20190331212654-76723241ea4e
+go: finding gonum.org/v1/netlib v0.0.0-20190313105609-8cb42192e0e0
+go: finding github.com/matttproud/golang_protobuf_extensions v1.0.0
+go: finding golang.org/x/net v0.0.0-20190311183353-d8887717615a
+go: finding k8s.io/utils v0.0.0-20181019225348-5e321f9a457c
+go: finding modernc.org/strutil v1.0.0
+go: finding github.com/remyoudompheng/bigfft v0.0.0-20170806203942-52369c62f446
+go: finding gopkg.in/check.v1 v1.0.0-20161208181325-20d25e280405
+go: finding modernc.org/cc v1.0.0
+go: finding modernc.org/mathutil v1.0.0
+go: finding golang.org/x/exp v0.0.0-20190312203227-4b39c73a6495
+go: finding modernc.org/xc v1.0.0
+go: finding modernc.org/golex v1.0.0
+go: finding golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2
+go: finding golang.org/x/image v0.0.0-20190227222117-0694c2d4d067
+go: finding golang.org/x/mobile v0.0.0-20190312151609-d3739f865fa6
+go: finding github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802
+go: finding golang.org/x/sys v0.0.0-20190312061237-fead79001313
+go: finding golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a
+go: finding golang.org/x/tools v0.0.0-20190312151545-0bb0c0a6e846
+go: downloading k8s.io/test-infra v0.0.0-20190131093439-a22cef183a8f
+go: downloading github.com/pborman/uuid v1.2.0
+go: downloading k8s.io/apimachinery v0.0.0-20190122181752-bebe27e40fb7
+go: downloading github.com/spf13/cobra v0.0.3
+go: downloading github.com/fatih/color v1.7.0
+go: downloading github.com/xeipuuv/gojsonschema v1.1.0
+go: downloading gopkg.in/src-d/go-git.v4 v4.5.0
+go: downloading github.com/gfleury/go-bitbucket-v1 v0.0.0-20190216152406-3a732135aa4d
+go: downloading k8s.io/helm v2.7.2+incompatible
+go: downloading github.com/aws/aws-sdk-go v1.17.10
+go: downloading github.com/cenkalti/backoff v2.1.1+incompatible
+go: downloading github.com/mattn/go-colorable v0.0.9
+go: downloading github.com/petergtz/pegomock v2.2.0+incompatible
+go: downloading golang.org/x/oauth2 v0.0.0-20181203162652-d668ce993890
+go: downloading github.com/google/go-cmp v0.2.0
+go: downloading github.com/jenkins-x/sonobuoy v0.11.7-0.20190318120422-253758214767
+go: downloading github.com/Jeffail/gabs v1.1.1
+go: downloading github.com/tektoncd/pipeline v0.3.1
+go: downloading github.com/onsi/gomega v1.4.3
+go: downloading k8s.io/client-go v2.0.0-alpha.0.0.20190115164855-701b91367003+incompatible
+go: downloading code.gitea.io/sdk v0.0.0-20180702024448-79a281c4e34a
+go: downloading github.com/beevik/etree v1.0.1
+go: downloading github.com/ghodss/yaml v1.0.0
+go: downloading github.com/knative/build v0.5.0
+go: downloading github.com/google/go-github v17.0.0+incompatible
+go: downloading k8s.io/kube-openapi v0.0.0-20190228160746-b3a7cee44a30
+go: downloading k8s.io/metrics v0.0.0-20181128195641-3954d62a524d
+go: downloading github.com/mitchellh/mapstructure v1.1.2
+go: downloading github.com/knative/pkg v0.0.0-20190402181056-ff46edef0ae5
+go: downloading github.com/go-openapi/spec v0.19.0
+go: downloading github.com/alexflint/go-filemutex v0.0.0-20171028004239-d358565f3c3f
+go: downloading github.com/jetstack/cert-manager v0.5.2
+go: downloading k8s.io/api v0.0.0-20181128191700-6db15a15d2d3
+go: downloading github.com/wbrefvem/go-bitbucket v0.0.0-20190128183802-fc08fd046abb
+go: downloading github.com/Azure/draft v0.15.0
+go: downloading github.com/andygrunwald/go-gerrit v0.0.0-20181026193842-43cfd7a94eb4
+go: downloading github.com/golang/protobuf v1.2.0
+go: downloading github.com/xanzy/go-gitlab v0.0.0-20180814191223-f3bc634ab936
+go: downloading github.com/hashicorp/vault v1.1.2
+go: downloading github.com/andygrunwald/go-jira v1.5.0
+go: downloading github.com/gorilla/sessions v1.1.3
+go: downloading github.com/banzaicloud/bank-vaults v0.0.0-20190508130850-5673d28c46bd
+go: downloading k8s.io/apiextensions-apiserver v0.0.0-20181128195303-1f84094d7e8e
+go: downloading github.com/stretchr/testify v1.3.0
+go: downloading github.com/rodaine/hclencoder v0.0.0-20180926060551-0680c4321930
+go: downloading gopkg.in/src-d/go-billy.v4 v4.2.0
+go: downloading gocloud.dev v0.9.0
+go: downloading github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99
+go: downloading github.com/gorilla/securecookie v1.1.1
+go: downloading github.com/mattbaird/jsonpatch v0.0.0-20171005235357-81af80346b1a
+go: downloading github.com/go-openapi/jsonreference v0.17.0
+go: downloading github.com/Pallinder/go-randomdata v0.0.0-20180616180521-15df0648130a
+go: downloading sigs.k8s.io/yaml v1.1.0
+go: downloading github.com/mattn/go-isatty v0.0.4
+go: downloading github.com/MakeNowJust/heredoc v0.0.0-20171113091838-e9091a26100e
+go: downloading github.com/gorilla/context v1.1.1
+go: downloading github.com/spf13/pflag v1.0.3
+go: downloading github.com/alecthomas/jsonschema v0.0.0-20190504002508-159cbd5dba26
+go: downloading github.com/shirou/gopsutil v0.0.0-20180901134234-eb1f1ab16f2e
+go: downloading github.com/knative/serving v0.5.0
+go: downloading github.com/imdario/mergo v0.3.6
+go: downloading github.com/sethvargo/go-password v0.1.2
+go: downloading golang.org/x/time v0.0.0-20180412165947-fbb02b2291d2
+go: downloading gopkg.in/AlecAivazis/survey.v1 v1.8.3
+go: downloading github.com/fatih/structs v1.1.0
+go: downloading github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+go: downloading github.com/davecgh/go-spew v1.1.1
+go: downloading github.com/Azure/go-autorest v10.15.5+incompatible
+go: downloading gopkg.in/robfig/cron.v2 v2.0.0-20150107220207-be2e0b0deed5
+go: downloading github.com/cloudflare/cfssl v0.0.0-20190409034051-768cd563887f
+go: downloading github.com/hashicorp/hcl v1.0.0
+go: downloading gopkg.in/yaml.v2 v2.2.1
+go: downloading github.com/gogo/protobuf v1.1.1
+go: downloading github.com/trivago/tgo v1.0.1
+go: downloading golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2
+go: downloading github.com/IBM-Cloud/bluemix-go v0.0.0-20181008063305-d718d474c7c2
+go: downloading github.com/hinshun/vt10x v0.0.0-20180809195222-d55458df857c
+go: downloading github.com/hpcloud/tail v1.0.0
+go: downloading github.com/jenkins-x/golang-jenkins v0.0.0-20180919102630-65b83ad42314
+go: downloading github.com/fsnotify/fsnotify v1.4.7
+go: downloading gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7
+go: downloading github.com/stoewer/go-strcase v1.0.1
+go: downloading github.com/satori/go.uuid v1.2.1-0.20180103174451-36e9d2ebbde5
+go: downloading github.com/codeship/codeship-go v0.0.0-20180717142545-7793ca823354
+go: downloading github.com/shurcooL/githubv4 v0.0.0-20180925043049-51d7b505e2e9
+go: downloading github.com/mgutz/ansi v0.0.0-20170206155736-9520e82c474b
+go: downloading golang.org/x/sync v0.0.0-20181221193216-37e7f081c4d4
+go: downloading golang.org/x/net v0.0.0-20190311183353-d8887717615a
+go: downloading github.com/evanphx/json-patch v4.1.0+incompatible
+go: downloading github.com/antham/chyle v1.4.0
+go: downloading github.com/pkg/errors v0.8.0
+go: downloading github.com/hashicorp/golang-lru v0.5.0
+go: downloading github.com/pkg/browser v0.0.0-20170505125900-c90ca0c84f15
+go: downloading github.com/iancoleman/orderedmap v0.0.0-20181121102841-22c6ecc9fe13
+go: downloading github.com/google/uuid v1.1.0
+go: downloading github.com/blang/semver v3.5.1+incompatible
+go: downloading github.com/mholt/archiver v3.1.1+incompatible
+go: downloading github.com/acarl005/stripansi v0.0.0-20180116102854-5a71ef0e047d
+go: downloading github.com/rollout/rox-go v0.0.0-20181220111955-29ddae74a8c4
+go: downloading github.com/PuerkitoBio/purell v1.1.0
+go: downloading github.com/chromedp/chromedp v0.1.1
+go: downloading github.com/magiconair/properties v1.8.0
+go: downloading github.com/shurcooL/graphql v0.0.0-20180924043259-e4a3a37e6d42
+go: downloading github.com/spf13/cast v1.2.0
+go: downloading github.com/emirpasic/gods v1.9.0
+go: downloading github.com/onsi/ginkgo v1.7.0
+go: downloading github.com/chromedp/cdproto v0.0.0-20180720050708-57cf4773008d
+go: downloading gopkg.in/inf.v0 v0.9.1
+go: downloading github.com/docker/docker v0.0.0-20171206114025-5e5fadb3c020
+go: downloading github.com/src-d/gcfg v1.3.0
+go: downloading github.com/dsnet/compress v0.0.0-20171208185109-cc9eb1d7ad76
+go: downloading github.com/mailru/easyjson v0.0.0-20180823135443-60711f1a8329
+go: downloading github.com/jbrukh/bayesian v0.0.0-20161210175230-bf3f261f9a9c
+go: downloading github.com/modern-go/reflect2 v1.0.1
+go: downloading github.com/c2h5oh/datasize v0.0.0-20171227191756-4eba002a5eae
+go: downloading gopkg.in/warnings.v0 v0.1.2
+go: downloading github.com/Masterminds/semver v1.4.2
+go: downloading github.com/json-iterator/go v1.1.5
+go: downloading github.com/kr/pty v1.1.2
+go: downloading github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8
+go: downloading github.com/jtnord/logrus v1.4.2-0.20190423161236-606ffcaf8f5d
+go: downloading github.com/russross/blackfriday v1.5.1
+go: downloading github.com/sergi/go-diff v1.0.0
+go: downloading golang.org/x/text v0.3.0
+go: downloading github.com/pierrec/lz4 v2.0.5+incompatible
+go: downloading github.com/google/gofuzz v0.0.0-20170612174753-24818f796faf
+go: downloading github.com/Netflix/go-expect v0.0.0-20180814212900-124a37274874
+go: downloading github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
+go: downloading github.com/googleapis/gnostic v0.2.0
+go: downloading github.com/cpuguy83/go-md2man v1.0.8
+go: downloading github.com/gorilla/websocket v1.4.0
+go: downloading go.uber.org/zap v1.9.1
+go: downloading github.com/pmezard/go-difflib v1.0.0
+go: downloading github.com/jenkins-x/draft-repo v0.0.0-20180417100212-2f66cc518135
+go: downloading github.com/hashicorp/go-retryablehttp v0.5.3
+go: downloading github.com/golang/snappy v0.0.0-20180518054509-2e65f85255db
+go: downloading github.com/ulikunitz/xz v0.5.6
+go: downloading github.com/xanzy/ssh-agent v0.2.0
+go: downloading github.com/spf13/viper v1.2.1
+go: downloading github.com/gorilla/mux v1.6.2
+go: downloading github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af
+go: downloading github.com/knq/sysutil v0.0.0-20180306023629-0218e141a794
+go: downloading github.com/hashicorp/go-version v1.1.0
+go: downloading google.golang.org/api v0.1.0
+go: downloading cloud.google.com/go v0.34.0
+go: downloading gopkg.in/fsnotify.v1 v1.4.7
+go: downloading google.golang.org/grpc v1.17.0
+go: downloading github.com/hashicorp/go-cleanhttp v0.5.1
+go: downloading github.com/gophercloud/gophercloud v0.0.0-20181215224939-bdd8b1ecd793
+go: downloading go.uber.org/multierr v1.1.0
+go: downloading github.com/hashicorp/go-rootcerts v1.0.0
+go: downloading github.com/hashicorp/go-multierror v1.0.0
+go: downloading github.com/google/wire v0.2.0
+go: downloading github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578
+go: downloading github.com/dgrijalva/jwt-go v3.2.0+incompatible
+go: downloading github.com/Azure/azure-storage-blob-go v0.0.0-20181023070848-cf01652132cc
+go: downloading github.com/peterbourgon/diskv v2.0.1+incompatible
+go: downloading github.com/mitchellh/go-homedir v1.1.0
+go: downloading google.golang.org/genproto v0.0.0-20190219182410-082222b4a5c5
+go: downloading github.com/gobwas/glob v0.2.3
+go: downloading github.com/google/go-containerregistry v0.0.0-20190317040536-ebbba8469d06
+go: downloading github.com/disintegration/imaging v1.4.2
+go: downloading github.com/BurntSushi/toml v0.3.1
+go: downloading github.com/google/btree v0.0.0-20180813153112-4030bb1f1f0c
+go: downloading github.com/gregjones/httpcache v0.0.0-20181110185634-c63ab54fda8f
+go: downloading golang.org/x/sys v0.0.0-20190411185658-b44545bcd369
+go: downloading github.com/emicklei/go-restful v2.9.3+incompatible
+go: downloading github.com/hashicorp/errwrap v1.0.0
+go: downloading github.com/pelletier/go-toml v1.2.0
+go: downloading github.com/go-openapi/jsonpointer v0.17.0
+go: downloading golang.org/x/image v0.0.0-20190227222117-0694c2d4d067
+go: downloading github.com/kevinburke/ssh_config v0.0.0-20180317175531-9fc7bb800b55
+go: downloading go.uber.org/atomic v1.3.2
+go: downloading github.com/pelletier/go-buffruneio v0.2.0
+go: downloading github.com/google/go-querystring v1.0.0
+go: downloading github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415
+go: downloading k8s.io/kubernetes v1.11.3
+go: downloading github.com/xeipuuv/gojsonpointer v0.0.0-20180127040702-4e3ac2762d5f
+go: downloading github.com/denormal/go-gitignore v0.0.0-20180713143441-75ce8f3e513c
+go: downloading github.com/prometheus/client_golang v0.9.2
+go: downloading github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51
+go: downloading github.com/spf13/afero v1.1.2
+go: downloading github.com/shurcooL/go v0.0.0-20180423040247-9e1955d9fb6e
+go: downloading github.com/hashicorp/go-sockaddr v1.0.2
+go: downloading github.com/go-errors/errors v1.0.1
+go: downloading github.com/Azure/azure-pipeline-go v0.1.8
+go: downloading github.com/prometheus/client_model v0.0.0-20180712105110-5c3871d89910
+go: downloading github.com/danwakefield/fnmatch v0.0.0-20160403171240-cbb64ac3d964
+go: downloading go.opencensus.io v0.18.0
+go: downloading github.com/prometheus/common v0.2.0
+go: downloading github.com/googleapis/gax-go v2.0.0+incompatible
+go: downloading github.com/go-openapi/swag v0.17.0
+go: downloading github.com/ryanuber/go-glob v0.0.0-20170128012129-256dc444b735
+go: downloading github.com/prometheus/procfs v0.0.0-20181204211112-1dc9a6cbc91a
+go: downloading github.com/nlopes/slack v0.0.0-20180721202243-347a74b1ea30
+go: downloading github.com/docker/spdystream v0.0.0-20170912183627-bc6354cbbc29
+go: downloading github.com/spf13/jwalterweatherman v1.0.0
+go: downloading github.com/rollout/sse v0.0.0-20181105093643-e422b54b3b28
+go: downloading github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973
+go: downloading github.com/matttproud/golang_protobuf_extensions v1.0.1
+go: downloading github.com/nwaples/rardecode v1.0.0
+go: downloading gopkg.in/cenkalti/backoff.v1 v1.1.0
+go: downloading github.com/rifflock/lfshook v0.0.0-20180227222202-bf539943797a
+go: downloading github.com/viniciuschiele/tarx v0.0.0-20151205142357-6e3da540444d
+go: downloading github.com/Azure/azure-sdk-for-go v21.1.0+incompatible
+go: downloading github.com/docker/go-connections v0.4.0
+go: downloading github.com/docker/go-units v0.3.3
+go: downloading github.com/opencontainers/image-spec v1.0.1
+go: downloading github.com/opencontainers/go-digest v1.0.0-rc1
+go: finding github.com/sirupsen/logrus v1.4.1
+go: finding k8s.io/api v0.0.0-20190126160303-ccdd560a045f
+go: finding github.com/banzaicloud/bank-vaults v0.0.0-00010101000000-000000000000
+go: finding k8s.io/client-go v9.0.0+incompatible
+go: finding github.com/heptio/sonobuoy v0.12.0
+go: finding k8s.io/apiextensions-apiserver v0.0.0-20190308081736-3a66ae4d2f93
+go: finding k8s.io/metrics v0.0.0-20180620010437-b11cf31b380b
+go: finding github.com/Azure/go-autorest v11.2.8+incompatible
+go: finding github.com/Azure/azure-sdk-for-go v23.2.0+incompatible
+?   	github.com/jenkins-x/**/cmd/codegen	[no test files]
+?   	github.com/jenkins-x/**/cmd/codegen/app	[no test files]
+?   	github.com/jenkins-x/**/cmd/codegen/generator	[no test files]
+ok  	github.com/jenkins-x/**/cmd/codegen/util	6.334s	coverage: 8.9% of statements
+?   	github.com/jenkins-x/**/cmd/ip	[no test files]
+?   	github.com/jenkins-x/**/cmd/**	[no test files]
+?   	github.com/jenkins-x/**/cmd/**/app	[no test files]
+?   	github.com/jenkins-x/**/pkg/addon	[no test files]
+?   	github.com/jenkins-x/**/pkg/apis/jenkins.io	[no test files]
+?   	github.com/jenkins-x/**/pkg/apis/jenkins.io/v1	[no test files]
+?   	github.com/jenkins-x/**/pkg/apps	[no test files]
+ok  	github.com/jenkins-x/**/pkg/auth	0.019s	coverage: 33.2% of statements
+?   	github.com/jenkins-x/**/pkg/auth/mocks	[no test files]
+ok  	github.com/jenkins-x/**/pkg/buildnum	0.043s	coverage: 35.8% of statements
+?   	github.com/jenkins-x/**/pkg/buildnum/mocks	[no test files]
+?   	github.com/jenkins-x/**/pkg/buildnum/mocks/matchers	[no test files]
+ok  	github.com/jenkins-x/**/pkg/builds	0.046s	coverage: 49.6% of statements
+?   	github.com/jenkins-x/**/pkg/chats	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/clientset/versioned	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/clientset/versioned/fake	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/clientset/versioned/scheme	[no test files]
+ok  	github.com/jenkins-x/**/pkg/client/clientset/versioned/typed/jenkins.io/v1	0.048s	coverage: 47.4% of statements
+?   	github.com/jenkins-x/**/pkg/client/clientset/versioned/typed/jenkins.io/v1/fake	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/informers/externalversions	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/informers/externalversions/internalinterfaces	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/informers/externalversions/jenkins.io	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/informers/externalversions/jenkins.io/v1	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/listers/jenkins.io/v1	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi/all	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi/core	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi/k8s_io_api_batch_v1	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi/k8s_io_api_core_v1	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi/k8s_io_api_rbac_v1	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi/k8s_io_apimachinery_intstr_unversioned	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi/k8s_io_apimachinery_meta_v1	[no test files]
+?   	github.com/jenkins-x/**/pkg/client/openapi/k8s_io_apimachinery_resource_unversioned	[no test files]
+?   	github.com/jenkins-x/**/pkg/cloud	[no test files]
+ok  	github.com/jenkins-x/**/pkg/cloud/aks	0.010s	coverage: 81.2% of statements
+ok  	github.com/jenkins-x/**/pkg/cloud/amazon	0.044s	coverage: 8.7% of statements
+?   	github.com/jenkins-x/**/pkg/cloud/amazon/vault	[no test files]
+ok  	github.com/jenkins-x/**/pkg/cloud/buckets	0.015s	coverage: 6.4% of statements
+ok  	github.com/jenkins-x/**/pkg/cloud/gke	0.014s	coverage: 2.1% of statements
+?   	github.com/jenkins-x/**/pkg/cloud/gke/externaldns	[no test files]
+?   	github.com/jenkins-x/**/pkg/cloud/gke/storage	[no test files]
+?   	github.com/jenkins-x/**/pkg/cloud/gke/vault	[no test files]
+?   	github.com/jenkins-x/**/pkg/cloud/iks	[no test files]
+?   	github.com/jenkins-x/**/pkg/cloud/oke	[no test files]
+?   	github.com/jenkins-x/**/pkg/collector	[no test files]
+ok  	github.com/jenkins-x/**/pkg/config	0.018s	coverage: 20.0% of statements
+ok  	github.com/jenkins-x/**/pkg/cve	0.025s	coverage: 43.0% of statements
+?   	github.com/jenkins-x/**/pkg/draft	[no test files]
+?   	github.com/jenkins-x/**/pkg/environments	[no test files]
+?   	github.com/jenkins-x/**/pkg/expose	[no test files]
+ok  	github.com/jenkins-x/**/pkg/extensions	0.051s	coverage: 22.8% of statements
+ok  	github.com/jenkins-x/**/pkg/features	1.132s	coverage: 44.9% of statements
+?   	github.com/jenkins-x/**/pkg/flagger	[no test files]
+ok  	github.com/jenkins-x/**/pkg/gits	64.668s	coverage: 24.5% of statements
+?   	github.com/jenkins-x/**/pkg/gits/mocks	[no test files]
+?   	github.com/jenkins-x/**/pkg/gits/mocks/matchers	[no test files]
+ok  	github.com/jenkins-x/**/pkg/helm	0.073s	coverage: 35.0% of statements
+?   	github.com/jenkins-x/**/pkg/helm/mocks	[no test files]
+ok  	github.com/jenkins-x/**/pkg/io	0.044s	coverage: 66.7% of statements
+ok  	github.com/jenkins-x/**/pkg/io/secrets	0.060s	coverage: 85.0% of statements
+?   	github.com/jenkins-x/**/pkg/issues	[no test files]
+ok  	github.com/jenkins-x/**/pkg/jenkins	0.127s	coverage: 8.7% of statements
+?   	github.com/jenkins-x/**/pkg/jenkins/fake	[no test files]
+ok  	github.com/jenkins-x/**/pkg/jenkinsfile	0.014s	coverage: 6.0% of statements
+?   	github.com/jenkins-x/**/pkg/jenkinsfile/gitresolver	[no test files]
+Setting the current namespace to: **
+[BuildInfo] Completing build info for PipelineActivity=my-org-my-repo-master-1
+[BuildInfo] PipelineActicity set with author=john.doe and last message
+[BuildInfo] Completing build info for PipelineActivity=my-org-my-repo-pr-4
+[BuildInfo] PipelineActivity set with author=john.doe.pr and PR title=This is the PR title
+Setting the current namespace to: **
+Setting the current namespace to: **
+Read credentials for http://chartmuseum.jenkins-x.io from vault helm/repos
+Creating mock chart 174d584f-9233-434f-8ff2-401f1395eb11 in /tmp/**-helm-fetch-174d584f-9233-434f-8ff2-401f1395eb11-524927212/174d584f-9233-434f-8ff2-401f1395eb11
+Created Pull Request: https://fake.git/ef4542be-9ae4-4d06-ab6c-6f9af52769fc/environment-ef4542be-9ae4-4d06-ab6c-6f9af52769fc-c795a730-385e-4fdf-9892-b14d03015bac-dev/pulls/1
+
+Added app via Pull Request https://fake.git/ef4542be-9ae4-4d06-ab6c-6f9af52769fc/environment-ef4542be-9ae4-4d06-ab6c-6f9af52769fc-c795a730-385e-4fdf-9892-b14d03015bac-dev/pulls/1
+Setting the current namespace to: **
+Read credentials for http://chartmuseum.jenkins-x.io from vault helm/repos
+Creating mock chart **-app-a6b8bf89-9158-4ad7-9034-cb2d15219376 in /tmp/**-helm-fetch-**-app-a6b8bf89-9158-4ad7-9034-cb2d15219376-730073342/**-app-a6b8bf89-9158-4ad7-9034-cb2d15219376
+Created Pull Request: https://fake.git/de999c8d-ef1f-4ae2-b314-b5370a5761e3/environment-de999c8d-ef1f-4ae2-b314-b5370a5761e3-5ddabe9f-4388-49f7-b2b2-d524071d73a1-dev/pulls/1
+
+Added app via Pull Request https://fake.git/de999c8d-ef1f-4ae2-b314-b5370a5761e3/environment-de999c8d-ef1f-4ae2-b314-b5370a5761e3-5ddabe9f-4388-49f7-b2b2-d524071d73a1-dev/pulls/1
+Setting the current namespace to: **
+Creating mock chart b33ab568-529c-4277-97a0-327c461c64e0 in /tmp/**-helm-fetch-b33ab568-529c-4277-97a0-327c461c64e0-044734176/b33ab568-529c-4277-97a0-327c461c64e0
+Updating Helm repository...
+Helm repository update done.
+Successfully installed b33ab568-529c-4277-97a0-327c461c64e0 0.0.1
+Setting the current namespace to: **
+Creating mock chart 0bbe3043-bd7f-4496-bc33-2b29573ae126 in /tmp/**-helm-fetch-0bbe3043-bd7f-4496-bc33-2b29573ae126-245466441/0bbe3043-bd7f-4496-bc33-2b29573ae126
+Updating Helm repository...
+Helm repository update done.
+Successfully installed 0bbe3043-bd7f-4496-bc33-2b29573ae126 0.0.1
+Setting the current namespace to: **
+Read credentials for http://chartmuseum.jenkins-x.io from vault helm/repos
+Creating mock chart bdccf167-2d20-4e3a-b61e-fa60f4d3018f in /tmp/**-helm-fetch-bdccf167-2d20-4e3a-b61e-fa60f4d3018f-003260006/bdccf167-2d20-4e3a-b61e-fa60f4d3018f
+Created Pull Request: https://fake.git/334d8e23-54f6-4bd6-973b-948bcff55bcb/environment-334d8e23-54f6-4bd6-973b-948bcff55bcb-29797639-7f2c-48f3-97e5-7d351c9130a7-dev/pulls/1
+
+Added app via Pull Request https://fake.git/334d8e23-54f6-4bd6-973b-948bcff55bcb/environment-334d8e23-54f6-4bd6-973b-948bcff55bcb-29797639-7f2c-48f3-97e5-7d351c9130a7-dev/pulls/1
+Setting the current namespace to: **
+Updating Helm repository...
+Helm repository update done.
+Successfully installed 8faf0528-ad95-4609-ace0-daf2c0d36831 0.0.1
+Setting the current namespace to: **
+Updating Helm repository...
+Helm repository update done.
+Successfully installed **-app-5c1d0fa1-1617-43bd-a5a4-aa8ed5d68d59 0.0.1
+Setting the current namespace to: **
+Updating Helm repository...
+Helm repository update done.
+Successfully installed f752836e-c134-4276-a91c-8097106f8726 0.0.1
+Setting the current namespace to: **
+Creating mock chart 39272d57-97ac-4bb9-af21-df3e81b44071 in /tmp/**-helm-fetch-39272d57-97ac-4bb9-af21-df3e81b44071-426916144/39272d57-97ac-4bb9-af21-df3e81b44071
+Updating Helm repository...
+Helm repository update done.
+Successfully installed 39272d57-97ac-4bb9-af21-df3e81b44071 0.1.1
+Setting the current namespace to: **
+Read credentials for http://chartmuseum.jenkins-x.io from vault helm/repos
+Creating mock chart f7ccb85f-a009-498d-bd8c-1d3f6deb8ca0 in /tmp/**-helm-fetch-f7ccb85f-a009-498d-bd8c-1d3f6deb8ca0-828040665/f7ccb85f-a009-498d-bd8c-1d3f6deb8ca0
+Created Pull Request: https://fake.git/04666731-4000-4f9e-a7af-161012fcd31f/environment-04666731-4000-4f9e-a7af-161012fcd31f-0495d851-e174-45ec-b0f4-cfdaa46aaf8a-dev/pulls/1
+
+Added app via Pull Request https://fake.git/04666731-4000-4f9e-a7af-161012fcd31f/environment-04666731-4000-4f9e-a7af-161012fcd31f-0495d851-e174-45ec-b0f4-cfdaa46aaf8a-dev/pulls/1
+Setting the current namespace to: **
+Read credentials for http://chartmuseum.jenkins-x.io from vault helm/repos
+Creating mock chart cf144d8c-aa31-4ba6-b35a-212d18aa3d88 in /tmp/**-helm-fetch-cf144d8c-aa31-4ba6-b35a-212d18aa3d88-401183091/cf144d8c-aa31-4ba6-b35a-212d18aa3d88
+Created Pull Request: https://fake.git/875e08b8-6a0f-4c24-ba97-7b14c122dfc1/environment-875e08b8-6a0f-4c24-ba97-7b14c122dfc1-b1f612db-cc93-4d55-8f70-13fc7c230ca2-dev/pulls/1
+
+Added app via Pull Request https://fake.git/875e08b8-6a0f-4c24-ba97-7b14c122dfc1/environment-875e08b8-6a0f-4c24-ba97-7b14c122dfc1-b1f612db-cc93-4d55-8f70-13fc7c230ca2-dev/pulls/1
+Setting the current namespace to: **
+Read credentials for http://chartmuseum.jenkins-x.io from vault helm/repos
+Creating mock chart bc8fef30-2550-4a4a-a373-e55b3fb4a89d in /tmp/**-helm-fetch-bc8fef30-2550-4a4a-a373-e55b3fb4a89d-755956765/bc8fef30-2550-4a4a-a373-e55b3fb4a89d
+Using /tmp/**-environments286770742/0522797b-3237-4233-b4b9-e198edd45f93/environment-0522797b-3237-4233-b4b9-e198edd45f93-e2615ce4-7934-433a-be48-8d93dd69dc85-dev/bc8fef30-2550-4a4a-a373-e55b3fb4a89d for requirementName files
+Not adding release.yaml as not present in chart. Only files in /tmp/**-helm-fetch-bc8fef30-2550-4a4a-a373-e55b3fb4a89d-755956765/bc8fef30-2550-4a4a-a373-e55b3fb4a89d/templates are:
+drwx------ 4096 15 May 19 06:08 UTC templates
+Created Pull Request: https://fake.git/0522797b-3237-4233-b4b9-e198edd45f93/environment-0522797b-3237-4233-b4b9-e198edd45f93-e2615ce4-7934-433a-be48-8d93dd69dc85-dev/pulls/1
+
+Added app via Pull Request https://fake.git/0522797b-3237-4233-b4b9-e198edd45f93/environment-0522797b-3237-4233-b4b9-e198edd45f93-e2615ce4-7934-433a-be48-8d93dd69dc85-dev/pulls/1
+Setting the current namespace to: **
+Read credentials for http://chartmuseum.jenkins-x.io from vault helm/repos
+Creating mock chart 8bef11fd-e5bf-4d7e-83a5-c0dc796c4de8 in /tmp/**-helm-fetch-8bef11fd-e5bf-4d7e-83a5-c0dc796c4de8-109061207/8bef11fd-e5bf-4d7e-83a5-c0dc796c4de8
+No version specified so using latest version which is 0.1.8
+Using /tmp/**-environments163556056/d4b34175-69fa-480d-924a-541dac0e2208/environment-d4b34175-69fa-480d-924a-541dac0e2208-7966efb4-935f-4b0b-8b2e-4300c4a59329-dev/8bef11fd-e5bf-4d7e-83a5-c0dc796c4de8 for requirementName files
+Not adding release.yaml as not present in chart. Only files in /tmp/**-helm-fetch-8bef11fd-e5bf-4d7e-83a5-c0dc796c4de8-109061207/8bef11fd-e5bf-4d7e-83a5-c0dc796c4de8/templates are:
+drwx------ 4096 15 May 19 06:08 UTC templates
+Not adding App Readme as no README, README.md, readme or readme.md found in /tmp/**-helm-fetch-8bef11fd-e5bf-4d7e-83a5-c0dc796c4de8-109061207/8bef11fd-e5bf-4d7e-83a5-c0dc796c4de8
+Created Pull Request: https://fake.git/d4b34175-69fa-480d-924a-541dac0e2208/environment-d4b34175-69fa-480d-924a-541dac0e2208-7966efb4-935f-4b0b-8b2e-4300c4a59329-dev/pulls/1
+
+Added app via Pull Request https://fake.git/d4b34175-69fa-480d-924a-541dac0e2208/environment-d4b34175-69fa-480d-924a-541dac0e2208-7966efb4-935f-4b0b-8b2e-4300c4a59329-dev/pulls/1
+Setting the current namespace to: **
+Read credentials for http://chartmuseum.jenkins-x.io from vault helm/repos
+Creating mock chart 4d630db1-e467-4207-88d2-93f0c5cb0813 in /tmp/**-helm-fetch-4d630db1-e467-4207-88d2-93f0c5cb0813-062767265/4d630db1-e467-4207-88d2-93f0c5cb0813
+Created Pull Request: https://fake.git/7ab5ff3e-6ef3-4400-93c8-86d660f2f6d1/environment-7ab5ff3e-6ef3-4400-93c8-86d660f2f6d1-199a95b7-22e7-4d9e-9323-552c72b27591-dev/pulls/1
+
+Added app via Pull Request https://fake.git/7ab5ff3e-6ef3-4400-93c8-86d660f2f6d1/environment-7ab5ff3e-6ef3-4400-93c8-86d660f2f6d1-199a95b7-22e7-4d9e-9323-552c72b27591-dev/pulls/1
+Setting the current namespace to: **
+Read credentials for http://chartmuseum.jenkins-x.io from vault helm/repos
+Creating mock chart 56d297d2-9a79-405a-9949-ba20363a0d08 in /tmp/**-helm-fetch-56d297d2-9a79-405a-9949-ba20363a0d08-788875934/56d297d2-9a79-405a-9949-ba20363a0d08
+Created Pull Request: https://fake.git/2770f703-1d93-48ba-a59b-048e5da34722/environment-2770f703-1d93-48ba-a59b-048e5da34722-d9205e64-7839-4a1c-bf13-c9a6f1d33012-dev/pulls/1
+
+Added app via Pull Request https://fake.git/2770f703-1d93-48ba-a59b-048e5da34722/environment-2770f703-1d93-48ba-a59b-048e5da34722-d9205e64-7839-4a1c-bf13-c9a6f1d33012-dev/pulls/1
+[34mk8s[0m:[32m**[0m:[36m[0m>
+Setting the current namespace to: [32m**[0m
+Creating PR for environment staging from PipelineActivity jstrachan-myrepo-master-1 as current status is (*v1.PromoteActivityStep)(nil)
+Promoting app [32mmyrepo[0m version [32m1.0.1[0m to namespace [32m**-staging[0m
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Created Pull Request: [32mhttps://fake.git/jstrachan/environment-staging/pulls/1[0m
+
+[33mWARNING[0m: Cannot promote to Environment: production as precondition Environment: staging as no status
+Found Promote PullRequest https://fake.git/jstrachan/environment-staging/pulls/1 on PipelineActivity jstrachan-myrepo-master-1 for Environment staging
+[33mWARNING[0m: Cannot promote to Environment: production as precondition Environment: staging has status Running
+Pipeline jstrachan-myrepo-master-1 promote Environment staging has PR https://fake.git/jstrachan/environment-staging/pulls/1 with status pending
+[33mWARNING[0m: Cannot promote to Environment: production as precondition Environment: staging has status Running
+PR https://fake.git/jstrachan/environment-staging/pulls/1 is now merged
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+[33mWARNING[0m: Cannot promote to Environment: production as precondition Environment: staging has status Running
+PR https://fake.git/jstrachan/environment-staging/pulls/1 has commit status success
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+[33mWARNING[0m: Could not find the service URL in namespace **-staging for names myrepo, , **-staging-myrepo
+Creating PR for environment production from PipelineActivity jstrachan-myrepo-master-1 as current status is (*v1.PromoteActivityStep)(nil)
+Promoting app [32mmyrepo[0m version [32m1.0.1[0m to namespace [32m**-production[0m
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Created Pull Request: [32mhttps://fake.git/jstrachan/environment-production/pulls/1[0m
+
+Found Promote PullRequest https://fake.git/jstrachan/environment-production/pulls/1 on PipelineActivity jstrachan-myrepo-master-1 for Environment production
+PR https://fake.git/jstrachan/environment-production/pulls/1 is now merged
+PR https://fake.git/jstrachan/environment-production/pulls/1 has commit status success
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+[33mWARNING[0m: Could not find the service URL in namespace **-production for names myrepo, , **-production-myrepo
+Setting the current namespace to: [32m**[0m
+Creating PR for environment staging from PipelineActivity jstrachan-manual-master-1 as current status is (*v1.PromoteActivityStep)(nil)
+Promoting app [32mmanual[0m version [32m1.0.1[0m to namespace [32m**-staging[0m
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Created Pull Request: [32mhttps://fake.git/jstrachan/environment-staging/pulls/1[0m
+
+Found Promote PullRequest https://fake.git/jstrachan/environment-staging/pulls/1 on PipelineActivity jstrachan-manual-master-1 for Environment staging
+Pipeline jstrachan-manual-master-1 promote Environment staging has PR https://fake.git/jstrachan/environment-staging/pulls/1 with status pending
+PR https://fake.git/jstrachan/environment-staging/pulls/1 is now merged
+PR https://fake.git/jstrachan/environment-staging/pulls/1 has commit status success
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+[33mWARNING[0m: Could not find the service URL in namespace **-staging for names manual, , **-staging-manual
+Promoting to production version 1.0.1 for app manual
+Promoting app [32mmanual[0m version [32m1.0.1[0m to namespace [32m**-production[0m
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Created Pull Request: [32mhttps://fake.git/jstrachan/environment-production/pulls/1[0m
+
+Found Promote PullRequest https://fake.git/jstrachan/environment-production/pulls/1 on PipelineActivity jstrachan-manual-master-1 for Environment production
+Pipeline jstrachan-manual-master-1 promote Environment production has PR https://fake.git/jstrachan/environment-production/pulls/1 with status pending
+Pipeline jstrachan-manual-master-1 promote Environment production has PR https://fake.git/jstrachan/environment-production/pulls/1 with status pending
+PR https://fake.git/jstrachan/environment-production/pulls/1 is now merged
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+PR https://fake.git/jstrachan/environment-production/pulls/1 has commit status success
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+[33mWARNING[0m: Could not find the service URL in namespace **-production for names manual, , **-production-manual
+Setting the current namespace to: [32m**[0m
+Creating PR for environment a from PipelineActivity jstrachan-parallelrepo-master-1 as current status is (*v1.PromoteActivityStep)(nil)
+Promoting app [32mparallelrepo[0m version [32m1.0.1[0m to namespace [32m**-a[0m
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Created Pull Request: [32mhttps://fake.git/jstrachan/environment-a/pulls/1[0m
+
+Creating PR for environment b from PipelineActivity jstrachan-parallelrepo-master-1 as current status is (*v1.PromoteActivityStep)(nil)
+Promoting app [32mparallelrepo[0m version [32m1.0.1[0m to namespace [32m**-b[0m
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Created Pull Request: [32mhttps://fake.git/jstrachan/environment-b/pulls/1[0m
+
+[33mWARNING[0m: Cannot promote to Environment: c as precondition Environment: a as no status
+Found Promote PullRequest https://fake.git/jstrachan/environment-a/pulls/1 on PipelineActivity jstrachan-parallelrepo-master-1 for Environment a
+Found Promote PullRequest https://fake.git/jstrachan/environment-b/pulls/1 on PipelineActivity jstrachan-parallelrepo-master-1 for Environment b
+[33mWARNING[0m: Cannot promote to Environment: c as precondition Environment: a has status Running
+Pipeline jstrachan-parallelrepo-master-1 promote Environment a has PR https://fake.git/jstrachan/environment-a/pulls/1 with status pending
+Pipeline jstrachan-parallelrepo-master-1 promote Environment b has PR https://fake.git/jstrachan/environment-b/pulls/1 with status pending
+[33mWARNING[0m: Cannot promote to Environment: c as precondition Environment: a has status Running
+PR https://fake.git/jstrachan/environment-a/pulls/1 is now merged
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Pipeline jstrachan-parallelrepo-master-1 promote Environment b has PR https://fake.git/jstrachan/environment-b/pulls/1 with status pending
+[33mWARNING[0m: Cannot promote to Environment: c as precondition Environment: a has status Running
+PR https://fake.git/jstrachan/environment-a/pulls/1 has commit status success
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+[33mWARNING[0m: Could not find the service URL in namespace **-a for names parallelrepo, , **-a-parallelrepo
+[33mWARNING[0m: Cannot promote to Environment: c as precondition Environment: b has status Running
+PR https://fake.git/jstrachan/environment-b/pulls/1 is now merged
+PR https://fake.git/jstrachan/environment-b/pulls/1 has commit status success
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+[33mWARNING[0m: Could not find the service URL in namespace **-b for names parallelrepo, , **-b-parallelrepo
+Creating PR for environment c from PipelineActivity jstrachan-parallelrepo-master-1 as current status is (*v1.PromoteActivityStep)(nil)
+Promoting app [32mparallelrepo[0m version [32m1.0.1[0m to namespace [32m**-c[0m
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Created Pull Request: [32mhttps://fake.git/jstrachan/environment-c/pulls/1[0m
+
+Found Promote PullRequest https://fake.git/jstrachan/environment-c/pulls/1 on PipelineActivity jstrachan-parallelrepo-master-1 for Environment c
+PR https://fake.git/jstrachan/environment-c/pulls/1 is now merged
+PR https://fake.git/jstrachan/environment-c/pulls/1 has commit status success
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+[33mWARNING[0m: Could not find the service URL in namespace **-c for names parallelrepo, , **-c-parallelrepo
+Setting the current namespace to: [32m**[0m
+Creating PR for environment staging from PipelineActivity jstrachan-myrepo-master-1 as current status is (*v1.PromoteActivityStep)(nil)
+Promoting app [32mmyrepo[0m version [32m1.0.1[0m to namespace [32m**-staging[0m
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Created Pull Request: [32mhttps://fake.git/jstrachan/environment-staging/pulls/1[0m
+
+[33mWARNING[0m: Cannot promote to Environment: production as precondition Environment: staging as no status
+Found Promote PullRequest https://fake.git/jstrachan/environment-staging/pulls/1 on PipelineActivity jstrachan-myrepo-master-1 for Environment staging
+Pipeline jstrachan-myrepo-master-1 promote Environment staging has PR https://fake.git/jstrachan/environment-staging/pulls/1 with status pending
+Creating PR for environment staging from PipelineActivity jstrachan-myrepo-master-2 as current status is (*v1.PromoteActivityStep)(nil)
+Promoting app [32mmyrepo[0m version [32m1.0.2[0m to namespace [32m**-staging[0m
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Created Pull Request: [32mhttps://fake.git/jstrachan/environment-staging/pulls/2[0m
+
+[33mWARNING[0m: Cannot promote to Environment: production as precondition Environment: staging as no status
+Found Promote PullRequest https://fake.git/jstrachan/environment-staging/pulls/2 on PipelineActivity jstrachan-myrepo-master-2 for Environment staging
+Pipeline jstrachan-myrepo-master-2 promote Environment staging has PR https://fake.git/jstrachan/environment-staging/pulls/2 with status pending
+[33mWARNING[0m: Cannot promote to Environment: production as precondition Environment: staging has status Running
+Pipeline jstrachan-myrepo-master-2 promote Environment staging has PR https://fake.git/jstrachan/environment-staging/pulls/2 with status pending
+[33mWARNING[0m: Cannot promote to Environment: production as precondition Environment: staging has status Running
+PR https://fake.git/jstrachan/environment-staging/pulls/2 is now merged
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+[33mWARNING[0m: Cannot promote to Environment: production as precondition Environment: staging has status Running
+PR https://fake.git/jstrachan/environment-staging/pulls/2 has commit status success
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+[33mWARNING[0m: Could not find the service URL in namespace **-staging for names myrepo, , **-staging-myrepo
+Creating PR for environment production from PipelineActivity jstrachan-myrepo-master-2 as current status is (*v1.PromoteActivityStep)(nil)
+Promoting app [32mmyrepo[0m version [32m1.0.2[0m to namespace [32m**-production[0m
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Created Pull Request: [32mhttps://fake.git/jstrachan/environment-production/pulls/1[0m
+
+Found Promote PullRequest https://fake.git/jstrachan/environment-production/pulls/1 on PipelineActivity jstrachan-myrepo-master-2 for Environment production
+PR https://fake.git/jstrachan/environment-production/pulls/1 is now merged
+PR https://fake.git/jstrachan/environment-production/pulls/1 has commit status success
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+[33mWARNING[0m: Could not find the service URL in namespace **-production for names myrepo, , **-production-myrepo
+Creating config for cluster [32mfoo[0m
+
+Created /tmp/test-create-org-struct473116340/clusters/foo/terraform/terraform.tf
+Creating config for cluster [32mbar[0m
+
+Created /tmp/test-create-org-struct473116340/clusters/bar/terraform/terraform.tf
+Setting the current namespace to: [32m**[0m
+Creating mock chart e9d34e29-19a6-49ef-b9a4-1c0a3a36bb52 in /tmp/**-helm-fetch-e9d34e29-19a6-49ef-b9a4-1c0a3a36bb52-021927853/e9d34e29-19a6-49ef-b9a4-1c0a3a36bb52
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32me9d34e29-19a6-49ef-b9a4-1c0a3a36bb52[0m [32m0.0.1[0m
+Setting the current namespace to: [32m**[0m
+Creating mock chart adde6309-cfdc-4451-9aae-1b1af23ef41a in /tmp/**-helm-fetch-adde6309-cfdc-4451-9aae-1b1af23ef41a-265912423/adde6309-cfdc-4451-9aae-1b1af23ef41a
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32madde6309-cfdc-4451-9aae-1b1af23ef41a[0m [32m0.0.1[0m
+Setting the current namespace to: [32m**[0m
+Setting the current namespace to: [32m**[0m
+Creating mock chart 8b24bb23-387b-46d1-8272-37e913b8788f in /tmp/**-helm-fetch-8b24bb23-387b-46d1-8272-37e913b8788f-512023260/8b24bb23-387b-46d1-8272-37e913b8788f
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32m8b24bb23-387b-46d1-8272-37e913b8788f[0m [32m0.0.1[0m
+Creating mock chart d4f722a7-0a3e-41d6-bd84-6fd5022d43fd in /tmp/**-helm-fetch-d4f722a7-0a3e-41d6-bd84-6fd5022d43fd-069407883/d4f722a7-0a3e-41d6-bd84-6fd5022d43fd
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32md4f722a7-0a3e-41d6-bd84-6fd5022d43fd[0m [32m0.0.1[0m
+Setting the current namespace to: [32m**[0m
+Creating mock chart 3673a0d0-fe22-4d6b-b726-e993eceb2f89 in /tmp/**-helm-fetch-3673a0d0-fe22-4d6b-b726-e993eceb2f89-080038645/3673a0d0-fe22-4d6b-b726-e993eceb2f89
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32m3673a0d0-fe22-4d6b-b726-e993eceb2f89[0m [32m0.0.1[0m
+Creating mock chart a9a748dc-2304-40bb-8fbb-49ea6cfda430 in /tmp/**-helm-fetch-a9a748dc-2304-40bb-8fbb-49ea6cfda430-583418832/a9a748dc-2304-40bb-8fbb-49ea6cfda430
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32ma9a748dc-2304-40bb-8fbb-49ea6cfda430[0m [32m0.0.1[0m
+[33mWARNING[0m: There was a problem obtaining the app status: there was a problem getting the status of the apps: this is an error
+Setting the current namespace to: [32m**[0m
+Creating mock chart 940a8afa-52d0-4326-8af1-0734cf2d964c in /tmp/**-helm-fetch-940a8afa-52d0-4326-8af1-0734cf2d964c-137504642/940a8afa-52d0-4326-8af1-0734cf2d964c
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32m940a8afa-52d0-4326-8af1-0734cf2d964c[0m [32m0.0.1[0m
+Creating mock chart def5b685-abc9-44ca-92ef-a14ef96cf6bb in /tmp/**-helm-fetch-def5b685-abc9-44ca-92ef-a14ef96cf6bb-494959353/def5b685-abc9-44ca-92ef-a14ef96cf6bb
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32mdef5b685-abc9-44ca-92ef-a14ef96cf6bb[0m [32m0.0.1[0m
+[33mWARNING[0m: There was a problem obtaining the app status: there was a problem getting the status of the apps: this is an error
+Setting the current namespace to: [32m**[0m
+Creating mock chart fa303218-281c-462a-8f42-c9dc2f2d606b in /tmp/**-helm-fetch-fa303218-281c-462a-8f42-c9dc2f2d606b-553083795/fa303218-281c-462a-8f42-c9dc2f2d606b
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32mfa303218-281c-462a-8f42-c9dc2f2d606b[0m [32m0.0.1[0m
+Creating mock chart 9674f14c-b374-4ec6-8516-59efe511c9f0 in /tmp/**-helm-fetch-9674f14c-b374-4ec6-8516-59efe511c9f0-707346902/9674f14c-b374-4ec6-8516-59efe511c9f0
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32m9674f14c-b374-4ec6-8516-59efe511c9f0[0m [32m0.0.1[0m
+Setting the current namespace to: [32m**[0m
+Creating mock chart a166f48b-ddc3-4b2f-b80e-5d1f3c7d70cf in /tmp/**-helm-fetch-a166f48b-ddc3-4b2f-b80e-5d1f3c7d70cf-834919800/a166f48b-ddc3-4b2f-b80e-5d1f3c7d70cf
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32ma166f48b-ddc3-4b2f-b80e-5d1f3c7d70cf[0m [32m0.0.1[0m
+Creating mock chart f7e00819-c088-4de8-ab3b-805e6c4744b0 in /tmp/**-helm-fetch-f7e00819-c088-4de8-ab3b-805e6c4744b0-059730551/f7e00819-c088-4de8-ab3b-805e6c4744b0
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32mf7e00819-c088-4de8-ab3b-805e6c4744b0[0m [32m0.0.1[0m
+Setting the current namespace to: [32m**[0m
+Creating mock chart d99f7bdf-86b0-4a21-8d30-6bbe6e34b1e4 in /tmp/**-helm-fetch-d99f7bdf-86b0-4a21-8d30-6bbe6e34b1e4-745058241/d99f7bdf-86b0-4a21-8d30-6bbe6e34b1e4
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32md99f7bdf-86b0-4a21-8d30-6bbe6e34b1e4[0m [32m0.0.1[0m
+Setting the current namespace to: [32m**[0m
+Creating mock chart f443c315-5611-4677-b41d-4d2238e2afa6 in /tmp/**-helm-fetch-f443c315-5611-4677-b41d-4d2238e2afa6-415331739/f443c315-5611-4677-b41d-4d2238e2afa6
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32mf443c315-5611-4677-b41d-4d2238e2afa6[0m [32m0.0.1[0m
+Setting the current namespace to: [32m**[0m
+Creating mock chart decf2577-ccb9-4f89-907e-f61229636b3a in /tmp/**-helm-fetch-decf2577-ccb9-4f89-907e-f61229636b3a-126792325/decf2577-ccb9-4f89-907e-f61229636b3a
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32mdecf2577-ccb9-4f89-907e-f61229636b3a[0m [32m0.0.1[0m
+Setting the current namespace to: [32m**[0m
+Creating mock chart 80328fe5-ede1-432d-b398-13c8c1878656 in /tmp/**-helm-fetch-80328fe5-ede1-432d-b398-13c8c1878656-870397695/80328fe5-ede1-432d-b398-13c8c1878656
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32m80328fe5-ede1-432d-b398-13c8c1878656[0m [32m0.0.1[0m
+Creating mock chart 13765bb4-1098-4aa6-b114-500928ab169c in /tmp/**-helm-fetch-13765bb4-1098-4aa6-b114-500928ab169c-189018194/13765bb4-1098-4aa6-b114-500928ab169c
+Updating Helm repository...
+Helm repository update done.
+Successfully installed [32m13765bb4-1098-4aa6-b114-500928ab169c[0m [32m0.0.1[0m
+Setting the current namespace to: [32m**[0m
+Setting the current namespace to: [32m**[0m
+Workflow: myflow
+promote to a + b + c + d
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+performing pack detection in folder /tmp/test-import-projects737038729-DefaultJenkinsfile/custom_jenkins
+--> Draft detected Perl (100.000000%)
+--> Could not find a pack for Perl. Trying to find the next likely language match...
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/custom-jenkins
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-DefaultJenkinsfile/custom_jenkins
+app name: custom-jenkins, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-DefaultJenkinsfile/custom_jenkins/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+performing pack detection in folder /tmp/test-import-projects737038729-RenamedJenkinsfile/custom_jenkins
+--> Draft detected Perl (100.000000%)
+--> Could not find a pack for Perl. Trying to find the next likely language match...
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/custom-jenkins
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-RenamedJenkinsfile/custom_jenkins
+app name: custom-jenkins, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-RenamedJenkinsfile/custom_jenkins/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+performing pack detection in folder /tmp/test-import-projects737038729-DefaultJenkinsfile/docker
+--> Draft detected PLpgSQL (100.000000%)
+--> Could not find a pack for PLpgSQL. Trying to find the next likely language match...
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/docker
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-DefaultJenkinsfile/docker
+app name: docker, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-DefaultJenkinsfile/docker/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+performing pack detection in folder /tmp/test-import-projects737038729-RenamedJenkinsfile/docker
+--> Draft detected PLpgSQL (100.000000%)
+--> Could not find a pack for PLpgSQL. Trying to find the next likely language match...
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/docker
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-RenamedJenkinsfile/docker
+app name: docker, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-RenamedJenkinsfile/docker/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+performing pack detection in folder /tmp/test-import-projects737038729-DefaultJenkinsfile/docker-helm
+--> Draft detected YAML (91.200000%)
+--> Could not find a pack for YAML. Trying to find the next likely language match...
+--> Draft detected PLpgSQL (8.800000%)
+--> Could not find a pack for PLpgSQL. Trying to find the next likely language match...
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/docker-helm
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-DefaultJenkinsfile/docker-helm
+app name: docker-helm, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-DefaultJenkinsfile/docker-helm/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+performing pack detection in folder /tmp/test-import-projects737038729-RenamedJenkinsfile/docker-helm
+--> Draft detected YAML (91.200000%)
+--> Could not find a pack for YAML. Trying to find the next likely language match...
+--> Draft detected PLpgSQL (8.800000%)
+--> Could not find a pack for PLpgSQL. Trying to find the next likely language match...
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/docker-helm
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-RenamedJenkinsfile/docker-helm
+app name: docker-helm, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-RenamedJenkinsfile/docker-helm/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/gradle
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-DefaultJenkinsfile/gradle_no_files
+app name: gradle-no-files, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-DefaultJenkinsfile/gradle_no_files/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/gradle
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-RenamedJenkinsfile/gradle_no_files
+app name: gradle-no-files, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-RenamedJenkinsfile/gradle_no_files/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+performing pack detection in folder /tmp/test-import-projects737038729-DefaultJenkinsfile/helm
+--> Draft detected YAML (100.000000%)
+--> Could not find a pack for YAML. Trying to find the next likely language match...
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/helm
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-DefaultJenkinsfile/helm
+app name: helm, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-DefaultJenkinsfile/helm/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+performing pack detection in folder /tmp/test-import-projects737038729-RenamedJenkinsfile/helm
+--> Draft detected YAML (100.000000%)
+--> Could not find a pack for YAML. Trying to find the next likely language match...
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/helm
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-RenamedJenkinsfile/helm
+app name: helm, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-RenamedJenkinsfile/helm/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+modified the helm file: [32m/tmp/test-import-projects737038729-DefaultJenkinsfile/maven_camel/charts/maven-camel/values.yaml[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-DefaultJenkinsfile/maven_camel
+app name: maven-camel, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-DefaultJenkinsfile/maven_camel/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+modified the helm file: [32m/tmp/test-import-projects737038729-RenamedJenkinsfile/maven_camel/charts/maven-camel/values.yaml[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-RenamedJenkinsfile/maven_camel
+app name: maven-camel, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-RenamedJenkinsfile/maven_camel/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+trying to use draft pack: maven
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-DefaultJenkinsfile/maven_custom_build_pack
+app name: maven-custom-build-pack, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-DefaultJenkinsfile/maven_custom_build_pack/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+trying to use draft pack: maven
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-RenamedJenkinsfile/maven_custom_build_pack
+app name: maven-custom-build-pack, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-RenamedJenkinsfile/maven_custom_build_pack/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-DefaultJenkinsfile/maven_keep_old_jenkinsfile
+app name: maven-keep-old-jenkinsfile, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-DefaultJenkinsfile/maven_keep_old_jenkinsfile/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-RenamedJenkinsfile/maven_keep_old_jenkinsfile
+app name: maven-keep-old-jenkinsfile, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-RenamedJenkinsfile/maven_keep_old_jenkinsfile/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-DefaultJenkinsfile/maven_keep_old_jenkinsfile_with_git
+app name: maven-keep-old-jenkinsfile-with-git, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-DefaultJenkinsfile/maven_keep_old_jenkinsfile_with_git/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-RenamedJenkinsfile/maven_keep_old_jenkinsfile_with_git
+app name: maven-keep-old-jenkinsfile-with-git, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-RenamedJenkinsfile/maven_keep_old_jenkinsfile_with_git/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-DefaultJenkinsfile/maven_no_files
+app name: maven-no-files, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-DefaultJenkinsfile/maven_no_files/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-RenamedJenkinsfile/maven_no_files
+app name: maven-no-files, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-RenamedJenkinsfile/maven_no_files/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-DefaultJenkinsfile/maven_old_jenkinsfile
+app name: maven-old-jenkinsfile, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-DefaultJenkinsfile/maven_old_jenkinsfile/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-RenamedJenkinsfile/maven_old_jenkinsfile
+app name: maven-old-jenkinsfile, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-RenamedJenkinsfile/maven_old_jenkinsfile/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-DefaultJenkinsfile/maven_old_jenkinsfile_with_git
+app name: maven-old-jenkinsfile-with-git, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-DefaultJenkinsfile/maven_old_jenkinsfile_with_git/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-RenamedJenkinsfile/maven_old_jenkinsfile_with_git
+app name: maven-old-jenkinsfile-with-git, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-RenamedJenkinsfile/maven_old_jenkinsfile_with_git/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-DefaultJenkinsfile/maven_springboot
+app name: maven-springboot, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-DefaultJenkinsfile/maven_springboot/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-projects737038729-RenamedJenkinsfile/maven_springboot
+app name: maven-springboot, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-projects737038729-RenamedJenkinsfile/maven_springboot/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+performing pack detection in folder /tmp/test-import-ng-projects485396820-DefaultJenkinsfile/custom_jenkins
+--> Draft detected Perl (100.000000%)
+--> Could not find a pack for Perl. Trying to find the next likely language match...
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/custom-jenkins
+[0m
+replacing placeholders in directory /tmp/test-import-ng-projects485396820-DefaultJenkinsfile/custom_jenkins
+app name: custom-jenkins, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-ng-projects485396820-DefaultJenkinsfile/custom_jenkins/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+performing pack detection in folder /tmp/test-import-ng-projects485396820-DefaultJenkinsfile/docker
+--> Draft detected PLpgSQL (100.000000%)
+--> Could not find a pack for PLpgSQL. Trying to find the next likely language match...
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/docker
+[0m
+replacing placeholders in directory /tmp/test-import-ng-projects485396820-DefaultJenkinsfile/docker
+app name: docker, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-ng-projects485396820-DefaultJenkinsfile/docker/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+performing pack detection in folder /tmp/test-import-ng-projects485396820-DefaultJenkinsfile/docker-helm
+--> Draft detected YAML (91.200000%)
+--> Could not find a pack for YAML. Trying to find the next likely language match...
+--> Draft detected PLpgSQL (8.800000%)
+--> Could not find a pack for PLpgSQL. Trying to find the next likely language match...
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/docker-helm
+[0m
+replacing placeholders in directory /tmp/test-import-ng-projects485396820-DefaultJenkinsfile/docker-helm
+app name: docker-helm, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-ng-projects485396820-DefaultJenkinsfile/docker-helm/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/gradle
+[0m
+replacing placeholders in directory /tmp/test-import-ng-projects485396820-DefaultJenkinsfile/gradle_no_files
+app name: gradle-no-files, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-ng-projects485396820-DefaultJenkinsfile/gradle_no_files/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+performing pack detection in folder /tmp/test-import-ng-projects485396820-DefaultJenkinsfile/helm
+--> Draft detected YAML (100.000000%)
+--> Could not find a pack for YAML. Trying to find the next likely language match...
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/helm
+[0m
+replacing placeholders in directory /tmp/test-import-ng-projects485396820-DefaultJenkinsfile/helm
+app name: helm, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-ng-projects485396820-DefaultJenkinsfile/helm/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+modified the helm file: [32m/tmp/test-import-ng-projects485396820-DefaultJenkinsfile/maven_camel/charts/maven-camel/values.yaml[0m
+replacing placeholders in directory /tmp/test-import-ng-projects485396820-DefaultJenkinsfile/maven_camel
+app name: maven-camel, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-ng-projects485396820-DefaultJenkinsfile/maven_camel/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+trying to use draft pack: maven
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-ng-projects485396820-DefaultJenkinsfile/maven_custom_build_pack
+app name: maven-custom-build-pack, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-ng-projects485396820-DefaultJenkinsfile/maven_custom_build_pack/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-ng-projects485396820-DefaultJenkinsfile/maven_no_files
+app name: maven-no-files, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-ng-projects485396820-DefaultJenkinsfile/maven_no_files/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-ng-projects485396820-DefaultJenkinsfile/maven_old_jenkinsfile
+app name: maven-old-jenkinsfile, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-ng-projects485396820-DefaultJenkinsfile/maven_old_jenkinsfile/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-ng-projects485396820-DefaultJenkinsfile/maven_old_jenkinsfile_with_git
+app name: maven-old-jenkinsfile-with-git, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-ng-projects485396820-DefaultJenkinsfile/maven_old_jenkinsfile_with_git/.git"
+dry-run so skipping import to Jenkins X
+Setting the current namespace to: [32m**[0m
+
+Git repository created
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+replacing placeholders in directory /tmp/test-import-ng-projects485396820-DefaultJenkinsfile/maven_springboot
+app name: maven-springboot, git server: github.com, org: jstrachan, Docker registry org: jstrachan
+skipping directory "/tmp/test-import-ng-projects485396820-DefaultJenkinsfile/maven_springboot/.git"
+dry-run so skipping import to Jenkins X
+replacing placeholders in directory /tmp/test-replace-placeholders001427619
+app name: bar, git server: github.com, org: foo, Docker registry org: registry-org
+[33mWARNING[0m: organisation orga detected from URL https://github.com/orga/myrepo. '--org orgb' will be ignored
+Setting the current namespace to: [32m**[0m
+[33mWARNING[0m: GitOps mode requires [32mvault[0m.
+Setting the dev namespace to: [32m**[0m
+[33mWARNING[0m: Helm facade is not a *helm.HelmCLI or *helm.HelmTemplate: &helm_test.MockHelmer{fail:(func(string, ...int))(nil)}
+Storing the kubernetes provider gke in the TeamSettings
+Enabling helm template mode in the TeamSettings
+[32mset exposeController Config Domain mytestdomain
+[0m
+[33mWARNING[0m: Expecting ingress controller to be installed in [32m/[0m
+Using [32mhelm2[0m
+Skipping [32mtiller[0m
+Using helmBinary [32mhelm[0m with feature flag: [32mtemplate-mode[0m
+Initialising Helm '[32minit --client-only[0m'
+[32mhelm installed and configured[0m
+Lets set up a Git user name and API token to be able to perform CI/CD
+
+Select the CI/CD pipelines Git server and user
+Setting the pipelines Git server [32mhttps://fake.git[0m and user name [32mmytestuser[0m.
+Saving the Git authentication configuration
+Current configuration dir: /builder/home/.**
+versionRepository: https://github.com/jenkins-x/jenkins-x-versions.git git ref: 
+Deleting and cloning the Jenkins X versions repo
+Cloning the Jenkins X versions repo [32mhttps://github.com/jenkins-x/jenkins-x-versions.git[0m with ref [32mrefs/heads/master[0m to [32m/builder/home/.**/jenkins-x-versions[0m
+Enumerating objects: 84, done.
+Counting objects:   1% (1/84)   Counting objects:   2% (2/84)   Counting objects:   3% (3/84)   Counting objects:   4% (4/84)   Counting objects:   5% (5/84)   Counting objects:   7% (6/84)   Counting objects:   8% (7/84)   Counting objects:   9% (8/84)   Counting objects:  10% (9/84)   Counting objects:  11% (10/84)   Counting objects:  13% (11/84)   Counting objects:  14% (12/84)   Counting objects:  15% (13/84)   Counting objects:  16% (14/84)   Counting objects:  17% (15/84)   Counting objects:  19% (16/84)   Counting objects:  20% (17/84)   Counting objects:  21% (18/84)   Counting objects:  22% (19/84)   Counting objects:  23% (20/84)   Counting objects:  25% (21/84)   Counting objects:  26% (22/84)   Counting objects:  27% (23/84)   Counting objects:  28% (24/84)   Counting objects:  29% (25/84)   Counting objects:  30% (26/84)   Counting objects:  32% (27/84)   Counting objects:  33% (28/84)   Counting objects:  34% (29/84)   Counting objects:  35% (30/84)   Counting objects:  36% (31/84)   Counting objects:  38% (32/84)   Counting objects:  39% (33/84)   Counting objects:  40% (34/84)   Counting objects:  41% (35/84)   Counting objects:  42% (36/84)   Counting objects:  44% (37/84)   Counting objects:  45% (38/84)   Counting objects:  46% (39/84)   Counting objects:  47% (40/84)   Counting objects:  48% (41/84)   Counting objects:  50% (42/84)   Counting objects:  51% (43/84)   Counting objects:  52% (44/84)   Counting objects:  53% (45/84)   Counting objects:  54% (46/84)   Counting objects:  55% (47/84)   Counting objects:  57% (48/84)   Counting objects:  58% (49/84)   Counting objects:  59% (50/84)   Counting objects:  60% (51/84)   Counting objects:  61% (52/84)   Counting objects:  63% (53/84)   Counting objects:  64% (54/84)   Counting objects:  65% (55/84)   Counting objects:  66% (56/84)   Counting objects:  67% (57/84)   Counting objects:  69% (58/84)   Counting objects:  70% (59/84)   Counting objects:  71% (60/84)   Counting objects:  72% (61/84)   Counting objects:  73% (62/84)   Counting objects:  75% (63/84)   Counting objects:  76% (64/84)   Counting objects:  77% (65/84)   Counting objects:  78% (66/84)   Counting objects:  79% (67/84)   Counting objects:  80% (68/84)   Counting objects:  82% (69/84)   Counting objects:  83% (70/84)   Counting objects:  84% (71/84)   Counting objects:  85% (72/84)   Counting objects:  86% (73/84)   Counting objects:  88% (74/84)   Counting objects:  89% (75/84)   Counting objects:  90% (76/84)   Counting objects:  91% (77/84)   Counting objects:  92% (78/84)   Counting objects:  94% (79/84)   Counting objects:  95% (80/84)   Counting objects:  96% (81/84)   Counting objects:  97% (82/84)   Counting objects:  98% (83/84)   Counting objects: 100% (84/84)   Counting objects: 100% (84/84), done.
+Compressing objects:   1% (1/60)   Compressing objects:   3% (2/60)   Compressing objects:   5% (3/60)   Compressing objects:   6% (4/60)   Compressing objects:   8% (5/60)   Compressing objects:  10% (6/60)   Compressing objects:  11% (7/60)   Compressing objects:  13% (8/60)   Compressing objects:  15% (9/60)   Compressing objects:  16% (10/60)   Compressing objects:  18% (11/60)   Compressing objects:  20% (12/60)   Compressing objects:  21% (13/60)   Compressing objects:  23% (14/60)   Compressing objects:  25% (15/60)   Compressing objects:  26% (16/60)   Compressing objects:  28% (17/60)   Compressing objects:  30% (18/60)   Compressing objects:  31% (19/60)   Compressing objects:  33% (20/60)   Compressing objects:  35% (21/60)   Compressing objects:  36% (22/60)   Compressing objects:  38% (23/60)   Compressing objects:  40% (24/60)   Compressing objects:  41% (25/60)   Compressing objects:  43% (26/60)   Compressing objects:  45% (27/60)   Compressing objects:  46% (28/60)   Compressing objects:  48% (29/60)   Compressing objects:  50% (30/60)   Compressing objects:  51% (31/60)   Compressing objects:  53% (32/60)   Compressing objects:  55% (33/60)   Compressing objects:  56% (34/60)   Compressing objects:  58% (35/60)   Compressing objects:  60% (36/60)   Compressing objects:  61% (37/60)   Compressing objects:  63% (38/60)   Compressing objects:  65% (39/60)   Compressing objects:  66% (40/60)   Compressing objects:  68% (41/60)   Compressing objects:  70% (42/60)   Compressing objects:  71% (43/60)   Compressing objects:  73% (44/60)   Compressing objects:  75% (45/60)   Compressing objects:  76% (46/60)   Compressing objects:  78% (47/60)   Compressing objects:  80% (48/60)   Compressing objects:  81% (49/60)   Compressing objects:  83% (50/60)   Compressing objects:  85% (51/60)   Compressing objects:  86% (52/60)   Compressing objects:  88% (53/60)   Compressing objects:  90% (54/60)   Compressing objects:  91% (55/60)   Compressing objects:  93% (56/60)   Compressing objects:  95% (57/60)   Compressing objects:  96% (58/60)   Compressing objects:  98% (59/60)   Compressing objects: 100% (60/60)   Compressing objects: 100% (60/60), done.
+Total 1420 (delta 38), reused 60 (delta 20), pack-reused 1336
+Current configuration dir: /builder/home/.**
+options.Flags.CloudEnvRepository: 
+options.Flags.LocalCloudEnvironment: false
+Cloning the Jenkins X cloud environments repo to /builder/home/.**/cloud-environments
+Enumerating objects: 32, done.
+Counting objects:   3% (1/32)   Counting objects:   6% (2/32)   Counting objects:   9% (3/32)   Counting objects:  12% (4/32)   Counting objects:  15% (5/32)   Counting objects:  18% (6/32)   Counting objects:  21% (7/32)   Counting objects:  25% (8/32)   Counting objects:  28% (9/32)   Counting objects:  31% (10/32)   Counting objects:  34% (11/32)   Counting objects:  37% (12/32)   Counting objects:  40% (13/32)   Counting objects:  43% (14/32)   Counting objects:  46% (15/32)   Counting objects:  50% (16/32)   Counting objects:  53% (17/32)   Counting objects:  56% (18/32)   Counting objects:  59% (19/32)   Counting objects:  62% (20/32)   Counting objects:  65% (21/32)   Counting objects:  68% (22/32)   Counting objects:  71% (23/32)   Counting objects:  75% (24/32)   Counting objects:  78% (25/32)   Counting objects:  81% (26/32)   Counting objects:  84% (27/32)   Counting objects:  87% (28/32)   Counting objects:  90% (29/32)   Counting objects:  93% (30/32)   Counting objects:  96% (31/32)   Counting objects: 100% (32/32)   Counting objects: 100% (32/32), done.
+Compressing objects:   3% (1/28)   Compressing objects:   7% (2/28)   Compressing objects:  10% (3/28)   Compressing objects:  14% (4/28)   Compressing objects:  17% (5/28)   Compressing objects:  21% (6/28)   Compressing objects:  25% (7/28)   Compressing objects:  28% (8/28)   Compressing objects:  32% (9/28)   Compressing objects:  35% (10/28)   Compressing objects:  39% (11/28)   Compressing objects:  42% (12/28)   Compressing objects:  46% (13/28)   Compressing objects:  50% (14/28)   Compressing objects:  53% (15/28)   Compressing objects:  57% (16/28)   Compressing objects:  60% (17/28)   Compressing objects:  64% (18/28)   Compressing objects:  67% (19/28)   Compressing objects:  71% (20/28)   Compressing objects:  75% (21/28)   Compressing objects:  78% (22/28)   Compressing objects:  82% (23/28)   Compressing objects:  85% (24/28)   Compressing objects:  89% (25/28)   Compressing objects:  92% (26/28)   Compressing objects:  96% (27/28)   Compressing objects: 100% (28/28)   Compressing objects: 100% (28/28), done.
+Total 1414 (delta 6), reused 18 (delta 4), pack-reused 1382
+No default password set, generating a random one
+Generated helm values [32m/builder/home/.**/extraValues.yaml[0m
+Installing Jenkins X platform helm chart from: /builder/home/.**/cloud-environments/env-gke
+Setting the current namespace to: [32m**[0m
+Installing ** into namespace [32m**[0m
+using stable version [32m2.0.276[0m from charts of [32mjenkins-x/jenkins-x-platform[0m from /builder/home/.**/jenkins-x-versions
+Installing jenkins-x-platform version: [32m2.0.276[0m
+Configuring the TeamSettings for ImportMode Jenkinsfile
+
+
+	********************************************************
+
+	     NOTE: Your ***** password is: [32mMsC+P8f6a8OBLzd#oA5q[0m
+
+	********************************************************
+
+	
+[33mWARNING[0m: No service called jenkins-x-chartmuseum could be found so couldn't wire up the local auth file to talk to chart museum
+
+
+Generated the source code for the GitOps development environment at [32m/tmp/test-install-gitops039006118/jenkins-x-dev-environment[0m
+You can apply this to the kubernetes cluster at any time in this directory via: [32m** step env apply[0m
+
+Using Git provider [32mhttps://fake.git[0m
+
+
+About to create repository [32menvironment-questerdune-dev[0m on server [32mhttps://fake.git[0m with user [32mmytestuser[0m
+
+
+Creating repository [32mmytestorg/environment-questerdune-dev[0m
+Creating Git repository [32mmytestorg[0m/[32menvironment-questerdune-dev[0m
+Pushed Git repository to [32m[0m
+
+[32m
+Jenkins X installation completed successfully[0m
+
+
+	********************************************************
+
+	     NOTE: Your ***** password is: [32mMsC+P8f6a8OBLzd#oA5q[0m
+
+	********************************************************
+
+	
+
+Your Kubernetes context is now set to the namespace: [32m**[0m 
+To switch back to your original namespace use: [32m** namespace **[0m
+Or to use this context/namespace in just one terminal use: [32m** shell[0m
+For help on switching contexts see: [32mhttps://jenkins-x.io/developing/kube-context/[0m
+
+To import existing projects into Jenkins:       [32m** import[0m
+To create a new Spring Boot microservice:       [32m** create spring -d web -d actuator[0m
+To create a new microservice from a quickstart: [32m** create quickstart[0m
+5ee85b632a9fc657fb77c3d4db3fc37d6ebc765c3 <nil>
+Setting the current namespace to: [32m**[0m
+Creating PR for environment staging from PipelineActivity myorg-my-app-master-1 as current status is (*v1.PromoteActivityStep)(nil)
+Promoting app [32mmy-app[0m version [32m1.0.1[0m to namespace [32m**-staging[0m
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Created Pull Request: [32mhttps://fake.git/myorg/environment-staging/pulls/1[0m
+
+Found Promote PullRequest https://fake.git/myorg/environment-staging/pulls/1 on PipelineActivity myorg-my-app-master-1 for Environment staging
+Pipeline myorg-my-app-master-1 promote Environment staging has PR https://fake.git/myorg/environment-staging/pulls/1 with status pending
+PR https://fake.git/myorg/environment-staging/pulls/1 is now merged
+PR https://fake.git/myorg/environment-staging/pulls/1 has commit status success
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+[33mWARNING[0m: Could not find the service URL in namespace **-staging for names my-app, , **-staging-my-app
+Promoting app [32mmy-app[0m version [32m1.2.0[0m to namespace [32m**-production[0m
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Created Pull Request: [32mhttps://fake.git/myorg/environment-production/pulls/1[0m
+
+Found Promote PullRequest https://fake.git/myorg/environment-production/pulls/1 on PipelineActivity myorg-my-app-master-1 for Environment production
+PR https://fake.git/myorg/environment-production/pulls/1 is now merged
+PR https://fake.git/myorg/environment-production/pulls/1 has commit status success
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+[33mWARNING[0m: Could not find the service URL in namespace **-production for names my-app, , **-production-my-app
+Setting the current namespace to: [32m**[0m
+Creating PR for environment staging from PipelineActivity myorg-my-app-master-1 as current status is (*v1.PromoteActivityStep)(nil)
+Promoting app [32mmy-app[0m version [32m1.0.1[0m to namespace [32m**-staging[0m
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Created Pull Request: [32mhttps://fake.git/myorg/environment-staging/pulls/1[0m
+
+Found Promote PullRequest https://fake.git/myorg/environment-staging/pulls/1 on PipelineActivity myorg-my-app-master-1 for Environment staging
+Pipeline myorg-my-app-master-1 promote Environment staging has PR https://fake.git/myorg/environment-staging/pulls/1 with status pending
+PR https://fake.git/myorg/environment-staging/pulls/1 is now merged
+PR https://fake.git/myorg/environment-staging/pulls/1 has commit status success
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+[33mWARNING[0m: Could not find the service URL in namespace **-staging for names my-app, , **-staging-my-app
+Waiting 1s for PullRequest in Enviroment production
+Promoting latest version of app [32mmy-app[0m to namespace [32m**-production[0m
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Created Pull Request: [32mhttps://fake.git/myorg/environment-production/pulls/1[0m
+
+Found Promote PullRequest https://fake.git/myorg/environment-production/pulls/1 on PipelineActivity myorg-my-app-master-1 for Environment production
+PR https://fake.git/myorg/environment-production/pulls/1 is now merged
+PR https://fake.git/myorg/environment-production/pulls/1 has commit status success
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Pull Request [32mhttps://fake.git/myorg/environment-production/pulls/1[0m is merged at sha [32mpromote-my-app-latest[0m
+merge status: [32msuccess[0m for URL [32mhttps://fake.git/myorg/environment-production/commits/promote-my-app-latest[0m with target: [32m[0m description: [32mmy-app to latest[0m
+Merge status checks all passed so the promotion worked!
+[33mWARNING[0m: No version name so cannot comment on issues that they are now in Production
+Setting the current namespace to: [32m**[0m
+Creating PR for environment staging from PipelineActivity myorg-my-app-master-1 as current status is (*v1.PromoteActivityStep)(nil)
+Promoting app [32mmy-app[0m version [32m1.0.1[0m to namespace [32m**-staging[0m
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Created Pull Request: [32mhttps://fake.git/myorg/environment-staging/pulls/1[0m
+
+Found Promote PullRequest https://fake.git/myorg/environment-staging/pulls/1 on PipelineActivity myorg-my-app-master-1 for Environment staging
+Pipeline myorg-my-app-master-1 promote Environment staging has PR https://fake.git/myorg/environment-staging/pulls/1 with status pending
+PR https://fake.git/myorg/environment-staging/pulls/1 is now merged
+PR https://fake.git/myorg/environment-staging/pulls/1 has commit status success
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+[33mWARNING[0m: Could not find the service URL in namespace **-staging for names my-app, , **-staging-my-app
+Waiting 1s for PullRequest in Enviroment production
+Promoting latest version of app [32mmy-app[0m to namespace [32m**-production[0m
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Created Pull Request: [32mhttps://fake.git/myorg/environment-production/pulls/1[0m
+
+Found Promote PullRequest https://fake.git/myorg/environment-production/pulls/1 on PipelineActivity myorg-my-app-master-1 for Environment production
+[33mWARNING[0m: Could not find Jenkins URL: failed to find service jenkins in namespace **: services "jenkins" not found in namespace **
+Pull Request [32mhttps://fake.git/myorg/environment-production/pulls/1[0m is merged at sha [32mpromote-my-app-latest[0m
+merge status: [32msuccess[0m for URL [32mhttps://fake.git/myorg/environment-production/commits/promote-my-app-latest[0m with target: [32m[0m description: [32mmy-app to latest[0m
+Merge status checks all passed so the promotion worked!
+[33mWARNING[0m: No version name so cannot comment on issues that they are now in Production
+Setting the current namespace to: [32m**[0m
+[32mtest-context[0m enabled for [32mtest-org/test-repo[0m
+[32mJenkins X checks passed for Cluster(): 1 nodes, memory 0% of 10G, cpu 0% of 10.
+[0m
+Setting the current namespace to: [32m**[0m
+build pack is https://github.com/jenkins-x-buildpacks/jenkins-x-kubernetes.git
+[32mselected pack: /builder/home/.**/draft/packs/github.com/jenkins-x-buildpacks/jenkins-x-kubernetes/packs/maven
+[0m
+Setting the current namespace to: [32m**[0m
+generated Jenkins configuration file [32m/tmp/test-step-create-jenkins-config.xml354374807[0m
+Setting the current namespace to: [32m**[0m
+Created Jenkins Project: [32m/job/mytestorg/job/mytestorg[0m
+
+[34mNote that your first pipeline may take a few minutes to start while the necessary images get downloaded!
+
+[0m
+Setting the current namespace to: [32m**[0m
+stashed: [32mfile:///tmp/test-step-collect549614284/output/test_data/step_collect/junit.xml[0m
+Setting the current namespace to: [32m**[0m
+Setting the current namespace to: [32m**[0m
+Removing installation of Jenkins X in team namespace [32mns[0m
+deleting namespace [32mns[0m
+[32mJenkins X has been successfully uninstalled from team namespace ns[0m
+Setting the current namespace to: [32m**[0m
+Removing installation of Jenkins X in team namespace [32mns[0m
+deleting namespace [32mns[0m
+[32mJenkins X has been successfully uninstalled from team namespace ns[0m
+Setting the current namespace to: [32m**[0m
+Removing installation of Jenkins X in team namespace [32mns[0m
+deleting namespace [32mns[0m
+[32mJenkins X has been successfully uninstalled from team namespace ns[0m
+Setting the current namespace to: [32m**[0m
+Read credentials for http://chartmuseum.jenkins-x.io from vault helm/repos
+Creating mock chart -a171cc56-1d0e-4d51-a033-066bf9ecf84d in /tmp/**-helm-fetch--a171cc56-1d0e-4d51-a033-066bf9ecf84d-043864485/-a171cc56-1d0e-4d51-a033-066bf9ecf84d
+Created Pull Request: [32mhttps://fake.git/d0076af6-23a7-464c-bfff-e42246298073/environment-d0076af6-23a7-464c-bfff-e42246298073-7ba3bb23-4345-4e74-9a7e-de400d2968b0-dev/pulls/1[0m
+
+Setting the current namespace to: [32m**[0m
+Read credentials for http://fake.chartmuseum from vault helm/repos
+Creating mock chart -e947fb3d-2797-49a9-bd24-e9c1c59f1975 in /tmp/**-helm-fetch--e947fb3d-2797-49a9-bd24-e9c1c59f1975-966417183/-e947fb3d-2797-49a9-bd24-e9c1c59f1975
+Created Pull Request: [32mhttps://fake.git/83aade14-b611-43f2-a2e8-cdd803362486/environment-83aade14-b611-43f2-a2e8-cdd803362486-eb9d8036-725a-45bf-b483-dfeecf2a7750-dev/pulls/1[0m
+
+Setting the current namespace to: [32m**[0m
+Read credentials for http://fake.chartmuseum from vault helm/repos
+Creating mock chart -4a81507f-cfa9-46f9-8a43-985784a0ad85 in /tmp/**-helm-fetch--4a81507f-cfa9-46f9-8a43-985784a0ad85-366256628/-4a81507f-cfa9-46f9-8a43-985784a0ad85
+Created Pull Request: [32mhttps://fake.git/0a6550b5-22fc-4dac-9cc5-ecf805385951/environment-0a6550b5-22fc-4dac-9cc5-ecf805385951-9f6d8d19-f796-4939-b85c-ad0b3e1d1b92-dev/pulls/1[0m
+
+Setting the current namespace to: [32m**[0m
+Read credentials for http://fake.chartmuseum from vault helm/repos
+Creating mock chart -1f67447e-343b-44eb-96dd-5b0c0e607828 in /tmp/**-helm-fetch--1f67447e-343b-44eb-96dd-5b0c0e607828-104354285/-1f67447e-343b-44eb-96dd-5b0c0e607828
+Created Pull Request: [32mhttps://fake.git/4354eea7-9368-4c94-9e86-37f16ad0280d/environment-4354eea7-9368-4c94-9e86-37f16ad0280d-f361f607-43ee-4292-b7fc-216fab809f17-dev/pulls/1[0m
+
+Setting the current namespace to: [32m**[0m
+Read credentials for http://fake.chartmuseum from vault helm/repos
+Creating mock chart -045ca5b7-f803-475d-95e1-2f509c6da986 in /tmp/**-helm-fetch--045ca5b7-f803-475d-95e1-2f509c6da986-975075290/-045ca5b7-f803-475d-95e1-2f509c6da986
+Setting the current namespace to: [32m**[0m
+Read credentials for http://fake.chartmuseum from vault helm/repos
+Creating mock chart -eb367776-23ae-44dd-93bc-661cdb43d569 in /tmp/**-helm-fetch--eb367776-23ae-44dd-93bc-661cdb43d569-116258332/-eb367776-23ae-44dd-93bc-661cdb43d569
+Created Pull Request: [32mhttps://fake.git/14fcc373-42f8-4509-9305-1247e0728974/environment-14fcc373-42f8-4509-9305-1247e0728974-6c6e7d69-2d36-495b-8ba6-f654ec4ea50c-dev/pulls/1[0m
+
+Setting the current namespace to: [32m**[0m
+Read credentials for http://fake.chartmuseum from vault helm/repos
+Creating mock chart -77d0b5c8-eb3c-421f-a2df-ac533da1acc4 in /tmp/**-helm-fetch--77d0b5c8-eb3c-421f-a2df-ac533da1acc4-911196078/-77d0b5c8-eb3c-421f-a2df-ac533da1acc4
+Creating mock chart -1adc98c2-134d-4c2a-a7c9-95049472c9f7 in /tmp/**-helm-fetch--1adc98c2-134d-4c2a-a7c9-95049472c9f7-094596917/-1adc98c2-134d-4c2a-a7c9-95049472c9f7
+Created Pull Request: [32mhttps://fake.git/7dc57be6-b723-4e6e-9926-14caef96550d/environment-7dc57be6-b723-4e6e-9926-14caef96550d-af5d7dd4-20f4-4c26-8ccd-8eb2fe4fc060-dev/pulls/1[0m
+
+Setting the current namespace to: [32m**[0m
+Setting the current namespace to: [32m**[0m
+[33mWARNING[0m: Found namespace &v1.Namespace{TypeMeta:v1.TypeMeta{Kind:"", APIVersion:""}, ObjectMeta:v1.ObjectMeta{Name:"**", GenerateName:"", Namespace:"", SelfLink:"", UID:"", ResourceVersion:"", Generation:0, CreationTimestamp:v1.Time{Time:time.Time{wall:0x0, ext:0, loc:(*time.Location)(nil)}}, DeletionTimestamp:(*v1.Time)(nil), DeletionGracePeriodSeconds:(*int64)(nil), Labels:map[string]string{"tag":""}, Annotations:map[string]string(nil), OwnerReferences:[]v1.OwnerReference(nil), Initializers:(*v1.Initializers)(nil), Finalizers:[]string(nil), ClusterName:""}, Spec:v1.NamespaceSpec{Finalizers:[]v1.FinalizerName(nil)}, Status:v1.NamespaceStatus{Phase:""}}
+--- FAIL: TestDeleteAppForGitOps (0.00s)
+Setting the current namespace to: [32m**[0m
+Setting the current namespace to: [32m**[0m
+panic: When() requires an argument which has to be 'a method call on a mock'. [recovered]
+	panic: When() requires an argument which has to be 'a method call on a mock'.
+
+goroutine 759 [running]:
+testing.tRunner.func1(0xc000820e00)
+	/usr/local/go/src/testing/testing.go:792 +0x387
+panic(0x3822100, 0xc00116e0b0)
+	/usr/local/go/src/runtime/panic.go:513 +0x1b9
+github.com/petergtz/pegomock/internal/verify.Argument(0xc00233dc00, 0x41e1426, 0x46, 0x0, 0x0, 0x0)
+	/home/jenkins/go/pkg/mod/github.com/petergtz/pegomock@v2.2.0+incompatible/internal/verify/verify.go:7 +0xb3
+github.com/petergtz/pegomock.When(0xc00233dc98, 0x1, 0x1, 0x0)
+	/home/jenkins/go/pkg/mod/github.com/petergtz/pegomock@v2.2.0+incompatible/dsl.go:397 +0x89
+github.com/jenkins-x/**/pkg/**/cmd/cmd_test_helpers.CreateAppTestOptions(0xf64b2ce8f638b801, 0xc0001ba0c0, 0x24, 0xc000820e00, 0x0)
+	/workspace/source/pkg/**/cmd/cmd_test_helpers/app_test_helpers.go:228 +0xc57
+github.com/jenkins-x/**/pkg/**/cmd_test.TestDeleteAppForGitOps(0xc000820e00)
+	/workspace/source/pkg/**/cmd/delete_app_test.go:27 +0xee
+testing.tRunner(0xc000820e00, 0x42720a0)
+	/usr/local/go/src/testing/testing.go:827 +0xbf
+created by testing.(*T).Run
+	/usr/local/go/src/testing/testing.go:878 +0x35c
+FAIL	github.com/jenkins-x/**/pkg/**/cmd	139.750s
+?   	github.com/jenkins-x/**/pkg/**/cmd/bdd	[no test files]
+?   	github.com/jenkins-x/**/pkg/**/cmd/clients	[no test files]
+ok  	github.com/jenkins-x/**/pkg/**/cmd/clients/fake	0.066s	coverage: 4.0% of statements
+?   	github.com/jenkins-x/**/pkg/**/cmd/clients/mocks	[no test files]
+?   	github.com/jenkins-x/**/pkg/**/cmd/cmd_test_helpers	[no test files]
+ok  	github.com/jenkins-x/**/pkg/**/cmd/opts	3.520s	coverage: 3.4% of statements
+?   	github.com/jenkins-x/**/pkg/**/cmd/templates	[no test files]
+?   	github.com/jenkins-x/**/pkg/kserving	[no test files]
+ok  	github.com/jenkins-x/**/pkg/kube	1.157s	coverage: 30.7% of statements
+ok  	github.com/jenkins-x/**/pkg/kube/cluster	0.038s	coverage: 72.2% of statements
+?   	github.com/jenkins-x/**/pkg/kube/mocks	[no test files]
+?   	github.com/jenkins-x/**/pkg/kube/mocks/matchers	[no test files]
+ok  	github.com/jenkins-x/**/pkg/kube/pki	10.040s	coverage: 20.9% of statements
+?   	github.com/jenkins-x/**/pkg/kube/resources	[no test files]
+?   	github.com/jenkins-x/**/pkg/kube/resources/mocks	[no test files]
+?   	github.com/jenkins-x/**/pkg/kube/serviceaccount	[no test files]
+?   	github.com/jenkins-x/**/pkg/kube/services	[no test files]
+ok  	github.com/jenkins-x/**/pkg/kube/vault	0.109s	coverage: 55.8% of statements
+?   	github.com/jenkins-x/**/pkg/log	[no test files]
+?   	github.com/jenkins-x/**/pkg/maven	[no test files]
+?   	github.com/jenkins-x/**/pkg/nodes	[no test files]
+ok  	github.com/jenkins-x/**/pkg/packages	0.012s	coverage: 38.8% of statements
+?   	github.com/jenkins-x/**/pkg/pipeline_events	[no test files]
+ok  	github.com/jenkins-x/**/pkg/pipelinescheduler	0.023s	coverage: 84.4% of statements
+ok  	github.com/jenkins-x/**/pkg/pipelinescheduler/prow	0.029s	coverage: 90.6% of statements
+?   	github.com/jenkins-x/**/pkg/pipelinescheduler/testhelpers	[no test files]
+ok  	github.com/jenkins-x/**/pkg/prow	0.063s	coverage: 76.2% of statements
+ok  	github.com/jenkins-x/**/pkg/prow/config	0.019s	coverage: 9.6% of statements
+ok  	github.com/jenkins-x/**/pkg/quickstarts	0.015s	coverage: 18.4% of statements
+ok  	github.com/jenkins-x/**/pkg/reports	0.010s	coverage: 39.7% of statements
+?   	github.com/jenkins-x/**/pkg/spring	[no test files]
+ok  	github.com/jenkins-x/**/pkg/surveyutils	0.223s	coverage: 66.2% of statements
+?   	github.com/jenkins-x/**/pkg/table	[no test files]
+ok  	github.com/jenkins-x/**/pkg/tekton	0.130s	coverage: 38.9% of statements
+ok  	github.com/jenkins-x/**/pkg/tekton/syntax	0.317s	coverage: 77.9% of statements
+?   	github.com/jenkins-x/**/pkg/tekton/tekton_helpers_test	[no test files]
+ok  	github.com/jenkins-x/**/pkg/terraform	0.009s	coverage: 6.8% of statements
+?   	github.com/jenkins-x/**/pkg/testkube	[no test files]
+?   	github.com/jenkins-x/**/pkg/tests	[no test files]
+ok  	github.com/jenkins-x/**/pkg/users	0.103s	coverage: 43.5% of statements
+ok  	github.com/jenkins-x/**/pkg/util	10.027s	coverage: 27.1% of statements
+ok  	github.com/jenkins-x/**/pkg/util/json	0.021s	coverage: 72.7% of statements
+?   	github.com/jenkins-x/**/pkg/util/mocks	[no test files]
+ok  	github.com/jenkins-x/**/pkg/util/system	0.030s	coverage: 33.3% of statements
+ok  	github.com/jenkins-x/**/pkg/vault	0.020s	coverage: 16.2% of statements
+?   	github.com/jenkins-x/**/pkg/vault/mocks	[no test files]
+?   	github.com/jenkins-x/**/pkg/vault/mocks/matchers	[no test files]
+ok  	github.com/jenkins-x/**/pkg/version	0.011s	coverage: 51.8% of statements
+?   	github.com/jenkins-x/**/pkg/workflow	[no test files]
+make: *** [test-slow-integration] Error 1
