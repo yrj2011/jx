@@ -1,0 +1,18 @@
+Step: build-step-git-source-jenkins-x-**-pr-3951-lint-ndbnc:
+
+{"level":"warn","ts":1557900877.509313,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1557900880.3205256,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/jenkins-x/** @ 36766eded26c6b3b0e7906fb92975959af37bc10 in path /workspace/source"}
+Step: build-step-git-merge:
+
+Warning failed to load version: failed to parse version -dev+9e73adc0b: No Major.Minor.Patch elements found
+time="2019-05-15T06:14:40Z" level=info msg="got "
+Using SHAs from PULL_REFS=master:c4b62723da1258354c2b3d16413a91544fae747e,3951:36766eded26c6b3b0e7906fb92975959af37bc10
+ran git remote update in 
+ran git fetch origin 36766eded26c6b3b0e7906fb92975959af37bc10: c4b62723da1258354c2b3d16413a91544fae747e: in 
+error: running git fetch --unshallow : failed to run 'git fetch --unshallow' command in directory '', output: 'fatal: git fetch-pack: expected shallow list'
+Step: build-step-mkdir:
+
+Step: build-step-copy:
+
+Step: build-step-lint:
+
