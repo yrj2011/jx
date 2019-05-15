@@ -1,0 +1,24 @@
+Step: build-step-git-source-jenkins-x-**-batch-lint-cjfbg:
+
+{"level":"warn","ts":1557899264.3134878,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1557899266.876662,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/jenkins-x/** @ 9b51268b2232515046d29e88b580260c2bc0c66b in path /workspace/source"}
+Step: build-step-git-merge:
+
+Warning failed to load version: failed to parse version -dev+9e73adc0b: No Major.Minor.Patch elements found
+time="2019-05-15T05:47:47Z" level=info msg="got "
+Using SHAs from PULL_REFS=master:c4b62723da1258354c2b3d16413a91544fae747e,3938:9b51268b2232515046d29e88b580260c2bc0c66b,3951:36766eded26c6b3b0e7906fb92975959af37bc10
+ran git remote update in 
+ran git fetch origin 9b51268b2232515046d29e88b580260c2bc0c66b: 36766eded26c6b3b0e7906fb92975959af37bc10: c4b62723da1258354c2b3d16413a91544fae747e: in 
+Converted  to an unshallow repository
+Unshallowed git repo in 
+ran git checkout master in 
+ran git reset --hard c4b62723da1258354c2b3d16413a91544fae747e in 
+ran clean --force -d . in 
+ran git merge 9b51268b2232515046d29e88b580260c2bc0c66b in 
+error: merging 36766eded26c6b3b0e7906fb92975959af37bc10 into master: failed to run 'git merge 36766eded26c6b3b0e7906fb92975959af37bc10' command in directory '', output: 'fatal: 36766eded26c6b3b0e7906fb92975959af37bc10 - not something we can merge'
+Step: build-step-mkdir:
+
+Step: build-step-copy:
+
+Step: build-step-lint:
+
