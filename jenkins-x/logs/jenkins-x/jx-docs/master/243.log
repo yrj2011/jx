@@ -1,0 +1,40 @@
+Step: build-step-git-source-jenkins-x-**-docs-master-tekton-bxhtp:
+
+{"level":"warn","ts":1557924965.6694672,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1557924972.428839,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/jenkins-x/**-docs @ v0.0.286 in path /workspace/source"}
+Step: build-step-git-merge:
+
+Warning failed to load version: failed to parse version -dev+9e73adc0b: No Major.Minor.Patch elements found
+time="2019-05-15T12:56:13Z" level=info msg="got "
+Using SHAs from PULL_REFS=master:3e5b5cbd0f2718263c2dc30a3f402e3e2605fd8c
+time="2019-05-15T12:56:13Z" level=warning msg="no SHAs to merge, falling back to initial cloned commit"
+Step: build-step-step2:
+
+Cloning into 'jenkins-x-website'...
+Step: build-step-step3:
+
+Hugo Static Site Generator v0.49 linux/amd64 BuildDate: 2018-09-24T10:03:17Z
+Step: build-step-step4:
+
+[?25lBuilding sites … [?25h[K
+                   | EN  | ZH   
++------------------+-----+-----+
+  Pages            | 478 |  81  
+  Paginator pages  |   3 |   0  
+  Non-page files   |   1 |   1  
+  Static files     | 253 | 253  
+  Processed images |   0 |   0  
+  Aliases          |  64 |   9  
+  Sitemaps         |   2 |   1  
+  Cleaned          |   0 |   0  
+
+Total in 8931 ms
+Step: build-step-step5:
+
+/workspace/source/jenkins-x-website /workspace/source
+Generated Git credentials file /builder/home/git/credentials
+[master e7a4e6a] updated site
+ 488 files changed, 1508 insertions(+), 1508 deletions(-)
+To https://github.com/jenkins-x/jenkins-x-website.git
+   8e24cd9..e7a4e6a  master -> master
+/workspace/source
