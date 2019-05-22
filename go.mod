@@ -157,6 +157,8 @@ replace k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20190122181752-bebe27e
 
 replace k8s.io/client-go => k8s.io/client-go v2.0.0-alpha.0.0.20190115164855-701b91367003+incompatible
 
+replace k8s.io/api/rbac/v1 => github.com/yrj2011/api_rbac_v1 v0.1
+
 replace k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.0.0-20181128195303-1f84094d7e8e
 
 replace git.apache.org/thrift.git => github.com/apache/thrift v0.0.0-20180902110319-2566ecd5d999
