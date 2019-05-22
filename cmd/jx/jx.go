@@ -5,7 +5,7 @@ import (
 
 	"fmt"
 
-	//"github.com/jenkins-x/jx/cmd/jx/app"
+	"github.com/jenkins-x/jx/cmd/jx/app"
 )
 
 // Entrypoint for jx command
