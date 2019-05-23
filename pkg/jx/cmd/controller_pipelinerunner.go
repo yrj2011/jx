@@ -166,6 +166,7 @@ func (o *ControllerPipelineRunnerOptions) startPipelineRun(w http.ResponseWriter
 		o.returnError(err, "could not parse body: "+err.Error(), w, r)
 		return
 	}
+	log.Infof("got payload %#v", arguments)
 	if o.Verbose {
 		log.Infof("got payload %#v", arguments)
 	}
@@ -192,8 +193,9 @@ func (o *ControllerPipelineRunnerOptions) startPipelineRun(w http.ResponseWriter
 		o.returnError(err, "failed to get env vars from prowjob", w, r)
 		return
 	}
-
-	sourceURL := fmt.Sprintf("https://github.com/%s/%s.git", pj.Refs.Org, pj.Refs.Repo)
+	log.Infof("替换gitlab 192.168.1", arguments)
+	//sourceURL := fmt.Sprintf("https//github.com/%s/%s.git", pj.Refs.Org, pj.Refs.Repo)
+	sourceURL := fmt.Sprintf("http//192.168.1.25:8880/%s/%s.git", pj.Refs.Org, pj.Refs.Repo)
 	if sourceURL == "" {
 		o.returnError(err, "missing sourceURL property", w, r)
 		return
