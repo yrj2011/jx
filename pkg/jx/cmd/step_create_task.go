@@ -221,6 +221,8 @@ func (o *StepCreateTaskOptions) Run() error {
 	if o.KanikoSecretMount == "" {
 		o.KanikoSecretMount = kanikoSecretMount
 	}
+	log.Infof("my jx log:cloning git for %s\n", o.CloneGitURL)
+	log.Infof("my jx log:cloning git for %s\n", o.CloneGitURL)
 	if o.Verbose {
 		log.Infof("cloning git for %s\n", o.CloneGitURL)
 	}
@@ -1436,6 +1438,7 @@ func (o *StepCreateTaskOptions) cloneGitRepositoryToTempDir(gitURL string) error
 	if err != nil {
 		return err
 	}
+	log.Infof("my jx log : shallow cloning repository %s to temp dir %s\n", gitURL, o.Dir)
 	log.Infof("shallow cloning repository %s to temp dir %s\n", gitURL, o.Dir)
 	err = o.Git().Init(o.Dir)
 	if err != nil {
