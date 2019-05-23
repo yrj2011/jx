@@ -137,7 +137,6 @@ require (
 	k8s.io/api v0.0.0-20190126160303-ccdd560a045f
 	k8s.io/apiextensions-apiserver v0.0.0-20190308081736-3a66ae4d2f93
 	k8s.io/apimachinery v0.0.0-20190122181752-bebe27e40fb7
-	k8s.io/api/rbac/v1 v.1.0.0
 	k8s.io/client-go v9.0.0+incompatible
 	k8s.io/helm v2.7.2+incompatible
 	k8s.io/kube-openapi v0.0.0-20190228160746-b3a7cee44a30
@@ -155,8 +154,6 @@ replace k8s.io/api => k8s.io/api v0.0.0-20181128191700-6db15a15d2d3
 replace k8s.io/metrics => k8s.io/metrics v0.0.0-20181128195641-3954d62a524d
 
 replace k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20190122181752-bebe27e40fb7
-
-replace k8s.io/api/rbac/v1 => k8s.io/apimachinery v0.0.0-20190122181752-bebe27e40fb7
 
 replace k8s.io/client-go => k8s.io/client-go v2.0.0-alpha.0.0.20190115164855-701b91367003+incompatible
 
