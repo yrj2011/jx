@@ -1076,15 +1076,19 @@ func (options *InstallOptions) configureHelm(client kubernetes.Interface, namesp
 }
 
 func (options *InstallOptions) configureHelmRepo() error {
+
+	log.Infof("第一次需要手动配置helm repo.")
+	log.Infof("跳过配置helm repo.  %s   jenkins-x",kube.DefaultChartMuseumURL)
+/*
 	_, err := options.AddHelmBinaryRepoIfMissing(kube.DefaultChartMuseumURL, "jenkins-x", "", "")
 	if err != nil {
-		return errors.Wrap(err, "failed to add the jenkinx-x helm repo")
-	}
+		//return errors.Wrap(err, "failed to add the jenkinx-x helm repo")
+	}*/
 
-	err = options.Helm().UpdateRepo()
+	/*err = options.Helm().UpdateRepo()
 	if err != nil {
 		return errors.Wrap(err, "failed to update the helm repo")
-	}
+	}*/
 	return nil
 }
 
