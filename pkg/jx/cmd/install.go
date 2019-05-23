@@ -459,7 +459,7 @@ func (options *InstallOptions) Run() error {
 	if err != nil {
 		return errors.Wrap(err, "checking the provided flags")
 	}
-
+	log.Infof("\n选择安装类型 \n")
 	err = options.selectJenkinsInstallation()
 	if err != nil {
 		return errors.Wrap(err, "selecting the Jenkins installation type")
