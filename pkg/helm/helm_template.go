@@ -240,7 +240,7 @@ func (h *HelmTemplate) Template(chart string, releaseName string, ns string, out
 // InstallChart installs a helm chart according with the given flags
 func (h *HelmTemplate) InstallChart(chart string, releaseName string, ns string, version string, timeout int,
 	values []string, valueFiles []string, repo string, username string, password string) error {
-
+	log.Infof("yrj InstallChart chart %s \n", chart)
 	err := h.clearOutputDir(releaseName)
 	if err != nil {
 		return err
@@ -587,6 +587,7 @@ func (h *HelmTemplate) fetchChart(chart string, version string, dir string, repo
 			break
 		}
 	}
+	log.Infof("标记日志 Fetched chart %s to dir %s\n", chart, answer)
 	log.Infof("Fetched chart %s to dir %s\n", chart, answer)
 	return answer, nil
 }

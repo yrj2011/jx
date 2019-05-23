@@ -1872,6 +1872,7 @@ func (options *InstallOptions) configureCloudProviderPreInit(client kubernetes.I
 }
 
 func (options *InstallOptions) configureCloudProivderPostInit(client kubernetes.Interface, namespace string) error {
+	log.Infof("yrj configureCloudProivderPostInit !!!! ")
 	switch options.Flags.Provider {
 	case cloud.MINISHIFT:
 		fallthrough
