@@ -413,10 +413,14 @@ func createEnvironmentGitRepo(batchMode bool, authConfigSvc auth.ConfigService, 
 			if err != nil {
 				return nil, nil, errors.Wrapf(err, "parsing forked environment git URL %q", forkEnvGitURL)
 			}
+
 			originalOrg := gitInfo.Organisation
 			originalRepo := gitInfo.Name
+			fmt.Fprintf(out, "originalOrg:%s,originalRepo:%s\n", originalOrg, originalRepo)
+			fmt.Fprintf(out, "gitInfo.IsGitHub:%s,provider.IsGitHub():%s\n", gitInfo.IsGitHub(), provider.IsGitHub())
 			if useForkForEnvGitRepo && gitInfo.IsGitHub() && provider.IsGitHub() && originalOrg != "" && originalRepo != "" {
 				// lets try fork the repository and rename it
+				fmt.Fprintf(out, "lets try fork the repository and rename it")
 				repo, err := provider.ForkRepository(originalOrg, originalRepo, org)
 				if err != nil {
 					return nil, nil, fmt.Errorf("failed to fork GitHub repo %s/%s to organisation %s due to %s",
@@ -476,7 +480,9 @@ func createEnvironmentGitRepo(batchMode bool, authConfigSvc auth.ConfigService, 
 			return nil, nil, errors.Wrap(err, "creating the repository")
 		}
 		fmt.Fprintf(out, "my log repo: %s\n\n", repo)
+		fmt.Fprintf(out, "forkEnvGitURL 1 :%s\n", forkEnvGitURL)
 		if forkEnvGitURL != "" {
+			fmt.Fprintf(out, "forkEnvGitURL 2 :%s\n", forkEnvGitURL)
 			// now lets clone the fork and push it...
 			dir, err := util.CreateUniqueDirectory(envDir, details.RepoName, util.MaximumNewDirectoryAttempts)
 			if err != nil {
