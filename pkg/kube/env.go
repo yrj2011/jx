@@ -433,26 +433,33 @@ func createEnvironmentGitRepo(batchMode bool, authConfigSvc auth.ConfigService, 
 				if err != nil {
 					return nil, nil, errors.Wrapf(err, "creating unique dir to fork environment repository %q", envDir)
 				}
+				log.Infof("repo.CloneURL:%s, dir:%s\n", repo.CloneURL, dir)
 				err = git.Clone(repo.CloneURL, dir)
 				if err != nil {
 					return nil, nil, errors.Wrapf(err, "cloning the environment %q", repo.CloneURL)
 				}
+				log.Infof("repo.upstream:%s\n", forkEnvGitURL)
 				err = git.SetRemoteURL(dir, "upstream", forkEnvGitURL)
 				if err != nil {
 					return nil, nil, errors.Wrapf(err, "setting remote upstream %q in forked environment repo", forkEnvGitURL)
 				}
+				log.Infof("repo.PullUpstream:%s\n", dir)
 				err = git.PullUpstream(dir)
 				if err != nil {
 					return nil, nil, errors.Wrap(err, "pulling upstream of forked environment repository")
 				}
+
+				log.Infof("repo.ModifyNamespace:%s:%s:%s:%s:%s\n", out, dir, env, git, chartMuseumFn)
 				err = ModifyNamespace(out, dir, env, git, chartMuseumFn)
 				if err != nil {
 					return nil, nil, errors.Wrap(err, "modifying namespace of forked environment")
 				}
+				log.Infof("repo.addValues:%s:%s:%s:%s\n", out, dir, helmValues, git)
 				err = addValues(out, dir, helmValues, git)
 				if err != nil {
 					return nil, nil, errors.Wrap(err, "adding helm values to the forked environment repo")
 				}
+				log.Infof("repo.Push:%s\n", dir)
 				err = git.Push(dir)
 				if err != nil {
 					return nil, nil, errors.Wrapf(err, "pushing forked environment dir %q", dir)
