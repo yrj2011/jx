@@ -406,7 +406,9 @@ func createEnvironmentGitRepo(batchMode bool, authConfigSvc auth.ConfigService, 
 	} else {
 		fmt.Fprintf(out, "Creating Git repository %s/%s\n", util.ColorInfo(owner), util.ColorInfo(repoName))
 
+		fmt.Fprintf(out, "forkEnvGitURL:%s\n", forkEnvGitURL)
 		if forkEnvGitURL != "" {
+			fmt.Fprintf(out, "forkEnvGitURL2:%s\n", forkEnvGitURL)
 			gitInfo, err := gits.ParseGitURL(forkEnvGitURL)
 			if err != nil {
 				return nil, nil, errors.Wrapf(err, "parsing forked environment git URL %q", forkEnvGitURL)
@@ -473,7 +475,7 @@ func createEnvironmentGitRepo(batchMode bool, authConfigSvc auth.ConfigService, 
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "creating the repository")
 		}
-
+		fmt.Fprintf(out, "my log repo: %s\n\n", repo)
 		if forkEnvGitURL != "" {
 			// now lets clone the fork and push it...
 			dir, err := util.CreateUniqueDirectory(envDir, details.RepoName, util.MaximumNewDirectoryAttempts)
