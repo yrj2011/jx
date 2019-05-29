@@ -195,7 +195,7 @@ cluster provisioning. Cleaning up stack %s and recreating it with eksctl.`,
 	args = append(args, "--aws-api-timeout", flags.AWSOperationTimeout.String())
 
 	log.Info("Creating EKS cluster - this can take a while so please be patient...")
-	log.Infof("You can watch progress in the CloudFormation console: %s", util.ColorInfo("https://console.aws.amazon.com/cloudformation/"))
+	log.Infof("You can watch progress in the CloudFormation console: %s", util.ColorInfo("http://console.aws.amazon.com/cloudformation/"))
 
 	log.Debugf("Running command: %s", util.ColorInfo("eksctl "+strings.Join(args, " ")))
 	if o.Verbose {

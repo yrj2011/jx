@@ -12,7 +12,7 @@ var (
 	createCamelLong = templates.LongDesc(`
 		Creates a new Apache Camel application using Spring Boot and then optionally sets up CI/CD pipelines and GitOps promotion.
 
-		For more documentation about Camel see: [https://camel.apache.org/](https://camel.apache.org/)
+		For more documentation about Camel see: [http://camel.apache.org/](http://camel.apache.org/)
 
 ` + opts.SeeAlsoText("jx create project"))
 

@@ -117,7 +117,7 @@ func (o *GetLimitsOptions) Run() error {
 }
 
 func (o *GetLimitsOptions) GetLimits(server string, username string, apitoken string) (RateLimits, error) {
-	url := fmt.Sprintf("https://%s:%s@api.github.com/rate_limit", username, apitoken)
+	url := fmt.Sprintf("http://%s:%s@api.github.com/rate_limit", username, apitoken)
 
 	// Build the request
 	req, err := http.NewRequest("GET", url, nil)

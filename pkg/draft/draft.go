@@ -16,7 +16,7 @@ import (
 )
 
 // copied from draft so we can change the $DRAFT_HOME to ~/.jx/draft and lookup jx draft packs
-// credit original from: https://github.com/Azure/draft/blob/8e1a459/cmd/draft/create.go#L163
+// credit original from: http://github.com/Azure/draft/blob/8e1a459/cmd/draft/create.go#L163
 
 // DoPackDetection performs pack detection across all the packs available in $(draft home)/packs in
 // alphabetical order, returning the pack dirpath and any errors that occurred during the pack detection.

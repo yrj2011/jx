@@ -29,7 +29,7 @@ var (
 	getQuickstartLocationLong = templates.LongDesc(`
 		Display one or more Quickstart Locations for the current Team.
 
-		For more documentation see: [https://jenkins-x.io/developing/create-quickstart/#customising-your-teams-quickstarts](https://jenkins-x.io/developing/create-quickstart/#customising-your-teams-quickstarts)
+		For more documentation see: [http://jenkins-x.io/developing/create-quickstart/#customising-your-teams-quickstarts](http://jenkins-x.io/developing/create-quickstart/#customising-your-teams-quickstarts)
 
 `)
 

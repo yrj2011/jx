@@ -189,7 +189,7 @@ func TestCreateEnvironmentSurvey(t *testing.T) {
 		console.ExpectString("We will now create a Git repository to store your staging environment, ok? :")
 		console.SendLine("N")
 		console.ExpectString("Git URL for the Environment source code:")
-		console.SendLine("https://github.com/derekzoolanderreallyreallygoodlooking/staging-env")
+		console.SendLine("http://github.com/derekzoolanderreallyreallygoodlooking/staging-env")
 		console.ExpectString("Git branch for the Environment source code:")
 		console.SendLine("master")
 		console.ExpectEOF()

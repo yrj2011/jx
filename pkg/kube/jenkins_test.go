@@ -18,7 +18,7 @@ func TestAddGiteaServers(t *testing.T) {
 		Data: map[string]string{},
 	}
 
-	expectedGitURL := "https://my.gitea.com"
+	expectedGitURL := "http://my.gitea.com"
 	expectedGitName := "mygitea"
 	expectedCredentials := "my-credential-name"
 	server := &auth.AuthServer{
@@ -105,7 +105,7 @@ func TestAddGitHuvServers(t *testing.T) {
 		Data: map[string]string{},
 	}
 
-	expectedGitHostURL := "https://github.bees.com"
+	expectedGitHostURL := "http://github.bees.com"
 	expectedGitURL := expectedGitHostURL + "/api/v3/"
 	expectedGitName := "GHE"
 	expectedCredentials := "my-credential-name"
@@ -148,7 +148,7 @@ func TestAddBitBucketServerServers(t *testing.T) {
 		Data: map[string]string{},
 	}
 
-	expectedGitURL := "https://my.bitbucket.com"
+	expectedGitURL := "http://my.bitbucket.com"
 	expectedGitName := "mybitbucket"
 	expectedCredentials := "my-credential-name"
 	server := &auth.AuthServer{

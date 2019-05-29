@@ -152,7 +152,7 @@ version: 0.0.1
 description: GitOps Environment for this Environment
 maintainers:
   - name: Team
-icon: https://www.cloudbees.com/sites/default/files/Jenkins_8.png
+icon: http://www.cloudbees.com/sites/default/files/Jenkins_8.png
 `
 
 	devGitOpsGitIgnore = `
@@ -236,7 +236,7 @@ var (
 		Requires a --git-username and --git-api-token that can be used to create a new token.
 		This is so the Jenkins X platform can git tag your releases
 
-		For more documentation see: [https://jenkins-x.io/getting-started/install-on-cluster/](https://jenkins-x.io/getting-started/install-on-cluster/)
+		For more documentation see: [http://jenkins-x.io/getting-started/install-on-cluster/](http://jenkins-x.io/getting-started/install-on-cluster/)
 
 		The current requirements are:
 
@@ -336,7 +336,7 @@ func (options *InstallOptions) addInstallFlags(cmd *cobra.Command, includesInit 
 	flags.addCloudEnvOptions(cmd)
 	cmd.Flags().StringVarP(&flags.LocalHelmRepoName, "local-helm-repo-name", "", kube.LocalHelmRepoName, "The name of the helm repository for the installed ChartMuseum")
 	cmd.Flags().BoolVarP(&flags.NoDefaultEnvironments, "no-default-environments", "", false, "Disables the creation of the default Staging and Production environments")
-	cmd.Flags().BoolVarP(&flags.RemoteEnvironments, "remote-environments", "", false, "Indicates you intend Staging and Production environments to run in remote clusters. See https://jenkins-x.io/getting-started/multi-cluster/")
+	cmd.Flags().BoolVarP(&flags.RemoteEnvironments, "remote-environments", "", false, "Indicates you intend Staging and Production environments to run in remote clusters. See http://jenkins-x.io/getting-started/multi-cluster/")
 	cmd.Flags().StringVarP(&flags.DefaultEnvironmentPrefix, "default-environment-prefix", "", "", "Default environment repo prefix, your Git repos will be of the form 'environment-$prefix-$envName'")
 	cmd.Flags().StringVarP(&flags.Namespace, "namespace", "", "jx", "The namespace the Jenkins X platform should be installed into")
 	cmd.Flags().StringVarP(&flags.Timeout, "timeout", "", opts.DefaultInstallTimeout, "The number of seconds to wait for the helm install to complete")
@@ -727,7 +727,7 @@ func (options *InstallOptions) Run() error {
 	log.Infof("\nYour Kubernetes context is now set to the namespace: %s \n", util.ColorInfo(ns))
 	log.Infof("To switch back to your original namespace use: %s\n", util.ColorInfo("jx namespace "+originalNs))
 	log.Infof("Or to use this context/namespace in just one terminal use: %s\n", util.ColorInfo("jx shell"))
-	log.Infof("For help on switching contexts see: %s\n\n", util.ColorInfo("https://jenkins-x.io/developing/kube-context/"))
+	log.Infof("For help on switching contexts see: %s\n\n", util.ColorInfo("http://jenkins-x.io/developing/kube-context/"))
 
 	log.Infof("To import existing projects into Jenkins:       %s\n", util.ColorInfo("jx import"))
 	log.Infof("To create a new Spring Boot microservice:       %s\n", util.ColorInfo("jx create spring -d web -d actuator"))
@@ -1078,12 +1078,12 @@ func (options *InstallOptions) configureHelm(client kubernetes.Interface, namesp
 func (options *InstallOptions) configureHelmRepo() error {
 
 	log.Infof("第一次需要手动配置helm repo.")
-	log.Infof("跳过配置helm repo.  %s   jenkins-x",kube.DefaultChartMuseumURL)
-/*
-	_, err := options.AddHelmBinaryRepoIfMissing(kube.DefaultChartMuseumURL, "jenkins-x", "", "")
-	if err != nil {
-		//return errors.Wrap(err, "failed to add the jenkinx-x helm repo")
-	}*/
+	log.Infof("跳过配置helm repo.  %s   jenkins-x", kube.DefaultChartMuseumURL)
+	/*
+		_, err := options.AddHelmBinaryRepoIfMissing(kube.DefaultChartMuseumURL, "jenkins-x", "", "")
+		if err != nil {
+			//return errors.Wrap(err, "failed to add the jenkinx-x helm repo")
+		}*/
 
 	/*err = options.Helm().UpdateRepo()
 	if err != nil {

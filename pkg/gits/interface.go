@@ -109,7 +109,7 @@ type GitProvider interface {
 	// other examples include:
 	//
 	// * gitlab: /gitlab/notify_commit
-	// https://github.com/elvanja/jenkins-gitlab-hook-plugin#notify-commit-hook
+	// http://github.com/elvanja/jenkins-gitlab-hook-plugin#notify-commit-hook
 	//
 	// * git plugin
 	// /git/notifyCommit?url=
@@ -120,7 +120,7 @@ type GitProvider interface {
 	//
 	// * generic webhook
 	// /generic-webhook-trigger/invoke?token=abc123
-	// https://wiki.jenkins.io/display/JENKINS/Generic+Webhook+Trigger+Plugin
+	// http://wiki.jenkins.io/display/JENKINS/Generic+Webhook+Trigger+Plugin
 
 	JenkinsWebHookPath(gitURL string, secret string) string
 

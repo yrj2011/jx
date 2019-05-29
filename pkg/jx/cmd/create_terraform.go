@@ -64,8 +64,8 @@ type GKECluster struct {
 }
 
 const (
-	devStorageFullControl = "https://www.googleapis.com/auth/devstorage.full_control"
-	devStorageReadOnly    = "https://www.googleapis.com/auth/devstorage.read_only"
+	devStorageFullControl = "http://www.googleapis.com/auth/devstorage.full_control"
+	devStorageReadOnly    = "http://www.googleapis.com/auth/devstorage.read_only"
 )
 
 // Name Get name
@@ -876,7 +876,7 @@ func (options *CreateTerraformOptions) configureGKECluster(g *GKECluster, path s
 		prompts := &survey.Select{
 			Message:  "Google Cloud Machine Type:",
 			Options:  gke.GetGoogleMachineTypes(),
-			Help:     "We recommend a minimum of n1-standard-2 for Jenkins X,  a table of machine descriptions can be found here https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture",
+			Help:     "We recommend a minimum of n1-standard-2 for Jenkins X,  a table of machine descriptions can be found here http://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture",
 			PageSize: 10,
 			Default:  "n1-standard-2",
 		}

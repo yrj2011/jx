@@ -39,7 +39,7 @@ func TestStepPostInstall(t *testing.T) {
 	dev := kube.CreateDefaultDevEnvironment("jx")
 	testOrg := "mytestorg"
 	testRepo := "mytestrepo"
-	stagingGitURL := "https://fake.git/" + testOrg + "/" + testRepo + ".git"
+	stagingGitURL := "http://fake.git/" + testOrg + "/" + testRepo + ".git"
 	staging := kube.NewPermanentEnvironmentWithGit("staging", stagingGitURL)
 
 	o := cmd.StepPostInstallOptions{

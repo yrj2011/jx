@@ -69,8 +69,8 @@ const (
 	CloudEnvSecretsFile         = "secrets.yaml"
 	CloudEnvSopsConfigFile      = ".sops.yaml"
 	DefaultInstallTimeout       = "6000"
-	DefaultCloudEnvironmentsURL = "https://github.com/jenkins-x/cloud-environments"
-	DefaultVersionsURL          = "https://github.com/jenkins-x/jenkins-x-versions.git"
+	DefaultCloudEnvironmentsURL = "http://github.com/jenkins-x/cloud-environments"
+	DefaultVersionsURL          = "http://github.com/jenkins-x/jenkins-x-versions.git"
 )
 
 // Prow keeps install information for prow chart
@@ -178,7 +178,7 @@ func (o *CommonOptions) InstallBrew() error {
 	}
 	log.Infof("Please enter your root password when prompted by the %s installation\n", util.ColorInfo("brew"))
 	//Make sure to run command through sh in order to get $() expanded.
-	return o.RunCommand("sh", "-c", "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"")
+	return o.RunCommand("sh", "-c", "/usr/bin/ruby -e \"$(curl -fsSL http://raw.githubusercontent.com/Homebrew/install/master/install)\"")
 }
 
 // ShouldInstallBinary checks if the given binary should be installed
@@ -396,7 +396,7 @@ func (o *CommonOptions) InstallKubectlWithVersion(version string, skipPathScan b
 	return o.InstallOrUpdateBinary(InstallOrUpdateBinaryOptions{
 		Binary:                       "kubectl",
 		GitHubOrganization:           "",
-		DownloadUrlTemplate:          "https://storage.googleapis.com/kubernetes-release/release/v{{.version}}/bin/{{.osTitle}}/{{.arch}}/kubectl",
+		DownloadUrlTemplate:          "http://storage.googleapis.com/kubernetes-release/release/v{{.version}}/bin/{{.osTitle}}/{{.arch}}/kubectl",
 		DownloadUrlTemplateLowerCase: true,
 		Version:                      version,
 		SkipPathScan:                 skipPathScan,
@@ -428,7 +428,7 @@ func (o *CommonOptions) InstallGlooctl() error {
 	if runtime.GOOS == "windows" {
 		suffix += ".exe"
 	}
-	clientURL := fmt.Sprintf("https://github.com/solo-io/gloo/releases/download/v%v/glooctl-%s-%s", latestVersion, latestVersion, suffix)
+	clientURL := fmt.Sprintf("http://github.com/solo-io/gloo/releases/download/v%v/glooctl-%s-%s", latestVersion, latestVersion, suffix)
 	fullPath := filepath.Join(binDir, fileName)
 	tmpFile := fullPath + ".tmp"
 	err = packages.DownloadFile(clientURL, tmpFile)
@@ -461,7 +461,7 @@ func (o *CommonOptions) InstallKustomize() error {
 		return fmt.Errorf("unable to get latest version for github.com/%s/%s %v", "kubernetes-sigs", "kustomize", err)
 	}
 
-	clientURL := fmt.Sprintf("https://github.com/kubernetes-sigs/kustomize/releases/download/v%v/kustomize_%s_%s_%s", latestVersion, latestVersion, runtime.GOOS, runtime.GOARCH)
+	clientURL := fmt.Sprintf("http://github.com/kubernetes-sigs/kustomize/releases/download/v%v/kustomize_%s_%s_%s", latestVersion, latestVersion, runtime.GOOS, runtime.GOARCH)
 	fullPath := filepath.Join(binDir, fileName)
 	tmpFile := fullPath + ".tmp"
 	err = packages.DownloadFile(clientURL, tmpFile)
@@ -492,7 +492,7 @@ func (o *CommonOptions) InstallOc() error {
 	}
 
 	var arch string
-	clientURL := fmt.Sprintf("https://github.com/openshift/origin/releases/download/v%s/openshift-origin-client-tools-v%s-%s", latestVersion, latestVersion, sha)
+	clientURL := fmt.Sprintf("http://github.com/openshift/origin/releases/download/v%s/openshift-origin-client-tools-v%s-%s", latestVersion, latestVersion, sha)
 
 	extension := ".zip"
 	switch runtime.GOOS {
@@ -566,7 +566,7 @@ func (o *CommonOptions) InstallHyperkit() error {
 			return nil
 		}
 		o.Printf("Result: %s and %v\n", info, err)
-		err = o.runCommand("curl", "-LO", "https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-hyperkit")
+		err = o.runCommand("curl", "-LO", "http://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-hyperkit")
 		if err != nil {
 			return err
 		}
@@ -576,7 +576,7 @@ func (o *CommonOptions) InstallHyperkit() error {
 			return err
 		}
 
-		log.Warn("Installing hyperkit does require sudo to perform some actions, for more details see https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#hyperkit-driver")
+		log.Warn("Installing hyperkit does require sudo to perform some actions, for more details see http://github.com/kubernetes/minikube/blob/master/docs/drivers.md#hyperkit-driver")
 
 		err = o.runCommand("sudo", "mv", "docker-machine-driver-hyperkit", "/usr/local/bin/")
 		if err != nil {
@@ -595,20 +595,20 @@ func (o *CommonOptions) InstallHyperkit() error {
 
 // InstallKvm installs kvm
 func (o *CommonOptions) InstallKvm() error {
-	log.Warnf("We cannot yet automate the installation of KVM - can you install this manually please?\nPlease see: https://www.linux-kvm.org/page/Downloads\n")
+	log.Warnf("We cannot yet automate the installation of KVM - can you install this manually please?\nPlease see: http://www.linux-kvm.org/page/Downloads\n")
 	return nil
 }
 
 // InstallKvm2 install kvm2
 func (o *CommonOptions) InstallKvm2() error {
-	log.Warnf("We cannot yet automate the installation of KVM with KVM2 driver - can you install this manually please?\nPlease see: https://www.linux-kvm.org/page/Downloads " +
-		"and https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#kvm2-driver\n")
+	log.Warnf("We cannot yet automate the installation of KVM with KVM2 driver - can you install this manually please?\nPlease see: http://www.linux-kvm.org/page/Downloads " +
+		"and http://github.com/kubernetes/minikube/blob/master/docs/drivers.md#kvm2-driver\n")
 	return nil
 }
 
 // InstallVirtualBox installs virtual box
 func (o *CommonOptions) InstallVirtualBox() error {
-	log.Warnf("We cannot yet automate the installation of VirtualBox - can you install this manually please?\nPlease see: https://www.virtualbox.org/wiki/Downloads\n")
+	log.Warnf("We cannot yet automate the installation of VirtualBox - can you install this manually please?\nPlease see: http://www.virtualbox.org/wiki/Downloads\n")
 	return nil
 }
 
@@ -698,7 +698,7 @@ func (o *CommonOptions) InstallVaultCli() error {
 	// Strip the v off the beginning of the version number
 	latestVersion = strings.Replace(latestVersion, "v", "", 1)
 
-	clientURL := fmt.Sprintf("https://releases.hashicorp.com/vault/%s/vault_%s_%s_%s.zip", latestVersion, latestVersion, runtime.GOOS, runtime.GOARCH)
+	clientURL := fmt.Sprintf("http://releases.hashicorp.com/vault/%s/vault_%s_%s_%s.zip", latestVersion, latestVersion, runtime.GOOS, runtime.GOARCH)
 	fullPath := filepath.Join(binDir, fileName)
 	tarFile := fullPath + ".zip"
 	err = packages.DownloadFile(clientURL, tarFile)
@@ -742,7 +742,7 @@ func (o *CommonOptions) InstallHelm() error {
 	if err != nil {
 		return err
 	}
-	clientURL := fmt.Sprintf("https://storage.googleapis.com/kubernetes-helm/helm-v%s-%s-%s.tar.gz", latestVersion, runtime.GOOS, runtime.GOARCH)
+	clientURL := fmt.Sprintf("http://storage.googleapis.com/kubernetes-helm/helm-v%s-%s-%s.tar.gz", latestVersion, runtime.GOOS, runtime.GOARCH)
 	fullPath := filepath.Join(binDir, fileName)
 	tarFile := fullPath + ".tgz"
 	err = packages.DownloadFile(clientURL, tarFile)
@@ -783,7 +783,7 @@ func (o *CommonOptions) InstallTiller() error {
 				return err
 			}
 	*/
-	clientURL := fmt.Sprintf("https://storage.googleapis.com/kubernetes-helm/helm-v%s-%s-%s.tar.gz", latestVersion, runtime.GOOS, runtime.GOARCH)
+	clientURL := fmt.Sprintf("http://storage.googleapis.com/kubernetes-helm/helm-v%s-%s-%s.tar.gz", latestVersion, runtime.GOOS, runtime.GOARCH)
 	fullPath := filepath.Join(binDir, fileName)
 	helmFullPath := filepath.Join(binDir, "helm")
 	tarFile := fullPath + ".tgz"
@@ -829,11 +829,11 @@ func (o *CommonOptions) InstallHelm3() error {
 	*/
 	/*
 		latestVersion := "3"
-		clientURL := fmt.Sprintf("https://storage.googleapis.com/kubernetes-helm/helm-dev-v%s-%s-%s.tar.gz", latestVersion, runtime.GOOS, runtime.GOARCH)
+		clientURL := fmt.Sprintf("http://storage.googleapis.com/kubernetes-helm/helm-dev-v%s-%s-%s.tar.gz", latestVersion, runtime.GOOS, runtime.GOARCH)
 	*/
 	// let use our patched version
 	latestVersion := "untagged-93375777c6644a452a64"
-	clientURL := fmt.Sprintf("https://github.com/jstrachan/helm/releases/download/%v/helm-%s-%s.tar.gz", latestVersion, runtime.GOOS, runtime.GOARCH)
+	clientURL := fmt.Sprintf("http://github.com/jstrachan/helm/releases/download/%v/helm-%s-%s.tar.gz", latestVersion, runtime.GOOS, runtime.GOARCH)
 
 	tmpDir := filepath.Join(binDir, "helm3.tmp")
 	err = os.MkdirAll(tmpDir, util.DefaultWritePermissions)
@@ -887,10 +887,10 @@ func (o *CommonOptions) installHelmSecretsPlugin(helmBinary string, clientOnly b
 	}
 	cmd = util.Command{
 		Name: helmBinary,
-		Args: []string{"plugin", "install", "https://github.com/futuresimple/helm-secrets"},
+		Args: []string{"plugin", "install", "http://github.com/futuresimple/helm-secrets"},
 	}
 	_, err = cmd.RunWithoutRetry()
-	// Workaround for Helm install on Windows caused by https://github.com/helm/helm/issues/4418
+	// Workaround for Helm install on Windows caused by http://github.com/helm/helm/issues/4418
 	if err != nil && runtime.GOOS == "windows" && strings.Contains(err.Error(), "Error: symlink") {
 		// The install _does_ seem to work, but we get an error - catch this on windows and lob it in the bin
 		return nil
@@ -1006,7 +1006,7 @@ func (o *CommonOptions) InstallTerraform() error {
 		return err
 	}
 
-	clientURL := fmt.Sprintf("https://releases.hashicorp.com/terraform/%s/terraform_%s_%s_%s.zip", latestVersion, latestVersion, runtime.GOOS, runtime.GOARCH)
+	clientURL := fmt.Sprintf("http://releases.hashicorp.com/terraform/%s/terraform_%s_%s_%s.zip", latestVersion, latestVersion, runtime.GOOS, runtime.GOARCH)
 	fullPath := filepath.Join(binDir, fileName)
 	zipFile := fullPath + ".zip"
 	err = packages.DownloadFile(clientURL, zipFile)
@@ -1044,7 +1044,7 @@ func (o *CommonOptions) InstallKops() error {
 	if err != nil {
 		return err
 	}
-	clientURL := fmt.Sprintf("https://github.com/kubernetes/kops/releases/download/%s/kops-%s-%s", latestVersion, runtime.GOOS, runtime.GOARCH)
+	clientURL := fmt.Sprintf("http://github.com/kubernetes/kops/releases/download/%s/kops-%s-%s", latestVersion, runtime.GOOS, runtime.GOARCH)
 	fullPath := filepath.Join(binDir, fileName)
 	tmpFile := fullPath + ".tmp"
 	err = packages.DownloadFile(clientURL, tmpFile)
@@ -1090,7 +1090,7 @@ func (o *CommonOptions) InstallKSync() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	clientURL := fmt.Sprintf("https://github.com/vapor-ware/ksync/releases/download/%s/ksync_%s_%s", latestVersion, runtime.GOOS, runtime.GOARCH)
+	clientURL := fmt.Sprintf("http://github.com/vapor-ware/ksync/releases/download/%s/ksync_%s_%s", latestVersion, runtime.GOOS, runtime.GOARCH)
 	if runtime.GOOS == "windows" {
 		clientURL += ".exe"
 	}
@@ -1147,7 +1147,7 @@ func (o *CommonOptions) InstallJx(upgrade bool, version string) error {
 	if runtime.GOOS == "windows" {
 		extension = "zip"
 	}
-	clientURL := fmt.Sprintf("https://github.com/"+org+"/"+repo+"/releases/download/v%s/"+binary+"-%s-%s.%s", version, runtime.GOOS, runtime.GOARCH, extension)
+	clientURL := fmt.Sprintf("http://github.com/"+org+"/"+repo+"/releases/download/v%s/"+binary+"-%s-%s.%s", version, runtime.GOOS, runtime.GOARCH, extension)
 	fullPath := filepath.Join(binDir, fileName)
 	if runtime.GOOS == "windows" {
 		fullPath += ".exe"
@@ -1229,7 +1229,7 @@ func (o *CommonOptions) InstallMinikube() error {
 	if err != nil {
 		return err
 	}
-	clientURL := fmt.Sprintf("https://github.com/kubernetes/minikube/releases/download/v%s/minikube-%s-%s", latestVersion, runtime.GOOS, runtime.GOARCH)
+	clientURL := fmt.Sprintf("http://github.com/kubernetes/minikube/releases/download/v%s/minikube-%s-%s", latestVersion, runtime.GOOS, runtime.GOARCH)
 	fullPath := filepath.Join(binDir, fileName)
 	tmpFile := fullPath + ".tmp"
 	err = packages.DownloadFile(clientURL, tmpFile)
@@ -1262,7 +1262,7 @@ func (o *CommonOptions) InstallMinishift() error {
 	if err != nil {
 		return err
 	}
-	clientURL := fmt.Sprintf("https://github.com/minishift/minishift/releases/download/v%s/minishift-%s-%s-%s.tgz", latestVersion, latestVersion, runtime.GOOS, runtime.GOARCH)
+	clientURL := fmt.Sprintf("http://github.com/minishift/minishift/releases/download/v%s/minishift-%s-%s-%s.tgz", latestVersion, latestVersion, runtime.GOOS, runtime.GOARCH)
 	fullPath := filepath.Join(binDir, fileName)
 	tarFile := fullPath + ".tgz"
 	err = packages.DownloadFile(clientURL, tarFile)
@@ -1279,7 +1279,7 @@ func (o *CommonOptions) InstallMinishift() error {
 // InstallGcloud installs gcloud cli
 func (o *CommonOptions) InstallGcloud() error {
 	if runtime.GOOS != "darwin" || o.NoBrew {
-		return errors.New("please install missing gcloud sdk - see https://cloud.google.com/sdk/downloads#interactive")
+		return errors.New("please install missing gcloud sdk - see http://cloud.google.com/sdk/downloads#interactive")
 	}
 	err := o.RunCommand("brew", "tap", "caskroom/cask")
 	if err != nil {
@@ -1299,7 +1299,7 @@ func (o *CommonOptions) InstallOciCli() error {
 	var err error
 	filePath := "./install.sh"
 	log.Info("Installing OCI CLI...\n")
-	err = o.RunCommand("curl", "-LO", "https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh")
+	err = o.RunCommand("curl", "-LO", "http://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh")
 
 	if err != nil {
 		return err
@@ -1330,7 +1330,7 @@ func (o *CommonOptions) InstallEksCtlWithVersion(version string, skipPathScan bo
 	return o.InstallOrUpdateBinary(InstallOrUpdateBinaryOptions{
 		Binary:              "eksctl",
 		GitHubOrganization:  "weaveworks",
-		DownloadUrlTemplate: "https://github.com/weaveworks/eksctl/releases/download/{{.version}}/eksctl_{{.osTitle}}_{{.arch}}.{{.extension}}",
+		DownloadUrlTemplate: "http://github.com/weaveworks/eksctl/releases/download/{{.version}}/eksctl_{{.osTitle}}_{{.arch}}.{{.extension}}",
 		Version:             version,
 		SkipPathScan:        skipPathScan,
 		VersionExtractor:    nil,
@@ -1348,7 +1348,7 @@ func (o *CommonOptions) InstallHeptioAuthenticatorAwsWithVersion(version string,
 	return o.InstallOrUpdateBinary(InstallOrUpdateBinaryOptions{
 		Binary:              "heptio-authenticator-aws",
 		GitHubOrganization:  "",
-		DownloadUrlTemplate: "https://amazon-eks.s3-us-west-2.amazonaws.com/{{.version}}/2018-06-05/bin/{{.os}}/{{.arch}}/heptio-authenticator-aws",
+		DownloadUrlTemplate: "http://amazon-eks.s3-us-west-2.amazonaws.com/{{.version}}/2018-06-05/bin/{{.os}}/{{.arch}}/heptio-authenticator-aws",
 		Version:             version,
 		SkipPathScan:        skipPathScan,
 		VersionExtractor:    nil,
@@ -1609,7 +1609,7 @@ func (o *CommonOptions) InstallProw(useTekton bool, useExternalDNS bool, isGitOp
 
 		config := authConfigSvc.Config()
 		// lets assume github.com for now so ignore config.CurrentServer
-		server := config.GetOrCreateServer("https://github.com")
+		server := config.GetOrCreateServer("http://github.com")
 		message := fmt.Sprintf("%s bot user for CI/CD pipelines (not your personal Git user):", server.Label())
 		userAuth, err := config.PickServerUserAuth(server, message, o.BatchMode, "", o.In, o.Out, o.Err)
 		if err != nil {
@@ -1881,7 +1881,7 @@ func (o *CommonOptions) InstallIBMCloudWithVersion(version string, skipPathScan 
 		return o.InstallOrUpdateBinary(InstallOrUpdateBinaryOptions{
 			Binary:              "ibmcloud",
 			GitHubOrganization:  "",
-			DownloadUrlTemplate: "https://public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/{{.version}}/binaries/IBM_Cloud_CLI_{{.version}}_macos.tgz",
+			DownloadUrlTemplate: "http://public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/{{.version}}/binaries/IBM_Cloud_CLI_{{.version}}_macos.tgz",
 			Version:             version,
 			SkipPathScan:        skipPathScan,
 			VersionExtractor:    nil,
@@ -1892,7 +1892,7 @@ func (o *CommonOptions) InstallIBMCloudWithVersion(version string, skipPathScan 
 	return o.InstallOrUpdateBinary(InstallOrUpdateBinaryOptions{
 		Binary:              "ibmcloud",
 		GitHubOrganization:  "",
-		DownloadUrlTemplate: "https://public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/{{.version}}/binaries/IBM_Cloud_CLI_{{.version}}_{{.os}}_{{.arch}}.{{.extension}}",
+		DownloadUrlTemplate: "http://public.dhe.ibm.com/cloud/bluemix/cli/bluemix-cli/{{.version}}/binaries/IBM_Cloud_CLI_{{.version}}_{{.os}}_{{.arch}}.{{.extension}}",
 		Version:             version,
 		SkipPathScan:        skipPathScan,
 		VersionExtractor:    nil,

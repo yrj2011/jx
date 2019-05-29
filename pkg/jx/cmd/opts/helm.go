@@ -799,7 +799,7 @@ func (o *CommonOptions) HelmInitDependencyBuild(dir string, chartRepos []string)
 	if err != nil {
 		return helmBin, err
 	}
-	// TODO due to this issue: https://github.com/kubernetes/helm/issues/4230
+	// TODO due to this issue: http://github.com/kubernetes/helm/issues/4230
 	// lets stick with helm2 for this step
 	//
 	helmBinary := o.Helm().HelmBinary()

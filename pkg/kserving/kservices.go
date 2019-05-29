@@ -42,7 +42,7 @@ func GetServiceURL(service *v1alpha1.Service, kubeClient kubernetes.Interface, n
 		if err == nil && svc != nil {
 			for _, port := range svc.Spec.Ports {
 				if port.Port == 443 {
-					scheme = "https://"
+					scheme = "http://"
 				}
 			}
 		}

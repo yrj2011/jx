@@ -914,7 +914,7 @@ func (b *BitbucketServerProvider) GetIssue(org string, name string, number int) 
 func (b *BitbucketServerProvider) IssueURL(org string, name string, number int, isPull bool) string {
 	serverPrefix := b.Server.URL
 	if strings.Index(serverPrefix, "://") < 0 {
-		serverPrefix = "https://" + serverPrefix
+		serverPrefix = "http://" + serverPrefix
 	}
 	path := "issues"
 	if isPull {
@@ -977,7 +977,7 @@ func (b *BitbucketServerProvider) Kind() string {
 	return "bitbucketserver"
 }
 
-// Exposed by Jenkins plugin; this one is for https://wiki.jenkins.io/display/JENKINS/BitBucket+Plugin
+// Exposed by Jenkins plugin; this one is for http://wiki.jenkins.io/display/JENKINS/BitBucket+Plugin
 func (b *BitbucketServerProvider) JenkinsWebHookPath(gitURL string, secret string) string {
 	return "/bitbucket-scmsource-hook/notify"
 }

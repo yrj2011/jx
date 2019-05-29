@@ -122,7 +122,7 @@ func TestEnvConfigReader(t *testing.T) {
 		"read config from environment variables": {
 			prefix: prefix,
 			serverRetriever: func() (string, string, auth.ServerKind, auth.ServiceKind) {
-				return "GitHub", "https://github.com", auth.ServerKindGit, auth.ServiceKindGithub
+				return "GitHub", "http://github.com", auth.ServerKindGit, auth.ServiceKindGithub
 			},
 			setup: func(t *testing.T) {
 				setEnvs(t, map[string]string{
@@ -139,7 +139,7 @@ func TestEnvConfigReader(t *testing.T) {
 			want: auth.Config{
 				Servers: []*auth.Server{
 					{
-						URL: "https://github.com",
+						URL: "http://github.com",
 						Users: []*auth.User{
 							{
 								Username: "test",
@@ -158,7 +158,7 @@ func TestEnvConfigReader(t *testing.T) {
 		"read config from empty environment variables": {
 			prefix: prefix,
 			serverRetriever: func() (string, string, auth.ServerKind, auth.ServiceKind) {
-				return "GitHub", "https://github.com", auth.ServerKindGit, auth.ServiceKindGithub
+				return "GitHub", "http://github.com", auth.ServerKindGit, auth.ServiceKindGithub
 			},
 			want: auth.Config{},
 			err:  true,
@@ -242,13 +242,13 @@ func TestKubeSecretsConfigReader(t *testing.T) {
 			serverKind:   auth.ServerKindGit,
 			serviceKind:  auth.ServiceKindGithub,
 			createLabels: true,
-			url:          "https://github.com",
+			url:          "http://github.com",
 			username:     "test",
 			password:     "test",
 			want: auth.Config{
 				Servers: []*auth.Server{
 					{
-						URL: "https://github.com",
+						URL: "http://github.com",
 						Users: []*auth.User{
 							{
 								Username: "test",
@@ -270,13 +270,13 @@ func TestKubeSecretsConfigReader(t *testing.T) {
 			serverKind:   auth.ServerKindGit,
 			serviceKind:  "",
 			createLabels: true,
-			url:          "https://github.com",
+			url:          "http://github.com",
 			username:     "test",
 			password:     "test",
 			want: auth.Config{
 				Servers: []*auth.Server{
 					{
-						URL: "https://github.com",
+						URL: "http://github.com",
 						Users: []*auth.User{
 							{
 								Username: "test",
@@ -298,13 +298,13 @@ func TestKubeSecretsConfigReader(t *testing.T) {
 			serverKind:   "",
 			serviceKind:  auth.ServiceKindGithub,
 			createLabels: true,
-			url:          "https://github.com",
+			url:          "http://github.com",
 			username:     "test",
 			password:     "test",
 			want: auth.Config{
 				Servers: []*auth.Server{
 					{
-						URL: "https://github.com",
+						URL: "http://github.com",
 						Users: []*auth.User{
 							{
 								Username: "test",
@@ -326,7 +326,7 @@ func TestKubeSecretsConfigReader(t *testing.T) {
 			serverKind:   "",
 			serviceKind:  "",
 			createLabels: false,
-			url:          "https://github.com",
+			url:          "http://github.com",
 			username:     "test",
 			password:     "test",
 			want:         auth.Config{},
@@ -338,7 +338,7 @@ func TestKubeSecretsConfigReader(t *testing.T) {
 			serverKind:   "git",
 			serviceKind:  "github",
 			createLabels: true,
-			url:          "https://github.com",
+			url:          "http://github.com",
 			username:     "",
 			password:     "test",
 			want:         auth.Config{},
@@ -350,7 +350,7 @@ func TestKubeSecretsConfigReader(t *testing.T) {
 			serverKind:   "git",
 			serviceKind:  "github",
 			createLabels: true,
-			url:          "https://github.com",
+			url:          "http://github.com",
 			username:     "test",
 			password:     "",
 			want:         auth.Config{},
@@ -374,13 +374,13 @@ func TestKubeSecretsConfigReader(t *testing.T) {
 			serverKind:   "git",
 			serviceKind:  auth.ServiceKindGithub,
 			createLabels: true,
-			url:          "https://github.com",
+			url:          "http://github.com",
 			username:     "test",
 			password:     "test",
 			want: auth.Config{
 				Servers: []*auth.Server{
 					{
-						URL: "https://github.com",
+						URL: "http://github.com",
 						Users: []*auth.User{
 							{
 								Username: "test",
@@ -413,13 +413,13 @@ func TestKubeSecretsConfigReader(t *testing.T) {
 			serverKind:   "",
 			serviceKind:  "",
 			createLabels: true,
-			url:          "https://github.com",
+			url:          "http://github.com",
 			username:     "test",
 			password:     "test",
 			want: auth.Config{
 				Servers: []*auth.Server{
 					{
-						URL: "https://github.com",
+						URL: "http://github.com",
 						Users: []*auth.User{
 							{
 								Username: "test",

@@ -49,8 +49,8 @@ func TestSequentialWorkflow(t *testing.T) {
 	fakeGitProvider := gits.NewFakeProvider(fakeRepo, stagingRepo, prodRepo)
 	fakeGitProvider.User.Username = testOrgName
 
-	staging := kube.NewPermanentEnvironmentWithGit("staging", "https://fake.git/"+testOrgName+"/"+stagingRepoName+".git")
-	production := kube.NewPermanentEnvironmentWithGit("production", "https://fake.git/"+testOrgName+"/"+prodRepoName+".git")
+	staging := kube.NewPermanentEnvironmentWithGit("staging", "http://fake.git/"+testOrgName+"/"+stagingRepoName+".git")
+	production := kube.NewPermanentEnvironmentWithGit("production", "http://fake.git/"+testOrgName+"/"+prodRepoName+".git")
 	staging.Spec.Order = 100
 	production.Spec.Order = 200
 
@@ -219,8 +219,8 @@ func TestWorkflowManualPromote(t *testing.T) {
 	fakeGitProvider := gits.NewFakeProvider(fakeRepo, stagingRepo, prodRepo)
 	fakeGitProvider.User.Username = testOrgName
 
-	staging := kube.NewPermanentEnvironmentWithGit("staging", "https://fake.git/"+testOrgName+"/"+stagingRepoName+".git")
-	production := kube.NewPermanentEnvironmentWithGit("production", "https://fake.git/"+testOrgName+"/"+prodRepoName+".git")
+	staging := kube.NewPermanentEnvironmentWithGit("staging", "http://fake.git/"+testOrgName+"/"+stagingRepoName+".git")
+	production := kube.NewPermanentEnvironmentWithGit("production", "http://fake.git/"+testOrgName+"/"+prodRepoName+".git")
 	production.Spec.PromotionStrategy = v1.PromotionStrategyTypeManual
 
 	configureGitFn := func(dir string, gitInfo *gits.GitRepository, gitter gits.Gitter) error {
@@ -418,9 +418,9 @@ func TestParallelWorkflow(t *testing.T) {
 
 	fakeGitProvider := gits.NewFakeProvider(fakeRepo, repoA, repoB, repoC)
 
-	envA := kube.NewPermanentEnvironmentWithGit(envNameA, "https://fake.git/"+testOrgName+"/"+envRepoNameA+".git")
-	envB := kube.NewPermanentEnvironmentWithGit(envNameB, "https://fake.git/"+testOrgName+"/"+envRepoNameB+".git")
-	envC := kube.NewPermanentEnvironmentWithGit(envNameC, "https://fake.git/"+testOrgName+"/"+envRepoNameC+".git")
+	envA := kube.NewPermanentEnvironmentWithGit(envNameA, "http://fake.git/"+testOrgName+"/"+envRepoNameA+".git")
+	envB := kube.NewPermanentEnvironmentWithGit(envNameB, "http://fake.git/"+testOrgName+"/"+envRepoNameB+".git")
+	envC := kube.NewPermanentEnvironmentWithGit(envNameC, "http://fake.git/"+testOrgName+"/"+envRepoNameC+".git")
 
 	configureGitFn := func(dir string, gitInfo *gits.GitRepository, gitter gits.Gitter) error {
 		err := gitter.Init(dir)
@@ -619,8 +619,8 @@ func TestNewVersionWhileExistingWorkflow(t *testing.T) {
 
 	fakeGitProvider := gits.NewFakeProvider(fakeRepo, stagingRepo, prodRepo)
 
-	staging := kube.NewPermanentEnvironmentWithGit("staging", "https://fake.git/"+testOrgName+"/"+stagingRepoName+".git")
-	production := kube.NewPermanentEnvironmentWithGit("production", "https://fake.git/"+testOrgName+"/"+prodRepoName+".git")
+	staging := kube.NewPermanentEnvironmentWithGit("staging", "http://fake.git/"+testOrgName+"/"+stagingRepoName+".git")
+	production := kube.NewPermanentEnvironmentWithGit("production", "http://fake.git/"+testOrgName+"/"+prodRepoName+".git")
 	staging.Spec.Order = 100
 	production.Spec.Order = 200
 
@@ -774,14 +774,14 @@ func TestNewVersionWhileExistingWorkflow(t *testing.T) {
 }
 
 func TestPullRequestNumber(t *testing.T) {
-	failUrls := []string{"https://fake.git/foo/bar/pulls"}
+	failUrls := []string{"http://fake.git/foo/bar/pulls"}
 	for _, u := range failUrls {
 		_, err := cmd.PullRequestURLToNumber(u)
 		assert.Errorf(t, err, "Expected error for pullRequestURLToNumber() with %s", u)
 	}
 
 	tests := map[string]int{
-		"https://fake.git/foo/bar/pulls/12": 12,
+		"http://fake.git/foo/bar/pulls/12": 12,
 	}
 
 	for u, expected := range tests {

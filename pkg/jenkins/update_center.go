@@ -16,7 +16,7 @@ import (
 
 const (
 	// DefaultUpdateCenterURL the LTS update center metadata URL
-	DefaultUpdateCenterURL = "https://updates.jenkins.io/current/update-center.json"
+	DefaultUpdateCenterURL = "http://updates.jenkins.io/current/update-center.json"
 )
 
 // CoreVersion represents the version of Core
@@ -97,7 +97,7 @@ type WarningVersion struct {
 }
 
 // UpdateCenter represents the Update Center metadata returned from URLs
-// like https://updates.jenkins.io/current/update-center.json
+// like http://updates.jenkins.io/current/update-center.json
 type UpdateCenter struct {
 	ConnectionCheckURL  string                   `json:"connectionCheckUrl"`
 	Core                CoreVersion              `json:"core"`

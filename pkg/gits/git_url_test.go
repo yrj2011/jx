@@ -31,10 +31,10 @@ func TestParseGitURL(t *testing.T) {
 			"git://github.com/jstrachan/npm-pipeline-test-project.git", "github.com", "jstrachan", "npm-pipeline-test-project",
 		},
 		{
-			"https://github.com/fabric8io/foo.git", "github.com", "fabric8io", "foo",
+			"http://github.com/fabric8io/foo.git", "github.com", "fabric8io", "foo",
 		},
 		{
-			"https://github.com/fabric8io/foo", "github.com", "fabric8io", "foo",
+			"http://github.com/fabric8io/foo", "github.com", "fabric8io", "foo",
 		},
 		{
 			"git@github.com:jstrachan/npm-pipeline-test-project.git", "github.com", "jstrachan", "npm-pipeline-test-project",
@@ -52,7 +52,7 @@ func TestParseGitURL(t *testing.T) {
 			"http://test-user@auth.example.com/scm/bar/foo.git", "auth.example.com", "bar", "foo",
 		},
 		{
-			"https://bitbucketserver.com/projects/myproject/repos/foo/pull-requests/1", "bitbucketserver.com", "myproject", "foo",
+			"http://bitbucketserver.com/projects/myproject/repos/foo/pull-requests/1", "bitbucketserver.com", "myproject", "foo",
 		},
 	}
 	for _, data := range testCases {
@@ -72,11 +72,11 @@ func TestSaasKind(t *testing.T) {
 		kind   string
 	}{
 		"GitHub": {
-			gitURL: "https://github.com/test",
+			gitURL: "http://github.com/test",
 			kind:   gits.KindGitHub,
 		},
 		"GitHub Enterprise": {
-			gitURL: "https://github.test.com",
+			gitURL: "http://github.test.com",
 			kind:   gits.KindGitHub,
 		},
 	}
@@ -90,9 +90,9 @@ func TestSaasKind(t *testing.T) {
 }
 
 func TestGitInfoProviderURL(t *testing.T) {
-	for _, u := range []string{"https://github.com/jenkins-x/x.git", "git@github.com:jenkins-x/jx.git"} {
+	for _, u := range []string{"http://github.com/jenkins-x/x.git", "git@github.com:jenkins-x/jx.git"} {
 		info, err := gits.ParseGitURL(u)
 		require.NoError(t, err, "for URL %s", u)
-		assert.Equal(t, "https://github.com", info.ProviderURL(), "ProviderURL() for %s", u)
+		assert.Equal(t, "http://github.com", info.ProviderURL(), "ProviderURL() for %s", u)
 	}
 }

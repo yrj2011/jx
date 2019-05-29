@@ -96,7 +96,7 @@ func (o *StepGitOptions) dropRepository(repoId string, message string) error {
 	err := o.RunCommand("mvn",
 		"org.sonatype.plugins:nexus-staging-maven-plugin:1.6.5:rc-drop",
 		"-DserverId=oss-sonatype-staging",
-		"-DnexusUrl=https://oss.sonatype.org",
+		"-DnexusUrl=http://oss.sonatype.org",
 		"-DstagingRepositoryId="+repoId,
 		"-Ddescription=\""+message+"\" -DstagingProgressTimeoutMinutes=60")
 	if err != nil {
@@ -116,7 +116,7 @@ func (o *StepGitOptions) releaseRepository(repoId string) error {
 	err := options.RunCommand("mvn",
 		"org.sonatype.plugins:nexus-staging-maven-plugin:1.6.5:rc-release",
 		"-DserverId=oss-sonatype-staging",
-		"-DnexusUrl=https://oss.sonatype.org",
+		"-DnexusUrl=http://oss.sonatype.org",
 		"-DstagingRepositoryId="+repoId,
 		"-Ddescription=\"Next release is ready\" -DstagingProgressTimeoutMinutes=60")
 	if err != nil {

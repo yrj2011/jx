@@ -28,7 +28,7 @@ var (
 
 		This command is expected to be run within your '$GOHOME' directory. e.g. at '$GOHOME/src/github.com/myOrgOrUser/'
 
-		For more documentation about Lile see: [https://github.com/lileio/lile](https://github.com/lileio/lile)
+		For more documentation about Lile see: [http://github.com/lileio/lile](http://github.com/lileio/lile)
 
 	`)
 

@@ -19,7 +19,7 @@ var (
 
 		The pattern should match all the branches you wish to automate CI/CD on when creating or importing projects.
 
-		For more documentation see: [https://jenkins-x.io/developing/import/#branch-patterns](https://jenkins-x.io/developing/import/#branch-patterns)
+		For more documentation see: [http://jenkins-x.io/developing/import/#branch-patterns](http://jenkins-x.io/developing/import/#branch-patterns)
 `)
 
 	createBranchPatternExample = templates.Examples(`

@@ -29,7 +29,7 @@ var (
 	getBuildPackLong = templates.LongDesc(`
 		Display the teams build pack Git repository and references used when creating and importing projects
 
-		For more documentation see: [https://jenkins-x.io/architecture/build-packs/](https://jenkins-x.io/architecture/build-packs/)
+		For more documentation see: [http://jenkins-x.io/architecture/build-packs/](http://jenkins-x.io/architecture/build-packs/)
 `)
 
 	getBuildPackExample = templates.Examples(`

@@ -77,7 +77,7 @@ func TestValidServer(t *testing.T) {
 	}{
 		"valid server": {
 			server: &auth.Server{
-				URL:  "https://tests",
+				URL:  "http://tests",
 				Name: "test",
 				Users: []*auth.User{
 					{
@@ -90,7 +90,7 @@ func TestValidServer(t *testing.T) {
 		},
 		"invalid server without users": {
 			server: &auth.Server{
-				URL:   "https://tests",
+				URL:   "http://tests",
 				Name:  "test",
 				Users: []*auth.User{},
 			},
@@ -111,7 +111,7 @@ func TestValidServer(t *testing.T) {
 		},
 		"invalid server with invalid user": {
 			server: &auth.Server{
-				URL:  "https://tests",
+				URL:  "http://tests",
 				Name: "test",
 				Users: []*auth.User{
 					{
@@ -143,7 +143,7 @@ func TestPipelineUser(t *testing.T) {
 	}{
 		"pipeline user": {
 			server: &auth.Server{
-				URL:  "https://test",
+				URL:  "http://test",
 				Name: "test",
 				Users: []*auth.User{
 					{
@@ -166,7 +166,7 @@ func TestPipelineUser(t *testing.T) {
 		},
 		"pipeline user when no user available": {
 			server: &auth.Server{
-				URL:   "https://test",
+				URL:   "http://test",
 				Name:  "test",
 				Users: []*auth.User{},
 			},
@@ -174,7 +174,7 @@ func TestPipelineUser(t *testing.T) {
 		},
 		"pipeline user when no pipeline user available": {
 			server: &auth.Server{
-				URL:  "https://test",
+				URL:  "http://test",
 				Name: "test",
 				Users: []*auth.User{
 					{

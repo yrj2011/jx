@@ -32,7 +32,7 @@ func TestGetClusterClient(t *testing.T) {
 			"uri": "aks.hcp.eatus.azmk8s.io"
 		}
 	]`)
-	rg, name, client, err := azureCLI.GetClusterClient("https://aks.hcp.eatus.azmk8s.io:443")
+	rg, name, client, err := azureCLI.GetClusterClient("http://aks.hcp.eatus.azmk8s.io:443")
 	assert.Equal(t, client, "abcd")
 	assert.Equal(t, rg, "resource_group")
 	assert.Equal(t, name, "name")

@@ -21,7 +21,7 @@ type ConsoleWrapper struct {
 	terminal.Stdio
 }
 
-// Analogous to https://github.com/Netflix/go-expect/blob/9d1f4485533ba0665fa4ca2ef6f1210198f7eaae/expect_opt.go#L158-L177 but ignoring ANSI escapes.
+// Analogous to http://github.com/Netflix/go-expect/blob/9d1f4485533ba0665fa4ca2ef6f1210198f7eaae/expect_opt.go#L158-L177 but ignoring ANSI escapes.
 type strippedStringMatcher struct {
 	str string
 }
@@ -44,7 +44,7 @@ func (sm *strippedStringMatcher) Criteria() interface{} {
 // ExpectString expects a string to be present on the console and fails the test if it is not
 func (c *ConsoleWrapper) ExpectString(s string) {
 	out, err := c.console.Expect(func(opts *expect.ExpectOpts) error {
-		// analogous to https://github.com/Netflix/go-expect/blob/9d1f4485533ba0665fa4ca2ef6f1210198f7eaae/expect_opt.go#L245-L251
+		// analogous to http://github.com/Netflix/go-expect/blob/9d1f4485533ba0665fa4ca2ef6f1210198f7eaae/expect_opt.go#L245-L251
 		opts.Matchers = append(opts.Matchers, &strippedStringMatcher{
 			str: s,
 		})

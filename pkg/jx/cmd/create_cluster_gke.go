@@ -67,7 +67,7 @@ var (
 		This command creates a new Kubernetes cluster on GKE, installing required local dependencies and provisions the
 		Jenkins X platform
 
-		You can see a demo of this command here: [https://jenkins-x.io/demos/create_cluster_gke/](https://jenkins-x.io/demos/create_cluster_gke/)
+		You can see a demo of this command here: [http://jenkins-x.io/demos/create_cluster_gke/](http://jenkins-x.io/demos/create_cluster_gke/)
 
 		Google Kubernetes Engine is a managed environment for deploying containerized applications. It brings our latest
 		innovations in developer productivity, resource efficiency, automated operations, and open source flexibility to
@@ -244,7 +244,7 @@ func (o *CreateClusterGKEOptions) createClusterGKE() error {
 		prompts := &survey.Select{
 			Message:  "Google Cloud Machine Type:",
 			Options:  gke.GetGoogleMachineTypes(),
-			Help:     "We recommend a minimum of n1-standard-2 for Jenkins X,  a table of machine descriptions can be found here https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture",
+			Help:     "We recommend a minimum of n1-standard-2 for Jenkins X,  a table of machine descriptions can be found here http://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture",
 			PageSize: 10,
 			Default:  "n1-standard-2",
 		}
@@ -327,13 +327,13 @@ func (o *CreateClusterGKEOptions) createClusterGKE() error {
 	}
 
 	if o.Flags.EnhancedScopes {
-		o.Flags.Scopes = []string{"https://www.googleapis.com/auth/cloud-platform",
-			"https://www.googleapis.com/auth/compute",
-			"https://www.googleapis.com/auth/devstorage.full_control",
-			"https://www.googleapis.com/auth/service.management",
-			"https://www.googleapis.com/auth/servicecontrol",
-			"https://www.googleapis.com/auth/logging.write",
-			"https://www.googleapis.com/auth/monitoring"}
+		o.Flags.Scopes = []string{"http://www.googleapis.com/auth/cloud-platform",
+			"http://www.googleapis.com/auth/compute",
+			"http://www.googleapis.com/auth/devstorage.full_control",
+			"http://www.googleapis.com/auth/service.management",
+			"http://www.googleapis.com/auth/servicecontrol",
+			"http://www.googleapis.com/auth/logging.write",
+			"http://www.googleapis.com/auth/monitoring"}
 	}
 
 	if !o.BatchMode {

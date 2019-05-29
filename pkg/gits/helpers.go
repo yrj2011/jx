@@ -83,7 +83,7 @@ func Unshallow(dir string, gitter Gitter) error {
 
 // FetchAndMergeSHAs merges any SHAs into the baseBranch which has a tip of baseSha,
 // fetching the commits from remote for the git repo in dir. It will try to fetch individual commits (
-// if the remote repo supports it - see https://github.
+// if the remote repo supports it - see http://github.
 // com/git/git/commit/68ee628932c2196742b77d2961c5e16360734a62) otherwise it uses git remote update to pull down the
 // whole repo.
 func FetchAndMergeSHAs(SHAs []string, baseBranch string, baseSha string, remote string, dir string,
@@ -179,13 +179,13 @@ func FetchAndMergeSHAs(SHAs []string, baseBranch string, baseSha string, remote 
 }
 
 // SourceRepositoryProviderURL returns the git provider URL for the SourceRepository which is something like
-// either `https://hostname` or `http://hostname`
+// either `http://hostname` or `http://hostname`
 func SourceRepositoryProviderURL(gitProvider GitProvider) string {
 	return GitProviderURL(gitProvider.ServerURL())
 }
 
 // GitProviderURL returns the git provider host URL for the SourceRepository which is something like
-// either `https://hostname` or `http://hostname`
+// either `http://hostname` or `http://hostname`
 func GitProviderURL(text string) string {
 	if text == "" {
 		return text

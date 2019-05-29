@@ -30,17 +30,17 @@ const (
 
 var (
 	createQuickstartLong = templates.LongDesc(`
-		Create a new project from a sample/starter (found in https://github.com/jenkins-x-quickstarts)
+		Create a new project from a sample/starter (found in http://github.com/jenkins-x-quickstarts)
 
 		This will create a new project for you from the selected template.
 		It will exclude any work-in-progress repos (containing the "WIP-" pattern)
 
-		For more documentation see: [https://jenkins-x.io/developing/create-quickstart/](https://jenkins-x.io/developing/create-quickstart/)
+		For more documentation see: [http://jenkins-x.io/developing/create-quickstart/](http://jenkins-x.io/developing/create-quickstart/)
 
 ` + opts.SeeAlsoText("jx create project"))
 
 	createQuickstartExample = templates.Examples(`
-		Create a new project from a sample/starter (found in https://github.com/jenkins-x-quickstarts)
+		Create a new project from a sample/starter (found in http://github.com/jenkins-x-quickstarts)
 
 		This will create a new project for you from the selected template.
 		It will exclude any work-in-progress repos (containing the "WIP-" pattern)

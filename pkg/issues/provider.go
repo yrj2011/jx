@@ -44,7 +44,7 @@ func ProviderAccessTokenURL(kind string, url string) string {
 	switch kind {
 	case Jira:
 		// TODO handle on premise servers too by detecting the URL is at atlassian.com
-		return "https://id.atlassian.com/manage/api-tokens"
+		return "http://id.atlassian.com/manage/api-tokens"
 	default:
 		return ""
 	}

@@ -27,7 +27,7 @@ func TestFileConfigWriter(t *testing.T) {
 			config: auth.Config{
 				Servers: []*auth.Server{
 					{
-						URL: "https://github.com",
+						URL: "http://github.com",
 						Users: []*auth.User{
 							{
 								Username: "test",
@@ -89,7 +89,7 @@ func TestKubeSecretsConfigWriter(t *testing.T) {
 			config: &auth.Config{
 				Servers: []*auth.Server{
 					{
-						URL: "https://github.com",
+						URL: "http://github.com",
 						Users: []*auth.User{
 							{
 								Username: "test1",
@@ -121,8 +121,8 @@ func TestKubeSecretsConfigWriter(t *testing.T) {
 							kube.LabelServiceKind:     "github",
 						},
 						Annotations: map[string]string{
-							kube.AnnotationCredentialsDescription: fmt.Sprintf("Configuration and credentials for server https://github.com"),
-							kube.AnnotationURL:                    "https://github.com",
+							kube.AnnotationCredentialsDescription: fmt.Sprintf("Configuration and credentials for server http://github.com"),
+							kube.AnnotationURL:                    "http://github.com",
 							kube.AnnotationName:                   "GitHub",
 						},
 					},
@@ -138,7 +138,7 @@ func TestKubeSecretsConfigWriter(t *testing.T) {
 			config: &auth.Config{
 				Servers: []*auth.Server{
 					{
-						URL: "https://github.com",
+						URL: "http://github.com",
 						Users: []*auth.User{
 							{
 								Username: "test1",
@@ -156,7 +156,7 @@ func TestKubeSecretsConfigWriter(t *testing.T) {
 						ServiceKind: auth.ServiceKindGithub,
 					},
 					{
-						URL: "https://gitlab.com",
+						URL: "http://gitlab.com",
 						Users: []*auth.User{
 							{
 								Username: "test1",
@@ -188,8 +188,8 @@ func TestKubeSecretsConfigWriter(t *testing.T) {
 							kube.LabelServiceKind:     "github",
 						},
 						Annotations: map[string]string{
-							kube.AnnotationCredentialsDescription: fmt.Sprintf("Configuration and credentials for server https://github.com"),
-							kube.AnnotationURL:                    "https://github.com",
+							kube.AnnotationCredentialsDescription: fmt.Sprintf("Configuration and credentials for server http://github.com"),
+							kube.AnnotationURL:                    "http://github.com",
 							kube.AnnotationName:                   "GitHub",
 						},
 					},
@@ -209,8 +209,8 @@ func TestKubeSecretsConfigWriter(t *testing.T) {
 							kube.LabelServiceKind:     "gitlab",
 						},
 						Annotations: map[string]string{
-							kube.AnnotationCredentialsDescription: fmt.Sprintf("Configuration and credentials for server https://gitlab.com"),
-							kube.AnnotationURL:                    "https://gitlab.com",
+							kube.AnnotationCredentialsDescription: fmt.Sprintf("Configuration and credentials for server http://gitlab.com"),
+							kube.AnnotationURL:                    "http://gitlab.com",
 							kube.AnnotationName:                   "Gitlab",
 						},
 					},
@@ -226,7 +226,7 @@ func TestKubeSecretsConfigWriter(t *testing.T) {
 			config: &auth.Config{
 				Servers: []*auth.Server{
 					{
-						URL:         "https://github.com",
+						URL:         "http://github.com",
 						Users:       []*auth.User{},
 						Name:        "GitHub",
 						Kind:        auth.ServerKindGit,
@@ -250,8 +250,8 @@ func TestKubeSecretsConfigWriter(t *testing.T) {
 							kube.LabelServiceKind:     "github",
 						},
 						Annotations: map[string]string{
-							kube.AnnotationCredentialsDescription: fmt.Sprintf("Configuration and credentials for server https://github.com"),
-							kube.AnnotationURL:                    "https://github.com",
+							kube.AnnotationCredentialsDescription: fmt.Sprintf("Configuration and credentials for server http://github.com"),
+							kube.AnnotationURL:                    "http://github.com",
 							kube.AnnotationName:                   "GitHub",
 						},
 					},
@@ -267,7 +267,7 @@ func TestKubeSecretsConfigWriter(t *testing.T) {
 			config: &auth.Config{
 				Servers: []*auth.Server{
 					{
-						URL: "https://github.com",
+						URL: "http://github.com",
 						Users: []*auth.User{
 							{
 								Username: "test1",
@@ -299,8 +299,8 @@ func TestKubeSecretsConfigWriter(t *testing.T) {
 							kube.LabelServiceKind:     "github",
 						},
 						Annotations: map[string]string{
-							kube.AnnotationCredentialsDescription: fmt.Sprintf("Configuration and credentials for server https://github.com"),
-							kube.AnnotationURL:                    "https://github.com",
+							kube.AnnotationCredentialsDescription: fmt.Sprintf("Configuration and credentials for server http://github.com"),
+							kube.AnnotationURL:                    "http://github.com",
 							kube.AnnotationName:                   "GitHub",
 						},
 					},

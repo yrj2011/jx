@@ -92,7 +92,7 @@ var (
 	promote_long = templates.LongDesc(`
 		Promotes a version of an application to zero to many permanent environments.
 
-		For more documentation see: [https://jenkins-x.io/about/features/#promotion](https://jenkins-x.io/about/features/#promotion)
+		For more documentation see: [http://jenkins-x.io/about/features/#promotion](http://jenkins-x.io/about/features/#promotion)
 
 `)
 

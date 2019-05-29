@@ -20,7 +20,7 @@ const (
 )
 
 // HTTPBuildNumberServer runs an HTTP server to serve build numbers, similar to Prow's tot
-// (https://github.com/kubernetes/test-infra/tree/master/prow/cmd/tot)
+// (http://github.com/kubernetes/test-infra/tree/master/prow/cmd/tot)
 type HTTPBuildNumberServer struct {
 	bindAddress string
 	port        int

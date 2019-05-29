@@ -22,7 +22,7 @@ var (
 		# Add a new Git server with a name
 		jx create git server -k bitbucketcloud -u http://bitbucket.org -n MyBitBucket 
 
-		For more documentation see: [https://jenkins-x.io/developing/git/](https://jenkins-x.io/developing/git/)
+		For more documentation see: [http://jenkins-x.io/developing/git/](http://jenkins-x.io/developing/git/)
 
 	`)
 

@@ -32,7 +32,7 @@ var (
         # to switch to kubernetes workloads for your team
 		jx edit buildpack -n kubernetes-workloads
 		
-		For more documentation see: [https://jenkins-x.io/architecture/build-packs/](https://jenkins-x.io/architecture/build-packs/)
+		For more documentation see: [http://jenkins-x.io/architecture/build-packs/](http://jenkins-x.io/architecture/build-packs/)
 	`)
 )
 

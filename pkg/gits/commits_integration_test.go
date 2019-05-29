@@ -42,8 +42,8 @@ func TestChangelogMarkdown(t *testing.T) {
 
 	expectedMarkdown := `## Changes
 
-* some commit 1 ([jstrachan](https://github.com/jstrachan))
-* some commit 2 ([rawlingsj](https://github.com/rawlingsj))
+* some commit 1 ([jstrachan](http://github.com/jstrachan))
+* some commit 2 ([rawlingsj](http://github.com/rawlingsj))
 `
 	assert.Equal(t, expectedMarkdown, markdown)
 }
@@ -98,18 +98,18 @@ func TestChangelogMarkdownWithConventionalCommits(t *testing.T) {
 
 ### New Features
 
-* some commit 2 ([rawlingsj](https://github.com/rawlingsj))
-* has actual feature name: some commit 3 ([rawlingsj](https://github.com/rawlingsj))
+* some commit 2 ([rawlingsj](http://github.com/rawlingsj))
+* has actual feature name: some commit 3 ([rawlingsj](http://github.com/rawlingsj))
 
 ### Bug Fixes
 
-* some commit 1 ([jstrachan](https://github.com/jstrachan))
+* some commit 1 ([jstrachan](http://github.com/jstrachan))
 
 ### Other Changes
 
-These commits did not use [Conventional Commits](https://conventionalcommits.org/) formatted messages:
+These commits did not use [Conventional Commits](http://conventionalcommits.org/) formatted messages:
 
-* bad comment 4 ([rawlingsj](https://github.com/rawlingsj))
+* bad comment 4 ([rawlingsj](http://github.com/rawlingsj))
 `
 	assert.Equal(t, expectedMarkdown, markdown)
 }

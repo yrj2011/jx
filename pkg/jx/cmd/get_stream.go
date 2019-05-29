@@ -28,7 +28,7 @@ var (
 	getStreamLong = templates.LongDesc(`
 		Displays the version of a chart, package or docker image from the Version Stream
 
-		For more information see: [https://jenkins-x.io/architecture/version-stream/](https://jenkins-x.io/architecture/version-stream/)
+		For more information see: [http://jenkins-x.io/architecture/version-stream/](http://jenkins-x.io/architecture/version-stream/)
 
 `)
 

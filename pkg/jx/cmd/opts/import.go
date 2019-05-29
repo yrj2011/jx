@@ -215,7 +215,7 @@ func (o *CommonOptions) LogImportedProject(isEnvironment bool, gitInfo *gits.Git
 		log.Infof("You can list the pipelines via: %s\n", util.ColorInfo("jx get pipelines"))
 		log.Infof("When the pipeline is complete:  %s\n", util.ColorInfo("jx get applications"))
 		log.Blank()
-		log.Infof("For more help on available commands see: %s\n", util.ColorInfo("https://jenkins-x.io/developing/browsing/"))
+		log.Infof("For more help on available commands see: %s\n", util.ColorInfo("http://jenkins-x.io/developing/browsing/"))
 		log.Blank()
 	}
 	log.Info(util.ColorStatus("Note that your first pipeline may take a few minutes to start while the necessary images get downloaded!\n\n"))

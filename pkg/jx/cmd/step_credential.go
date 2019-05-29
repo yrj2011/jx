@@ -31,7 +31,7 @@ var (
 	stepCredentialLong = templates.LongDesc(`
 		Returns a credential from a Secret for easy scripting in pipeline steps.
 
-		Supports the [Jenkins Credentials Provider labels on the Secrets](https://jenkinsci.github.io/kubernetes-credentials-provider-plugin/examples/)
+		Supports the [Jenkins Credentials Provider labels on the Secrets](http://jenkinsci.github.io/kubernetes-credentials-provider-plugin/examples/)
 
 		If you specify --optional then if the key or secret doesn't exist then the command will only print a warning and will not error.
 `)

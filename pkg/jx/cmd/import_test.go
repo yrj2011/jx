@@ -184,7 +184,7 @@ func TestImportOptions_GetOrganisation(t *testing.T) {
 		{
 			name: "Get org from user flag",
 			options: cmd.ImportOptions{
-				RepoURL:      "https://myrepo.com/myrepo", // No org here
+				RepoURL:      "http://myrepo.com/myrepo", // No org here
 				Organisation: "orgb",
 			},
 			want: "orgb",
@@ -192,7 +192,7 @@ func TestImportOptions_GetOrganisation(t *testing.T) {
 		{
 			name: "No org specified",
 			options: cmd.ImportOptions{
-				RepoURL: "https://myrepo.com/myrepo", // No org here
+				RepoURL: "http://myrepo.com/myrepo", // No org here
 			},
 			want: "",
 		},

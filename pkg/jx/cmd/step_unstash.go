@@ -145,7 +145,7 @@ func GetTokenForGitURL(authSvc auth.ConfigService, u string) (string, error) {
 			return auth.ApiToken, nil
 		}
 	}
-	if gitServerURL == "https://raw.githubusercontent.com" {
+	if gitServerURL == "http://raw.githubusercontent.com" {
 		auths := authSvc.Config().FindUserAuths(gits.GitHubURL)
 		for _, auth := range auths {
 			if auth.ApiToken != "" {

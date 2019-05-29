@@ -15,7 +15,7 @@ import (
 type Scheduler struct {
 	metav1.TypeMeta `json:",inline"`
 	// Standard object's metadata.
-	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	// More info: http://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	// +optional
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
@@ -277,7 +277,7 @@ type Presubmit struct {
 }
 
 // Query is turned into a Git Provider search query. See the docs for details:
-// https://help.github.com/articles/searching-issues-and-pull-requests/
+// http://help.github.com/articles/searching-issues-and-pull-requests/
 type Query struct {
 	ExcludedBranches       *ReplaceableSliceOfStrings `json:"excludedBranches,omitempty" protobuf:"bytes,1,opt,name=excludedBranches"`
 	IncludedBranches       *ReplaceableSliceOfStrings `json:"includedBranches,omitempty" protobuf:"bytes,2,opt,name=includedBranches"`
@@ -289,7 +289,7 @@ type Query struct {
 
 // PullRequestMergeType enumerates the types of merges the Git Provider API can
 // perform
-// https://developer.github.com/v3/pulls/#merge-a-pull-request-merge-button
+// http://developer.github.com/v3/pulls/#merge-a-pull-request-merge-button
 type PullRequestMergeType string
 
 // Possible types of merges for the Git Provider merge API

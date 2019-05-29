@@ -22,7 +22,7 @@ var (
 	teamLong = templates.LongDesc(`
 		Displays or changes the current team.
 
-		For more documentation on Teams see: [https://jenkins-x.io/about/features/#teams](https://jenkins-x.io/about/features/#teams)
+		For more documentation on Teams see: [http://jenkins-x.io/about/features/#teams](http://jenkins-x.io/about/features/#teams)
 
 `)
 	teamExample = templates.Examples(`

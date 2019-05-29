@@ -18,7 +18,7 @@ var (
 	deleteQuickstartLocationLong = templates.LongDesc(`
 		Deletes one or more quickstart locations for your team
 
-		For more documentation see: [https://jenkins-x.io/developing/create-quickstart/#customising-your-teams-quickstarts](https://jenkins-x.io/developing/create-quickstart/#customising-your-teams-quickstarts)
+		For more documentation see: [http://jenkins-x.io/developing/create-quickstart/#customising-your-teams-quickstarts](http://jenkins-x.io/developing/create-quickstart/#customising-your-teams-quickstarts)
 
 `)
 
@@ -33,7 +33,7 @@ var (
 		jx delete qsloc --owner myorg
 		
 		# Delete a specific location for your team
-		jx delete qsloc --url https://foo.com --owner myowner
+		jx delete qsloc --url http://foo.com --owner myowner
 
 	`)
 )

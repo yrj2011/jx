@@ -36,13 +36,13 @@ const (
 const (
 	valid_providers = `Valid Kubernetes providers include:
 
-    * aks (Azure Container Service - https://docs.microsoft.com/en-us/azure/aks)
+    * aks (Azure Container Service - http://docs.microsoft.com/en-us/azure/aks)
     * aws (Amazon Web Services via kops - http://github.com/aws-samples/aws-workshop-for-kubernetes/blob/master/readme.adoc)
-    * eks (Amazon Web Services Elastic Container Service for Kubernetes - https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html)
-    * gke (Google Container Engine - https://cloud.google.com/kubernetes-engine)
-    # icp (IBM Cloud Private) - https://www.ibm.com/cloud/private
-    * iks (IBM Cloud Kubernetes Service - https://console.bluemix.net/docs/containers)
-    * oke (Oracle Cloud Infrastructure Container Engine for Kubernetes - https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm)
+    * eks (Amazon Web Services Elastic Container Service for Kubernetes - http://docs.aws.amazon.com/eks/latest/userguide/getting-started.html)
+    * gke (Google Container Engine - http://cloud.google.com/kubernetes-engine)
+    # icp (IBM Cloud Private) - http://www.ibm.com/cloud/private
+    * iks (IBM Cloud Kubernetes Service - http://console.bluemix.net/docs/containers)
+    * oke (Oracle Cloud Infrastructure Container Engine for Kubernetes - http://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm)
     * kubernetes for custom installations of Kubernetes
     * minikube (single-node Kubernetes cluster inside a VM on your laptop)
 	* minishift (single-node OpenShift cluster inside a VM on your laptop)
@@ -57,7 +57,7 @@ var (
 	createClusterLong = templates.LongDesc(`
 		This command creates a new Kubernetes cluster, installing required local dependencies and provisions the Jenkins X platform
 
-		You can see a demo of this command here: [https://jenkins-x.io/demos/create_cluster/](https://jenkins-x.io/demos/create_cluster/)
+		You can see a demo of this command here: [http://jenkins-x.io/demos/create_cluster/](http://jenkins-x.io/demos/create_cluster/)
 
 		%s
 
@@ -74,7 +74,7 @@ var (
 		- az (Azure CLI)
 		- ibmcloud (IBM CLoud CLI)
 
-		For more documentation see: [https://jenkins-x.io/getting-started/create-cluster/](https://jenkins-x.io/getting-started/create-cluster/)
+		For more documentation see: [http://jenkins-x.io/getting-started/create-cluster/](http://jenkins-x.io/getting-started/create-cluster/)
 
 `)
 

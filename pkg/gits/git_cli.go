@@ -326,7 +326,7 @@ func (g *GitCLI) Branch(dir string) (string, error) {
 // WriteOperation performs a generic write operation, with nicer error handling
 func (g *GitCLI) WriteOperation(dir string, args ...string) error {
 	return errors.Wrap(g.gitCmd(dir, args...),
-		"Have you set up a git credential helper? See https://help.github.com/articles/caching-your-github-password-in-git/\n")
+		"Have you set up a git credential helper? See http://help.github.com/articles/caching-your-github-password-in-git/\n")
 }
 
 // Push pushes the changes from the repository at the given directory

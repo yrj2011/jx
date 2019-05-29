@@ -73,7 +73,7 @@ const (
 	optionTillerNamespace = "tiller-namespace"
 
 	// JenkinsBuildPackURL URL of Draft packs for Jenkins X
-	JenkinsBuildPackURL = "https://github.com/jenkins-x/draft-packs.git"
+	JenkinsBuildPackURL = "http://github.com/jenkins-x/draft-packs.git"
 
 	// defaultIngressNamesapce default namesapce fro ingress controller
 	defaultIngressNamesapce = "kube-system"
@@ -491,7 +491,7 @@ func (o *InitOptions) initIngress() error {
 		}
 		if o.Flags.Provider == cloud.AWS || o.Flags.Provider == cloud.EKS {
 			// For EKS enable both ports for NLBs to be able to use TLS on Nginx ingresses
-			// Fix for https://github.com/jenkins-x/jx/issues/3079
+			// Fix for http://github.com/jenkins-x/jx/issues/3079
 			enableHTTP := "true"
 			enableHTTPS := "true"
 

@@ -975,8 +975,8 @@ func TestAddAppWithReadmeForGitOps(t *testing.T) {
 	version := "0.0.1"
 	alias := fmt.Sprintf("%s-alias", name)
 	description := "Example description"
-	gitRepository := "https://git.fake/myorg/myrepo"
-	releaseNotes := "https://issues.fake/myorg/myrepo/releasenotes/v0.0.1"
+	gitRepository := "http://git.fake/myorg/myrepo"
+	releaseNotes := "http://issues.fake/myorg/myrepo/releasenotes/v0.0.1"
 	release := jenkinsv1.Release{
 		ObjectMeta: metav1.ObjectMeta{
 			Name: fmt.Sprintf("%s-%s", name, version),

@@ -24,7 +24,7 @@ var (
 	groupCounter = 0
 
 	// ConventionalCommitTitles textual descriptions for
-	// Conventional Commit types: https://conventionalcommits.org/
+	// Conventional Commit types: http://conventionalcommits.org/
 	ConventionalCommitTitles = map[string]*CommitGroup{
 		"feat":     createCommitGroup("New Features"),
 		"fix":      createCommitGroup("Bug Fixes"),
@@ -50,7 +50,7 @@ func createCommitGroup(title string) *CommitGroup {
 }
 
 // ConventionalCommitTypeToTitle returns the title of the conventional commit type
-// see: https://conventionalcommits.org/
+// see: http://conventionalcommits.org/
 func ConventionalCommitTypeToTitle(kind string) *CommitGroup {
 	answer := ConventionalCommitTitles[strings.ToLower(kind)]
 	if answer == nil {
@@ -60,7 +60,7 @@ func ConventionalCommitTypeToTitle(kind string) *CommitGroup {
 }
 
 // ParseCommit parses a conventional commit
-// see: https://conventionalcommits.org/
+// see: http://conventionalcommits.org/
 func ParseCommit(message string) *CommitInfo {
 	answer := &CommitInfo{
 		Message: message,
@@ -157,7 +157,7 @@ func GenerateMarkdown(releaseSpec *v1.ReleaseSpec, gitInfo *GitRepository) (stri
 				buffer.WriteString("\n")
 				if group.Title == "" && hasTitle {
 					group.Title = "Other Changes"
-					legend = "These commits did not use [Conventional Commits](https://conventionalcommits.org/) formatted messages:\n\n"
+					legend = "These commits did not use [Conventional Commits](http://conventionalcommits.org/) formatted messages:\n\n"
 				}
 				if group.Title != "" {
 					hasTitle = true

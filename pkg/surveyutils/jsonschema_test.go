@@ -809,7 +809,7 @@ func TestUri(t *testing.T) {
 			console.SendLine("*****")
 			console.ExpectString("Sorry, your reply was invalid: ***** is not a RFC 3986 URI")
 			console.ExpectString("Enter a value for uriValue")
-			console.SendLine("https://example.com")
+			console.SendLine("http://example.com")
 			console.ExpectEOF()
 		})
 	assert.NoError(t, err)

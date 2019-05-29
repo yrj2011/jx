@@ -59,7 +59,7 @@ type CreateClusterIKSFlags struct {
 const (
 	iKSSubDomain        = ".containers.appdomain.cloud"
 	dockerRegistryhost  = "docker-registry.jx."
-	DEFAULT_IBMREPO_URL = "https://registry.bluemix.net/helm/ibm"
+	DEFAULT_IBMREPO_URL = "http://registry.bluemix.net/helm/ibm"
 )
 
 var (
@@ -72,7 +72,7 @@ var (
 		and monitoring of containerized apps in a cluster of compute hosts.
 
 		Important: In order to create a "standard cluster" required for jenkins-x, you must have a Trial, Pay-As-You-Go, 
-				or Subscription IBM Cloud account (https://console.bluemix.net/registration/). "Free cluster"s are currently not
+				or Subscription IBM Cloud account (http://console.bluemix.net/registration/). "Free cluster"s are currently not
 		supported.  
 `)
 

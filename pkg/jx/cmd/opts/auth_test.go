@@ -21,10 +21,10 @@ func TestAuthLoadFromPipelineGitCredentials(t *testing.T) {
 	t.Parallel()
 	testData := []gitTestData{
 		{
-			gits.KindGitHub, "GitHub", "https://github.com", "jstrachan", "loverlyLarger",
+			gits.KindGitHub, "GitHub", "http://github.com", "jstrachan", "loverlyLarger",
 		},
 		{
-			gits.KindGitHub, "GHE", "https://github.beescloud.com", "rawlingsj", "glassOfNice",
+			gits.KindGitHub, "GHE", "http://github.beescloud.com", "rawlingsj", "glassOfNice",
 		},
 	}
 

@@ -18,7 +18,7 @@ import (
 const (
 	defaultAmbassadorReleaseName = "ambassador"
 	ambassadorRepoName           = "datawire"
-	ambassadorRepoUrl            = "https://www.getambassador.io"
+	ambassadorRepoUrl            = "http://www.getambassador.io"
 	defaultAmbassadorVersion     = ""
 )
 

@@ -35,7 +35,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-//const upstreamExtensionsRepositoryGitHub = "https://raw.githubusercontent.com/jenkins-x/jenkins-x-extensions/master/jenkins-x-extensions-repository.lock.yaml"
+//const upstreamExtensionsRepositoryGitHub = "http://raw.githubusercontent.com/jenkins-x/jenkins-x-extensions/master/jenkins-x-extensions-repository.lock.yaml"
 const upstreamExtensionsRepositoryGitHub = "github.com/jenkins-x/jenkins-x-extensions"
 
 var (
@@ -192,7 +192,7 @@ func (o *UpgradeExtensionsOptions) Run() error {
 				if err != nil {
 					return err
 				}
-				extensionsRepositoryUrl = fmt.Sprintf("https://raw.githubusercontent.com/%s/%s/%s/jenkins-x-extensions-repository.lock.yaml", repoInfo.Organisation, repoInfo.Name, resolvedTag)
+				extensionsRepositoryUrl = fmt.Sprintf("http://raw.githubusercontent.com/%s/%s/%s/jenkins-x-extensions-repository.lock.yaml", repoInfo.Organisation, repoInfo.Name, resolvedTag)
 			}
 			log.Infof("Updating extensions from %s\n", extensionsRepositoryUrl)
 			httpClient := &http.Client{Timeout: 10 * time.Second}

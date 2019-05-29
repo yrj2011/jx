@@ -34,7 +34,7 @@ func Test_display_current_namespace(t *testing.T) {
 	err := namespace.Run()
 	assert.NoError(t, err, "should not error")
 
-	expected := "Using namespace 'snafu' from context named 'foo-context' on server 'https://fubar.com'.\n"
+	expected := "Using namespace 'snafu' from context named 'foo-context' on server 'http://fubar.com'.\n"
 	actual := sanitizedContent(t, stdOutFileName)
 	assert.Equal(t, expected, actual, "wrong message returned")
 
@@ -65,7 +65,7 @@ func Test_change_current_namespace(t *testing.T) {
 	err = namespace.Run()
 	assert.NoError(t, err, "should not error")
 
-	expected := "Now using namespace 'acme' on server 'https://fubar.com'.\n"
+	expected := "Now using namespace 'acme' on server 'http://fubar.com'.\n"
 	actual := sanitizedContent(t, stdOutFileName)
 	assert.Equal(t, expected, actual, "wrong message returned")
 
@@ -91,7 +91,7 @@ func Test_change_to_new_namespace_with_create(t *testing.T) {
 	err := namespace.Run()
 	assert.NoError(t, err, "should not error")
 
-	expected := fmt.Sprintf("Now using namespace '%s' on server 'https://fubar.com'.\n", testNamespaceName)
+	expected := fmt.Sprintf("Now using namespace '%s' on server 'http://fubar.com'.\n", testNamespaceName)
 	actual := sanitizedContent(t, stdOutFileName)
 	assert.Equal(t, expected, actual, "wrong message returned")
 
@@ -150,7 +150,7 @@ func setUp(t *testing.T) (*opts.CommonOptions, *fake.Clientset, string, string, 
 	fakeKubeConfig.CurrentContext = "foo-context"
 	fakeKubeConfig.Clusters = map[string]*api.Cluster{
 		"foo-cluster": {
-			Server: "https://fubar.com",
+			Server: "http://fubar.com",
 		},
 	}
 	fakeKubeConfig.Contexts = map[string]*api.Context{

@@ -56,10 +56,10 @@ var (
 		jx step stash -c tests -p "target/test-reports/*"
 
 		# lets collect some files to a specific Git URL for a repository
-		jx step stash -c tests -p "target/test-reports/*" --git-url https://github.com/myuser/myrepo.git
+		jx step stash -c tests -p "target/test-reports/*" --git-url http://github.com/myuser/myrepo.git
 
 		# lets collect some files with the file names relative to the 'target/test-reports' folder and store in a Git URL
-		jx step stash -c tests -p "target/test-reports/*" --basedir target/test-reports --git-url https://github.com/myuser/myrepo.git
+		jx step stash -c tests -p "target/test-reports/*" --basedir target/test-reports --git-url http://github.com/myuser/myrepo.git
 
 		# lets collect some files to a specific AWS cloud storage bucket
 		jx step stash -c coverage -p "build/coverage/*" --bucket-url s3://my-aws-bucket

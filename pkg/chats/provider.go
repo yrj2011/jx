@@ -38,7 +38,7 @@ func CreateChatProvider(kind string, server *auth.AuthServer, userAuth *auth.Use
 func ProviderAccessTokenURL(kind string, url string) string {
 	switch kind {
 	case Slack:
-		return "https://my.slack.com/services/new/bot"
+		return "http://my.slack.com/services/new/bot"
 	default:
 		return ""
 	}

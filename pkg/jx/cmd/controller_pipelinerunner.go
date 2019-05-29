@@ -54,7 +54,7 @@ type PipelineRunResponse struct {
 type ObjectReference struct {
 	APIVersion string `json:"apiVersion" protobuf:"bytes,5,opt,name=apiVersion"`
 	// Kind of the referent.
-	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+	// More info: http://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
 	Kind string `json:"kind" protobuf:"bytes,1,opt,name=kind"`
 	// Name of the referent.
 	// More info: http://kubernetes.io/docs/user-guide/identifiers#names
@@ -193,7 +193,7 @@ func (o *ControllerPipelineRunnerOptions) startPipelineRun(w http.ResponseWriter
 		return
 	}
 
-	sourceURL := fmt.Sprintf("http://github.com/%s/%s.git", pj.Refs.Org, pj.Refs.Repo)
+	sourceURL := fmt.Sprintf("http://192.168.1.167/%s/%s.git", pj.Refs.Org, pj.Refs.Repo)
 	if sourceURL == "" {
 		o.returnError(err, "missing sourceURL property", w, r)
 		return

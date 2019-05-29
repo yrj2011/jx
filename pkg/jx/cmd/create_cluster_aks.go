@@ -68,8 +68,8 @@ var (
 		Please use a location local to you: you can retrieve this from the Azure portal or by 
 		running "az provider list" in your terminal.
 
-		Important: You will need an account on Azure, with a storage account (https://portal.azure.com/#create/Microsoft.StorageAccount-ARM)
-        and network (https://portal.azure.com/#create/Microsoft.VirtualNetwork-ARM) - both linked to the resource group you use
+		Important: You will need an account on Azure, with a storage account (http://portal.azure.com/#create/Microsoft.StorageAccount-ARM)
+        and network (http://portal.azure.com/#create/Microsoft.VirtualNetwork-ARM) - both linked to the resource group you use
 		to create the cluster in.
 `)
 
@@ -196,7 +196,7 @@ func (o *CreateClusterAKSOptions) createClusterAKS() error {
 		prompts := &survey.Select{
 			Message:  "Virtual Machine Size:",
 			Options:  aks.GetSizes(),
-			Help:     "We recommend a minimum of Standard_D2s_v3 for Jenkins X.\nA table of machine descriptions can be found here https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/",
+			Help:     "We recommend a minimum of Standard_D2s_v3 for Jenkins X.\nA table of machine descriptions can be found here http://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/",
 			PageSize: 10,
 			Default:  "Standard_D2s_v3",
 		}

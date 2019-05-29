@@ -608,7 +608,7 @@ func (o *StepCreateTaskOptions) GenerateTektonCRDs(packsDir string, projectConfi
 		parsed.Options.ContainerOptions = mergedContainer
 	}
 
-	// TODO: Seeing weird behavior seemingly related to https://golang.org/doc/faq#nil_error
+	// TODO: Seeing weird behavior seemingly related to http://golang.org/doc/faq#nil_error
 	// if err is reused, maybe we need to switch return types (perhaps upstream in build-pipeline)?
 	if validateErr := parsed.Validate(ctx); validateErr != nil {
 		return nil, nil, nil, nil, nil, errors.Wrapf(validateErr, "Validation failed for Pipeline")

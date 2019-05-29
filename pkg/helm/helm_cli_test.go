@@ -24,7 +24,7 @@ const chart = "test-chart"
 const releaseName = "test-release"
 const listRepoOutput = `
 NAME            URL
-stable          https://kubernetes-charts.storage.googleapis.com
+stable          http://kubernetes-charts.storage.googleapis.com
 local           http://127.0.0.1:8879/charts
 jenkins-x       http://chartmuseum.jenkins-x.io
 	`
@@ -110,7 +110,7 @@ func TestListRepos(t *testing.T) {
 	assert.NoError(t, err, "should list helm repos without any error")
 	verifyArgs(t, helm, runner, expectedArgs...)
 	expectedRepos := map[string]string{
-		"stable":    "https://kubernetes-charts.storage.googleapis.com",
+		"stable":    "http://kubernetes-charts.storage.googleapis.com",
 		"local":     "http://127.0.0.1:8879/charts",
 		"jenkins-x": "http://chartmuseum.jenkins-x.io",
 	}
@@ -131,7 +131,7 @@ func TestIsRepoMissing(t *testing.T) {
 	verifyArgs(t, helm, runner, expectedArgs...)
 	assert.False(t, missing, "should find url '%s'", url)
 
-	url = "https://test"
+	url = "http://test"
 	missing, _, err = helm.IsRepoMissing(url)
 
 	assert.NoError(t, err, "search missing repos should not return an error")

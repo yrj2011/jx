@@ -11,7 +11,7 @@ import (
 	"k8s.io/client-go/kubernetes/fake"
 )
 
-const serviceURL = "https://github.beescloud.com"
+const serviceURL = "http://github.beescloud.com"
 const secretName = kube.SecretJenkinsPipelineGitCredentials + "github-ghe"
 const serviceKind = "github"
 

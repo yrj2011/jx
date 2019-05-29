@@ -153,7 +153,7 @@ func (o *CreateAddonSSOOptions) dexDomain(domain string) string {
 }
 
 func (o *CreateAddonSSOOptions) dexCallback(domain string) string {
-	return fmt.Sprintf("https://%s/callback", o.dexDomain(domain))
+	return fmt.Sprintf("http://%s/callback", o.dexDomain(domain))
 }
 
 func (o *CreateAddonSSOOptions) getAuthorizedOrgs() ([]string, error) {

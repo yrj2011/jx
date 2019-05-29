@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	docsURL = "https://jenkins-x.io/documentation/"
+	docsURL = "http://jenkins-x.io/documentation/"
 )
 
 /* open the docs - Jenkins X docs by default */

@@ -22,7 +22,7 @@ var (
 
 		Which helps you visualise your CI/CD pipelines, apps, environments and teams.
 
-		For more information please see [https://www.cloudbees.com/blog/want-help-build-cloudbees-kubernetes-jenkins-x](https://www.cloudbees.com/blog/want-help-build-cloudbees-kubernetes-jenkins-x)
+		For more information please see [http://www.cloudbees.com/blog/want-help-build-cloudbees-kubernetes-jenkins-x](http://www.cloudbees.com/blog/want-help-build-cloudbees-kubernetes-jenkins-x)
 `)
 	cloudbees_pipeline_example = templates.Examples(`
 		# Open the CloudBees Pipeline page in a browser

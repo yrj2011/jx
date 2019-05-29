@@ -69,10 +69,10 @@ var (
 
 	stepBDDExample = templates.Examples(`
 		# run the BDD tests in the current team
-		jx step bdd --use-current-team --git-provider-url=https://my.git.server.com
+		jx step bdd --use-current-team --git-provider-url=http://my.git.server.com
 
         # create a new team for the tests, run the tests then tear everything down again 
-		jx step bdd -b --provider=gke --git-provider=ghe --git-provider-url=https://my.git.server.com --default-admin-password=myadminpwd --git-username myuser --git-api-token mygittoken
+		jx step bdd -b --provider=gke --git-provider=ghe --git-provider-url=http://my.git.server.com --default-admin-password=myadminpwd --git-username myuser --git-api-token mygittoken
 `)
 )
 
@@ -103,7 +103,7 @@ func NewCmdStepBDD(commonOpts *opts.CommonOptions) *cobra.Command {
 	cmd.Flags().StringVarP(&options.Flags.GitProvider, "git-provider", "g", "", "the git provider kind")
 	cmd.Flags().StringVarP(&options.Flags.GitOwner, "git-owner", "", "", "the git owner of new git repositories created by the tests")
 	cmd.Flags().StringVarP(&options.Flags.ReportsOutputDir, "reports-dir", "", "reports", "the directory used to copy in any generated report files")
-	cmd.Flags().StringVarP(&options.Flags.TestRepoGitCloneUrl, "test-git-repo", "r", "https://github.com/jenkins-x/bdd-jx.git", "the git repository to clone for the BDD tests")
+	cmd.Flags().StringVarP(&options.Flags.TestRepoGitCloneUrl, "test-git-repo", "r", "http://github.com/jenkins-x/bdd-jx.git", "the git repository to clone for the BDD tests")
 	cmd.Flags().BoolVarP(&options.Flags.SkipRepoGitClone, "skip-test-git-repo-clone", "", false, "Skip cloning the bdd test git repo")
 	cmd.Flags().StringVarP(&options.Flags.JxBinary, "binary", "", "jx", "the binary location of the 'jx' executable for creating clusters")
 	cmd.Flags().StringVarP(&options.Flags.TestGitBranch, "test-git-branch", "", "master", "the git repository branch to use for the BDD tests")

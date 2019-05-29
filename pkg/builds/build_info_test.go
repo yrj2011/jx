@@ -28,7 +28,7 @@ func TestCreateBuildPodInfo(t *testing.T) {
 		assert.Equal(t, "6", b.Build, "Build")
 		assert.Equal(t, "jenkins-x/jenkins-x-serverless/PR-52", b.Pipeline, "Pipeline")
 		assert.Equal(t, "b662eb177fdd4252220399aa8da809411d87b8ed", b.LastCommitSHA, "LastCommitSHA")
-		assert.Equal(t, "https://github.com/jenkins-x/jenkins-x-serverless.git", b.GitURL, "GitURL")
+		assert.Equal(t, "http://github.com/jenkins-x/jenkins-x-serverless.git", b.GitURL, "GitURL")
 		assert.Equal(t, "jenkinsxio/jenkins-cwp:0.1.33", b.FirstStepImage, "FirstStepImage")
 	}
 }

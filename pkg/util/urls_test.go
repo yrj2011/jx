@@ -19,9 +19,9 @@ func TestUrlHostNameWithoutPort(t *testing.T) {
 		"hostname":                         "hostname",
 		"1.2.3.4":                          "1.2.3.4",
 		"1.2.3.4:123":                      "1.2.3.4",
-		"https://1.2.3.4:123":              "1.2.3.4",
-		"https://1.2.3.4:123/":             "1.2.3.4",
-		"https://1.2.3.4:123/foo/bar":      "1.2.3.4",
+		"http://1.2.3.4:123":               "1.2.3.4",
+		"http://1.2.3.4:123/":              "1.2.3.4",
+		"http://1.2.3.4:123/foo/bar":       "1.2.3.4",
 		"http://user:password@1.2.3.4":     "1.2.3.4",
 		"http://user:password@1.2.3.4/foo": "1.2.3.4",
 	}

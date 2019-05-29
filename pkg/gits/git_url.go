@@ -21,7 +21,7 @@ func (i *GitRepository) IsGitHub() bool {
 
 // PullRequestURL returns the URL of a pull request of the given name/number
 func (i *GitRepository) PullRequestURL(prName string) string {
-	return util.UrlJoin("https://"+i.Host, i.Organisation, i.Name, "pull", prName)
+	return util.UrlJoin("http://"+i.Host, i.Organisation, i.Name, "pull", prName)
 }
 
 // HttpCloneURL returns the HTTPS git URL this repository
@@ -42,7 +42,7 @@ func (i *GitRepository) HttpURL() string {
 func (i *GitRepository) HttpsURL() string {
 	host := i.Host
 	if !strings.Contains(host, ":/") {
-		host = "https://" + host
+		host = "http://" + host
 	}
 	return util.UrlJoin(host, i.Organisation, i.Name)
 }
@@ -57,7 +57,7 @@ func (i *GitRepository) HostURL() string {
 			u2, err := url.Parse(u)
 			if err != nil {
 				// probably a git@ URL
-				return "https://" + answer
+				return "http://" + answer
 			}
 			s := u2.Scheme
 			if s != "" {
@@ -67,7 +67,7 @@ func (i *GitRepository) HostURL() string {
 				return s + answer
 			}
 		}
-		return "https://" + answer
+		return "http://" + answer
 	}
 	return answer
 }
@@ -85,7 +85,7 @@ func (i *GitRepository) HostURLWithoutUser() string {
 	}
 	host := i.Host
 	if !strings.Contains(host, ":/") {
-		host = "https://" + host
+		host = "http://" + host
 	}
 	return host
 }
@@ -172,9 +172,9 @@ func SaasGitKind(gitServiceUrl string) string {
 	switch gitServiceUrl {
 	case "http://github.com":
 		return KindGitHub
-	case "https://github.com":
+	case "http://github.com":
 		return KindGitHub
-	case "https://gitlab.com":
+	case "http://gitlab.com":
 		return KindGitlab
 	case "http://bitbucket.org":
 		return KindBitBucketCloud

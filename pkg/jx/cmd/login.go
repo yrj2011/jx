@@ -62,10 +62,10 @@ var (
 
 	login_example = templates.Examples(`
 		# Onboard into CloudBees application
-		jx login -u https://cloudbees-app-url 
+		jx login -u http://cloudbees-app-url 
 	
 		# Onboard into CloudBees application and switched to team 'cheese'
-		jx login -u https://cloudbees-app-url -t cheese
+		jx login -u http://cloudbees-app-url -t cheese
 		`)
 )
 
@@ -96,7 +96,7 @@ func (o *LoginOptions) Run() error {
 
 	_, err := url.ParseRequestURI(o.URL)
 	if err != nil {
-		return errors.Wrap(err, "validation failed for URL, ensure URL is well formed including scheme, i.e. https://foo.com")
+		return errors.Wrap(err, "validation failed for URL, ensure URL is well formed including scheme, i.e. http://foo.com")
 	}
 
 	// ensure base set of binaries are installed which are required by jx

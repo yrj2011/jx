@@ -45,12 +45,12 @@ type Registry interface {
 }
 
 var regionToEndpoint = map[string]string{
-	"us-south": "https://registry.ng.bluemix.net",
-	"us-east":  "https://registry.ng.bluemix.net",
-	"global":   "https://registry.bluemix.net",
-	"eu-gb":    "https://registry.eu-gb.bluemix.net",
-	"au-syd":   "https://registry.au-syd.bluemix.net",
-	"eu-de":    "https://registry.eu-de.bluemix.net",
+	"us-south": "http://registry.ng.bluemix.net",
+	"us-east":  "http://registry.ng.bluemix.net",
+	"global":   "http://registry.bluemix.net",
+	"eu-gb":    "http://registry.eu-gb.bluemix.net",
+	"au-syd":   "http://registry.au-syd.bluemix.net",
+	"eu-de":    "http://registry.eu-de.bluemix.net",
 }
 
 const (

@@ -41,7 +41,7 @@ func (o *CommonOptions) GetDomain(client kubernetes.Interface, domain string, pr
 				info(ingressNamespace), info(ingressService))
 			if provider == cloud.KUBERNETES {
 				log.Infof("If you are installing Jenkins X on premise you may want to use the '--on-premise' flag or specify the '--external-ip' flags. See: %s\n",
-					info("https://jenkins-x.io/getting-started/install-on-cluster/#installing-jenkins-x-on-premise"))
+					info("http://jenkins-x.io/getting-started/install-on-cluster/#installing-jenkins-x-on-premise"))
 			}
 			svc, err := client.CoreV1().Services(ingressNamespace).Get(ingressService, metav1.GetOptions{})
 			if err != nil {
@@ -67,7 +67,7 @@ func (o *CommonOptions) GetDomain(client kubernetes.Interface, domain string, pr
 		}
 		log.Infof("\nOn AWS we recommend using a custom DNS name to access services in your Kubernetes cluster to ensure you can use all of your Availability Zones\n")
 		log.Infof("If you do not have a custom DNS name you can use yet, then you can register a new one here: %s\n\n",
-			util.ColorInfo("https://console.aws.amazon.com/route53/home?#DomainRegistration:"))
+			util.ColorInfo("http://console.aws.amazon.com/route53/home?#DomainRegistration:"))
 
 		for {
 			if util.Confirm("Would you like to register a wildcard DNS ALIAS to point at this ELB address? ", true,

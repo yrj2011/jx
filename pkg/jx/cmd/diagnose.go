@@ -74,7 +74,7 @@ func (o *DiagnoseOptions) Run() error {
 	if err != nil {
 		return err
 	}
-	log.Info("\nPlease visit https://jenkins-x.io/faq/issues/ for any known issues.")
+	log.Info("\nPlease visit http://jenkins-x.io/faq/issues/ for any known issues.")
 	log.Info("\nFinished printing diagnostic information.\n")
 	return nil
 }

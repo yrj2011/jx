@@ -32,12 +32,12 @@ const (
 
 var profiles = []UserProfile{
 	{
-		url:      "https://auth.example.com",
+		url:      "http://auth.example.com",
 		name:     "Test Auth Server",
 		username: "test-user",
 	},
 	{
-		url:      "https://auth.example.com",
+		url:      "http://auth.example.com",
 		name:     "Test Auth Server with Underscore user",
 		username: "test_user",
 	},
@@ -396,7 +396,7 @@ func (suite *BitbucketCloudProviderTestSuite) TestCreateWebHook() {
 
 	data := &gits.GitWebHookArguments{
 		Repo: &gits.GitRepository{Name: "test-repo", Organisation: "test-user"},
-		URL:  "https://my-jenkins.example.com/bitbucket-webhook/",
+		URL:  "http://my-jenkins.example.com/bitbucket-webhook/",
 	}
 	err := suite.provider.CreateWebHook(data)
 

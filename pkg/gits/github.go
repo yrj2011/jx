@@ -71,7 +71,7 @@ func GitHubEnterpriseApiEndpointURL(u string) string {
 }
 
 // GetEnterpriseApiURL returns the github enterprise API URL or blank if this
-// provider is for the https://github.com service
+// provider is for the http://github.com service
 func (p *GitHubProvider) GetEnterpriseApiURL() string {
 	u := p.Server.URL
 	if IsGitHubServerURL(u) {
@@ -82,7 +82,7 @@ func (p *GitHubProvider) GetEnterpriseApiURL() string {
 
 func IsGitHubServerURL(u string) bool {
 	u = strings.TrimSuffix(u, "/")
-	return u == "" || u == "https://github.com" || u == "http://github.com"
+	return u == "" || u == "http://github.com" || u == "http://github.com"
 }
 
 func (p *GitHubProvider) ListOrganisations() ([]GitOrganisation, error) {
@@ -1105,8 +1105,8 @@ func (p *GitHubProvider) fromGithubIssue(org string, name string, number int, i 
 
 func (p *GitHubProvider) IssueURL(org string, name string, number int, isPull bool) string {
 	serverPrefix := p.Server.URL
-	if !strings.HasPrefix(serverPrefix, "https://") {
-		serverPrefix = "https://" + serverPrefix
+	if !strings.HasPrefix(serverPrefix, "http://") {
+		serverPrefix = "http://" + serverPrefix
 	}
 	path := "issues"
 	if isPull {
@@ -1170,7 +1170,7 @@ func (p *GitHubProvider) JenkinsWebHookPath(gitURL string, secret string) string
 
 func GitHubAccessTokenURL(url string) string {
 	if strings.Index(url, "://") < 0 {
-		url = "https://" + url
+		url = "http://" + url
 	}
 	return util.UrlJoin(url, "/settings/tokens/new?scopes=repo,read:user,read:org,user:email,write:repo_hook,delete_repo")
 }
@@ -1184,7 +1184,7 @@ func (p *GitHubProvider) ServerURL() string {
 }
 
 func (p *GitHubProvider) BranchArchiveURL(org string, name string, branch string) string {
-	return util.UrlJoin("https://codeload.github.com", org, name, "zip", branch)
+	return util.UrlJoin("http://codeload.github.com", org, name, "zip", branch)
 }
 
 func (p *GitHubProvider) CurrentUsername() string {

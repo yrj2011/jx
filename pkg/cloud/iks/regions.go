@@ -11,7 +11,7 @@ import (
 	gohttp "net/http"
 )
 
-const containerEndpointOfPublicBluemix = "https://containers.bluemix.net"
+const containerEndpointOfPublicBluemix = "http://containers.bluemix.net"
 
 type Region struct {
 	Name        string `json:"name"`

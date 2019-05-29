@@ -68,7 +68,7 @@ func Test_getLatestReleaseFromGithubUsingHttpRedirect(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
 		// Send response to be tested
 		if req.URL.Path == "/org/repo/releases/latest" {
-			rw.Header().Add("Location", "https://github.com/org/repo/releases/tag/v1.2.3")
+			rw.Header().Add("Location", "http://github.com/org/repo/releases/tag/v1.2.3")
 			rw.WriteHeader(302)
 		} else if req.URL.Path == "/redirect/repo/releases/latest" {
 			// permanent Redirect to the happy path
@@ -78,7 +78,7 @@ func Test_getLatestReleaseFromGithubUsingHttpRedirect(t *testing.T) {
 			// No location header in the response
 			rw.WriteHeader(302)
 		} else if req.URL.Path == "/bad/location/releases/latest" {
-			rw.Header().Add("Location", "https://foo.bar")
+			rw.Header().Add("Location", "http://foo.bar")
 			rw.WriteHeader(302)
 		} else {
 			_, _ = rw.Write([]byte(`This is not the redirect you are looking for`))

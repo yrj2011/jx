@@ -358,7 +358,7 @@ func (o *CreateCodeshipOptions) Run() error {
 		project, _, err := csOrg.CreateProject(ctx, createProjectRequest)
 
 		if err != nil {
-			return fmt.Errorf("failed to create project, check Codeship is configured to authenticate against your Git provider https://app.codeship.com/authentications.  error: %v", err)
+			return fmt.Errorf("failed to create project, check Codeship is configured to authenticate against your Git provider http://app.codeship.com/authentications.  error: %v", err)
 		}
 
 		uuid = project.UUID

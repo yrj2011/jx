@@ -75,7 +75,7 @@ func (o *GetTeamOptions) Run() error {
 		log.Info(`
 You do not belong to any teams.
 Have you installed Jenkins X yet to create a team?
-See https://jenkins-x.io/getting-started/\n for more detail
+See http://jenkins-x.io/getting-started/\n for more detail
 `)
 		return nil
 	}

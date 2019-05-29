@@ -114,9 +114,9 @@ func main() {
 	OpenApiV2YAML           = "openapiv2.yaml"
 	openApiGenerator        = "openapi-gen"
 
-	bootstrapJsUrl      = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	bootstrapJsUrl      = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 	bootstrapJsFileName = "bootstrap-3.3.7.min.js"
-	jqueryUrl           = "https://code.jquery.com/jquery-3.2.1.min.js"
+	jqueryUrl           = "http://code.jquery.com/jquery-3.2.1.min.js"
 	jqueryFileName      = "jquery-3.2.1.min.js"
 
 	openApiGen = "k8s.io/kube-openapi/cmd/openapi-gen"

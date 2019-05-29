@@ -92,8 +92,8 @@ func getGitHubSecret() *corev1.Secret {
 				kube.LabelServiceKind:     "github",
 			},
 			Annotations: map[string]string{
-				kube.AnnotationCredentialsDescription: fmt.Sprintf("Configuration and credentials for server https://github.com"),
-				kube.AnnotationURL:                    "https://github.com",
+				kube.AnnotationCredentialsDescription: fmt.Sprintf("Configuration and credentials for server http://github.com"),
+				kube.AnnotationURL:                    "http://github.com",
 				kube.AnnotationName:                   "GitHub",
 			},
 		},

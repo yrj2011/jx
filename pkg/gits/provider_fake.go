@@ -177,7 +177,7 @@ func (f *FakeProvider) CreatePullRequest(data *GitPullRequestArguments) (*GitPul
 	repo.issueCount += 1
 	number := repo.issueCount
 	pr := &GitPullRequest{
-		URL: fmt.Sprintf("https://fake.git/%s/%s/pulls/%d", org, repoName, number),
+		URL: fmt.Sprintf("http://fake.git/%s/%s/pulls/%d", org, repoName, number),
 		Author: &GitUser{
 			URL:       "",
 			Login:     "",
@@ -213,7 +213,7 @@ func (f *FakeProvider) CreatePullRequest(data *GitPullRequestArguments) (*GitPul
 			{
 				Status: CommitStatusPending,
 				Commit: &GitCommit{
-					URL:     fmt.Sprintf("https://fake.git/%s/%s/commits/%s", org, repoName, data.Head),
+					URL:     fmt.Sprintf("http://fake.git/%s/%s/commits/%s", org, repoName, data.Head),
 					SHA:     data.Head,
 					Message: data.Title,
 				},
@@ -477,8 +477,8 @@ func (f *FakeProvider) GetIssue(org string, name string, number int) (*GitIssue,
 
 func (f *FakeProvider) IssueURL(org string, name string, number int, isPull bool) string {
 	serverPrefix := f.Server.URL
-	if !strings.HasPrefix(serverPrefix, "https://") {
-		serverPrefix = "https://" + serverPrefix
+	if !strings.HasPrefix(serverPrefix, "http://") {
+		serverPrefix = "http://" + serverPrefix
 	}
 	path := "issues"
 	if isPull {
@@ -692,8 +692,8 @@ func NewFakeRepository(owner string, repoName string) *FakeRepository {
 		Owner: owner,
 		GitRepo: &GitRepository{
 			Name:         repoName,
-			CloneURL:     "https://fake.git/" + owner + "/" + repoName + ".git",
-			HTMLURL:      "https://fake.git/" + owner + "/" + repoName,
+			CloneURL:     "http://fake.git/" + owner + "/" + repoName + ".git",
+			HTMLURL:      "http://fake.git/" + owner + "/" + repoName,
 			Organisation: owner,
 		},
 		PullRequests: map[int]*FakePullRequest{},

@@ -251,7 +251,7 @@ func (o *StepSchedulerApplyTestOptions) createSchedulerTestOptions(testType stri
 
 		fakeGitProvider := gits.NewFakeProvider(fakeRepo, devEnvRepo)
 		fakeGitProvider.User.Username = testOrgName
-		devEnv := kube.NewPermanentEnvironmentWithGit("dev", fmt.Sprintf("https://fake.git/%s/%s.git", testOrgName,
+		devEnv := kube.NewPermanentEnvironmentWithGit("dev", fmt.Sprintf("http://fake.git/%s/%s.git", testOrgName,
 			devEnvRepoName))
 		devEnv.Spec.Source.URL = devEnvRepo.GitRepo.CloneURL
 		devEnv.Spec.Source.Ref = "master"

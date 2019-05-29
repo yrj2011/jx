@@ -259,7 +259,7 @@ func CreateTestPipelineActivity(jxClient versioned.Interface, ns string, folder 
 	version := "1.0." + build
 	a.Spec.GitOwner = folder
 	a.Spec.GitRepository = repo
-	a.Spec.GitURL = "https://fake.git/" + folder + "/" + repo + ".git"
+	a.Spec.GitURL = "http://fake.git/" + folder + "/" + repo + ".git"
 	a.Spec.Version = version
 	a.Spec.Workflow = workflow
 	_, err = activities.Update(a)

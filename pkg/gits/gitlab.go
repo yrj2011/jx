@@ -38,7 +38,7 @@ func NewGitlabProvider(server *auth.AuthServer, user *auth.UserAuth, git Gitter)
 
 func IsGitLabServerURL(u string) bool {
 	u = strings.TrimSuffix(u, "/")
-	return u == "" || u == "https://gitlab.com" || u == "http://gitlab.com"
+	return u == "" || u == "http://gitlab.com" || u == "http://gitlab.com"
 }
 
 // Used by unit tests to inject a mocked client

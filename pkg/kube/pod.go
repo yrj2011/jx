@@ -16,7 +16,7 @@ import (
 	tools_watch "k8s.io/client-go/tools/watch"
 )
 
-// credit https://github.com/kubernetes/kubernetes/blob/8719b4a/pkg/api/v1/pod/util.go
+// credit http://github.com/kubernetes/kubernetes/blob/8719b4a/pkg/api/v1/pod/util.go
 // IsPodReady returns true if a pod is ready; false otherwise.
 func IsPodReady(pod *v1.Pod) bool {
 	phase := pod.Status.Phase
@@ -35,7 +35,7 @@ func IsPodCompleted(pod *v1.Pod) bool {
 	return false
 }
 
-// credit https://github.com/kubernetes/kubernetes/blob/8719b4a/pkg/api/v1/pod/util.go
+// credit http://github.com/kubernetes/kubernetes/blob/8719b4a/pkg/api/v1/pod/util.go
 // IsPodReady retruns true if a pod is ready; false otherwise.
 func IsPodReadyConditionTrue(status v1.PodStatus) bool {
 	condition := GetPodReadyCondition(status)
@@ -53,7 +53,7 @@ func PodStatus(pod *v1.Pod) string {
 	return string(phase)
 }
 
-// credit https://github.com/kubernetes/kubernetes/blob/8719b4a/pkg/api/v1/pod/util.go
+// credit http://github.com/kubernetes/kubernetes/blob/8719b4a/pkg/api/v1/pod/util.go
 // Extracts the pod ready condition from the given status and returns that.
 // Returns nil if the condition is not present.
 func GetPodReadyCondition(status v1.PodStatus) *v1.PodCondition {
@@ -61,7 +61,7 @@ func GetPodReadyCondition(status v1.PodStatus) *v1.PodCondition {
 	return condition
 }
 
-// credit https://github.com/kubernetes/kubernetes/blob/8719b4a/pkg/api/v1/pod/util.go
+// credit http://github.com/kubernetes/kubernetes/blob/8719b4a/pkg/api/v1/pod/util.go
 // GetPodCondition extracts the provided condition from the given status and returns that.
 // Returns nil and -1 if the condition is not present, and the index of the located condition.
 func GetPodCondition(status *v1.PodStatus, conditionType v1.PodConditionType) (int, *v1.PodCondition) {

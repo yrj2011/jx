@@ -20,15 +20,15 @@ const (
 	// CertManagerChart name of the cert-manager chart
 	CertManagerChart = "stable/cert-manager"
 	// CertManagerCRDsFile files which contains the cert-manager CRDs
-	CertManagerCRDsFile = "https://raw.githubusercontent.com/jetstack/cert-manager/release-0.6/deploy/manifests/00-crds.yaml"
+	CertManagerCRDsFile = "http://raw.githubusercontent.com/jetstack/cert-manager/release-0.6/deploy/manifests/00-crds.yaml"
 
 	// CertManagerIssuerProd name of the production issuer
 	CertManagerIssuerProd       = "letsencrypt-prod"
-	certManagerIssuerProdServer = "https://acme-v02.api.letsencrypt.org/directory"
+	certManagerIssuerProdServer = "http://acme-v02.api.letsencrypt.org/directory"
 
 	// CertManagerIssuerStaging name of the staging issuer
 	CertManagerIssuerStaging       = "letsencrypt-staging"
-	certManagerIssuerStagingServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+	certManagerIssuerStagingServer = "http://acme-staging-v02.api.letsencrypt.org/directory"
 )
 
 // CleanCertManagerResources removed the cert-manager resources from the given namespaces

@@ -18,7 +18,7 @@ var (
 
 	createChatServer_example = templates.Examples(`
 		# Add a new chat server URL
-		jx create chat server slack https://myroom.slack.server
+		jx create chat server slack http://myroom.slack.server
 	`)
 )
 

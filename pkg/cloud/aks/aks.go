@@ -76,7 +76,7 @@ func (az *AzureRunner) GetClusterClient(server string) (string, string, string, 
 	}
 
 	for _, v := range clusters {
-		if "https://"+v.URI+":443" == server {
+		if "http://"+v.URI+":443" == server {
 			clientID = v.ID
 			name = v.Name
 			group = v.Group

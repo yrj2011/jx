@@ -21,7 +21,7 @@ import (
 	"gopkg.in/AlecAivazis/survey.v1/terminal"
 )
 
-// Type represents a JSON Schema object type current to https://www.ietf.org/archive/id/draft-handrews-json-schema-validation-01.txt
+// Type represents a JSON Schema object type current to http://www.ietf.org/archive/id/draft-handrews-json-schema-validation-01.txt
 type Type struct {
 	Version          string      `json:"$schema,omitempty"`
 	Ref              string      `json:"$ref,omitempty"`

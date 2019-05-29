@@ -21,7 +21,7 @@ var (
 
 		This command is expected to be run within your '$GOHOME' directory. e.g. at '$GOHOME/src/github.com/myOrgOrUser/'
 
-		For more documentation about JHipster see: [https://www.jhipster.tech/](https://www.jhipster.tech/)
+		For more documentation about JHipster see: [http://www.jhipster.tech/](http://www.jhipster.tech/)
 
 ` + opts.SeeAlsoText("jx create project"))
 

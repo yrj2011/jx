@@ -255,10 +255,10 @@ func (o *EditExtensionsRepositoryOptions) Run() error {
 	} else if current.Chart.Name != "" {
 		repoUrl := current.Chart.Repo
 		if userpass {
-			chartRepo := strings.TrimPrefix(strings.TrimPrefix(current.Chart.Repo, "https://"), "http://")
-			repoUrl = fmt.Sprintf("https://%s:%s@%s", username, password, chartRepo)
+			chartRepo := strings.TrimPrefix(strings.TrimPrefix(current.Chart.Repo, "http://"), "http://")
+			repoUrl = fmt.Sprintf("http://%s:%s@%s", username, password, chartRepo)
 		} else {
-			repoUrl = fmt.Sprintf("https://%s", current.Chart.Repo)
+			repoUrl = fmt.Sprintf("http://%s", current.Chart.Repo)
 		}
 		_, err := o.AddHelmBinaryRepoIfMissing(repoUrl, current.Chart.RepoName, "", "")
 		if err != nil {

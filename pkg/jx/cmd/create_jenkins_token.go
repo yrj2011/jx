@@ -337,7 +337,7 @@ func (o *CreateJenkinsUserOptions) getAPITokenFromREST(serverURL string, userAut
 // Try logging in as if LegacySecurityRealm were configured. This uses the old Servlet API login cookies.
 func loginLegacy(ctx context.Context, serverURL string, verbose bool, username string, password string) (func(req *http.Request), error) {
 	client := http.Client{
-		// https://stackoverflow.com/a/38150816/12916 Jenkins returns a 303, but you cannot actually follow it
+		// http://stackoverflow.com/a/38150816/12916 Jenkins returns a 303, but you cannot actually follow it
 		CheckRedirect: func(req *http.Request, via []*http.Request) error {
 			return http.ErrUseLastResponse
 		},

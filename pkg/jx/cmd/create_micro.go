@@ -117,7 +117,7 @@ You need to have installed go on your machine to be able to create micro service
 
 For instructions please see: %s 
 
-`, util.ColorInfo("https://golang.org/doc/install#install"))
+`, util.ColorInfo("http://golang.org/doc/install#install"))
 		return nil
 	}
 

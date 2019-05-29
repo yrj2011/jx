@@ -14,7 +14,7 @@ import (
 func TestStepGitCredentials(t *testing.T) {
 	t.Parallel()
 	kind1 := gits.KindGitHub
-	scheme1 := "https://"
+	scheme1 := "http://"
 	host1 := "github.com"
 	user1 := "jstrachan"
 	pwd1 := "lovelyLager"
@@ -47,10 +47,10 @@ func TestStepGitCredentials(t *testing.T) {
 
 func createGitCredentialLine(scheme string, host string, user string, pwd string) string {
 	answer := scheme + user + ":" + pwd + "@" + host + "\n"
-	if scheme == "https://" {
+	if scheme == "http://" {
 		scheme = "http://"
 	} else {
-		scheme = "https://"
+		scheme = "http://"
 	}
 	answer += scheme + user + ":" + pwd + "@" + host + "\n"
 	return answer

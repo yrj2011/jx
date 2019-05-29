@@ -118,7 +118,7 @@ var (
 
 	    You can specify the git URL as an argument.
 	    
-		For more documentation see: [https://jenkins-x.io/developing/import/](https://jenkins-x.io/developing/import/)
+		For more documentation see: [http://jenkins-x.io/developing/import/](http://jenkins-x.io/developing/import/)
 	    
 ` + opts.SeeAlsoText("jx create project"))
 
@@ -463,7 +463,7 @@ func (options *ImportOptions) ImportProjectsFromGitHub() error {
 // DraftCreate creates a draft
 func (options *ImportOptions) DraftCreate() error {
 	// TODO this is a workaround of this draft issue:
-	// https://github.com/Azure/draft/issues/476
+	// http://github.com/Azure/draft/issues/476
 	dir := options.Dir
 	var err error
 

@@ -105,7 +105,7 @@ func FindServiceURL(client kubernetes.Interface, namespace string, name string) 
 			for _, tls := range ing.Spec.TLS {
 				for _, h := range tls.Hosts {
 					if h != "" {
-						return "https://" + h, nil
+						return "http://" + h, nil
 					}
 				}
 			}

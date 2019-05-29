@@ -396,7 +396,7 @@ func (p *GiteaProvider) GetIssue(org string, name string, number int) (*GitIssue
 func (p *GiteaProvider) IssueURL(org string, name string, number int, isPull bool) string {
 	serverPrefix := p.Server.URL
 	if strings.Index(serverPrefix, "://") < 0 {
-		serverPrefix = "https://" + serverPrefix
+		serverPrefix = "http://" + serverPrefix
 	}
 	path := "issues"
 	if isPull {

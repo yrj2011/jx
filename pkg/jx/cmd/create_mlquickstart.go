@@ -44,17 +44,17 @@ var (
 
 var (
 	createMLQuickstartLong = templates.LongDesc(`
-		Create a new machine learning project from a sample/starter (found in https://github.com/machine-learning-quickstarts)
+		Create a new machine learning project from a sample/starter (found in http://github.com/machine-learning-quickstarts)
 
 		This will create two new projects for you from the selected template. One for training and one for deploying a model as a service.
 		It will exclude any work-in-progress repos (containing the "WIP-" pattern)
 
-		For more documentation see: [https://jenkins-x.io/developing/create-mlquickstart/](https://jenkins-x.io/developing/create-mlquickstart/)
+		For more documentation see: [http://jenkins-x.io/developing/create-mlquickstart/](http://jenkins-x.io/developing/create-mlquickstart/)
 
 ` + opts.SeeAlsoText("jx create project"))
 
 	createMLQuickstartExample = templates.Examples(`
-		Create a new machine learning project from a sample/starter (found in https://github.com/machine-learning-quickstarts)
+		Create a new machine learning project from a sample/starter (found in http://github.com/machine-learning-quickstarts)
 
 		This will create a new machine learning project for you from the selected template.
 		It will exclude any work-in-progress repos (containing the "WIP-" pattern)
@@ -293,9 +293,9 @@ func (o *CreateMLQuickstartOptions) Run() error {
 func (o *CreateMLQuickstartOptions) getMLProjectSet(q *quickstarts.Quickstart) ([]projectset, error) {
 	var ps []projectset
 
-	// Look at https://raw.githubusercontent.com/:owner/:repo/master/projectset
+	// Look at http://raw.githubusercontent.com/:owner/:repo/master/projectset
 	client := http.Client{}
-	u := "https://raw.githubusercontent.com/" + q.Owner + "/" + q.Name + "/master/projectset"
+	u := "http://raw.githubusercontent.com/" + q.Owner + "/" + q.Name + "/master/projectset"
 
 	req, err := http.NewRequest(http.MethodGet, u, strings.NewReader(""))
 	if err != nil {

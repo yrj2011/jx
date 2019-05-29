@@ -261,10 +261,10 @@ func prepareInitialPromotionEnv(t *testing.T, productionManualPromotion bool) (*
 		Namespace: "jx",
 	}
 
-	staging := kube.NewPermanentEnvironmentWithGit("staging", "https://fake.git/"+testOrgName+"/"+stagingRepoName+"."+
+	staging := kube.NewPermanentEnvironmentWithGit("staging", "http://fake.git/"+testOrgName+"/"+stagingRepoName+"."+
 		"git")
 	production := kube.NewPermanentEnvironmentWithGit("production",
-		"https://fake.git/"+testOrgName+"/"+prodRepoName+".git")
+		"http://fake.git/"+testOrgName+"/"+prodRepoName+".git")
 	if productionManualPromotion {
 		production.Spec.PromotionStrategy = v1.PromotionStrategyTypeManual
 	}

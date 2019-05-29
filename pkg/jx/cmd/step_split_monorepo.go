@@ -273,7 +273,7 @@ func (o *StepSplitMonorepoOptions) Run() error {
 					valuesYaml := `replicaCount: 1`
 					chartYaml := `apiVersion: v1
 description: A Helm chart for Kubernetes
-icon: https://raw.githubusercontent.com/jenkins-x/jenkins-x-platform/master/images/java.png
+icon: http://raw.githubusercontent.com/jenkins-x/jenkins-x-platform/master/images/java.png
 name: ` + appName + `
 version: 0.0.1-SNAPSHOT
 `

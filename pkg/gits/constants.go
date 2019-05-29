@@ -17,10 +17,10 @@ const (
 	KindUnknown = "unknown"
 
 	// BitbucketCloudURL the default URL for BitBucket Cloud
-	BitbucketCloudURL = "https://bitbucket.org"
+	BitbucketCloudURL = "http://bitbucket.org"
 
 	// FakeGitURL the default URL for the fake git provider
-	FakeGitURL = "https://fake.git"
+	FakeGitURL = "http://fake.git"
 )
 
 var (

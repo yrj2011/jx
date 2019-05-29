@@ -76,7 +76,7 @@ func UnzipSpecificFiles(src, dest string, onlyFiles ...string) error {
 func extractFile(dest string, f *zip.File) error {
 	name := filepath.Join(dest, f.Name)
 	// We need to be secure to prevent attacks like
-	// https://snyk.io/blog/zip-slip-vulnerability
+	// http://snyk.io/blog/zip-slip-vulnerability
 	// the result is already 'Clean'ed so we only need to check the string starts
 	if !strings.HasPrefix(name, dest) {
 		return fmt.Errorf("refusing to unzip %s due to escaping out of expected directory", f.Name)

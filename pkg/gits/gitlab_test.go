@@ -125,13 +125,13 @@ func (suite *GitlabProviderSuite) TestListRepositories() {
 			gitlabOrgName,
 			"orgproject",
 			"git@gitlab.com:testorg/orgproject.git",
-			"https://gitlab.com/testorg/orgproject.git",
-			"https://gitlab.com/testorg/orgproject"},
+			"http://gitlab.com/testorg/orgproject.git",
+			"http://gitlab.com/testorg/orgproject"},
 		{"List repositories without organization",
 			"", "userproject",
 			"git@gitlab.com:testperson/userproject.git",
-			"https://gitlab.com/testperson/userproject.git",
-			"https://gitlab.com/testperson/userproject"},
+			"http://gitlab.com/testperson/userproject.git",
+			"http://gitlab.com/testperson/userproject"},
 	}
 
 	for _, s := range scenarios {

@@ -26,7 +26,7 @@ const (
 	defaultFlaggerNamespace             = defaultIstioNamespace
 	defaultFlaggerReleaseName           = kube.DefaultFlaggerReleaseName
 	defaultFlaggerVersion               = ""
-	defaultFlaggerRepo                  = "https://flagger.app"
+	defaultFlaggerRepo                  = "http://flagger.app"
 	optionGrafanaChart                  = "grafana-chart"
 	optionGrafanaVersion                = "grafana-version"
 	defaultFlaggerProductionEnvironment = "production"

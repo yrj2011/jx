@@ -203,7 +203,7 @@ func (suite *BitbucketServerProviderTestSuite) TestUpdatePullRequestStatus() {
 	state := "CLOSED"
 
 	pr := &gits.GitPullRequest{
-		URL:    "https://auth.example.com/projects/TEST-ORG/repos/test-repo",
+		URL:    "http://auth.example.com/projects/TEST-ORG/repos/test-repo",
 		Repo:   "test-repo",
 		Number: &number,
 		State:  &state,
@@ -230,7 +230,7 @@ func (suite *BitbucketServerProviderTestSuite) TestGetPullRequest() {
 
 func (suite *BitbucketServerProviderTestSuite) TestPullRequestCommits() {
 	commits, err := suite.provider.GetPullRequestCommits("test-user", &gits.GitRepository{
-		URL:     "https://auth.example.com/projects/TEST-ORG/repos/test-repo",
+		URL:     "http://auth.example.com/projects/TEST-ORG/repos/test-repo",
 		Name:    "test-repo",
 		Project: "TEST-ORG",
 	}, 1)
@@ -244,7 +244,7 @@ func (suite *BitbucketServerProviderTestSuite) TestPullRequestCommits() {
 func (suite *BitbucketServerProviderTestSuite) TestPullRequestLastCommitStatus() {
 	prNumber := 1
 	pr := &gits.GitPullRequest{
-		URL:    "https://auth.example.com/projects/TEST-ORG/repos/test-repo/pull-requests/7/overview",
+		URL:    "http://auth.example.com/projects/TEST-ORG/repos/test-repo/pull-requests/7/overview",
 		Repo:   "test-repo",
 		Number: &prNumber,
 	}
@@ -276,7 +276,7 @@ func (suite *BitbucketServerProviderTestSuite) TestMergePullRequest() {
 
 	id := 1
 	pr := &gits.GitPullRequest{
-		URL:    "https://auth.example.com/projects/TEST-ORG/repos/test-repo/pull-requests/1",
+		URL:    "http://auth.example.com/projects/TEST-ORG/repos/test-repo/pull-requests/1",
 		Repo:   "test-repo",
 		Number: &id,
 	}
@@ -288,8 +288,8 @@ func (suite *BitbucketServerProviderTestSuite) TestMergePullRequest() {
 func (suite *BitbucketServerProviderTestSuite) TestCreateWebHook() {
 
 	data := &gits.GitWebHookArguments{
-		Repo:   &gits.GitRepository{URL: "https://auth.example.com/projects/TEST-ORG/repos/test-repo"},
-		URL:    "https://my-jenkins.example.com/bitbucket-webhook/",
+		Repo:   &gits.GitRepository{URL: "http://auth.example.com/projects/TEST-ORG/repos/test-repo"},
+		URL:    "http://my-jenkins.example.com/bitbucket-webhook/",
 		Secret: "someSecret",
 	}
 	err := suite.provider.CreateWebHook(data)
@@ -317,7 +317,7 @@ func (suite *BitbucketServerProviderTestSuite) TestListWebHooks() {
 func (suite *BitbucketServerProviderTestSuite) TestUpdateWebHook() {
 
 	data := &gits.GitWebHookArguments{
-		Repo:        &gits.GitRepository{URL: "https://auth.example.com/projects/TEST-ORG/repos/test-repo"},
+		Repo:        &gits.GitRepository{URL: "http://auth.example.com/projects/TEST-ORG/repos/test-repo"},
 		URL:         "http://jenkins.example.com/bitbucket-scmsource-hook/notify",
 		ExistingURL: "http://jenkins.example.com/bitbucket-scmsource-hook/notify",
 		Secret:      "someSecret",

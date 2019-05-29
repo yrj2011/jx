@@ -29,7 +29,7 @@ import (
 type Extension struct {
 	metav1.TypeMeta `json:",inline"`
 	// Standard object's metadata.
-	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	// More info: http://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	// +optional
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
@@ -374,7 +374,7 @@ func (e *ExtensionSpec) Contains(when ExtensionWhen) bool {
 type CommitStatus struct {
 	metav1.TypeMeta `json:",inline"`
 	// Standard object's metadata.
-	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	// More info: http://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	// +optional
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
@@ -425,7 +425,7 @@ type CommitStatusItem struct {
 type App struct {
 	metav1.TypeMeta `json:",inline"`
 	// Standard object's metadata.
-	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	// More info: http://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	// +optional
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
@@ -481,7 +481,7 @@ type SourceRepositoryGroupSpec struct {
 type SourceRepository struct {
 	metav1.TypeMeta `json:",inline"`
 	// Standard object's metadata.
-	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	// More info: http://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	// +optional
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
@@ -501,7 +501,7 @@ type SourceRepositoryList struct {
 // SourceRepositorySpec provides details of the metadata for an App
 type SourceRepositorySpec struct {
 	Description string `json:"description,omitempty" protobuf:"bytes,1,opt,name=description"`
-	// Provider stores the URL of the git provider such as https://github.com
+	// Provider stores the URL of the git provider such as http://github.com
 	Provider string `json:"provider,omitempty" protobuf:"bytes,2,opt,name=provider"`
 	Org      string `json:"org,omitempty" protobuf:"bytes,3,opt,name=org"`
 	Repo     string `json:"repo,omitempty" protobuf:"bytes,4,opt,name=repo"`
@@ -535,7 +535,7 @@ type PluginList struct {
 type Plugin struct {
 	metav1.TypeMeta `json:",inline"`
 	// Standard object's metadata.
-	// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	// More info: http://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
 	// +optional
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 

@@ -412,7 +412,7 @@ func (a *Agent) GetImage() string {
 // them to make them compliant. Results should match the following regex and be
 // no more than 63 characters long:
 //     [a-z]([-a-z0-9]*[a-z0-9])?
-// cf. https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+// cf. http://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 // body is assumed to have at least one ASCII letter.
 // suffix is assumed to be alphanumeric and non-empty.
 // TODO: Combine with kube.ToValidName (that function needs to handle lengths)

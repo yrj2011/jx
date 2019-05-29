@@ -145,7 +145,7 @@ func CopyFileOrDir(src string, dst string, force bool) (err error) {
 	return CopyFile(src, dst)
 }
 
-// credit https://gist.github.com/r0l1/92462b38df26839a3ca324697c8cba04
+// credit http://gist.github.com/r0l1/92462b38df26839a3ca324697c8cba04
 func CopyDir(src string, dst string, force bool) (err error) {
 	src = filepath.Clean(src)
 	dst = filepath.Clean(dst)
@@ -205,7 +205,7 @@ func CopyDir(src string, dst string, force bool) (err error) {
 	return
 }
 
-// credit https://gist.github.com/r0l1/92462b38df26839a3ca324697c8cba04
+// credit http://gist.github.com/r0l1/92462b38df26839a3ca324697c8cba04
 func CopyFile(src, dst string) (err error) {
 	in, err := os.Open(src)
 	if err != nil {

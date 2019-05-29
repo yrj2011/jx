@@ -25,7 +25,7 @@ const (
 	defaultCloudBeesNamespace   = "jx"
 	coreRepoName                = "cb"
 	cbServiceName               = "cb-core"
-	coreRepoUrl                 = "https://chartmuseum.jx.charts-demo.cloudbees.com"
+	coreRepoUrl                 = "http://chartmuseum.jx.charts-demo.cloudbees.com"
 	defaultCloudBeesVersion     = ""
 )
 
@@ -35,7 +35,7 @@ var (
 
 		CloudBees app for Kubernetes provides unified Continuous Delivery Environment console to make it easier to do CI/CD and Environments across a number of microservices and teams
 
-		For more information please see [https://www.cloudbees.com/blog/want-help-build-cloudbees-kubernetes-jenkins-x](https://www.cloudbees.com/blog/want-help-build-cloudbees-kubernetes-jenkins-x)
+		For more information please see [http://www.cloudbees.com/blog/want-help-build-cloudbees-kubernetes-jenkins-x](http://www.cloudbees.com/blog/want-help-build-cloudbees-kubernetes-jenkins-x)
 `)
 
 	CreateAddonCloudBeesExample = templates.Examples(`
@@ -113,7 +113,7 @@ func (o *CreateAddonCloudBeesOptions) Run() error {
 You will need your username and password to install this addon while it is in preview.
 To register to get your username/password to to: %s
 
-`, util.ColorInfo("https://pages.cloudbees.com/K8s"))
+`, util.ColorInfo("http://pages.cloudbees.com/K8s"))
 
 		username := ""
 		prompt := &survey.Input{
@@ -150,7 +150,7 @@ To register to get your username/password to to: %s
 			return errors.Wrap(err, "reading domain")
 		}
 
-		dexURL, err := util.PickValue("Dex URL:", fmt.Sprintf("https://dex.sso.%s", ingressConfig.Domain), true, "", o.In, o.Out, o.Err)
+		dexURL, err := util.PickValue("Dex URL:", fmt.Sprintf("http://dex.sso.%s", ingressConfig.Domain), true, "", o.In, o.Out, o.Err)
 		if err != nil {
 			return errors.Wrap(err, "reading dex URL")
 		}

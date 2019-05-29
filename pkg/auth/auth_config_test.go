@@ -133,7 +133,7 @@ func TestAuthConfigGetsDefaultName(t *testing.T) {
 	t.Parallel()
 	c := &auth.AuthConfig{}
 
-	expectedURL := "https://foo.com"
+	expectedURL := "http://foo.com"
 	server := c.GetOrCreateServer(expectedURL)
 	assert.NotNil(t, server, "No server found!")
 	assert.True(t, server.Name != "", "Should have a server name!")
@@ -143,7 +143,7 @@ func TestAuthConfigGetsDefaultName(t *testing.T) {
 func TestDeleteServer(t *testing.T) {
 	t.Parallel()
 	c := &auth.AuthConfig{}
-	url := "https://foo.com"
+	url := "http://foo.com"
 	server := c.GetOrCreateServer(url)
 	assert.NotNil(t, server, "Failed to add the server to the configuration")
 	assert.Equal(t, 1, len(c.Servers), "No server found in the configuration")
@@ -156,10 +156,10 @@ func TestDeleteServer(t *testing.T) {
 func TestDeleteServer2(t *testing.T) {
 	t.Parallel()
 	c := &auth.AuthConfig{}
-	url1 := "https://foo1.com"
+	url1 := "http://foo1.com"
 	server1 := c.GetOrCreateServer(url1)
 	assert.NotNil(t, server1, "Failed to add the server to the configuration")
-	url2 := "https://foo2.com"
+	url2 := "http://foo2.com"
 	server2 := c.GetOrCreateServer(url2)
 	assert.NotNil(t, server2, "Failed to the server to the configuration!")
 	assert.Equal(t, 2, len(c.Servers), "Must have 2 servers in the configuration")

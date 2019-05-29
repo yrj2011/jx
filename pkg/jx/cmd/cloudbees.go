@@ -27,7 +27,7 @@ var (
 
 		Which helps you visualise your CI/CD pipelines, apps, environments and teams.
 
-		For more information please see [https://www.cloudbees.com/blog/want-help-build-cloudbees-kubernetes-jenkins-x](https://www.cloudbees.com/blog/want-help-build-cloudbees-kubernetes-jenkins-x)
+		For more information please see [http://www.cloudbees.com/blog/want-help-build-cloudbees-kubernetes-jenkins-x](http://www.cloudbees.com/blog/want-help-build-cloudbees-kubernetes-jenkins-x)
 `)
 	core_example = templates.Examples(`
 		# Open the core dashboard in a browser
@@ -74,13 +74,13 @@ func (o *CloudBeesOptions) GetBaseURL() (url string, err error) {
 	}
 	url, err = services.GetServiceURLFromName(client, kube.ServiceCloudBees, defaultCloudBeesNamespace)
 	if err != nil {
-		return "", fmt.Errorf("%s\n\nDid you install the CloudBees addon via: %s\n\nFor more information see: %s", err, util.ColorInfo("jx create addon cloudbees"), util.ColorInfo("https://www.cloudbees.com/blog/want-help-build-cloudbees-kubernetes-jenkins-x"))
+		return "", fmt.Errorf("%s\n\nDid you install the CloudBees addon via: %s\n\nFor more information see: %s", err, util.ColorInfo("jx create addon cloudbees"), util.ColorInfo("http://www.cloudbees.com/blog/want-help-build-cloudbees-kubernetes-jenkins-x"))
 	}
 
 	if url == "" {
 		url, err = services.GetServiceURLFromName(client, fmt.Sprintf("sso-%s", kube.ServiceCloudBees), defaultCloudBeesNamespace)
 		if err != nil {
-			return "", fmt.Errorf("%s\n\nDid you install the CloudBees addon via: %s\n\nFor more information see: %s", err, util.ColorInfo("jx create addon cloudbees"), util.ColorInfo("https://www.cloudbees.com/blog/want-help-build-cloudbees-kubernetes-jenkins-x"))
+			return "", fmt.Errorf("%s\n\nDid you install the CloudBees addon via: %s\n\nFor more information see: %s", err, util.ColorInfo("jx create addon cloudbees"), util.ColorInfo("http://www.cloudbees.com/blog/want-help-build-cloudbees-kubernetes-jenkins-x"))
 		}
 	}
 	return url, nil

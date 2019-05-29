@@ -33,7 +33,7 @@ var (
 
 	You can optionally use GitOps to manage the configuration of an Environment by storing all configuration in a Git repository and then only changing it via Pull Requests and CI/CD.
 
-	For more documentation on Environments see: [https://jenkins-x.io/about/features/#environments](https://jenkins-x.io/about/features/#environments)
+	For more documentation on Environments see: [http://jenkins-x.io/about/features/#environments](http://jenkins-x.io/about/features/#environments)
 	`
 	create_env_long = templates.LongDesc(`
 		Creates a new Environment
@@ -100,7 +100,7 @@ func NewCmdCreateEnv(commonOpts *opts.CommonOptions) *cobra.Command {
 
 	cmd.Flags().StringVarP(&options.Options.Spec.Namespace, kube.OptionNamespace, "s", "", "The Kubernetes namespace for the Environment")
 	cmd.Flags().StringVarP(&options.Options.Spec.Cluster, "cluster", "c", "", "The Kubernetes cluster for the Environment. If blank and a namespace is specified assumes the current cluster")
-	cmd.Flags().BoolVarP(&options.Options.Spec.RemoteCluster, "remote", "", false, "Indicates the Environment resides in a separate cluster to the development cluster. If this is true then we don't perform release piplines in this git repository but we use the Environment Controller inside that cluster: https://jenkins-x.io/getting-started/multi-cluster/")
+	cmd.Flags().BoolVarP(&options.Options.Spec.RemoteCluster, "remote", "", false, "Indicates the Environment resides in a separate cluster to the development cluster. If this is true then we don't perform release piplines in this git repository but we use the Environment Controller inside that cluster: http://jenkins-x.io/getting-started/multi-cluster/")
 	cmd.Flags().StringVarP(&options.Options.Spec.Source.URL, "git-url", "g", "", "The Git clone URL for the source code for GitOps based Environments")
 	cmd.Flags().StringVarP(&options.Options.Spec.Source.Ref, "git-ref", "r", "", "The Git repo reference for the source code for GitOps based Environments")
 	cmd.Flags().StringVarP(&options.GitRepositoryOptions.Owner, "git-owner", "", "", "Git organisation / owner")
