@@ -128,7 +128,7 @@ func (o *CommonOptions) CreateGitAuthConfigServiceFromSecrets(fileName string, s
 			server, err := o.Git().Server("")
 			if err != nil {
 				log.Warnf("WARNING: unable to get remote Git repo server, %v\n", err)
-				server = "http://github.com"
+				server = "http://192.168.1.167"
 			}
 			config.Servers = []*auth.AuthServer{
 				{
@@ -144,7 +144,7 @@ func (o *CommonOptions) CreateGitAuthConfigServiceFromSecrets(fileName string, s
 		config.Servers = []*auth.AuthServer{
 			{
 				Name:  "GitHub",
-				URL:   "http://github.com",
+				URL:   "http://192.168.1.167",
 				Kind:  gits.KindGitHub,
 				Users: []*auth.UserAuth{},
 			},

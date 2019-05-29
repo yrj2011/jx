@@ -103,7 +103,7 @@ func NewCmdStepBDD(commonOpts *opts.CommonOptions) *cobra.Command {
 	cmd.Flags().StringVarP(&options.Flags.GitProvider, "git-provider", "g", "", "the git provider kind")
 	cmd.Flags().StringVarP(&options.Flags.GitOwner, "git-owner", "", "", "the git owner of new git repositories created by the tests")
 	cmd.Flags().StringVarP(&options.Flags.ReportsOutputDir, "reports-dir", "", "reports", "the directory used to copy in any generated report files")
-	cmd.Flags().StringVarP(&options.Flags.TestRepoGitCloneUrl, "test-git-repo", "r", "http://github.com/jenkins-x/bdd-jx.git", "the git repository to clone for the BDD tests")
+	cmd.Flags().StringVarP(&options.Flags.TestRepoGitCloneUrl, "test-git-repo", "r", "http://192.168.1.167/jenkins-x/bdd-jx.git", "the git repository to clone for the BDD tests")
 	cmd.Flags().BoolVarP(&options.Flags.SkipRepoGitClone, "skip-test-git-repo-clone", "", false, "Skip cloning the bdd test git repo")
 	cmd.Flags().StringVarP(&options.Flags.JxBinary, "binary", "", "jx", "the binary location of the 'jx' executable for creating clusters")
 	cmd.Flags().StringVarP(&options.Flags.TestGitBranch, "test-git-branch", "", "master", "the git repository branch to use for the BDD tests")

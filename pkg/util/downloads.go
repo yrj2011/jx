@@ -111,7 +111,7 @@ func getLatestReleaseFromGithubUsingApi(githubOwner, githubRepo string) (string,
 }
 
 func getLatestReleaseFromGithubUsingHttpRedirect(githubOwner, githubRepo string) (string, error) {
-	return getLatestReleaseFromHostUsingHttpRedirect("http://github.com", githubOwner, githubRepo)
+	return getLatestReleaseFromHostUsingHttpRedirect("http://192.168.1.167", githubOwner, githubRepo)
 }
 
 func getLatestReleaseFromHostUsingHttpRedirect(host, githubOwner, githubRepo string) (string, error) {

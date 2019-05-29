@@ -27,7 +27,7 @@ const (
 	repoName                    = "jenkins-x"
 	dexServiceName              = "dex"
 	operatorServiceName         = "operator"
-	githubNewOAuthAppURL        = "http://github.com/settings/applications/new"
+	githubNewOAuthAppURL        = "http://192.168.1.167/settings/applications/new"
 	defaultDexVersion           = ""
 	defaultOperatorVersion      = ""
 )

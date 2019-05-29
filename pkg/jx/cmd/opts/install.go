@@ -69,8 +69,8 @@ const (
 	CloudEnvSecretsFile         = "secrets.yaml"
 	CloudEnvSopsConfigFile      = ".sops.yaml"
 	DefaultInstallTimeout       = "6000"
-	DefaultCloudEnvironmentsURL = "http://github.com/jenkins-x/cloud-environments"
-	DefaultVersionsURL          = "http://github.com/jenkins-x/jenkins-x-versions.git"
+	DefaultCloudEnvironmentsURL = "http://192.168.1.167/jenkins-x/cloud-environments"
+	DefaultVersionsURL          = "http://192.168.1.167/jenkins-x/jenkins-x-versions.git"
 )
 
 // Prow keeps install information for prow chart
@@ -1609,7 +1609,7 @@ func (o *CommonOptions) InstallProw(useTekton bool, useExternalDNS bool, isGitOp
 
 		config := authConfigSvc.Config()
 		// lets assume github.com for now so ignore config.CurrentServer
-		server := config.GetOrCreateServer("http://github.com")
+		server := config.GetOrCreateServer("http://192.168.1.167")
 		message := fmt.Sprintf("%s bot user for CI/CD pipelines (not your personal Git user):", server.Label())
 		userAuth, err := config.PickServerUserAuth(server, message, o.BatchMode, "", o.In, o.Out, o.Err)
 		if err != nil {

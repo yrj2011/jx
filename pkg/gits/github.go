@@ -82,7 +82,7 @@ func (p *GitHubProvider) GetEnterpriseApiURL() string {
 
 func IsGitHubServerURL(u string) bool {
 	u = strings.TrimSuffix(u, "/")
-	return u == "" || u == "http://github.com" || u == "http://github.com"
+	return u == "" || u == "http://192.168.1.167" || u == "http://192.168.1.167"
 }
 
 func (p *GitHubProvider) ListOrganisations() ([]GitOrganisation, error) {

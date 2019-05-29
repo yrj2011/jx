@@ -9,14 +9,14 @@ import (
 )
 
 const (
-	GitHubHost = "github.com"
-	GitHubURL  = "http://github.com"
+	GitHubHost = "192.168.1.167"
+	GitHubURL  = "http://192.168.1.167"
 
 	gitPrefix = "git@"
 )
 
 func (i *GitRepository) IsGitHub() bool {
-	return GitHubHost == i.Host || strings.HasSuffix(i.URL, "http://github.com")
+	return GitHubHost == i.Host || strings.HasSuffix(i.URL, "http://192.168.1.167")
 }
 
 // PullRequestURL returns the URL of a pull request of the given name/number
@@ -170,7 +170,7 @@ func parsePath(path string, info *GitRepository) (*GitRepository, error) {
 func SaasGitKind(gitServiceUrl string) string {
 	gitServiceUrl = strings.TrimSuffix(gitServiceUrl, "/")
 	switch gitServiceUrl {
-	case "http://github.com":
+	case "192.168.1.167":
 		return KindGitHub
 	case "http://github.com":
 		return KindGitHub
@@ -186,6 +186,6 @@ func SaasGitKind(gitServiceUrl string) string {
 		if strings.HasPrefix(gitServiceUrl, "http://github") {
 			return KindGitHub
 		}
-		return ""
+		return KindGitHub
 	}
 }

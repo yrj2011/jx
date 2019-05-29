@@ -194,7 +194,7 @@ func (o *StartPipelineOptions) createProwJob(jobname string) error {
 	jobSpec.Type = prowjobv1.PostsubmitJob
 
 	//todo needs to change when we add support for multiple git providers with Prow
-	sourceURL := fmt.Sprintf("http://github.com/%s/%s.git", org, repo)
+	sourceURL := fmt.Sprintf("http://192.168.1.167/%s/%s.git", org, repo)
 	sourceSpec := &build.SourceSpec{
 		Git: &build.GitSourceSpec{
 			Url:      sourceURL,

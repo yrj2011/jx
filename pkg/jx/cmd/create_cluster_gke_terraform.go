@@ -258,7 +258,7 @@ func (o *CreateClusterGKETerraformOptions) createClusterGKETerraform() error {
 	if _, err := os.Stat(terraformDir); os.IsNotExist(err) {
 		os.MkdirAll(terraformDir, os.ModePerm)
 		_, err = git.PlainClone(terraformDir, false, &git.CloneOptions{
-			URL:           "http://github.com/jenkins-x/terraform-jx-templates-gke",
+			URL:           "http://192.168.1.167/jenkins-x/terraform-jx-templates-gke",
 			ReferenceName: "refs/heads/master",
 			SingleBranch:  true,
 			Progress:      o.Out,

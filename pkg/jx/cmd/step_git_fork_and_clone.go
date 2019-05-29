@@ -35,7 +35,7 @@ var (
 	// StepGitForkAndCloneExample command example
 	StepGitForkAndCloneExample = templates.Examples(`
 		# Fork and clone the jx repo
-		jx step git fork-and-clone http://github.com/jenkins-x/jx.git
+		jx step git fork-and-clone http://192.168.1.167/jenkins-x/jx.git
 
 `)
 )

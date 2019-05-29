@@ -73,7 +73,7 @@ const (
 	optionTillerNamespace = "tiller-namespace"
 
 	// JenkinsBuildPackURL URL of Draft packs for Jenkins X
-	JenkinsBuildPackURL = "http://github.com/jenkins-x/draft-packs.git"
+	JenkinsBuildPackURL = "http://192.168.1.167/jenkins-x/draft-packs.git"
 
 	// defaultIngressNamesapce default namesapce fro ingress controller
 	defaultIngressNamesapce = "kube-system"
