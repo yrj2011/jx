@@ -54,7 +54,7 @@ func TestCompleteBuildSourceInfo(t *testing.T) {
 			Name: "my-org-my-repo-master-1",
 		},
 		Spec: v1.PipelineActivitySpec{
-			GitURL:    "https://github.com/my-org/my-repo.git",
+			GitURL:    "http://github.com/my-org/my-repo.git",
 			GitBranch: "master",
 		},
 	}
@@ -69,7 +69,7 @@ func TestCompleteBuildSourceInfo(t *testing.T) {
 			Name: "my-org-my-repo-pr-4",
 		},
 		Spec: v1.PipelineActivitySpec{
-			GitURL:    "https://github.com/my-org/my-repo.git",
+			GitURL:    "http://github.com/my-org/my-repo.git",
 			GitBranch: "PR-4",
 		},
 	}

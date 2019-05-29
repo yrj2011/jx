@@ -30,7 +30,7 @@ var (
 
 	createAddonEnvironmentControllerExample = templates.Examples(`
 		# Creates the environment controller using a specific environment git repository, project, git user, chart repo
-		jx create addon envctl -s https://github.com/myorg/env-production.git --project-id myproject --docker-registry gcr.io --cluster-rbac true --user mygituser --token mygittoken
+		jx create addon envctl -s http://github.com/myorg/env-production.git --project-id myproject --docker-registry gcr.io --cluster-rbac true --user mygituser --token mygittoken
 		
 	`)
 )

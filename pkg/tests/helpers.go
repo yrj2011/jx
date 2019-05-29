@@ -2,6 +2,7 @@ package tests
 
 import (
 	"bytes"
+	auth_test "github.com/jx/pkg/auth/mocks"
 	"io"
 	"os"
 	"runtime"
@@ -65,7 +66,7 @@ func CreateAuthConfigService() auth.ConfigService {
 	authServer := auth.AuthServer{
 		Users:       []*auth.UserAuth{&userAuth},
 		CurrentUser: userAuth.Username,
-		URL:         "https://github.com",
+		URL:         "http://github.com",
 		Kind:        gits.KindGitHub,
 		Name:        "jx-testing-server",
 	}
@@ -74,7 +75,7 @@ func CreateAuthConfigService() auth.ConfigService {
 		DefaultUsername:  userAuth.Username,
 		CurrentServer:    authServer.URL,
 		PipeLineUsername: "jx-pipeline-user",
-		PipeLineServer:   "https://github.com",
+		PipeLineServer:   "http://github.com",
 	}
 	saver := auth_test.NewMockConfigSaver()
 	pegomock.When(saver.LoadConfig()).ThenReturn(&authConfig, nil)

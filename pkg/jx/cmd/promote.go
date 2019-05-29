@@ -198,7 +198,7 @@ func (o *PromoteOptions) Run() error {
 	if prow {
 		o.prow = true
 		log.Warn("prow based install so skip waiting for the merge of Pull Requests to go green as currently there is an issue with getting" +
-			"statuses from the PR, see https://github.com/jenkins-x/jx/issues/2410")
+			"statuses from the PR, see http://github.com/jenkins-x/jx/issues/2410")
 		o.NoWaitForUpdatePipeline = true
 	}
 

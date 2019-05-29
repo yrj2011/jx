@@ -282,7 +282,7 @@ const (
 	// Terraform constant
 	Terraform = "terraform"
 	// TerraformTemplatesGKE constant
-	TerraformTemplatesGKE = "https://github.com/jenkins-x/terraform-jx-templates-gke.git"
+	TerraformTemplatesGKE = "http://github.com/jenkins-x/terraform-jx-templates-gke.git"
 )
 
 // NewCmdCreateTerraform creates a command object for the "create" command

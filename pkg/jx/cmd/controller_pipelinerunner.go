@@ -193,7 +193,7 @@ func (o *ControllerPipelineRunnerOptions) startPipelineRun(w http.ResponseWriter
 		return
 	}
 
-	sourceURL := fmt.Sprintf("https://github.com/%s/%s.git", pj.Refs.Org, pj.Refs.Repo)
+	sourceURL := fmt.Sprintf("http://github.com/%s/%s.git", pj.Refs.Org, pj.Refs.Repo)
 	if sourceURL == "" {
 		o.returnError(err, "missing sourceURL property", w, r)
 		return

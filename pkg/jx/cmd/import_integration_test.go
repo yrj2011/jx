@@ -151,7 +151,7 @@ func createFakeGitProvider() *gits.FakeProvider {
 	authServer := auth.AuthServer{
 		Users:       []*auth.UserAuth{&userAuth},
 		CurrentUser: userAuth.Username,
-		URL:         "https://github.com",
+		URL:         "http://github.com",
 		Kind:        gits.KindGitHub,
 		Name:        "jx-testing-server",
 	}

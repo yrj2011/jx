@@ -10,13 +10,13 @@ import (
 
 const (
 	GitHubHost = "github.com"
-	GitHubURL  = "https://github.com"
+	GitHubURL  = "http://github.com"
 
 	gitPrefix = "git@"
 )
 
 func (i *GitRepository) IsGitHub() bool {
-	return GitHubHost == i.Host || strings.HasSuffix(i.URL, "https://github.com")
+	return GitHubHost == i.Host || strings.HasSuffix(i.URL, "http://github.com")
 }
 
 // PullRequestURL returns the URL of a pull request of the given name/number
@@ -183,7 +183,7 @@ func SaasGitKind(gitServiceUrl string) string {
 	case "http://fake.git", FakeGitURL:
 		return KindGitFake
 	default:
-		if strings.HasPrefix(gitServiceUrl, "https://github") {
+		if strings.HasPrefix(gitServiceUrl, "http://github") {
 			return KindGitHub
 		}
 		return ""

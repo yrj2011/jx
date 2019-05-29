@@ -161,7 +161,7 @@ func (o *DeleteRepoOptions) Run() error {
 	for _, name := range names {
 		err = provider.DeleteRepository(owner, name)
 		if err != nil {
-			log.Warnf("Ensure Git Token has delete repo permissions or manually delete, for GitHub check https://github.com/settings/tokens\n")
+			log.Warnf("Ensure Git Token has delete repo permissions or manually delete, for GitHub check http://github.com/settings/tokens\n")
 			log.Warnf("%s\n", err)
 		} else {
 			log.Infof("Deleted repository %s/%s\n", info(owner), info(name))

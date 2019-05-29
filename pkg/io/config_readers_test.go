@@ -28,7 +28,7 @@ func TestFileConfigReader(t *testing.T) {
 		"read config from file": {
 			config: `
 servers:
-- url: https://github.com
+- url: http://github.com
   users:
   - username: test
     apitoken: test
@@ -42,7 +42,7 @@ servers:
 			want: auth.Config{
 				Servers: []*auth.Server{
 					{
-						URL: "https://github.com",
+						URL: "http://github.com",
 						Users: []*auth.User{
 							{
 								Username: "test",

@@ -169,7 +169,7 @@ func TestImportOptions_GetOrganisation(t *testing.T) {
 		{
 			name: "Get org from github URL (ignore user-specified org)",
 			options: cmd.ImportOptions{
-				RepoURL:      "https://github.com/orga/myrepo",
+				RepoURL:      "http://github.com/orga/myrepo",
 				Organisation: "orgb",
 			},
 			want: "orga",
@@ -177,7 +177,7 @@ func TestImportOptions_GetOrganisation(t *testing.T) {
 		{
 			name: "Get org from github URL (no user-specified org)",
 			options: cmd.ImportOptions{
-				RepoURL: "https://github.com/orga/myrepo",
+				RepoURL: "http://github.com/orga/myrepo",
 			},
 			want: "orga",
 		},

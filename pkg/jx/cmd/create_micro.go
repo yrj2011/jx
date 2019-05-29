@@ -23,7 +23,7 @@ var (
 
 		This command is expected to be run within your '$GOHOME' directory. e.g. at '$GOHOME/src/github.com/myOrgOrUser/'
 
-		For more documentation about micro see: [https://github.com/microio/micro](https://github.com/microio/micro)
+		For more documentation about micro see: [http://github.com/microio/micro](http://github.com/microio/micro)
 
 	`)
 

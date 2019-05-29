@@ -130,7 +130,7 @@ var (
 		jx import /foo/bar
 
 		# Import a Git repository from a URL
-		jx import --url https://github.com/jenkins-x/spring-boot-web-example.git
+		jx import --url http://github.com/jenkins-x/spring-boot-web-example.git
 
         # Select a number of repositories from a GitHub organisation
 		jx import --github --org myname 

@@ -44,7 +44,7 @@ func TestStepStash(t *testing.T) {
 	o.StorageLocation.BucketURL = "file://" + tempDir
 	o.ToPath = "output"
 	o.Pattern = []string{testData}
-	o.ProjectGitURL = "https://github.com/jenkins-x/dummy-repo.git"
+	o.ProjectGitURL = "http://github.com/jenkins-x/dummy-repo.git"
 	o.ProjectBranch = "master"
 	cmd.ConfigureTestOptions(o.CommonOptions, &gits.GitFake{}, helm_test.NewMockHelmer())
 

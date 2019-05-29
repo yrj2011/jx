@@ -217,7 +217,7 @@ func (o *CreateAddonIstioOptions) getIstioChartsFromGitHub() (string, error) {
 		extension = "linux.tar.gz"
 	}
 
-	clientURL := fmt.Sprintf("https://github.com/istio/istio/releases/download/%s/istio-%s-%s", actualVersion, actualVersion, extension)
+	clientURL := fmt.Sprintf("http://github.com/istio/istio/releases/download/%s/istio-%s-%s", actualVersion, actualVersion, extension)
 
 	outputDir := filepath.Join(binDir, "istio-"+actualVersion.String())
 	os.RemoveAll(outputDir)

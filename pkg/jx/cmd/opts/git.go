@@ -257,7 +257,7 @@ func (o *CommonOptions) DiscoverGitURL(gitConf string) (string, error) {
 
 // AddGitRepoOptionsArguments adds common git flags to the given cobra command
 func AddGitRepoOptionsArguments(cmd *cobra.Command, repositoryOptions *gits.GitRepositoryOptions) {
-	cmd.Flags().StringVarP(&repositoryOptions.ServerURL, "git-provider-url", "", "https://github.com", "The Git server URL to create new Git repositories inside")
+	cmd.Flags().StringVarP(&repositoryOptions.ServerURL, "git-provider-url", "", "http://github.com", "The Git server URL to create new Git repositories inside")
 	cmd.Flags().StringVarP(&repositoryOptions.ServerKind, "git-provider-kind", "", "",
 		"Kind of Git server. If not specified, kind of server will be autodetected from Git provider URL. Possible values: bitbucketcloud, bitbucketserver, gitea, gitlab, github, fakegit")
 	cmd.Flags().StringVarP(&repositoryOptions.Username, "git-username", "", "", "The Git username to use for creating new Git repositories")

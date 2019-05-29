@@ -111,12 +111,12 @@ func getLatestReleaseFromGithubUsingApi(githubOwner, githubRepo string) (string,
 }
 
 func getLatestReleaseFromGithubUsingHttpRedirect(githubOwner, githubRepo string) (string, error) {
-	return getLatestReleaseFromHostUsingHttpRedirect("https://github.com", githubOwner, githubRepo)
+	return getLatestReleaseFromHostUsingHttpRedirect("http://github.com", githubOwner, githubRepo)
 }
 
 func getLatestReleaseFromHostUsingHttpRedirect(host, githubOwner, githubRepo string) (string, error) {
-	// Github will redirect "https://github.com/organisation/repo/releases/latest" to the latest release, eg
-	// https://github.com/jenkins-x/jx/releases/tag/v1.3.696
+	// Github will redirect "http://github.com/organisation/repo/releases/latest" to the latest release, eg
+	// http://github.com/jenkins-x/jx/releases/tag/v1.3.696
 	// We can use this to get the latest release without affecting any API limits.
 	url := fmt.Sprintf("%s/%s/%s/releases/latest", host, githubOwner, githubRepo)
 

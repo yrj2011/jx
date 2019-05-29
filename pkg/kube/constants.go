@@ -141,9 +141,9 @@ const (
 	// DeploymentProwBuild the name of the Deployment for the Prow webhook engine
 	DeploymentProwBuild = "prow-build"
 
-	DefaultEnvironmentGitRepoURL = "https://github.com/jenkins-x/default-environment-charts.git"
+	DefaultEnvironmentGitRepoURL = "http://github.com/jenkins-x/default-environment-charts.git"
 
-	DefaultOrganisationGitRepoURL = "https://github.com/jenkins-x/default-organisation.git"
+	DefaultOrganisationGitRepoURL = "http://github.com/jenkins-x/default-organisation.git"
 
 	// AnnotationTitle the human readable name of a resource which can include mixed case, spaces and punctuation
 	AnnotationTitle = "title"

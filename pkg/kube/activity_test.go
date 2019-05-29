@@ -106,7 +106,7 @@ func TestCreateOrUpdateActivities(t *testing.T) {
 		GitInfo: &gits.GitRepository{
 			Name:         expectedName,
 			Organisation: expectedOrganisation,
-			URL:          "https://github.com/" + expectedOrganisation + "/" + expectedName,
+			URL:          "http://github.com/" + expectedOrganisation + "/" + expectedName,
 		},
 	}
 
