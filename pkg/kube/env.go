@@ -487,6 +487,9 @@ func createEnvironmentGitRepo(batchMode bool, authConfigSvc auth.ConfigService, 
 				return nil, nil, errors.Wrapf(err, "cloning the forked environment %q into %q", forkEnvGitURL, dir)
 			}
 			pushGitURL, err := git.CreatePushURL(repo.CloneURL, details.User)
+			fmt.Fprintf(out, "repo.CloneURL:%s\n", repo.CloneURL)
+			fmt.Fprintf(out, "details.User:%s\n", details.User)
+			fmt.Fprintf(out, "pushGitURL:%s\n", pushGitURL)
 			if err != nil {
 				return nil, nil, errors.Wrapf(err, "creating the push URL for %q", repo.CloneURL)
 			}

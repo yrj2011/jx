@@ -160,6 +160,8 @@ func (g *GitFake) PushTag(dir string, tag string) error {
 
 // CreatePushURL creates a Push URL
 func (g *GitFake) CreatePushURL(cloneURL string, userAuth *auth.UserAuth) (string, error) {
+	fmt.Fprintf(out, "fake userAuth:%s\n", userAuth)
+	fmt.Fprintf(out, "fake cloneURL:%s\n", cloneURL)
 	u, err := url.Parse(cloneURL)
 	if err != nil {
 		return cloneURL, nil
