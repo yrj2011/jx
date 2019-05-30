@@ -100,7 +100,9 @@ func (p *GerritProvider) CreateRepository(org string, name string, private bool)
 		Description:     "Created automatically by Jenkins X.",
 		PermissionsOnly: private,
 	}
-
+	fmt.Printf("hello world\n")
+	time.Sleep(time.Second * 10)
+	fmt.Printf("hello world,s%:s%\n", org, name)
 	fullNamePathEscaped := buildEncodedProjectName(org, name)
 	project, _, err := p.Client.Projects.CreateProject(fullNamePathEscaped, input)
 	if err != nil {
