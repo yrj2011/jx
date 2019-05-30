@@ -364,6 +364,7 @@ func createEnvironmentGitRepo(batchMode bool, authConfigSvc auth.ConfigService, 
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "picking new git repository for environment")
 	}
+	fmt.Fprintf(out, "picking new git repository for environment:%s", details)
 	org := details.Organisation
 
 	repoName := details.RepoName
