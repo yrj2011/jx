@@ -86,7 +86,7 @@ func DateTimeValidator() survey.Validator {
 
 const (
 	rfc3339FullDate = "2006-01-02"
-	rfc3339FullTime = "15:04:05Z07:00"
+	rfc3339FullTime = "15:04:05+0800"
 )
 
 // DateValidator validates that a string is a RFC 3339 full-date format
