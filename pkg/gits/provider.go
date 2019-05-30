@@ -2,6 +2,7 @@ package gits
 
 import (
 	"fmt"
+	"github.com/jx/pkg/util"
 	"io"
 	"net/url"
 	"sort"
@@ -211,7 +212,7 @@ func (pr *GitPullRequest) NumberString() string {
 }
 
 func CreateProvider(server *auth.AuthServer, user *auth.UserAuth, git Gitter) (GitProvider, error) {
-	if server.Kind == "" {
+	/*if server.Kind == "" {
 		server.Kind = SaasGitKind(server.URL)
 	}
 	if server.Kind == KindBitBucketCloud {
@@ -226,7 +227,10 @@ func CreateProvider(server *auth.AuthServer, user *auth.UserAuth, git Gitter) (G
 		return NewFakeProvider(), nil
 	} else {
 		return NewGitHubProvider(server, user, git)
-	}
+	}*/
+	fmt.Printf("修改git 默认provider")
+
+	return NewGitHubProvider(server, user, git)
 }
 
 // GetHost returns the Git Provider hostname, e.g github.com

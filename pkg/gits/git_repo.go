@@ -151,7 +151,7 @@ func PickNewOrExistingGitRepository(batchMode bool, authConfigSvc auth.ConfigSer
 			return nil, err
 		}
 	}
-
+	fmt.Fprintf(out, "\n\n 这里地方哪里错误了？？？？？？Creating repository %s\n")
 	fullName := git.RepoName(owner, repoName)
 	fmt.Fprintf(out, "\n\nCreating repository %s\n", util.ColorInfo(fullName))
 
