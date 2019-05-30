@@ -229,7 +229,7 @@ func TestCreatePipelineRunInfo(t *testing.T) {
 }
 
 func parseTime(t *testing.T, timeString string) *time.Time {
-	parsed, err := time.Parse(time.RFC3339, timeString)
+	parsed, err := time.Parse("2006-01-02 15:04:05", timeString)
 	if assert.NoError(t, err, "Failed to parse date %s", timeString) {
 		return &parsed
 	}

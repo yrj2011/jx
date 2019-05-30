@@ -75,10 +75,10 @@ func DateTimeValidator() survey.Validator {
 		if err != nil {
 			return err
 		}
-		_, err = time.Parse(time.RFC3339, str)
+		_, err = time.Parse("2006-01-02 15:04:05", str)
 		if err != nil {
 			return fmt.Errorf("%s is not a RFC 3339 date-time formatted string, it should be like %s", str,
-				time.RFC3339)
+				"2006-01-02 15:04:05")
 		}
 		return nil
 	}

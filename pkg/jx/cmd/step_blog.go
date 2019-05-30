@@ -313,7 +313,7 @@ func (o *StepBlogOptions) addReportsToBlog() error {
 
 		prefix := `---
 title: "Changes for ` + toDate + `"
-date: ` + time.Now().Format(time.RFC3339) + `
+date: ` + time.Now().Format("2006-01-02 15:04:05") + `
 description: "Whats new for ` + toDate + `"
 categories: [blog]
 keywords: []

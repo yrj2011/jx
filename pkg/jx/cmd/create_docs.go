@@ -83,7 +83,7 @@ func (o *CreateDocsOptions) Run() error {
 			return fmt.Errorf("Failed to create %s: %s", dir, err)
 		}
 	}
-	now := time.Now().Format(time.RFC3339)
+	now := time.Now().Format("2006-01-02 15:04:05")
 	prepender := func(filename string) string {
 		name := filepath.Base(filename)
 		base := strings.TrimSuffix(name, path.Ext(name))

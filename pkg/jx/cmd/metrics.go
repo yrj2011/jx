@@ -122,8 +122,8 @@ func (o *MetricsOptions) Run() error {
 			}
 			e := time.Now()
 			s := e.Add(-d)
-			start = s.Format(time.RFC3339)
-			end = e.Format(time.RFC3339)
+			start = s.Format("2006-01-02 15:04:05")
+			end = e.Format("2006-01-02 15:04:05")
 		}
 
 		heapster := kube.HeapterConfig{
