@@ -1769,6 +1769,7 @@ func (options *InstallOptions) setupGitOpsPostApply(ns string) error {
 			createEnvOpts.BatchMode = options.BatchMode
 		}
 		for _, env := range envs {
+			log.Infof("evn : %s\n\n", env)
 			err := createEnvOpts.RegisterEnvironment(env, nil, nil)
 			if err != nil {
 				errs = append(errs, errors.Wrapf(err, "registering environment %q", env.GetName()))
