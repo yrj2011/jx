@@ -163,7 +163,6 @@ func (mock *MockGitProvider) CreateRepository(_param0 string, _param1 string, _p
 	if mock == nil {
 		panic("mock must not be nil. Use myMock := NewMockGitProvider().")
 	}
-	//log.Warnf("create Repository 6")
 	params := []pegomock.Param{_param0, _param1, _param2}
 	result := pegomock.GetGenericMockFrom(mock).Invoke("CreateRepository", params, []reflect.Type{reflect.TypeOf((**gits.GitRepository)(nil)).Elem(), reflect.TypeOf((*error)(nil)).Elem()})
 	var ret0 *gits.GitRepository

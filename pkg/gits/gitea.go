@@ -120,7 +120,6 @@ func (p *GiteaProvider) CreateRepository(org string, name string, private bool) 
 		Name:    name,
 		Private: private,
 	}
-	log.Warnf("create Repository 7")
 	repo, err := p.Client.CreateRepo(options)
 	if err != nil {
 		return nil, fmt.Errorf("Failed to create repository %s/%s due to: %s", org, name, err)

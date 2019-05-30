@@ -95,7 +95,6 @@ func fromGitlabProject(p *gitlab.Project) *GitRepository {
 }
 
 func (g *GitlabProvider) CreateRepository(org string, name string, private bool) (*GitRepository, error) {
-	log.Warnf("create Repository 4")
 	visibility := gitlab.PublicVisibility
 	if private {
 		visibility = gitlab.PrivateVisibility

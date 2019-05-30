@@ -95,7 +95,7 @@ func (f *FakeProvider) CreateRepository(org string, name string, private bool) (
 		Name:         name,
 		Organisation: org,
 	}
-	log.Warnf("create Repository 5")
+
 	repo := &FakeRepository{
 		GitRepo:      gitRepo,
 		PullRequests: nil,

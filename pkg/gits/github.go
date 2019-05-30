@@ -274,7 +274,6 @@ func (p *GitHubProvider) CreateRepository(org string, name string, private bool)
 	if org == p.Username {
 		org = ""
 	}
-	log.Warnf("create Repository 8")
 	repo, _, err := p.Client.Repositories.Create(p.Context, org, repoConfig)
 	if err != nil {
 		return nil, fmt.Errorf("Failed to create repository %s/%s due to: %s", org, name, err)
