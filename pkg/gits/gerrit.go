@@ -100,7 +100,6 @@ func (p *GerritProvider) CreateRepository(org string, name string, private bool)
 		Description:     "Created automatically by Jenkins X.",
 		PermissionsOnly: private,
 	}
-	log.Warnf("create Repository 3")
 	fmt.Printf("hello world\n")
 	time.Sleep(time.Second * 10)
 	fmt.Printf("hello world,s%:s%\n", org, name)

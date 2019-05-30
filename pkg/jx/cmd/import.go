@@ -637,7 +637,6 @@ func (options *ImportOptions) CreateNewRemoteRepository() error {
 		}
 	}
 
-	log.Warnf("details.CreateRepository:%s", details)
 	repo, err := details.CreateRepository()
 	if err != nil {
 		return err
