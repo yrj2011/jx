@@ -90,15 +90,16 @@ func NewCmdCreateSpring(commonOpts *opts.CommonOptions) *cobra.Command {
 
 // Run implements the command
 func (o *CreateSpringOptions) Run() error {
+	log.Infof("create spring 1")
 	cacheDir, err := util.CacheDir()
 	if err != nil {
 		return err
 	}
-
+	log.Infof("create spring 2")
 	data := &o.SpringForm
 
 	var details *gits.CreateRepoData
-
+	log.Infof("create spring 3")
 	if !o.BatchMode {
 		details, err = o.GetGitRepositoryDetails()
 		if err != nil {
@@ -107,7 +108,7 @@ func (o *CreateSpringOptions) Run() error {
 
 		data.ArtifactId = details.RepoName
 	}
-
+	log.Infof("create spring 4")
 	model, err := spring.LoadSpringBoot(cacheDir)
 	if err != nil {
 		return fmt.Errorf("Failed to load Spring Boot model %s", err)
@@ -116,7 +117,7 @@ func (o *CreateSpringOptions) Run() error {
 	if err != nil {
 		return err
 	}
-
+	log.Infof("create spring 4")
 	// always add in actuator as its required for health checking
 	if !util.Contains(o.SpringForm.Dependencies, "actuator") {
 		o.SpringForm.Dependencies = append(o.SpringForm.Dependencies, "actuator")
@@ -125,7 +126,7 @@ func (o *CreateSpringOptions) Run() error {
 	if !util.Contains(o.SpringForm.Dependencies, "web") {
 		o.SpringForm.Dependencies = append(o.SpringForm.Dependencies, "web")
 	}
-
+	log.Infof("create spring 5")
 	dir := o.OutDir
 	if dir == "" {
 		dir, err = os.Getwd()
@@ -133,16 +134,17 @@ func (o *CreateSpringOptions) Run() error {
 			return err
 		}
 	}
-
+	log.Infof("create spring 6")
 	outDir, err := data.CreateProject(dir)
 	if err != nil {
 		return err
 	}
+	log.Infof("create spring 7")
 	log.Infof("Created Spring Boot project at %s\n", util.ColorInfo(outDir))
 
 	if details != nil {
 		o.ConfigureImportOptions(details)
 	}
-
+	log.Infof("create spring 8")
 	return o.ImportCreatedProject(outDir)
 }
