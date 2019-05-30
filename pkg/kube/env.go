@@ -418,7 +418,8 @@ func createEnvironmentGitRepo(batchMode bool, authConfigSvc auth.ConfigService, 
 			originalRepo := gitInfo.Name
 			fmt.Fprintf(out, "originalOrg:%s,originalRepo:%s\n", originalOrg, originalRepo)
 			fmt.Fprintf(out, "gitInfo.IsGitHub:%s,provider.IsGitHub():%s\n", gitInfo.IsGitHub(), provider.IsGitHub())
-			if useForkForEnvGitRepo && gitInfo.IsGitHub() && provider.IsGitHub() && originalOrg != "" && originalRepo != "" {
+			//if useForkForEnvGitRepo && gitInfo.IsGitHub() && provider.IsGitHub() && originalOrg != "" && originalRepo != "" {
+			if useForkForEnvGitRepo && provider.IsGitHub() && originalOrg != "" && originalRepo != "" {
 				// lets try fork the repository and rename it
 				fmt.Fprintf(out, "lets try fork the repository and rename it")
 				repo, err := provider.ForkRepository(originalOrg, originalRepo, org)
