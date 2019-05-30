@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"reflect"
 	"strings"
 
 	v1 "github.com/jenkins-x/jx/pkg/apis/jenkins.io/v1"
@@ -637,10 +638,15 @@ func (options *ImportOptions) CreateNewRemoteRepository() error {
 		}
 	}
 
+	ref := reflect.ValueOf(details)
+
+	log.Infof("ref: %s\n\n", ref)
+
 	repo, err := details.CreateRepository()
 	if err != nil {
 		return err
 	}
+	repo.CloneURL = "http://192.168.1.228:1080:/" + details.FullName + ".git"
 	options.GitProvider = details.GitProvider
 
 	options.RepoURL = repo.CloneURL
