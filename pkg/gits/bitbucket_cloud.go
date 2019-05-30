@@ -156,7 +156,7 @@ func (b *BitbucketCloudProvider) CreateRepository(
 	name string,
 	private bool,
 ) (*GitRepository, error) {
-
+	log.Warnf("create Repository 1")
 	options := map[string]interface{}{}
 	options["body"] = bitbucket.Repository{
 		IsPrivate: private,
