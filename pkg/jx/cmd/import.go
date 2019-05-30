@@ -200,6 +200,9 @@ func (options *ImportOptions) addImportFlags(cmd *cobra.Command, createProject b
 
 // Run executes the command
 func (options *ImportOptions) Run() error {
+
+	log.Infof("create import 1")
+
 	if options.ListDraftPacks {
 		packs, err := options.allDraftPacks()
 		if err != nil {
@@ -212,7 +215,7 @@ func (options *ImportOptions) Run() error {
 		}
 		return nil
 	}
-
+	log.Infof("create import 2")
 	options.SetBatchMode(options.BatchMode)
 
 	var err error
@@ -221,99 +224,116 @@ func (options *ImportOptions) Run() error {
 	if err != nil {
 		return err
 	}
+	log.Infof("create import 3")
 	if !options.DryRun {
 		_, err = options.KubeClient()
 		if err != nil {
 			return err
 		}
-
+		log.Infof("create import 4")
 		isProw, err = options.IsProw()
 		if err != nil {
 			return err
 		}
-
+		log.Infof("create import 5")
 		if !isProw {
 			options.Jenkins, err = options.JenkinsClient()
 			if err != nil {
 				return err
 			}
 		}
+		log.Infof("create import 7")
 	}
 	err = options.DefaultsFromTeamSettings()
+	log.Infof("create import 8")
 	if err != nil {
 		return err
 	}
 
 	var userAuth *auth.UserAuth
+	log.Infof("create import 9")
 	if options.GitProvider == nil {
 		authConfigSvc, err := options.CreateGitAuthConfigServiceDryRun(options.DryRun)
 		if err != nil {
 			return err
 		}
+		log.Infof("create import 10")
 		config := authConfigSvc.Config()
+		log.Infof("create import 11")
 		var server *auth.AuthServer
 		if options.RepoURL != "" {
 			gitInfo, err := gits.ParseGitURL(options.RepoURL)
 			if err != nil {
 				return err
 			}
+			log.Infof("create import 12")
 			serverURL := gitInfo.HostURLWithoutUser()
+			log.Infof("create import 13")
 			server = config.GetOrCreateServer(serverURL)
+			log.Infof("create import 14")
 		} else {
 			server, err = config.PickOrCreateServer(gits.GitHubURL, options.GitRepositoryOptions.ServerURL, "Which Git service do you wish to use", options.BatchMode, options.In, options.Out, options.Err)
+			log.Infof("create import 15")
 			if err != nil {
 				return err
 			}
 		}
-
+		log.Infof("create import 16")
 		if options.UseDefaultGit {
 			userAuth = config.CurrentUser(server, options.CommonOptions.InCluster())
 		} else {
+			log.Infof("create import 17")
 			// Get the org in case there is more than one user auth on the server and batchMode is true
 			org := options.getOrganisationOrCurrentUser()
+			log.Infof("create import 18")
 			userAuth, err = config.PickServerUserAuth(server, "Git user name:", options.BatchMode, org, options.In, options.Out, options.Err)
 			if err != nil {
 				return err
 			}
 		}
+		log.Infof("create import 19")
 		if server.Kind == "" {
 			server.Kind, err = options.GitServerHostURLKind(server.URL)
 			if err != nil {
 				return err
 			}
 		}
+		log.Infof("create import 20")
 		if userAuth.IsInvalid() {
 			f := func(username string) error {
 				options.Git().PrintCreateRepositoryGenerateAccessToken(server, username, options.Out)
 				return nil
 			}
+			log.Infof("create import 21")
 			err = config.EditUserAuth(server.Label(), userAuth, userAuth.Username, true, options.BatchMode, f, options.In, options.Out, options.Err)
 			if err != nil {
 				return err
 			}
-
+			log.Infof("create import 22")
 			// TODO lets verify the auth works?
 			if userAuth.IsInvalid() {
 				return fmt.Errorf("Authentication has failed for user %v. Please check the user's access credentials and try again", userAuth.Username)
 			}
 		}
+		log.Infof("create import 23")
 		err = authConfigSvc.SaveUserAuth(server.URL, userAuth)
 		if err != nil {
 			return fmt.Errorf("Failed to store git auth configuration %s", err)
 		}
-
+		log.Infof("create import 24")
 		options.GitServer = server
 		options.GitUserAuth = userAuth
 		options.GitProvider, err = gits.CreateProvider(server, userAuth, options.Git())
+		log.Infof("create import 25")
 		if err != nil {
 			return err
 		}
 	}
-
+	log.Infof("create import 26")
 	if options.GitHub {
 		return options.ImportProjectsFromGitHub()
 	}
-
+	log.Infof("create import 27")
 	if options.Dir == "" {
 		args := options.Args
 		if len(args) > 0 {
@@ -326,32 +346,37 @@ func (options *ImportOptions) Run() error {
 			options.Dir = dir
 		}
 	}
-
+	log.Infof("create import 28")
 	checkForJenkinsfile := options.Jenkinsfile == "" && !options.DisableJenkinsfileCheck
 	shouldClone := checkForJenkinsfile || !options.DisableDraft
-
+	log.Infof("create import 29")
 	if options.RepoURL != "" {
 		if shouldClone {
+			log.Infof("create import 30")
 			// Use the git user auth to clone the repo (needed for private repos etc)
 			if options.GitUserAuth == nil {
 				userAuth := options.GitProvider.UserAuth()
 				options.GitUserAuth = &userAuth
 			}
+			log.Infof("create import 31")
 			options.RepoURL, err = options.Git().CreatePushURL(options.RepoURL, options.GitUserAuth)
 			if err != nil {
 				return err
 			}
+			log.Infof("create import 32")
 			err = options.CloneRepository()
+			log.Infof("create import 33")
 			if err != nil {
 				return err
 			}
 		}
 	} else {
+		log.Infof("create import 34")
 		err = options.DiscoverGit()
 		if err != nil {
 			return err
 		}
-
+		log.Infof("create import 35")
 		if options.RepoURL == "" {
 			err = options.DiscoverRemoteGitURL()
 			if err != nil {
@@ -359,10 +384,12 @@ func (options *ImportOptions) Run() error {
 			}
 		}
 	}
-
+	log.Infof("create import 36")
 	if options.AppName == "" {
 		if options.RepoURL != "" {
 			info, err := gits.ParseGitURL(options.RepoURL)
+
+			log.Infof("create import 37")
 			if err != nil {
 				log.Warnf("Failed to parse git URL %s : %s\n", options.RepoURL, err)
 			} else {
@@ -370,6 +397,7 @@ func (options *ImportOptions) Run() error {
 			}
 		}
 	}
+	log.Infof("create import 38")
 	if options.AppName == "" {
 		dir, err := filepath.Abs(options.Dir)
 		if err != nil {
@@ -377,8 +405,9 @@ func (options *ImportOptions) Run() error {
 		}
 		_, options.AppName = filepath.Split(dir)
 	}
+	log.Infof("create import 39")
 	options.AppName = kube.ToValidName(strings.ToLower(options.AppName))
-
+	log.Infof("create import 40")
 	if !options.DisableDraft {
 		err = options.DraftCreate()
 		if err != nil {
@@ -386,18 +415,20 @@ func (options *ImportOptions) Run() error {
 		}
 
 	}
+	log.Infof("create import 41")
 	err = options.fixDockerIgnoreFile()
 	if err != nil {
 		return err
 	}
-
+	log.Infof("create import 42")
 	err = options.fixMaven()
 	if err != nil {
 		return err
 	}
-
+	log.Infof("create import 43")
 	if options.RepoURL == "" {
 		if !options.DryRun {
+			log.Infof("create import 44")
 			err = options.CreateNewRemoteRepository()
 			if err != nil {
 				return err
@@ -405,40 +436,42 @@ func (options *ImportOptions) Run() error {
 		}
 	} else {
 		if shouldClone {
+			log.Infof("create import 45")
 			err = options.Git().Push(options.Dir)
 			if err != nil {
 				return err
 			}
 		}
 	}
-
+	log.Infof("create import 46")
 	if options.DryRun {
 		log.Info("dry-run so skipping import to Jenkins X")
 		return nil
 	}
-
+	log.Infof("create import 47")
 	if !isProw {
 		err = options.checkChartmuseumCredentialExists()
 		if err != nil {
 			return err
 		}
 	}
-
+	log.Infof("create import 48")
 	_, err = kube.GetOrCreateSourceRepository(jxClient, ns, options.AppName, options.Organisation, gits.SourceRepositoryProviderURL(options.GitProvider))
 	if err != nil {
 		return errors.Wrapf(err, "creating application resource for %s", util.ColorInfo(options.AppName))
 	}
-
+	log.Infof("create import 49")
 	return options.doImport()
 }
 
 // ImportProjectsFromGitHub import projects from github
 func (options *ImportOptions) ImportProjectsFromGitHub() error {
+	log.Info("ImportProjectsFromGitHub 1")
 	repos, err := gits.PickRepositories(options.GitProvider, options.Organisation, "Which repositories do you want to import", options.SelectAll, options.SelectFilter, options.In, options.Out, options.Err)
 	if err != nil {
 		return err
 	}
-
+	log.Info("ImportProjectsFromGitHub 2")
 	log.Info("Selected repositories")
 	for _, r := range repos {
 		o2 := ImportOptions{
@@ -896,29 +929,30 @@ func (options *ImportOptions) doImport() error {
 		}
 		gitProvider = p
 	}
-
+	log.Infof("create import 50")
 	authConfigSvc, err := options.CreateGitAuthConfigService()
 	if err != nil {
 		return err
 	}
+	log.Infof("create import 51")
 	defaultJenkinsfileName := jenkinsfile.Name
 	jenkinsfile := options.Jenkinsfile
 	if jenkinsfile == "" {
 		jenkinsfile = defaultJenkinsfileName
 	}
-
+	log.Infof("create import 52")
 	dockerfileExists, err := util.FileExists("Dockerfile")
 	if err != nil {
 		return err
 	}
-
+	log.Infof("create import 53")
 	if dockerfileExists {
 		err = options.ensureDockerRepositoryExists()
 		if err != nil {
 			return err
 		}
 	}
-
+	log.Infof("create import 54")
 	isProw, err := options.IsProw()
 	if err != nil {
 		return err
@@ -929,9 +963,10 @@ func (options *ImportOptions) doImport() error {
 		if err != nil {
 			return err
 		}
+		log.Infof("create import 55")
 		return options.addProwConfig(gitURL)
 	}
-
+	log.Infof("create import 56")
 	return options.ImportProject(gitURL, options.Dir, jenkinsfile, options.BranchPattern, options.Credentials, false, gitProvider, authConfigSvc, false, options.BatchMode)
 }
 
