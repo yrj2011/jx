@@ -608,6 +608,7 @@ func (o *StepBlogOptions) queryClosedIssues() (int, error) {
 	if fromDate == "" {
 		return 0, fmt.Errorf("No from date specified!")
 	}
+	log.Warnf("No releases found for /%s/n", fromDate)
 	t, err := util.ParseDate(fromDate)
 	if err != nil {
 		return 0, fmt.Errorf("Failed to parse from date: %s: %s", fromDate, err)
