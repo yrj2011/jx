@@ -39,7 +39,7 @@ func (d *CreateRepoData) GetRepository() (*GitRepository, error) {
 
 // CreateRepository creates the repository - failing if it already exists
 func (d *CreateRepoData) CreateRepository() (*GitRepository, error) {
-	log.Warnf("create Repository 2")
+	fmt.Errorf("create Repository 2")
 	return d.GitProvider.CreateRepository(d.Organisation, d.RepoName, d.PrivateRepo)
 }
 
