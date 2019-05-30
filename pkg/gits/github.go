@@ -405,7 +405,7 @@ func (p *GitHubProvider) CreateWebHook(data *GitWebHookArguments) error {
 
 	log.Infof("Creating GitHub webhook for %s/%s for url %s\n", util.ColorInfo(owner), util.ColorInfo(repo), util.ColorInfo(webhookUrl))
 	log.Infof("Creating GitHub webhook1:%s", time.Now().Format("2006-01-02 15:04:05"))
-	log.Infof("Creating GitHub webhook2:%s", time.Parse("2006-01-02 15:04:05", "2019-05-30T19:34:44+0800"))
+	//log.Infof("Creating GitHub webhook2:%s", time.Parse("2006-01-02 15:04:05", "2019-05-30T19:34:44+0800"))
 	_, _, err = p.Client.Repositories.CreateHook(p.Context, owner, repo, hook)
 	log.Infof("Creating GitHub webhook error: %s\n", err)
 	return err
