@@ -151,7 +151,7 @@ func CreateBuildPodInfo(pod *corev1.Pod) *BuildPodInfo {
 		buildNumber = 1
 	}
 	log.Warnf("gitUrl before %s", gitURL)
-	gitURL = strings.Replace(gitURL, "192.168.1.228:1080", "root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080", 1)
+	gitURL = strings.Replace(gitURL, "http://192.168.1.228:1080", "http://root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080", 1)
 	log.Warnf("gitUrl after %s", gitURL)
 	answer := &BuildPodInfo{
 		Pod:               pod,

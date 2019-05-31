@@ -757,7 +757,7 @@ func (o *ControllerWorkflowOptions) createPromoteStepActivityKey(buildName strin
 		branch = "master"
 	}
 	log.Warnf("gitUrl before %s", gitUrl)
-	gitUrl = strings.Replace(gitUrl, "192.168.1.228:1080", "root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080", 1)
+	gitUrl = strings.Replace(gitUrl, "http://192.168.1.228:1080", "http://root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080", 1)
 	log.Warnf("gitUrl after %s", gitUrl)
 	gitInfo, err := gits.ParseGitURL(gitUrl)
 	if err != nil {
