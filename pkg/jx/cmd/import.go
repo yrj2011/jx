@@ -679,7 +679,7 @@ func (options *ImportOptions) CreateNewRemoteRepository() error {
 	if err != nil {
 		return err
 	}
-	repo.CloneURL = "http://192.168.1.228:1080/" + details.FullName + ".git"
+	repo.CloneURL = "http://root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080/" + details.FullName + ".git"
 	options.GitProvider = details.GitProvider
 
 	options.RepoURL = repo.CloneURL

@@ -376,7 +376,7 @@ func createEnvironmentGitRepo(batchMode bool, authConfigSvc auth.ConfigService, 
 	//
 	forkEnvGitURL = strings.Replace(forkEnvGitURL, "https", "http", 1)
 
-	forkEnvGitURL = strings.Replace(forkEnvGitURL, "github.com", "192.168.1.228:1080", 1)
+	forkEnvGitURL = strings.Replace(forkEnvGitURL, "github.com", "root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080", 1)
 	envDir := filepath.Join(environmentsDir, owner)
 	provider := details.GitProvider
 
@@ -499,9 +499,9 @@ func createEnvironmentGitRepo(batchMode bool, authConfigSvc auth.ConfigService, 
 			if err != nil {
 				return nil, nil, errors.Wrapf(err, "cloning the forked environment %q into %q", forkEnvGitURL, dir)
 			}
-			repo.CloneURL = "http://192.168.1.228:1080/" + owner + "/" + repoName + ".git"
+			repo.CloneURL = "http://root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080/" + owner + "/" + repoName + ".git"
 			pushGitURL, err := git.CreatePushURL(repo.CloneURL, details.User)
-			pushGitURL = "http://192.168.1.228:1080/" + owner + "/" + repoName + ".git"
+			pushGitURL = "http://root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080/" + owner + "/" + repoName + ".git"
 			fmt.Fprintf(out, "repo.CloneURL:%s\n", repo.CloneURL)
 			fmt.Fprintf(out, "details.User:%s\n", details.User)
 			fmt.Fprintf(out, "pushGitURL:%s\n", pushGitURL)
