@@ -35,10 +35,10 @@ func (i *GitRepository) HttpURL() string {
 	if !strings.Contains(host, ":/") {
 		host = "http://" + host
 	}
-	log.Warnf("gitUrl  1 %s", host)
+	//log.Warnf("gitUrl  1 %s", host)
 	host = strings.Replace(host, "http://192.168.1.228:1080", "http://root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080", 1)
 
-	log.Warnf("gitUrl  2  %s", host)
+	//log.Warnf("gitUrl  2  %s", host)
 	return util.UrlJoin(host, i.Organisation, i.Name)
 }
 
@@ -51,10 +51,10 @@ func (i *GitRepository) HttpsURL() string {
 	if !strings.Contains(host, "https://") {
 		host = strings.Replace(host, "https://", "http://", 1)
 	}
-	log.Warnf("gitUrl  3 %s", host)
+	//log.Warnf("gitUrl  3 %s", host)
 	host = strings.Replace(host, "http://192.168.1.228:1080", "http://root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080", 1)
 
-	log.Warnf("gitUrl  4  %s", host)
+	//log.Warnf("gitUrl  4  %s", host)
 	return util.UrlJoin(host, i.Organisation, i.Name)
 }
 
@@ -83,10 +83,10 @@ func (i *GitRepository) HostURL() string {
 	if !strings.Contains(answer, "https://") {
 		answer = strings.Replace(answer, "https://", "http://", 1)
 	}
-	log.Warnf("gitUrl  5 %s", answer)
+	//log.Warnf("gitUrl  5 %s", answer)
 	answer = strings.Replace(answer, "http://192.168.1.228:1080", "http://root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080", 1)
 
-	log.Warnf("gitUrl  6  %s", answer)
+	//log.Warnf("gitUrl  6  %s", answer)
 	return answer
 }
 
@@ -108,10 +108,10 @@ func (i *GitRepository) HostURLWithoutUser() string {
 	if strings.Contains(host, "https://") {
 		host = strings.Replace(host, "https://", "http://", 1)
 	}
-	log.Warnf("gitUrl  7 %s", host)
+	//log.Warnf("gitUrl  7 %s", host)
 	host = strings.Replace(host, "http://192.168.1.228:1080", "http://root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080", 1)
 
-	log.Warnf("gitUrl  8  %s", host)
+	//log.Warnf("gitUrl  8  %s", host)
 	return host
 }
 
@@ -130,9 +130,9 @@ func ParseGitURL(text string) (*GitRepository, error) {
 
 	u, err := url.Parse(text)
 
-	log.Warnf("gitUrl  9 %s", u.Host)
+	//log.Warnf("gitUrl  9 %s", u.Host)
 	u.Host = strings.Replace(u.Host, "http://192.168.1.228:1080", "http://root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080", 1)
-	log.Warnf("gitUrl  10  %s", u.Host)
+	//log.Warnf("gitUrl  10  %s", u.Host)
 
 	if err == nil && u != nil {
 		answer.Host = u.Host
@@ -183,9 +183,9 @@ func parsePath(path string, info *GitRepository) (*GitRepository, error) {
 	trimPath = strings.TrimSuffix(trimPath, "/")
 
 	trimPath = strings.TrimSuffix(trimPath, ".git")
-	log.Warnf("gitUrl  9 %s", trimPath)
+	//log.Warnf("gitUrl  9 %s", trimPath)
 	trimPath = strings.Replace(trimPath, "http://192.168.1.228:1080", "http://root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080", 1)
-	log.Warnf("gitUrl  10  %s", trimPath)
+	//log.Warnf("gitUrl  10  %s", trimPath)
 	arr := strings.Split(trimPath, "/")
 	if len(arr) >= 2 {
 		// We're assuming the beginning of the path is of the form /<org>/<repo>
