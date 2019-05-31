@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/jenkins-x/jx/pkg/jx/cmd/helper"
+	jenkinsio "github.com/jx/pkg/apis/jenkins.io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -1048,13 +1049,14 @@ func (o *StepCreateTaskOptions) applyPipeline(pipeline *pipelineapi.Pipeline, ta
 	}
 
 	for _, resource := range resources {
+		log.Infof("my upserted %s . %s ,%s\n", tektonClient, ns, resource)
 		_, err := tekton.CreateOrUpdateSourceResource(tektonClient, ns, resource)
 		if err != nil {
 			return errors.Wrapf(err, "failed to create/update PipelineResource %s in namespace %s", resource.Name, ns)
 		}
 		if resource.Spec.Type == pipelineapi.PipelineResourceTypeGit {
 			gitURL := gitInfo.HttpCloneURL()
-			log.Infof("upserted PipelineResource %s for the git repository %s and branch %s\n", info(resource.Name), info(gitURL), info(branch))
+			log.Infof("my upserted PipelineResource %s for the git repository %s and branch %s\n", info(resource.Name), info(gitURL), info(branch))
 		} else {
 			log.Infof("upserted PipelineResource %s\n", info(resource.Name))
 		}
