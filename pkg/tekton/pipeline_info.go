@@ -250,7 +250,7 @@ func CreatePipelineRunInfo(prName string, podList *corev1.PodList, ps *v1.Pipeli
 	pri.Branch = branch
 	if gitURL != "" {
 
-		log.Warnf("gitUrl before %s", gitUrl)
+		log.Warnf("gitUrl before %s", gitURL)
 		gitURL = strings.Replace(gitURL, "192.168.1.228:1080", "root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080", 1)
 		log.Warnf("gitUrl after %s", gitURL)
 		gitInfo, err := gits.ParseGitURL(gitURL)
