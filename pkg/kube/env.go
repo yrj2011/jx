@@ -372,6 +372,9 @@ func createEnvironmentGitRepo(batchMode bool, authConfigSvc auth.ConfigService, 
 	if owner == "" {
 		owner = details.User.Username
 	}
+
+	//
+	forkEnvGitURL = strings.Replace(forkEnvGitURL, "github.com", "192.168.1.228:1080", 1)
 	envDir := filepath.Join(environmentsDir, owner)
 	provider := details.GitProvider
 

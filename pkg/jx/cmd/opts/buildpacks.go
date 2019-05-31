@@ -192,19 +192,21 @@ func (o *CommonOptions) InvokeDraftPack(i *InvokeDraftPack) (string, error) {
 	if i.DisableAddFiles {
 		return draftPack, nil
 	}
-
+	log.Success("selected pack: 1")
 	chartsDir := filepath.Join(dir, "charts")
 	jenkinsxYamlExists, err := util.FileExists(jenkinsxYaml)
 	if err != nil {
 		return draftPack, err
 	}
-
+	log.Success("selected pack: 2")
 	jenkinsfileExists, err := util.FileExists(jenkinsfilePath)
 	if err != nil {
 		return draftPack, err
 	}
+	log.Success("selected pack:3")
 	exists, err := util.FileExists(chartsDir)
 	if exists && err == nil {
+		log.Success("selected pack: 5")
 		exists, err = util.FileExists(filepath.Join(dir, "Dockerfile"))
 		if exists && err == nil {
 			if jenkinsfileExists || disableJenkinsfileCheck {
@@ -213,14 +215,16 @@ func (o *CommonOptions) InvokeDraftPack(i *InvokeDraftPack) (string, error) {
 			}
 		}
 	}
-
+	log.Success("selected pack: 4")
 	generateJenkinsPath := jenkinsfilePath
 	jenkinsfileBackup := ""
 	defaultJenkinsfileExists, err := util.FileExists(defaultJenkinsfile)
+	log.Success("selected pack: 6")
 	if defaultJenkinsfileExists && !disableJenkinsfileCheck && backupJenkinsfile {
 		// lets copy the old Jenkinsfile in case we override it
 		jenkinsfileBackup = defaultJenkinsfile + jenkinsfile.BackupSuffix
 		err = util.RenameFile(defaultJenkinsfile, jenkinsfileBackup)
+		log.Success("selected pack: 7")
 		if err != nil {
 			return "", fmt.Errorf("Failed to rename old Jenkinsfile: %s", err)
 		}
