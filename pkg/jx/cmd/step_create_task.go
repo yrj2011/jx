@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/jenkins-x/jx/pkg/jx/cmd/helper"
+	jenkinsio "github.com/jx/pkg/apis/jenkins.io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -224,7 +225,7 @@ func (o *StepCreateTaskOptions) Run() error {
 
 	log.Infof("my jx log:cloning git for %s\n", o.CloneGitURL)
 	log.Infof("my jx log:cloning git for %s\n", o.CloneGitURL)
-	o.CloneGitURL = strings.Replace(oneGitURL, "http://192.168.1.167", "http://root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080", 1)
+	o.CloneGitURL = strings.Replace(o.CloneGitURL, "http://192.168.1.167", "http://root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080", 1)
 	log.Infof("my jx log:cloning git for %s\n", o.CloneGitURL)
 	if o.Verbose {
 		log.Infof("cloning git for %s\n", o.CloneGitURL)
