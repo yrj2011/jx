@@ -72,7 +72,7 @@ func GoGet(path string, version string, gopath string, goModules bool, sourceOnl
 	if goModules {
 		modulesMode = "on"
 	}
-
+	AppLogger().Infof("my git log %s to %s\n", path, gopath)
 	fullPath := path
 	if version != "" {
 		if goModules {

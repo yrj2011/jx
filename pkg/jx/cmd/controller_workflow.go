@@ -756,6 +756,9 @@ func (o *ControllerWorkflowOptions) createPromoteStepActivityKey(buildName strin
 	if branch == "" {
 		branch = "master"
 	}
+	log.Warnf("gitUrl before %s", gitUrl)
+	gitUrl = strings.Replace(gitUrl, "192.168.1.228:1080", "root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080", 1)
+	log.Warnf("gitUrl after %s", gitUrl)
 	gitInfo, err := gits.ParseGitURL(gitUrl)
 	if err != nil {
 		log.Warnf("Failed to parse Git URL %s: %s", gitUrl, err)
