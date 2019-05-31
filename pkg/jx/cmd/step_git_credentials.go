@@ -132,7 +132,7 @@ func (o *StepGitCredentialsOptions) CreateGitCredentialsFromSecrets(secretList *
 							if u2.Scheme == "https" {
 								u2.Scheme = "http"
 							} else {
-								u2.Scheme = "https"
+								u2.Scheme = "http"
 							}
 							buffer.WriteString(u2.String() + "\n")
 						}

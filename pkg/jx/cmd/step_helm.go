@@ -69,7 +69,7 @@ func (o *StepHelmOptions) Run() error {
 func (o *StepHelmOptions) addStepHelmFlags(cmd *cobra.Command) {
 	cmd.Flags().StringVarP(&o.Dir, "dir", "d", ".", "The directory containing the helm chart to apply")
 	cmd.Flags().BoolVarP(&o.https, "clone-https", "", true, "Clone the environment Git repo over https rather than ssh which uses `git@foo/bar.git`")
-	cmd.Flags().StringVarP(&o.GitProvider, "git-provider", "", "github.com", "The Git provider for the environment Git repository")
+	cmd.Flags().StringVarP(&o.GitProvider, "git-provider", "", "192.168.1.167", "The Git provider for the environment Git repository")
 }
 
 func (o *StepHelmOptions) findStagingRepoIds() ([]string, error) {

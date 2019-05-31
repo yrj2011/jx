@@ -164,7 +164,7 @@ func GetServiceURL(svc *v1.Service) string {
 		scheme := "http"
 		for _, port := range svc.Spec.Ports {
 			if port.Port == 443 {
-				scheme = "https"
+				scheme = "http"
 				break
 			}
 		}

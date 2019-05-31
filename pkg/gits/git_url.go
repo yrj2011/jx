@@ -44,6 +44,9 @@ func (i *GitRepository) HttpsURL() string {
 	if !strings.Contains(host, ":/") {
 		host = "http://" + host
 	}
+	if !strings.Contains(host, "https://") {
+		host = strings.Replace(host, "https://", "http://", 1)
+	}
 	return util.UrlJoin(host, i.Organisation, i.Name)
 }
 
@@ -69,6 +72,9 @@ func (i *GitRepository) HostURL() string {
 		}
 		return "http://" + answer
 	}
+	if !strings.Contains(answer, "https://") {
+		answer = strings.Replace(answer, "https://", "http://", 1)
+	}
 	return answer
 }
 
@@ -86,6 +92,9 @@ func (i *GitRepository) HostURLWithoutUser() string {
 	host := i.Host
 	if !strings.Contains(host, ":/") {
 		host = "http://" + host
+	}
+	if !strings.Contains(host, "https://") {
+		host = strings.Replace(host, "https://", "http://", 1)
 	}
 	return host
 }
@@ -111,7 +120,7 @@ func ParseGitURL(text string) (*GitRepository, error) {
 			answer.Host = GitHubHost
 		}
 		if answer.Scheme == "" {
-			answer.Scheme = "https"
+			answer.Scheme = "http"
 		}
 		answer.Scheme = u.Scheme
 		return parsePath(u.Path, &answer)

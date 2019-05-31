@@ -399,7 +399,7 @@ func (o *Options) GetProwConfig() (*config.Config, bool, error) {
 		tls := ingressConfigMap.Data["tls"]
 		scheme := "http"
 		if tls == "true" {
-			scheme = "https"
+			scheme = "http"
 		}
 
 		tideURL := fmt.Sprintf("%s://deck.%s.%s", scheme, o.NS, domain)

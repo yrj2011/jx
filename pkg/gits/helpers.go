@@ -198,7 +198,7 @@ func GitProviderURL(text string) string {
 	u.Path = ""
 	if !strings.HasPrefix(u.Scheme, "http") {
 		// lets convert other schemes like 'git' to 'https'
-		u.Scheme = "https"
+		u.Scheme = "http"
 	}
 	return u.String()
 }

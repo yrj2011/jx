@@ -64,7 +64,7 @@ func (o *StepSyntaxValidateBuildPacksOptions) Run() error {
 	errorsByPack := make(map[string][]string)
 
 	for _, repo := range repoNames {
-		packsDir := filepath.Join(draftDir, "packs", "github.com", "jenkins-x-buildpacks", fmt.Sprintf("jenkins-x-%s", repo), "packs")
+		packsDir := filepath.Join(draftDir, "packs", "192.168.1.228:1080", "jenkins-x-buildpacks", fmt.Sprintf("jenkins-x-%s", repo), "packs")
 		exists, err := util.DirExists(packsDir)
 		if err != nil {
 			return errors.Wrapf(err, "error reading packs dir %s", packsDir)
