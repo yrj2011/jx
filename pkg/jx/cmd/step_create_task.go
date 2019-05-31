@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"github.com/jenkins-x/jx/pkg/jx/cmd/helper"
-	jenkinsio "github.com/jx/pkg/apis/jenkins.io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
