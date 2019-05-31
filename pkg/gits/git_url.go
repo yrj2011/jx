@@ -2,7 +2,6 @@ package gits
 
 import (
 	"fmt"
-	"github.com/jx/pkg/log"
 	"net/url"
 	"strings"
 
