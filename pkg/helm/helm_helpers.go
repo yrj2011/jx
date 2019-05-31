@@ -525,10 +525,11 @@ func InstallFromChartOptions(options InstallChartOptions, helmer Helmer, kubeCli
 	}
 	if options.HelmUpdate {
 		log.Info("Updating Helm repository...")
-		err := helmer.UpdateRepo()
+		// 去掉 updating helm
+		/*err := helmer.UpdateRepo()
 		if err != nil {
 			return errors.Wrap(err, "failed to update repository")
-		}
+		}*/
 		log.Info("Helm repository update done.")
 	}
 	cleanup, err := DecorateWithSecrets(&options, vaultClient)
