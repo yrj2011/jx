@@ -39,12 +39,12 @@ func NewGitHubProvider(server *auth.AuthServer, user *auth.UserAuth, git Gitter)
 		Server:   *server,
 		User:     *user,
 		Context:  ctx,
-		Username: user.Username,
+		Username: "root",
 		Git:      git,
 	}
 
 	ts := oauth2.StaticTokenSource(
-		&oauth2.Token{AccessToken: user.ApiToken},
+		&oauth2.Token{AccessToken: "y5QBwLzXE4HYAUMXuG3A"},
 	)
 	tc := oauth2.NewClient(ctx, ts)
 
@@ -81,8 +81,9 @@ func (p *GitHubProvider) GetEnterpriseApiURL() string {
 }
 
 func IsGitHubServerURL(u string) bool {
-	u = strings.TrimSuffix(u, "/")
-	return u == "" || u == "http://192.168.1.167" || u == "http://192.168.1.167"
+	/*u = strings.TrimSuffix(u, "/")
+	return u == "" || u == "http://192.168.1.167" || u == "http://192.168.1.167" || u == "http://192.168.1.167" || u == "http://192.168.1.167"*/
+	return true;
 }
 
 func (p *GitHubProvider) ListOrganisations() ([]GitOrganisation, error) {
