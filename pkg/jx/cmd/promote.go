@@ -338,6 +338,7 @@ func (o *PromoteOptions) Promote(targetNS string, env *v1.Environment, warnIfAut
 	if version == "" {
 		log.Infof("Promoting latest version of app %s to namespace %s\n", info(app), info(targetNS))
 	} else {
+		log.Infof("my log: Promoting app %s version %s to namespace %s\n", info(app), info(version), info(targetNS))
 		log.Infof("Promoting app %s version %s to namespace %s\n", info(app), info(version), info(targetNS))
 	}
 	fullAppName := app
@@ -354,70 +355,83 @@ func (o *PromoteOptions) Promote(targetNS string, env *v1.Environment, warnIfAut
 		FullAppName: fullAppName,
 		Version:     version,
 	}
-
+	log.Infof("my log: Promoting app 1 \n")
 	if warnIfAuto && env != nil && env.Spec.PromotionStrategy == v1.PromotionStrategyTypeAutomatic && !o.BatchMode {
 		log.Infof("%s", util.ColorWarning(fmt.Sprintf("WARNING: The Environment %s is setup to promote automatically as part of the CI/CD Pipelines.\n\n", env.Name)))
-
+		log.Infof("my log: Promoting app 3 \n")
 		confirm := &survey.Confirm{
 			Message: "Do you wish to promote anyway? :",
 			Default: false,
 		}
 		flag := false
+		log.Infof("my log: Promoting app 4 \n")
 		err := survey.AskOne(confirm, &flag, nil, surveyOpts)
 		if err != nil {
+			log.Warnf("my log: Promoting app error %v\n",err)
 			return releaseInfo, err
 		}
 		if !flag {
 			return releaseInfo, nil
 		}
 	}
-
+	log.Infof("my log: Promoting app 2 \n")
 	jxClient, _, err := o.JXClient()
 	if err != nil {
+		log.Warnf("my log: Promoting app error %v\n",err)
 		return releaseInfo, err
 	}
+	log.Infof("my log: Promoting app 5 \n")
 	promoteKey := o.createPromoteKey(env)
 	if env != nil {
 		source := &env.Spec.Source
 		if source.URL != "" && env.Spec.Kind.IsPermanent() {
 			err := o.PromoteViaPullRequest(env, releaseInfo)
 			if err == nil {
+				log.Infof("my log: Promoting app 6 \n")
 				startPromotePR := func(a *v1.PipelineActivity, s *v1.PipelineActivityStep, ps *v1.PromoteActivityStep, p *v1.PromotePullRequestStep) error {
 					kube.StartPromotionPullRequest(a, s, ps, p)
+					log.Infof("my log: Promoting app 7 \n")
 					pr := releaseInfo.PullRequestInfo
 					if pr != nil && pr.PullRequest != nil && p.PullRequestURL == "" {
 						p.PullRequestURL = pr.PullRequest.URL
 					}
+					log.Infof("my log: Promoting app 8 \n")
 					if version != "" && a.Spec.Version == "" {
 						a.Spec.Version = version
 					}
 					return nil
 				}
+				log.Infof("my log: Promoting app 9 \n")
 				err = promoteKey.OnPromotePullRequest(jxClient, o.Namespace, startPromotePR)
 				if err != nil {
+					log.Warnf("my log: Promoting app error %v\n",err)
 					log.Warnf("Failed to update PipelineActivity: %s\n", err)
 				}
 				// lets sleep a little before we try poll for the PR status
 				time.Sleep(waitAfterPullRequestCreated)
 			}
+			log.Infof("my log: Promoting app 10 \n")
+			log.Warnf("my log: Promoting app error %v\n",err)
 			return releaseInfo, err
 		}
 	}
-
+	log.Infof("my log: Promoting app 11 \n")
 	err = o.verifyHelmConfigured()
 	if err != nil {
+		log.Warnf("my log: Promoting app error %v\n",err)
 		return releaseInfo, err
 	}
-
+	log.Infof("my log: Promoting app 12 \n")
 	// lets do a helm update to ensure we can find the latest version
 	if !o.NoHelmUpdate {
 		log.Info("Updating the helm repositories to ensure we can find the latest versions...")
 		err = o.Helm().UpdateRepo()
 		if err != nil {
+			log.Warnf("my log: Promoting app error %v\n",err)
 			return releaseInfo, err
 		}
 	}
-
+	log.Infof("my log: Promoting app 14 \n")
 	startPromote := func(a *v1.PipelineActivity, s *v1.PipelineActivityStep, ps *v1.PromoteActivityStep, p *v1.PromoteUpdateStep) error {
 		kube.StartPromotionUpdate(a, s, ps, p)
 		if version != "" && a.Spec.Version == "" {
@@ -425,8 +439,9 @@ func (o *PromoteOptions) Promote(targetNS string, env *v1.Environment, warnIfAut
 		}
 		return nil
 	}
+	log.Infof("my log: Promoting app 15 \n")
 	promoteKey.OnPromoteUpdate(jxClient, o.Namespace, startPromote)
-
+	log.Infof("my log: Promoting app 16 \n")
 	helmOptions := helm.InstallChartOptions{
 		Chart:       fullAppName,
 		ReleaseName: releaseName,
@@ -435,16 +450,22 @@ func (o *PromoteOptions) Promote(targetNS string, env *v1.Environment, warnIfAut
 		NoForce:     true,
 		Wait:        true,
 	}
+	log.Infof("my log: Promoting app 16 \n")
 	err = o.InstallChartWithOptions(helmOptions)
 	if err == nil {
+		log.Infof("my log: Promoting app 18 \n")
 		err = o.commentOnIssues(targetNS, env, promoteKey)
 		if err != nil {
+			log.Warnf("my log: Promoting app error %v\n",err)
 			log.Warnf("Failed to comment on issues for release %s: %s\n", releaseName, err)
 		}
+		log.Infof("my log: Promoting app 17 \n")
 		err = promoteKey.OnPromoteUpdate(jxClient, o.Namespace, kube.CompletePromotionUpdate)
 	} else {
 		err = promoteKey.OnPromoteUpdate(jxClient, o.Namespace, kube.FailedPromotionUpdate)
 	}
+	log.Infof("my log: Promoting app 19 \n")
+	log.Infof("my log: Promoting app error %v\n",err)
 	return releaseInfo, err
 }
 
