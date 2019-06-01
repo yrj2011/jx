@@ -562,7 +562,7 @@ func (o *StepChangelogOptions) addCommit(spec *v1.ReleaseSpec, commit *object.Co
 
 	spec.Commits = append(spec.Commits, commitSummary)
 	if err != nil {
-		log.Warnf("Failed to enrich commits with issues: %s\n", err)
+		log.Warnf("Failed to enrich commits with issues: %v\n", err)
 	}
 }
 
