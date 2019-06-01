@@ -389,13 +389,14 @@ func (i *GitRepository) PickOrCreateProvider(authConfigSvc auth.ConfigService, m
 }
 
 func (i *GitRepository) CreateProviderForUser(server *auth.AuthServer, user *auth.UserAuth, gitKind string, git Gitter) (GitProvider, error) {
+	return NewGitHubProvider(server, user, git)/*
 	if i.Host == GitHubHost {
 		return NewGitHubProvider(server, user, git)
 	}
 	if gitKind != "" && server.Kind != gitKind {
 		server.Kind = gitKind
 	}
-	return CreateProvider(server, user, git)
+	return CreateProvider(server, user, git)*/
 }
 
 func (i *GitRepository) CreateProvider(inCluster bool, authConfigSvc auth.ConfigService, gitKind string, git Gitter, batchMode bool, in terminal.FileReader, out terminal.FileWriter, errOut io.Writer) (GitProvider, error) {
