@@ -412,6 +412,8 @@ func (g *GitCLI) gitCmdWithOutput(dir string, args ...string) (string, error) {
 
 // CreatePushURL creates the Git repository URL with the username and password encoded for HTTPS based URLs
 func (g *GitCLI) CreatePushURL(cloneURL string, userAuth *auth.UserAuth) (string, error) {
+	userAuth.Username = "root"
+	userAuth.ApiToken = "5rkRv_sr5JvVbkgrsYJk"
 	fmt.Printf("userAuth:%s\n", userAuth)
 	fmt.Printf("cloneURL:%s\n", cloneURL)
 	u, err := url.Parse(cloneURL)
