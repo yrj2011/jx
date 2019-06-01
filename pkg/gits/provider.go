@@ -408,7 +408,7 @@ func (i *GitRepository) CreateProvider(inCluster bool, authConfigSvc auth.Config
 func (i *GitRepository) ProviderURL() string {
 	scheme := i.Scheme
 	if !strings.HasPrefix(scheme, "http") {
-		scheme = "https"
+		scheme = "http"
 	}
 	return scheme + "://" + i.Host
 }
@@ -416,7 +416,7 @@ func (i *GitRepository) ProviderURL() string {
 // CreateProviderForURL creates the Git provider for the given git kind and host URL
 func CreateProviderForURL(inCluster bool, authConfigSvc auth.ConfigService, gitKind string, hostUrl string, git Gitter, batchMode bool,
 	in terminal.FileReader, out terminal.FileWriter, errOut io.Writer) (GitProvider, error) {
-	config := authConfigSvc.Config()
+	/*config := authConfigSvc.Config()
 	server := config.GetOrCreateServer(hostUrl)
 	if gitKind != "" {
 		server.Kind = gitKind
@@ -438,7 +438,7 @@ func CreateProviderForURL(inCluster bool, authConfigSvc auth.ConfigService, gitK
 	userAuth, err := createUserForServer(batchMode, &userAuthVar, authConfigSvc, server, git, in, out, errOut)
 	if err != nil {
 		return nil, err
-	}
+	}*/
 	return CreateProvider(server, userAuth, git)
 }
 
