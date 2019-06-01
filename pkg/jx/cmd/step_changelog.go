@@ -310,11 +310,17 @@ func (o *StepChangelogOptions) Run() error {
 
 	gitKind, err := o.GitServerKind(gitInfo)
 	foundGitProvider := true
+	log.Warnf("o.InCluster()：%s\n", o.InCluster())
+	log.Warnf("authConfigSvc：%s\n", authConfigSvc)
+	log.Warnf("gitKind：%s\n",  gitKind)
+	log.Warnf("o.Git()：%s\n", o.Git())
+	log.Warnf("o.BatchMode：%s\n", o.BatchMode)
 	gitProvider, err := o.State.GitInfo.CreateProvider(o.InCluster(), authConfigSvc, gitKind, o.Git(), o.BatchMode, o.In, o.Out, o.Err)
 	if err != nil {
 		foundGitProvider = false
 		log.Warnf("Could not create GitProvide so cannot update the release notes: %s\n", err)
 	}
+	log.Warnf("gitProvider：%s\n", gitProvider)
 	o.State.GitProvider = gitProvider
 	o.State.FoundIssueNames = map[string]bool{}
 
