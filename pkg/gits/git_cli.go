@@ -87,6 +87,9 @@ func (g *GitCLI) clone(dir string, gitURL string, remoteName string, shallow boo
 	if verbose {
 		log.Infof("cloning repository %s to dir %s\n", gitURL, dir)
 	}
+	gitURL = strings.Replace(gitURL,"https://","http://",1)
+	gitURL = strings.Replace(gitURL,"http://github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
+
 	if remoteName == "" {
 		remoteName = "origin"
 	}
