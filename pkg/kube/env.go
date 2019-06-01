@@ -495,6 +495,7 @@ func createEnvironmentGitRepo(batchMode bool, authConfigSvc auth.ConfigService, 
 			if err != nil {
 				return nil, nil, errors.Wrap(err, "create unique directory for environment fork clone")
 			}
+			fmt.Fprintf(out, "Clone:%s,%s\n", 	forkEnvGitURL, dir)
 			err = git.Clone(forkEnvGitURL, dir)
 			if err != nil {
 				return nil, nil, errors.Wrapf(err, "cloning the forked environment %q into %q", forkEnvGitURL, dir)
@@ -502,7 +503,7 @@ func createEnvironmentGitRepo(batchMode bool, authConfigSvc auth.ConfigService, 
 			repo.CloneURL = "http://root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080/" + owner + "/" + repoName + ".git"
 			pushGitURL, err := git.CreatePushURL(repo.CloneURL, details.User)
 			pushGitURL = "http://root:5rkRv_sr5JvVbkgrsYJk@192.168.1.228:1080/" + owner + "/" + repoName + ".git"
-			fmt.Fprintf(out, "repo.CloneURL:%s\n", repo.CloneURL)
+			fmt.Fprintf(out, "repo.CloneURL:%s\n", 	repo.CloneURL)
 			fmt.Fprintf(out, "details.User:%s\n", details.User)
 			fmt.Fprintf(out, "pushGitURL:%s\n", pushGitURL)
 			if err != nil {
