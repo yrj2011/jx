@@ -476,42 +476,57 @@ func (o *PromoteOptions) PromoteViaPullRequest(env *v1.Environment, releaseInfo 
 		versionName = "latest"
 	}
 	app := o.Application
+	log.Infof("my log: env.Spec.Source.URL 1:%s \n",env.Spec.Source.URL)
+	env.Spec.Source.URL = strings.Replace(env.Spec.Source.URL,"https://","http://",1)
+	env.Spec.Source.URL = strings.Replace(env.Spec.Source.URL,"http://github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
+	env.Spec.Source.URL = strings.Replace(env.Spec.Source.URL,"http://api.github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
+	log.Infof("my log: env.Spec.Source.URL 2:%s \n",env.Spec.Source.URL)
+
+
 
 	details := gits.PullRequestDetails{
 		BranchName: "promote-" + app + "-" + versionName,
 		Title:      app + " to " + versionName,
 		Message:    fmt.Sprintf("Promote %s to version %s", app, versionName),
 	}
-
+	log.Infof("my log: env.Spec.Source.URL :1 \n")
 	modifyChartFn := func(requirements *helm.Requirements, metadata *chart.Metadata, values map[string]interface{},
 		templates map[string]string, dir string, details *gits.PullRequestDetails) error {
 		var err error
 		if version == "" {
 			version, err = o.findLatestVersion(app)
 			if err != nil {
+				log.Infof("my log: env.Spec.Source.URL %v \n",err)
 				return err
 			}
 		}
+		log.Infof("my log: env.Spec.Source.URL :2 \n")
 		requirements.SetAppVersion(app, version, o.HelmRepositoryURL, o.Alias)
 		return nil
 	}
+	log.Infof("my log: env.Spec.Source.URL :3 \n")
 	gitProvider, _, err := o.CreateGitProviderForURLWithoutKind(env.Spec.Source.URL)
 	if err != nil {
+		log.Infof("my log: env.Spec.Source.URL %v \n",err)
 		return errors.Wrapf(err, "creating git provider for %s", env.Spec.Source.URL)
 	}
+	log.Infof("my log: env.Spec.Source.URL :4 \n")
 	environmentsDir, err := o.EnvironmentsDir()
 	if err != nil {
+		log.Infof("my log: env.Spec.Source.URL %v \n",err)
 		return errors.Wrapf(err, "getting environments dir")
 	}
-
+	log.Infof("my log: env.Spec.Source.URL :5 \n")
 	options := environments.EnvironmentPullRequestOptions{
 		ConfigGitFn:   o.ConfigureGitCallback,
 		Gitter:        o.Git(),
 		ModifyChartFn: modifyChartFn,
 		GitProvider:   gitProvider,
 	}
+	log.Infof("my log: env.Spec.Source.URL :6 \n")
 	info, err := options.Create(env, environmentsDir, &details, releaseInfo.PullRequestInfo, "", false)
 	releaseInfo.PullRequestInfo = info
+	log.Infof("my log: env.Spec.Source.URL %v \n",err)
 	return err
 }
 
