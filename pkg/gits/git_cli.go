@@ -66,23 +66,24 @@ func (g *GitCLI) FindGitConfigDir(dir string) (string, string, error) {
 
 // Clone clones the given git URL into the given directory
 func (g *GitCLI) Clone(url string, dir string) error {
-	return g.clone(dir, url, "", false, false, "", "", "")
+	return g.clone(dir, url, "", false, true, "", "", "")
 }
 
 // Clone clones a single branch of the given git URL into the given directory
 func (g *GitCLI) ShallowCloneBranch(url string, branch string, dir string) error {
-	return g.clone(dir, url, "", true, false, branch, "", "")
+	return g.clone(dir, url, "", true, true, branch, "", "")
 }
 
 // ShallowClone shallow clones the repo at url from the specified commitish or pull request to a local master branch
 func (g *GitCLI) ShallowClone(dir string, url string, commitish string, pullRequest string) error {
-	return g.clone(dir, url, "", true, false, "master", commitish, pullRequest)
+	return g.clone(dir, url, "", true, true, "master", commitish, pullRequest)
 }
 
 // clone is a safer implementation of the `git clone` method
 func (g *GitCLI) clone(dir string, gitURL string, remoteName string, shallow bool, verbose bool, localBranch string,
 	commitish string, pullRequest string) error {
 	var err error
+	verbose = true
 	if verbose {
 		log.Infof("cloning repository %s to dir %s\n", gitURL, dir)
 	}
@@ -502,17 +503,17 @@ func (g *GitCLI) ConvertToValidBranchName(name string) string {
 
 // FetchBranch fetches the refspecs from the repo
 func (g *GitCLI) FetchBranch(dir string, repo string, refspecs ...string) error {
-	return g.fetchBranch(dir, repo, false, false, false, refspecs...)
+	return g.fetchBranch(dir, repo, false, false, true, refspecs...)
 }
 
 // FetchBranchShallow fetches the refspecs from the repo
 func (g *GitCLI) FetchBranchShallow(dir string, repo string, refspecs ...string) error {
-	return g.fetchBranch(dir, repo, false, true, false, refspecs...)
+	return g.fetchBranch(dir, repo, false, true, true, refspecs...)
 }
 
 // FetchBranch fetches the refspecs from the repo
 func (g *GitCLI) FetchBranchUnshallow(dir string, repo string, refspecs ...string) error {
-	return g.fetchBranch(dir, repo, true, false, false, refspecs...)
+	return g.fetchBranch(dir, repo, true, false, true, refspecs...)
 }
 
 // FetchBranch fetches the refspecs from the repo
@@ -522,6 +523,7 @@ func (g *GitCLI) fetchBranch(dir string, repo string, unshallow bool, shallow bo
 	if shallow && unshallow {
 		return errors.Errorf("cannot use --depth=1 and --unshallow at the same time")
 	}
+	verbose = true
 	if shallow {
 		args = append(args, "--depth=1")
 	}
