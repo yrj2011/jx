@@ -421,7 +421,6 @@ func CreateProviderForURL(inCluster bool, authConfigSvc auth.ConfigService, gitK
 	if gitKind != "" {
 		server.Kind = gitKind
 	}
-	/*
 	userAuth := config.CurrentUser(server, inCluster)
 	if userAuth != nil && !userAuth.IsInvalid() {
 		return CreateProvider(server, userAuth, git)
@@ -434,7 +433,7 @@ func CreateProviderForURL(inCluster bool, authConfigSvc auth.ConfigService, gitK
 	userAuthVar := auth.CreateAuthUserFromEnvironment(strings.ToUpper(kind))
 	if !userAuthVar.IsInvalid() {
 		return CreateProvider(server, &userAuthVar, git)
-	}*/
+	}
 	userAuth, err := createUserForServer(batchMode, &userAuthVar, authConfigSvc, server, git, in, out, errOut)
 	if err != nil {
 		//return nil, err
