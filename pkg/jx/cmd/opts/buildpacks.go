@@ -186,8 +186,10 @@ func (o *CommonOptions) InvokeDraftPack(i *InvokeDraftPack) (string, error) {
 		}
 	}
 	log.Success("selected pack: " + lpack + "\n")
+	log.Success("selected pack 2 : " + lpack + "\n")
 	draftPack := filepath.Base(lpack)
 	i.CustomDraftPack = draftPack
+	log.Success("selected pack 3  draftPack: " + draftPack + "\n")
 
 	if i.DisableAddFiles {
 		return draftPack, nil
