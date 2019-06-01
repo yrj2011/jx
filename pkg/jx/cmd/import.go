@@ -964,6 +964,7 @@ func (options *ImportOptions) doImport() error {
 			return err
 		}
 		log.Infof("create import 55")
+		log.Infof("create import 57:%s",gitURL)
 		return options.addProwConfig(gitURL)
 	}
 	log.Infof("create import 56")
@@ -988,7 +989,7 @@ func (options *ImportOptions) addProwConfig(gitURL string) error {
 	if err != nil {
 		return err
 	}
-	fmt.Errorf("AddApplication log: %s\n\n%s\n\n%s\n\n%s\n\n%s\n\n",client, []string{repo}, currentNamespace, options.DraftPack, settings)
+	log.Infof("AddApplication log: %s\n\n%s\n\n%s\n\n%s\n\n%s\n\n",client, []string{repo}, currentNamespace, options.DraftPack, settings)
 	err = prow.AddApplication(client, []string{repo}, currentNamespace, options.DraftPack, settings)
 	if err != nil {
 		return err
