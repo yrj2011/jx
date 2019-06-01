@@ -988,6 +988,7 @@ func (options *ImportOptions) addProwConfig(gitURL string) error {
 	if err != nil {
 		return err
 	}
+	fmt.Errorf("AddApplication log: %s\n\n%s\n\n%s\n\n%s\n\n%s\n\n",client, []string{repo}, currentNamespace, options.DraftPack, settings)
 	err = prow.AddApplication(client, []string{repo}, currentNamespace, options.DraftPack, settings)
 	if err != nil {
 		return err

@@ -104,6 +104,7 @@ func (o *StepGitCredentialsOptions) createGitCredentialsFile(fileName string, se
 		return fmt.Errorf("Failed to write to %s: %s", fileName, err)
 	}
 	log.Infof("Generated Git credentials file %s\n", util.ColorInfo(fileName))
+	log.Infof("my log Generated Git credentials file %s\n", util.ColorInfo(fileName))
 	return nil
 }
 
