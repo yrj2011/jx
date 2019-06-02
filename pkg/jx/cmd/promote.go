@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"github.com/jenkins-x/jx/pkg/jx/cmd/helper"
+	"k8s.io/apimachinery/pkg/util/json"
 	"os"
 	"path/filepath"
 	"runtime/debug"
@@ -505,6 +506,15 @@ func (o *PromoteOptions) PromoteViaPullRequest(env *v1.Environment, releaseInfo 
 	}
 	log.Infof("my log: env.Spec.Source.URL :3 \n")
 	gitProvider, _, err := o.CreateGitProviderForURLWithoutKind(env.Spec.Source.URL)
+
+	b, er := json.Marshal(gitProvider)
+
+	if er == nil {
+		fmt.Println(string(b))
+	}
+
+	log.Infof("my log: gitprvider :%s \n", b)
+
 	if err != nil {
 		log.Infof("my log: env.Spec.Source.URL %v \n", err)
 		return errors.Wrapf(err, "creating git provider for %s", env.Spec.Source.URL)
