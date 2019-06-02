@@ -314,7 +314,8 @@ func (o *PromoteOptions) PromoteAllAutomatic() error {
 			}
 			releaseInfo, err := o.Promote(ns, &env, false)
 			if err != nil {
-				return err
+				return nil
+				//return err
 			}
 			o.ReleaseInfo = releaseInfo
 			if !o.NoPoll {
