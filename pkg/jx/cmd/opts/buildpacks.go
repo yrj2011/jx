@@ -192,6 +192,7 @@ func (o *CommonOptions) InvokeDraftPack(i *InvokeDraftPack) (string, error) {
 	log.Success("selected pack 3  draftPack: " + draftPack + "\n")
 
 	if i.DisableAddFiles {
+		log.Success("return selected pack: 1")
 		return draftPack, nil
 	}
 	log.Success("selected pack: 1")
