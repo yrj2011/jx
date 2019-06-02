@@ -912,7 +912,7 @@ func (o *CommonOptions) ReleaseChartMuseumUrl() string {
 	if chartRepo == "" {
 		if o.factory.IsInCDPipeline() {
 			chartRepo = DefaultChartRepo
-			log.Warnf("No $CHART_REPOSITORY defined so using the default value of: %s\n", DefaultChartRepo)
+			log.Warnf("My Log No $CHART_REPOSITORY defined so using the default value of: %s\n", DefaultChartRepo)
 		} else {
 			return ""
 		}
