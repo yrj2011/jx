@@ -5,6 +5,7 @@ import (
 	"github.com/jenkins-x/jx/pkg/jx/cmd/helper"
 	"os"
 	"path/filepath"
+	"runtime/debug"
 	"strconv"
 	"strings"
 	"time"
@@ -367,7 +368,7 @@ func (o *PromoteOptions) Promote(targetNS string, env *v1.Environment, warnIfAut
 		log.Infof("my log: Promoting app 4 \n")
 		err := survey.AskOne(confirm, &flag, nil, surveyOpts)
 		if err != nil {
-			log.Warnf("my log: Promoting app error %v\n",err)
+			log.Warnf("my log: Promoting app error %v\n", err)
 			return releaseInfo, err
 		}
 		if !flag {
@@ -377,7 +378,7 @@ func (o *PromoteOptions) Promote(targetNS string, env *v1.Environment, warnIfAut
 	log.Infof("my log: Promoting app 2 \n")
 	jxClient, _, err := o.JXClient()
 	if err != nil {
-		log.Warnf("my log: Promoting app error %v\n",err)
+		log.Warnf("my log: Promoting app error %v\n", err)
 		return releaseInfo, err
 	}
 	log.Infof("my log: Promoting app 5 \n")
@@ -404,21 +405,21 @@ func (o *PromoteOptions) Promote(targetNS string, env *v1.Environment, warnIfAut
 				log.Infof("my log: Promoting app 9 \n")
 				err = promoteKey.OnPromotePullRequest(jxClient, o.Namespace, startPromotePR)
 				if err != nil {
-					log.Warnf("my log: Promoting app error %v\n",err)
+					log.Warnf("my log: Promoting app error %v\n", err)
 					log.Warnf("Failed to update PipelineActivity: %s\n", err)
 				}
 				// lets sleep a little before we try poll for the PR status
 				time.Sleep(waitAfterPullRequestCreated)
 			}
 			log.Infof("my log: Promoting app 10 \n")
-			log.Warnf("my log: Promoting app error %v\n",err)
+			log.Warnf("my log: Promoting app error %v\n", err)
 			return releaseInfo, err
 		}
 	}
 	log.Infof("my log: Promoting app 11 \n")
 	err = o.verifyHelmConfigured()
 	if err != nil {
-		log.Warnf("my log: Promoting app error %v\n",err)
+		log.Warnf("my log: Promoting app error %v\n", err)
 		return releaseInfo, err
 	}
 	log.Infof("my log: Promoting app 12 \n")
@@ -427,7 +428,7 @@ func (o *PromoteOptions) Promote(targetNS string, env *v1.Environment, warnIfAut
 		log.Info("Updating the helm repositories to ensure we can find the latest versions...")
 		err = o.Helm().UpdateRepo()
 		if err != nil {
-			log.Warnf("my log: Promoting app error %v\n",err)
+			log.Warnf("my log: Promoting app error %v\n", err)
 			return releaseInfo, err
 		}
 	}
@@ -456,7 +457,7 @@ func (o *PromoteOptions) Promote(targetNS string, env *v1.Environment, warnIfAut
 		log.Infof("my log: Promoting app 18 \n")
 		err = o.commentOnIssues(targetNS, env, promoteKey)
 		if err != nil {
-			log.Warnf("my log: Promoting app error %v\n",err)
+			log.Warnf("my log: Promoting app error %v\n", err)
 			log.Warnf("Failed to comment on issues for release %s: %s\n", releaseName, err)
 		}
 		log.Infof("my log: Promoting app 17 \n")
@@ -465,7 +466,7 @@ func (o *PromoteOptions) Promote(targetNS string, env *v1.Environment, warnIfAut
 		err = promoteKey.OnPromoteUpdate(jxClient, o.Namespace, kube.FailedPromotionUpdate)
 	}
 	log.Infof("my log: Promoting app 19 \n")
-	log.Infof("my log: Promoting app error %v\n",err)
+	log.Infof("my log: Promoting app error %v\n", err)
 	return releaseInfo, err
 }
 
@@ -476,13 +477,11 @@ func (o *PromoteOptions) PromoteViaPullRequest(env *v1.Environment, releaseInfo 
 		versionName = "latest"
 	}
 	app := o.Application
-	log.Infof("my log: env.Spec.Source.URL 1:%s \n",env.Spec.Source.URL)
-	env.Spec.Source.URL = strings.Replace(env.Spec.Source.URL,"https://","http://",1)
-	env.Spec.Source.URL = strings.Replace(env.Spec.Source.URL,"http://github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
-	env.Spec.Source.URL = strings.Replace(env.Spec.Source.URL,"http://api.github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
-	log.Infof("my log: env.Spec.Source.URL 2:%s \n",env.Spec.Source.URL)
-
-
+	log.Infof("my log: env.Spec.Source.URL 1:%s \n", env.Spec.Source.URL)
+	env.Spec.Source.URL = strings.Replace(env.Spec.Source.URL, "https://", "http://", 1)
+	env.Spec.Source.URL = strings.Replace(env.Spec.Source.URL, "http://github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
+	env.Spec.Source.URL = strings.Replace(env.Spec.Source.URL, "http://api.github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
+	log.Infof("my log: env.Spec.Source.URL 2:%s \n", env.Spec.Source.URL)
 
 	details := gits.PullRequestDetails{
 		BranchName: "promote-" + app + "-" + versionName,
@@ -496,7 +495,7 @@ func (o *PromoteOptions) PromoteViaPullRequest(env *v1.Environment, releaseInfo 
 		if version == "" {
 			version, err = o.findLatestVersion(app)
 			if err != nil {
-				log.Infof("my log: env.Spec.Source.URL %v \n",err)
+				log.Infof("my log: env.Spec.Source.URL %v \n", err)
 				return err
 			}
 		}
@@ -507,13 +506,13 @@ func (o *PromoteOptions) PromoteViaPullRequest(env *v1.Environment, releaseInfo 
 	log.Infof("my log: env.Spec.Source.URL :3 \n")
 	gitProvider, _, err := o.CreateGitProviderForURLWithoutKind(env.Spec.Source.URL)
 	if err != nil {
-		log.Infof("my log: env.Spec.Source.URL %v \n",err)
+		log.Infof("my log: env.Spec.Source.URL %v \n", err)
 		return errors.Wrapf(err, "creating git provider for %s", env.Spec.Source.URL)
 	}
 	log.Infof("my log: env.Spec.Source.URL :4 \n")
 	environmentsDir, err := o.EnvironmentsDir()
 	if err != nil {
-		log.Infof("my log: env.Spec.Source.URL %v \n",err)
+		log.Infof("my log: env.Spec.Source.URL %v \n", err)
 		return errors.Wrapf(err, "getting environments dir")
 	}
 	log.Infof("my log: env.Spec.Source.URL :5 \n")
@@ -526,7 +525,8 @@ func (o *PromoteOptions) PromoteViaPullRequest(env *v1.Environment, releaseInfo 
 	log.Infof("my log: env.Spec.Source.URL :6 \n")
 	info, err := options.Create(env, environmentsDir, &details, releaseInfo.PullRequestInfo, "", false)
 	releaseInfo.PullRequestInfo = info
-	log.Infof("my log: env.Spec.Source.URL %v \n",err)
+	debug.PrintStack()
+	log.Infof("!!!! my log: env.Spec.Source.URL %v \n", errors.WithStack(err))
 	return err
 }
 
