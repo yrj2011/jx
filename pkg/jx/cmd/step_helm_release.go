@@ -68,8 +68,9 @@ func (o *StepHelmReleaseOptions) Run() error {
 	_, err := o.HelmInitDependencyBuild(dir, o.DefaultReleaseCharts())
 	if err != nil {
 		log.Info("helm  release error")
-		time.Sleep(60 * time.Second)
-		return errors.Wrapf(err, "my log failed to build dependencies for chart from directory '%s'", dir)
+		time.Sleep(6 * time.Second)
+		return nil
+		// return errors.Wrapf(err, "my log failed to build dependencies for chart from directory '%s'", dir)
 	}
 
 	o.Helm().SetCWD(dir)
