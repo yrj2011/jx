@@ -165,6 +165,7 @@ func (options *PromoteOptions) addPromoteOptions(cmd *cobra.Command) {
 
 // Run implements this command
 func (o *PromoteOptions) Run() error {
+	log.Infof("promote start ")
 	app := o.Application
 	if app == "" {
 		args := o.Args
@@ -265,7 +266,9 @@ func (o *PromoteOptions) Run() error {
 			return fmt.Errorf("Could not find an Environment called %s", o.Environment)
 		}
 	}
+	log.Infof("promote 1 ")
 	releaseInfo, err := o.Promote(targetNS, env, true)
+	log.Infof("promote 2 ")
 	if err != nil {
 		return err
 	}
