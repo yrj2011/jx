@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/jenkins-x/jx/pkg/helm"
 	"github.com/jenkins-x/jx/pkg/jx/cmd/opts"
@@ -62,9 +63,12 @@ func NewCmdStepHelmRelease(commonOpts *opts.CommonOptions) *cobra.Command {
 }
 
 func (o *StepHelmReleaseOptions) Run() error {
+	log.Info("start helm release!!!!")
 	dir := o.Dir
 	_, err := o.HelmInitDependencyBuild(dir, o.DefaultReleaseCharts())
 	if err != nil {
+		log.Info("helm  release error")
+		time.Sleep(60 * time.Second)
 		return errors.Wrapf(err, "failed to build dependencies for chart from directory '%s'", dir)
 	}
 
