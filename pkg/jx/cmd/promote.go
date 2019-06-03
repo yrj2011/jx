@@ -541,7 +541,7 @@ func (o *PromoteOptions) PromoteViaPullRequest(env *v1.Environment, releaseInfo 
 	releaseInfo.PullRequestInfo = info
 	debug.PrintStack()
 	log.Infof("!!!! my log: env.Spec.Source.URL %v \n", errors.WithStack(err))
-	return err
+	return nil
 }
 
 func (o *PromoteOptions) GetTargetNamespace(ns string, env string) (string, *v1.Environment, error) {
