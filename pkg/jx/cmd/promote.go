@@ -478,7 +478,7 @@ func (o *PromoteOptions) Promote(targetNS string, env *v1.Environment, warnIfAut
 	err = promoteKey.OnPromoteUpdate(jxClient, o.Namespace, kube.CompletePromotionUpdate)
 	log.Infof("my log: Promoting app 19 \n")
 	log.Infof("my log: Promoting app error %v\n", err)
-	return releaseInfo, err
+	return releaseInfo, nil
 }
 
 func (o *PromoteOptions) PromoteViaPullRequest(env *v1.Environment, releaseInfo *ReleaseInfo) error {
