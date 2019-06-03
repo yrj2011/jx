@@ -14,8 +14,12 @@ func StartPromote(p *v1.PromoteActivityStep) error {
 		}
 	}
 	if p.Status == v1.ActivityStatusTypeNone {
+
 		p.Status = v1.ActivityStatusTypeRunning
 	}
+
+	// 设置PR默认状态为成功
+	p.Status = v1.ActivityStatusTypeSucceeded
 	return nil
 }
 
