@@ -121,13 +121,13 @@ func (o *GetActivityOptions) addTableRow(table *tbl.Table, activity *v1.Pipeline
 		text := ""
 		version := activity.Spec.Version
 		if version != "" {
-			text = "Version: " + util.ColorInfo(version)
+			text = "A_Version: " + util.ColorInfo(version)
 		}
 		statusText := statusString(activity.Spec.Status)
 		if statusText == "" {
 			statusText = text
 		} else {
-			statusText += " " + text
+			statusText += "B_" + text
 		}
 		table.AddRow(spec.Pipeline+" #"+spec.Build,
 			timeToString(spec.StartedTimestamp),
