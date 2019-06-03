@@ -463,6 +463,7 @@ func (o *PromoteOptions) Promote(targetNS string, env *v1.Environment, warnIfAut
 	}
 	log.Infof("my log: Promoting app 16 \n")
 	err = o.InstallChartWithOptions(helmOptions)
+	log.Infof("my log: Promoting app error 16 %v\n", err)
 	if err == nil {
 		log.Infof("my log: Promoting app 18 \n")
 		err = o.commentOnIssues(targetNS, env, promoteKey)
