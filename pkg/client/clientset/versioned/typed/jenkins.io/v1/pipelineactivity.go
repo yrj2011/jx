@@ -5,6 +5,7 @@ package v1
 import (
 	v1 "github.com/jenkins-x/jx/pkg/apis/jenkins.io/v1"
 	scheme "github.com/jenkins-x/jx/pkg/client/clientset/versioned/scheme"
+	"github.com/jenkins-x/jx/pkg/log"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"
@@ -60,6 +61,7 @@ func (c *pipelineActivities) Get(name string, options metav1.GetOptions) (result
 // List takes label and field selectors, and returns the list of PipelineActivities that match those selectors.
 func (c *pipelineActivities) List(opts metav1.ListOptions) (result *v1.PipelineActivityList, err error) {
 	result = &v1.PipelineActivityList{}
+	log.Infof("activity log : %s,%s,%s", c.ns, opts, scheme.ParameterCodec)
 	err = c.client.Get().
 		Namespace(c.ns).
 		Resource("pipelineactivities").
