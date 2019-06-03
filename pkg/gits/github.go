@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"runtime/debug"
 	"strconv"
 	"strings"
 	"time"
@@ -83,7 +84,7 @@ func (p *GitHubProvider) GetEnterpriseApiURL() string {
 func IsGitHubServerURL(u string) bool {
 	/*u = strings.TrimSuffix(u, "/")
 	return u == "" || u == "http://192.168.1.167" || u == "http://192.168.1.167" || u == "http://192.168.1.167" || u == "http://192.168.1.167"*/
-	return true;
+	return true
 }
 
 func (p *GitHubProvider) ListOrganisations() ([]GitOrganisation, error) {
@@ -409,6 +410,7 @@ func (p *GitHubProvider) CreateWebHook(data *GitWebHookArguments) error {
 	//log.Infof("Creating GitHub webhook2:%s", time.Parse("2006-01-02 15:04:05", "2019-05-30T19:34:44+0800"))
 	_, _, err = p.Client.Repositories.CreateHook(p.Context, owner, repo, hook)
 	log.Infof("Creating GitHub webhook error: %s\n", err)
+	debug.PrintStack()
 	return nil
 }
 
@@ -499,6 +501,7 @@ func (p *GitHubProvider) UpdateWebHook(data *GitWebHookArguments) error {
 }
 
 func (p *GitHubProvider) CreatePullRequest(data *GitPullRequestArguments) (*GitPullRequest, error) {
+	log.Infof("CreatePullRequest 1 ,data:%v \n", data)
 	owner := data.GitRepository.Organisation
 	repo := data.GitRepository.Name
 	title := data.Title
