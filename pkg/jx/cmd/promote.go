@@ -623,175 +623,177 @@ func (o *PromoteOptions) WaitForPromotion(ns string, env *v1.Environment, releas
 
 // TODO This could do with a refactor and some tests...
 func (o *PromoteOptions) waitForGitOpsPullRequest(ns string, env *v1.Environment, releaseInfo *ReleaseInfo, end time.Time, duration time.Duration, promoteKey *kube.PromoteStepActivityKey) error {
-	pullRequestInfo := releaseInfo.PullRequestInfo
+	/*pullRequestInfo := releaseInfo.PullRequestInfo
 	logMergeFailure := false
 	logNoMergeCommitSha := false
 	logHasMergeSha := false
 	logMergeStatusError := false
 	logNoMergeStatuses := false
 	urlStatusMap := map[string]string{}
-	urlStatusTargetURLMap := map[string]string{}
+	urlStatusTargetURLMap := map[string]string{}*/
 
 	jxClient, _, err := o.JXClient()
 	if err != nil {
 		return errors.Wrap(err, "Getting jx client")
 	}
-
-	if pullRequestInfo != nil {
-		for {
-			pr := pullRequestInfo.PullRequest
-			gitProvider := pullRequestInfo.GitProvider
-			err := gitProvider.UpdatePullRequestStatus(pr)
-			if err != nil {
-				log.Warnf("Failed to query the Pull Request status for %s %s", pr.URL, err)
-			} else {
-				if pr.Merged != nil && *pr.Merged {
-					if pr.MergeCommitSHA == nil {
-						if !logNoMergeCommitSha {
-							logNoMergeCommitSha = true
-							log.Infof("Pull Request %s is merged but waiting for Merge SHA\n", util.ColorInfo(pr.URL))
-						}
-					} else {
-						mergeSha := *pr.MergeCommitSHA
-						if !logHasMergeSha {
-							logHasMergeSha = true
-							log.Infof("Pull Request %s is merged at sha %s\n", util.ColorInfo(pr.URL), util.ColorInfo(mergeSha))
-
-							mergedPR := func(a *v1.PipelineActivity, s *v1.PipelineActivityStep, ps *v1.PromoteActivityStep, p *v1.PromotePullRequestStep) error {
-								kube.CompletePromotionPullRequest(a, s, ps, p)
-								p.MergeCommitSHA = mergeSha
-								return nil
-							}
-							promoteKey.OnPromotePullRequest(jxClient, o.Namespace, mergedPR)
-
-							if o.NoWaitAfterMerge {
-								log.Infof("Pull requests are merged, No wait on promotion to complete")
-								return err
-							}
-						}
-
-						promoteKey.OnPromoteUpdate(jxClient, o.Namespace, kube.StartPromotionUpdate)
-
-						if o.NoWaitForUpdatePipeline {
-							log.Info("Pull Request merged but we are not waiting for the update pipeline to complete!")
-							err = o.commentOnIssues(ns, env, promoteKey)
-							if err == nil {
-								err = promoteKey.OnPromoteUpdate(jxClient, o.Namespace, kube.CompletePromotionUpdate)
-							}
-							return err
-						}
-
-						statuses, err := gitProvider.ListCommitStatus(pr.Owner, pr.Repo, mergeSha)
-						if err != nil {
-							if !logMergeStatusError {
-								logMergeStatusError = true
-								log.Warnf("Failed to query merge status of repo %s/%s with merge sha %s due to: %s\n", pr.Owner, pr.Repo, mergeSha, err)
+	log.Warnf("auto set StartPromotionUpdate")
+	promoteKey.OnPromoteUpdate(jxClient, o.Namespace, kube.StartPromotionUpdate)
+	/*
+		if pullRequestInfo != nil {
+			for {
+				pr := pullRequestInfo.PullRequest
+				gitProvider := pullRequestInfo.GitProvider
+				err := gitProvider.UpdatePullRequestStatus(pr)
+				if err != nil {
+					log.Warnf("Failed to query the Pull Request status for %s %s", pr.URL, err)
+				} else {
+					if pr.Merged != nil && *pr.Merged {
+						if pr.MergeCommitSHA == nil {
+							if !logNoMergeCommitSha {
+								logNoMergeCommitSha = true
+								log.Infof("Pull Request %s is merged but waiting for Merge SHA\n", util.ColorInfo(pr.URL))
 							}
 						} else {
-							if len(statuses) == 0 {
-								if !logNoMergeStatuses {
-									logNoMergeStatuses = true
-									log.Infof("Merge commit has not yet any statuses on repo %s/%s merge sha %s\n", pr.Owner, pr.Repo, mergeSha)
-								}
-							} else {
-								for _, status := range statuses {
-									if status.IsFailed() {
-										log.Warnf("merge status: %s URL: %s description: %s\n",
-											status.State, status.TargetURL, status.Description)
-										return fmt.Errorf("Status: %s URL: %s description: %s\n",
-											status.State, status.TargetURL, status.Description)
-									}
-									url := status.URL
-									state := status.State
-									if urlStatusMap[url] == "" || urlStatusMap[url] != gitStatusSuccess {
-										if urlStatusMap[url] != state {
-											urlStatusMap[url] = state
-											urlStatusTargetURLMap[url] = status.TargetURL
-											log.Infof("merge status: %s for URL %s with target: %s description: %s\n",
-												util.ColorInfo(state), util.ColorInfo(status.URL), util.ColorInfo(status.TargetURL), util.ColorInfo(status.Description))
-										}
-									}
-								}
-								prStatuses := []v1.GitStatus{}
-								keys := util.SortedMapKeys(urlStatusMap)
-								for _, url := range keys {
-									state := urlStatusMap[url]
-									targetURL := urlStatusTargetURLMap[url]
-									if targetURL == "" {
-										targetURL = url
-									}
-									prStatuses = append(prStatuses, v1.GitStatus{
-										URL:    targetURL,
-										Status: state,
-									})
-								}
-								updateStatuses := func(a *v1.PipelineActivity, s *v1.PipelineActivityStep, ps *v1.PromoteActivityStep, p *v1.PromoteUpdateStep) error {
-									p.Statuses = prStatuses
+							mergeSha := *pr.MergeCommitSHA
+							if !logHasMergeSha {
+								logHasMergeSha = true
+								log.Infof("Pull Request %s is merged at sha %s\n", util.ColorInfo(pr.URL), util.ColorInfo(mergeSha))
+
+								mergedPR := func(a *v1.PipelineActivity, s *v1.PipelineActivityStep, ps *v1.PromoteActivityStep, p *v1.PromotePullRequestStep) error {
+									kube.CompletePromotionPullRequest(a, s, ps, p)
+									p.MergeCommitSHA = mergeSha
 									return nil
 								}
-								promoteKey.OnPromoteUpdate(jxClient, o.Namespace, updateStatuses)
+								promoteKey.OnPromotePullRequest(jxClient, o.Namespace, mergedPR)
 
-								succeeded := true
-								for _, v := range urlStatusMap {
-									if v != gitStatusSuccess {
-										succeeded = false
-									}
-								}
-								if succeeded {
-									log.Info("Merge status checks all passed so the promotion worked!")
-									err = o.commentOnIssues(ns, env, promoteKey)
-									if err == nil {
-										err = promoteKey.OnPromoteUpdate(jxClient, o.Namespace, kube.CompletePromotionUpdate)
-									}
+								if o.NoWaitAfterMerge {
+									log.Infof("Pull requests are merged, No wait on promotion to complete")
 									return err
 								}
 							}
-						}
-					}
-				} else {
-					if pr.IsClosed() {
-						log.Warnf("Pull Request %s is closed\n", util.ColorInfo(pr.URL))
-						return fmt.Errorf("Promotion failed as Pull Request %s is closed without merging", pr.URL)
-					}
 
-					// lets try merge if the status is good
-					status, err := gitProvider.PullRequestLastCommitStatus(pr)
-					if err != nil {
-						log.Warnf("Failed to query the Pull Request last commit status for %s ref %s %s\n", pr.URL, pr.LastCommitSha, err)
-						//return fmt.Errorf("Failed to query the Pull Request last commit status for %s ref %s %s", pr.URL, pr.LastCommitSha, err)
-					} else if status == "in-progress" {
-						log.Info("The build for the Pull Request last commit is currently in progress.")
-					} else {
-						if status == "success" {
-							if !o.NoMergePullRequest {
-								err = gitProvider.MergePullRequest(pr, "jx promote automatically merged promotion PR")
-								if err != nil {
-									if !logMergeFailure {
-										logMergeFailure = true
-										log.Warnf("Failed to merge the Pull Request %s due to %s maybe I don't have karma?\n", pr.URL, err)
+							promoteKey.OnPromoteUpdate(jxClient, o.Namespace, kube.StartPromotionUpdate)
+
+							if o.NoWaitForUpdatePipeline {
+								log.Info("Pull Request merged but we are not waiting for the update pipeline to complete!")
+								err = o.commentOnIssues(ns, env, promoteKey)
+								if err == nil {
+									err = promoteKey.OnPromoteUpdate(jxClient, o.Namespace, kube.CompletePromotionUpdate)
+								}
+								return err
+							}
+
+							statuses, err := gitProvider.ListCommitStatus(pr.Owner, pr.Repo, mergeSha)
+							if err != nil {
+								if !logMergeStatusError {
+									logMergeStatusError = true
+									log.Warnf("Failed to query merge status of repo %s/%s with merge sha %s due to: %s\n", pr.Owner, pr.Repo, mergeSha, err)
+								}
+							} else {
+								if len(statuses) == 0 {
+									if !logNoMergeStatuses {
+										logNoMergeStatuses = true
+										log.Infof("Merge commit has not yet any statuses on repo %s/%s merge sha %s\n", pr.Owner, pr.Repo, mergeSha)
+									}
+								} else {
+									for _, status := range statuses {
+										if status.IsFailed() {
+											log.Warnf("merge status: %s URL: %s description: %s\n",
+												status.State, status.TargetURL, status.Description)
+											return fmt.Errorf("Status: %s URL: %s description: %s\n",
+												status.State, status.TargetURL, status.Description)
+										}
+										url := status.URL
+										state := status.State
+										if urlStatusMap[url] == "" || urlStatusMap[url] != gitStatusSuccess {
+											if urlStatusMap[url] != state {
+												urlStatusMap[url] = state
+												urlStatusTargetURLMap[url] = status.TargetURL
+												log.Infof("merge status: %s for URL %s with target: %s description: %s\n",
+													util.ColorInfo(state), util.ColorInfo(status.URL), util.ColorInfo(status.TargetURL), util.ColorInfo(status.Description))
+											}
+										}
+									}
+									prStatuses := []v1.GitStatus{}
+									keys := util.SortedMapKeys(urlStatusMap)
+									for _, url := range keys {
+										state := urlStatusMap[url]
+										targetURL := urlStatusTargetURLMap[url]
+										if targetURL == "" {
+											targetURL = url
+										}
+										prStatuses = append(prStatuses, v1.GitStatus{
+											URL:    targetURL,
+											Status: state,
+										})
+									}
+									updateStatuses := func(a *v1.PipelineActivity, s *v1.PipelineActivityStep, ps *v1.PromoteActivityStep, p *v1.PromoteUpdateStep) error {
+										p.Statuses = prStatuses
+										return nil
+									}
+									promoteKey.OnPromoteUpdate(jxClient, o.Namespace, updateStatuses)
+
+									succeeded := true
+									for _, v := range urlStatusMap {
+										if v != gitStatusSuccess {
+											succeeded = false
+										}
+									}
+									if succeeded {
+										log.Info("Merge status checks all passed so the promotion worked!")
+										err = o.commentOnIssues(ns, env, promoteKey)
+										if err == nil {
+											err = promoteKey.OnPromoteUpdate(jxClient, o.Namespace, kube.CompletePromotionUpdate)
+										}
+										return err
 									}
 								}
 							}
-						} else if status == "error" || status == "failure" {
-							return fmt.Errorf("Pull request %s last commit has status %s for ref %s", pr.URL, status, pr.LastCommitSha)
+						}
+					} else {
+						if pr.IsClosed() {
+							log.Warnf("Pull Request %s is closed\n", util.ColorInfo(pr.URL))
+							return fmt.Errorf("Promotion failed as Pull Request %s is closed without merging", pr.URL)
+						}
+
+						// lets try merge if the status is good
+						status, err := gitProvider.PullRequestLastCommitStatus(pr)
+						if err != nil {
+							log.Warnf("Failed to query the Pull Request last commit status for %s ref %s %s\n", pr.URL, pr.LastCommitSha, err)
+							//return fmt.Errorf("Failed to query the Pull Request last commit status for %s ref %s %s", pr.URL, pr.LastCommitSha, err)
+						} else if status == "in-progress" {
+							log.Info("The build for the Pull Request last commit is currently in progress.")
+						} else {
+							if status == "success" {
+								if !o.NoMergePullRequest {
+									err = gitProvider.MergePullRequest(pr, "jx promote automatically merged promotion PR")
+									if err != nil {
+										if !logMergeFailure {
+											logMergeFailure = true
+											log.Warnf("Failed to merge the Pull Request %s due to %s maybe I don't have karma?\n", pr.URL, err)
+										}
+									}
+								}
+							} else if status == "error" || status == "failure" {
+								return fmt.Errorf("Pull request %s last commit has status %s for ref %s", pr.URL, status, pr.LastCommitSha)
+							}
+						}
+					}
+					if pr.Mergeable != nil && !*pr.Mergeable {
+						log.Info("Rebasing PullRequest due to conflict")
+
+						err = o.PromoteViaPullRequest(env, releaseInfo)
+						if releaseInfo.PullRequestInfo != nil {
+							pullRequestInfo = releaseInfo.PullRequestInfo
 						}
 					}
 				}
-				if pr.Mergeable != nil && !*pr.Mergeable {
-					log.Info("Rebasing PullRequest due to conflict")
-
-					err = o.PromoteViaPullRequest(env, releaseInfo)
-					if releaseInfo.PullRequestInfo != nil {
-						pullRequestInfo = releaseInfo.PullRequestInfo
-					}
+				if time.Now().After(end) {
+					return fmt.Errorf("Timed out waiting for pull request %s to merge. Waited %s", pr.URL, duration.String())
 				}
+				time.Sleep(*o.PullRequestPollDuration)
 			}
-			if time.Now().After(end) {
-				return fmt.Errorf("Timed out waiting for pull request %s to merge. Waited %s", pr.URL, duration.String())
-			}
-			time.Sleep(*o.PullRequestPollDuration)
-		}
-	}
+		}*/
 	return nil
 }
 
