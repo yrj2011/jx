@@ -241,7 +241,7 @@ func (o *CommonOptions) RegisterLocalHelmRepo(repoName, ns string) error {
 	// TODO we should use the auth package to keep a list of server login/pwds
 	// TODO we have a chartmuseumAuth.yaml now but sure yet if that's the best thing to do
 	username := "admin"
-	password := "admin"
+	password := "123456"
 
 	// lets check if we have a local helm repository
 	client, err := o.KubeClient()
