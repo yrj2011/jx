@@ -333,7 +333,7 @@ func (o *CreateEnvOptions) RegisterEnvironment(env *v1.Environment, gitProvider 
 		if err != nil {
 			return err
 		}
-		return o.CreateWebhookProw(gitURL, gitProvider)
+		o.CreateWebhookProw(gitURL, gitProvider)
 	}
 
 	return o.ImportProject(gitURL, envDir, jenkinsfile.Name, o.BranchPattern, o.EnvJobCredentials, false, gitProvider, authConfigSvc, true, o.BatchMode)
