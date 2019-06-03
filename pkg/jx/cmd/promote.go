@@ -440,10 +440,8 @@ func (o *PromoteOptions) Promote(targetNS string, env *v1.Environment, warnIfAut
 		log.Info("Updating the helm repositories to ensure we can find the latest versions...")
 		err = o.Helm().UpdateRepo()
 		if err != nil {
-
-			time.Sleep(time.Minute * 5)
-
 			log.Warnf("my log: Promoting app error %v\n", err)
+			time.Sleep(time.Minute * 5)
 			//return releaseInfo, err
 		}
 	}
