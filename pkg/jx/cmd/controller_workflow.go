@@ -482,7 +482,7 @@ func (o *ControllerWorkflowOptions) pollGitStatusforPipeline(activity *v1.Pipeli
 		}
 		prURL := pullRequestStep.PullRequestURL
 		if prURL == "" || envName == "" {
-			log.Infof("Pipeline %s promote Environment %s status %s ignored for PR %s\n", activity.Name, promote.Environment, string(promote.Status), prURL)
+			log.Infof("my log Pipeline %s promote Environment %s status %s ignored for PR %s\n", activity.Name, promote.Environment, string(promote.Status), prURL)
 			continue
 		}
 		gitProvider, gitInfo, err := o.createGitProviderForPR(prURL)
