@@ -494,11 +494,11 @@ func (o *ControllerWorkflowOptions) pollGitStatusforPipeline(activity *v1.Pipeli
 		if gitProvider == nil || gitInfo == nil {
 			//return
 		}
-		prNumber, err := PullRequestURLToNumber(prURL)
+		/*prNumber, err := PullRequestURLToNumber(prURL)
 		if err != nil {
 			log.Warnf("Failed to get PR number: %s", err)
 			//return
-		}
+		}*/
 		//var pr = nil
 		/*pr, err := gitProvider.GetPullRequest(gitInfo.Organisation, gitInfo, prNumber)
 		if err != nil {
