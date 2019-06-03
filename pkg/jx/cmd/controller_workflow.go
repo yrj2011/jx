@@ -457,7 +457,7 @@ func (o *ControllerWorkflowOptions) pollGitStatusforPipeline(activity *v1.Pipeli
 		o.removePipelineActivity(activity, activities)
 		return
 	}
-
+	o.Verbose = true
 	// TODO should be is newest pipeline for this environment promote...
 	if !o.isNewestPipeline(activity, activities) {
 		return
@@ -478,30 +478,33 @@ func (o *ControllerWorkflowOptions) pollGitStatusforPipeline(activity *v1.Pipeli
 		pullRequestStep := promote.PullRequest
 		if pullRequestStep == nil {
 			log.Infof("Pipeline %s promote Environment %s status %s ignored as no PullRequest\n", activity.Name, promote.Environment, string(promote.Status))
-			continue
+			//continue
 		}
 		prURL := pullRequestStep.PullRequestURL
+
 		if prURL == "" || envName == "" {
 			log.Infof("my log Pipeline %s promote Environment %s status %s ignored for PR %s\n", activity.Name, promote.Environment, string(promote.Status), prURL)
-			continue
+			//continue
 		}
 		gitProvider, gitInfo, err := o.createGitProviderForPR(prURL)
 		if err != nil {
 			log.Warnf("Failed to create git Provider: %s", err)
-			return
+			//return
 		}
 		if gitProvider == nil || gitInfo == nil {
-			return
+			//return
 		}
 		prNumber, err := PullRequestURLToNumber(prURL)
 		if err != nil {
 			log.Warnf("Failed to get PR number: %s", err)
-			return
+			//return
 		}
 		pr, err := gitProvider.GetPullRequest(gitInfo.Organisation, gitInfo, prNumber)
 		if err != nil {
 			log.Warnf("Failed to query the Pull Request status on pipeline %s for repo %s PR %d for PR %s: %s", activity.Name, gitInfo.HttpsURL(), prNumber, prURL, err)
-		} else {
+		}
+		{
+
 			if o.Verbose {
 				log.Infof("Pipeline %s promote Environment %s has PR %s\n", activity.Name, envName, prURL)
 			}
