@@ -159,7 +159,7 @@ func (o *CommonOptions) ImportProject(gitURL string, dir string, jenkinsfile str
 	}
 
 	err = o.Retry(10, time.Second*10, func() error {
-
+		log.Infof("jenkins log projectXml :" + gitProvider.Kind() + "," + credentials + ",branchPattern:" + branchPattern + ",jenkinsfile")
 		projectXml := jenkins.CreateMultiBranchProjectXml(gitInfo, gitProvider, credentials, branchPattern, jenkinsfile)
 		log.Infof("jenkins log projectXml :" + projectXml)
 		jobName := gitInfo.Name
