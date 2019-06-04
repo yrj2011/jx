@@ -90,90 +90,92 @@ func createBranchSource(info *gits.GitRepository, gitProvider gits.GitProvider, 
 		  <credentialsId>` + credentials + `</credentialsId>
 `
 	}
-	log.Infof("createBranchSource log:%s", gitProvider)
-	log.Infof("createBranchSource log:%s", gitProvider.Kind() == gits.KindGitHub)
-	switch gitProvider.Kind() {
-	case gits.KindGitHub:
-		serverXml := ""
-		ghp, ok := gitProvider.(*gits.GitHubProvider)
-		if ok {
-			u := ghp.GetEnterpriseApiURL()
-			if u != "" {
-				serverXml = `		  <apiUri>` + u + `</apiUri>
-`
+	log.Infof("createBranchSource credentials:%s", credentials)
+	log.Infof("createBranchSource info:%s", info)
+	log.Infof("createBranchSource gitProvider:%s", gitProvider)
+	log.Infof("createBranchSource gitProvider.Kind:%s", gitProvider.Kind() == gits.KindGitHub)
+	/*switch gitProvider.Kind() {
+		case gits.KindGitHub:
+			serverXml := ""
+			ghp, ok := gitProvider.(*gits.GitHubProvider)
+			if ok {
+				u := ghp.GetEnterpriseApiURL()
+				if u != "" {
+					serverXml = `		  <apiUri>` + u + `</apiUri>
+	`
+				}
 			}
-		}
-		return `
-	    <source class="org.jenkinsci.plugins.github_branch_source.GitHubSCMSource" plugin="github-branch-source@2.3.1">
-		  ` + idXml + credXml + serverXml + `
-		  <repoOwner>` + info.Organisation + `</repoOwner>
-		  <repository>` + info.Name + `</repository>
-		  <traits>
-			<org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait>
-			  <strategyId>1</strategyId>
-			</org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait>
-			<org.jenkinsci.plugins.github__branch__source.OriginPullRequestDiscoveryTrait>
-			  <strategyId>2</strategyId>
-			</org.jenkinsci.plugins.github__branch__source.OriginPullRequestDiscoveryTrait>
-			<org.jenkinsci.plugins.github__branch__source.ForkPullRequestDiscoveryTrait>
-			  <strategyId>1</strategyId>
-			  <trust class="org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustContributors"/>
-			</org.jenkinsci.plugins.github__branch__source.ForkPullRequestDiscoveryTrait>
-			<jenkins.scm.impl.trait.RegexSCMHeadFilterTrait plugin="scm-api@2.2.6">
-			  <regex>` + branches + `</regex>
-			</jenkins.scm.impl.trait.RegexSCMHeadFilterTrait>
-		  </traits>
-		</source>
-`
-	case gits.KindGitea:
-		return `
-	    <source class="org.jenkinsci.plugin.gitea.GiteaSCMSource" plugin="gitea@1.0.5">
-          ` + idXml + credXml + `
-          <serverUrl>` + info.HostURLWithoutUser() + `</serverUrl>
-          <repoOwner>` + info.Organisation + `</repoOwner>
-		  <repository>` + info.Name + `</repository>
-          <traits>
-            <org.jenkinsci.plugin.gitea.BranchDiscoveryTrait>
-              <strategyId>1</strategyId>
-            </org.jenkinsci.plugin.gitea.BranchDiscoveryTrait>
-            <org.jenkinsci.plugin.gitea.OriginPullRequestDiscoveryTrait>
-              <strategyId>2</strategyId>
-            </org.jenkinsci.plugin.gitea.OriginPullRequestDiscoveryTrait>
-            <org.jenkinsci.plugin.gitea.ForkPullRequestDiscoveryTrait>
-              <strategyId>1</strategyId>
-              <trust class="org.jenkinsci.plugin.gitea.ForkPullRequestDiscoveryTrait$TrustContributors"/>
-            </org.jenkinsci.plugin.gitea.ForkPullRequestDiscoveryTrait>
-			<jenkins.scm.impl.trait.RegexSCMHeadFilterTrait plugin="scm-api@2.2.6">
-			  <regex>` + branches + `</regex>
-			</jenkins.scm.impl.trait.RegexSCMHeadFilterTrait>
-		  </traits>
-		</source>
-`
-	case gits.KindBitBucketCloud, gits.KindBitBucketServer:
-		return `
-	 	<source class="com.cloudbees.jenkins.plugins.bitbucket.BitbucketSCMSource" plugin="cloudbees-bitbucket-branch-source@2.2.10">
-	 	  ` + idXml + credXml + `
-          <serverUrl>` + info.HostURLWithoutUser() + `</serverUrl>
-          <repoOwner>` + info.Organisation + `</repoOwner>
-		  <repository>` + info.Name + `</repository>
-	 	  <traits>
-	 	    <com.cloudbees.jenkins.plugins.bitbucket.BranchDiscoveryTrait>
-	 	      <strategyId>1</strategyId>
-	 	    </com.cloudbees.jenkins.plugins.bitbucket.BranchDiscoveryTrait>
-	 	    <com.cloudbees.jenkins.plugins.bitbucket.OriginPullRequestDiscoveryTrait>
-	 	      <strategyId>2</strategyId>
-	 	    </com.cloudbees.jenkins.plugins.bitbucket.OriginPullRequestDiscoveryTrait>
-	 	    <com.cloudbees.jenkins.plugins.bitbucket.ForkPullRequestDiscoveryTrait>
-	 	      <strategyId>1</strategyId>
-	 	      <trust class="com.cloudbees.jenkins.plugins.bitbucket.ForkPullRequestDiscoveryTrait$TrustTeamForks"/>
-	 	    </com.cloudbees.jenkins.plugins.bitbucket.ForkPullRequestDiscoveryTrait>
-			<jenkins.scm.impl.trait.RegexSCMHeadFilterTrait plugin="scm-api@2.2.6">
-			  <regex>` + branches + `</regex>
-			</jenkins.scm.impl.trait.RegexSCMHeadFilterTrait>
-	 	  </traits>
-	 	</source>
-`
-	}
+			return `
+		    <source class="org.jenkinsci.plugins.github_branch_source.GitHubSCMSource" plugin="github-branch-source@2.3.1">
+			  ` + idXml + credXml + serverXml + `
+			  <repoOwner>` + info.Organisation + `</repoOwner>
+			  <repository>` + info.Name + `</repository>
+			  <traits>
+				<org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait>
+				  <strategyId>1</strategyId>
+				</org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait>
+				<org.jenkinsci.plugins.github__branch__source.OriginPullRequestDiscoveryTrait>
+				  <strategyId>2</strategyId>
+				</org.jenkinsci.plugins.github__branch__source.OriginPullRequestDiscoveryTrait>
+				<org.jenkinsci.plugins.github__branch__source.ForkPullRequestDiscoveryTrait>
+				  <strategyId>1</strategyId>
+				  <trust class="org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustContributors"/>
+				</org.jenkinsci.plugins.github__branch__source.ForkPullRequestDiscoveryTrait>
+				<jenkins.scm.impl.trait.RegexSCMHeadFilterTrait plugin="scm-api@2.2.6">
+				  <regex>` + branches + `</regex>
+				</jenkins.scm.impl.trait.RegexSCMHeadFilterTrait>
+			  </traits>
+			</source>
+	`
+		case gits.KindGitea:
+			return `
+		    <source class="org.jenkinsci.plugin.gitea.GiteaSCMSource" plugin="gitea@1.0.5">
+	          ` + idXml + credXml + `
+	          <serverUrl>` + info.HostURLWithoutUser() + `</serverUrl>
+	          <repoOwner>` + info.Organisation + `</repoOwner>
+			  <repository>` + info.Name + `</repository>
+	          <traits>
+	            <org.jenkinsci.plugin.gitea.BranchDiscoveryTrait>
+	              <strategyId>1</strategyId>
+	            </org.jenkinsci.plugin.gitea.BranchDiscoveryTrait>
+	            <org.jenkinsci.plugin.gitea.OriginPullRequestDiscoveryTrait>
+	              <strategyId>2</strategyId>
+	            </org.jenkinsci.plugin.gitea.OriginPullRequestDiscoveryTrait>
+	            <org.jenkinsci.plugin.gitea.ForkPullRequestDiscoveryTrait>
+	              <strategyId>1</strategyId>
+	              <trust class="org.jenkinsci.plugin.gitea.ForkPullRequestDiscoveryTrait$TrustContributors"/>
+	            </org.jenkinsci.plugin.gitea.ForkPullRequestDiscoveryTrait>
+				<jenkins.scm.impl.trait.RegexSCMHeadFilterTrait plugin="scm-api@2.2.6">
+				  <regex>` + branches + `</regex>
+				</jenkins.scm.impl.trait.RegexSCMHeadFilterTrait>
+			  </traits>
+			</source>
+	`
+		case gits.KindBitBucketCloud, gits.KindBitBucketServer:
+			return `
+		 	<source class="com.cloudbees.jenkins.plugins.bitbucket.BitbucketSCMSource" plugin="cloudbees-bitbucket-branch-source@2.2.10">
+		 	  ` + idXml + credXml + `
+	          <serverUrl>` + info.HostURLWithoutUser() + `</serverUrl>
+	          <repoOwner>` + info.Organisation + `</repoOwner>
+			  <repository>` + info.Name + `</repository>
+		 	  <traits>
+		 	    <com.cloudbees.jenkins.plugins.bitbucket.BranchDiscoveryTrait>
+		 	      <strategyId>1</strategyId>
+		 	    </com.cloudbees.jenkins.plugins.bitbucket.BranchDiscoveryTrait>
+		 	    <com.cloudbees.jenkins.plugins.bitbucket.OriginPullRequestDiscoveryTrait>
+		 	      <strategyId>2</strategyId>
+		 	    </com.cloudbees.jenkins.plugins.bitbucket.OriginPullRequestDiscoveryTrait>
+		 	    <com.cloudbees.jenkins.plugins.bitbucket.ForkPullRequestDiscoveryTrait>
+		 	      <strategyId>1</strategyId>
+		 	      <trust class="com.cloudbees.jenkins.plugins.bitbucket.ForkPullRequestDiscoveryTrait$TrustTeamForks"/>
+		 	    </com.cloudbees.jenkins.plugins.bitbucket.ForkPullRequestDiscoveryTrait>
+				<jenkins.scm.impl.trait.RegexSCMHeadFilterTrait plugin="scm-api@2.2.6">
+				  <regex>` + branches + `</regex>
+				</jenkins.scm.impl.trait.RegexSCMHeadFilterTrait>
+		 	  </traits>
+		 	</source>
+	`
+		}*/
 
 	return `
 <source class="jenkins.plugins.git.GitSCMSource" plugin="git@3.7.0">
