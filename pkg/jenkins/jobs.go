@@ -2,6 +2,7 @@ package jenkins
 
 import (
 	"github.com/jenkins-x/jx/pkg/gits"
+	"github.com/jenkins-x/jx/pkg/log"
 	"k8s.io/apimachinery/pkg/util/uuid"
 )
 
@@ -89,7 +90,8 @@ func createBranchSource(info *gits.GitRepository, gitProvider gits.GitProvider, 
 		  <credentialsId>` + credentials + `</credentialsId>
 `
 	}
-
+	log.Infof("createBranchSource log:%s", gitProvider)
+	log.Infof("createBranchSource log:%s", gitProvider.Kind() == gits.KindGitHub)
 	switch gitProvider.Kind() {
 	case gits.KindGitHub:
 		serverXml := ""
