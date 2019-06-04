@@ -60,6 +60,7 @@ func (o *CommonOptions) ImportProject(gitURL string, dir string, jenkinsfile str
 			branchPattern = branch
 			log.Infof("No branch pattern specified and this repository appears to be a fork so defaulting the branch patterns to run CI/CD on to: %s\n", branchPattern)
 		} else {
+			log.Infof("jenkins log :" + gitProvider.Kind())
 			branchPattern = jenkins.BranchPattern(gitProvider.Kind())
 		}
 	}
@@ -139,6 +140,7 @@ func (o *CommonOptions) ImportProject(gitURL string, dir string, jenkinsfile str
 		if err != nil {
 			// could not find folder so lets try create it
 			jobUrl := util.UrlJoin(jenk.BaseURL(), jenk.GetJobURLPath(org))
+			log.Infof("jenkins log :" + jobUrl + ",org:" + org)
 			folderXML := jenkins.CreateFolderXML(jobUrl, org)
 			err = jenk.CreateJobWithXML(folderXML, org)
 			if err != nil {
@@ -157,7 +159,9 @@ func (o *CommonOptions) ImportProject(gitURL string, dir string, jenkinsfile str
 	}
 
 	err = o.Retry(10, time.Second*10, func() error {
+
 		projectXml := jenkins.CreateMultiBranchProjectXml(gitInfo, gitProvider, credentials, branchPattern, jenkinsfile)
+		log.Infof("jenkins log projectXml :" + projectXml)
 		jobName := gitInfo.Name
 		job, err := jenk.GetJobByPath(org, jobName)
 		if err == nil {
@@ -167,6 +171,7 @@ func (o *CommonOptions) ImportProject(gitURL string, dir string, jenkinsfile str
 				log.Infof("Job already exists in Jenkins at %s\n", job.Url)
 			}
 		} else {
+			log.Infof("jenkins log projectXml :" + projectXml + ",org:" + org + ",jobName:" + jobName)
 			err = jenk.CreateFolderJobWithXML(projectXml, org, jobName)
 			if err != nil {
 				return fmt.Errorf("Failed to create MultiBranchProject job %s in folder %s due to: %s", jobName, org, err)
@@ -179,6 +184,7 @@ func (o *CommonOptions) ImportProject(gitURL string, dir string, jenkinsfile str
 			o.LogImportedProject(isEnvironment, gitInfo)
 
 			params := url.Values{}
+			log.Infof("jenkins log projectXml 2 :" + projectXml + ",org:" + org + ",jobName:" + jobName)
 			err = jenk.Build(job, params)
 			if err != nil {
 				return fmt.Errorf("Failed to trigger job %s due to %s", job.Url, err)
