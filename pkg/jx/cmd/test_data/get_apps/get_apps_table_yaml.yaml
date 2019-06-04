@@ -1,6 +1,6 @@
 items:
 - appName: <NAME_PLACEHOLDER>
-  chartRepository: http://chartmuseum.jenkins-x.io
+  chartRepository: http://192.168.1.228
   description: My test chart description
   namespace: jx
   status: DEPLOYED
