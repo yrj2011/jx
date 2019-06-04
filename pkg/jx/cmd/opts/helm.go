@@ -764,17 +764,15 @@ func (o *CommonOptions) HelmInitDependency(dir string, chartRepos []string) (str
 		sum++
 		if sum > 100 {
 			return d, err
-			break
 		} else {
 			if err == nil {
 				return d, err
 			} else {
 				time.Sleep(5 * time.Second)
 			}
-
 		}
 	}
-
+	return "", nil
 }
 
 // HelmInitDependency initialises helm dependencies
