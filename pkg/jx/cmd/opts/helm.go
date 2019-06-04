@@ -757,6 +757,28 @@ func (o *CommonOptions) HelmInit(dir string) error {
 
 // HelmInitDependency initialises helm dependencies
 func (o *CommonOptions) HelmInitDependency(dir string, chartRepos []string) (string, error) {
+
+	sum := 0
+	for {
+		d, err := o.HelmInitDependency2(dir, chartRepos)
+		sum++
+		if sum > 100 {
+			return d, err
+			break
+		} else {
+			if err == nil {
+				return d, err
+			} else {
+				time.Sleep(5 * time.Second)
+			}
+
+		}
+	}
+
+}
+
+// HelmInitDependency initialises helm dependencies
+func (o *CommonOptions) HelmInitDependency2(dir string, chartRepos []string) (string, error) {
 	o.Helm().SetCWD(dir)
 	err := o.Helm().RemoveRequirementsLock()
 	if err != nil {
