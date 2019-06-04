@@ -768,6 +768,7 @@ func (o *CommonOptions) HelmInitDependency(dir string, chartRepos []string) (str
 		// need to check the tiller settings at this point
 		_, noTiller, helmTemplate, err := o.TeamHelmBin()
 		if err != nil {
+
 			return o.Helm().HelmBinary(),
 				errors.Wrap(err, "failed to access team settings")
 		}
@@ -787,6 +788,8 @@ func (o *CommonOptions) HelmInitDependency(dir string, chartRepos []string) (str
 	}
 	err = o.AddChartRepos(dir, o.Helm().HelmBinary(), chartRepos)
 	if err != nil {
+		log.Infof("helm 打包出错：%s", err)
+		time.Sleep(10 * time.Minute)
 		return o.Helm().HelmBinary(),
 			errors.Wrap(err, "failed to add chart repositories")
 	}
