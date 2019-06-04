@@ -762,6 +762,7 @@ func (o *CommonOptions) HelmInitDependency(dir string, chartRepos []string) (str
 	for {
 		d, err := o.HelmInitDependency2(dir, chartRepos)
 		sum++
+		log.Infof("for time:%s,err:%s \n", sum, err)
 		if sum > 100 {
 			return d, err
 		} else {
