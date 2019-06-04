@@ -809,7 +809,6 @@ func (o *CommonOptions) HelmInitDependency2(dir string, chartRepos []string) (st
 	err = o.AddChartRepos(dir, o.Helm().HelmBinary(), chartRepos)
 	if err != nil {
 		log.Infof("helm 打包出错：%s", err)
-		time.Sleep(10 * time.Minute)
 		return o.Helm().HelmBinary(),
 			errors.Wrap(err, "failed to add chart repositories")
 	}
