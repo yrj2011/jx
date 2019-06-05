@@ -563,7 +563,7 @@ func (g *GitCLI) fetchBranch(dir string, repo string, unshallow bool, shallow bo
 		return errors.WithStack(err)
 	}
 
-	args3 := []string{"branch", "--set-upstream=origin/master", "master"}
+	args3 := []string{"branch", "--set-upstream-to=origin/master", "master"}
 	log.Infof("modify cmd args3:%s", args3)
 	g.gitCmd(dir, args3...)
 
