@@ -1704,6 +1704,8 @@ func (o *StepCreateTaskOptions) modifyStep(projectConfig *config.ProjectConfig, 
 			sourceDir := o.getWorkspaceDir()
 			dockerfile := filepath.Join(sourceDir, "Dockerfile")
 			localRepo := o.getDockerRegistry(projectConfig)
+
+			log.Infof("my log projectConfig:%s", projectConfig)
 			log.Infof("my log localRepo:%s", localRepo)
 			destination := o.dockerImage(projectConfig, gitInfo)
 
