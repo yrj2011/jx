@@ -863,6 +863,9 @@ func (o *PromoteOptions) verifyHelmConfigured() error {
 }
 
 func (o *PromoteOptions) createPromoteKey(env *v1.Environment) *kube.PromoteStepActivityKey {
+	o.Verbose = true
+	debug.PrintStack()
+	log.Infof("createPromoteKey 1")
 	pipeline := o.Pipeline
 	if o.Build == "" {
 		o.Build = o.GetBuildNumber()
@@ -872,6 +875,7 @@ func (o *PromoteOptions) createPromoteKey(env *v1.Environment) *kube.PromoteStep
 	buildLogsURL := os.Getenv("BUILD_LOG_URL")
 	releaseNotesURL := ""
 	gitInfo := o.GitInfo
+	log.Infof("createPromoteKey 2: %s", gitInfo)
 	if !o.IgnoreLocalFiles {
 		var err error
 		gitInfo, err = o.Git().Info("")
@@ -898,6 +902,7 @@ func (o *PromoteOptions) createPromoteKey(env *v1.Environment) *kube.PromoteStep
 		pipeline, build = o.GetPipelineName(gitInfo, pipeline, build, o.Application)
 	}
 	if pipeline != "" && build == "" {
+		log.Infof("createPromoteKey 3: %s,%s", pipeline, build)
 		log.Warnf("No $BUILD_NUMBER environment variable found so cannot record promotion activities into the PipelineActivity resources in kubernetes\n")
 		var err error
 		build, err = o.GetLatestPipelineBuildByCRD(pipeline)
@@ -908,7 +913,9 @@ func (o *PromoteOptions) createPromoteKey(env *v1.Environment) *kube.PromoteStep
 	name := pipeline
 	if build != "" {
 		name += "-" + build
+		log.Infof("createPromoteKey 4: %s", name)
 		if (buildURL == "" || buildLogsURL == "") && !o.prow {
+			log.Infof("createPromoteKey 5: %s,%s", buildURL, buildLogsURL)
 			jenkinsURL := o.getAndUpdateJenkinsURL()
 			if jenkinsURL != "" {
 				path := pipeline
@@ -930,7 +937,10 @@ func (o *PromoteOptions) createPromoteKey(env *v1.Environment) *kube.PromoteStep
 			}
 		}
 	}
+	log.Infof("createPromoteKey 6: %s", name)
 	name = kube.ToValidName(name)
+
+	log.Infof("createPromoteKey 7: %s", name)
 	if o.Verbose {
 		log.Infof("Using pipeline: %s build: %s\n", util.ColorInfo(pipeline), util.ColorInfo("#"+build))
 	}
