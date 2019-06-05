@@ -260,7 +260,7 @@ func (o *CommonOptions) RegisterLocalHelmRepo(repoName, ns string) error {
 		u2.User = url.UserPassword(username, password)
 	}
 	helmUrl := u2.String()
-	dockerRegistry := ""
+	chartmuseum := ""
 	kubeClient, ns, err := o.KubeClientAndDevNamespace()
 	if err != nil {
 		log.Warnf("failed to create kube client: %s\n", err.Error())
@@ -270,11 +270,11 @@ func (o *CommonOptions) RegisterLocalHelmRepo(repoName, ns string) error {
 		if err != nil {
 			log.Warnf("failed to load ConfigMap %s in namespace %s: %s\n", name, ns, err.Error())
 		} else {
-			dockerRegistry = data["docker.registry"]
+			chartmuseum = data["docker.registry"]
 		}
 	}
-	log.Infof("my log dockerRegistry:%s", dockerRegistry)
-	helmUrl = strings.Replace(helmUrl, "chartmuseum.jx.192.168.1.105.nip.io", dockerRegistry, 1)
+	log.Infof("my log chartmuseum:%s", dockerRegistry)
+	helmUrl = strings.Replace(helmUrl, "chartmuseum.jx.192.168.1.105.nip.io", chartmuseum, 1)
 	// lets check if we already have the helm repo installed or if we need to add it or remove + add it
 	remove := false
 	repos, err := o.Helm().ListRepos()
