@@ -8,6 +8,7 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"runtime/debug"
 	"strconv"
 	"strings"
 	"time"
@@ -87,9 +88,9 @@ func (g *GitCLI) clone(dir string, gitURL string, remoteName string, shallow boo
 	if verbose {
 		log.Infof("cloning repository %s to dir %s\n", gitURL, dir)
 	}
-	gitURL = strings.Replace(gitURL,"https://","http://",1)
-	gitURL = strings.Replace(gitURL,"http://github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
-	gitURL = strings.Replace(gitURL,"http://api.github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
+	gitURL = strings.Replace(gitURL, "https://", "http://", 1)
+	gitURL = strings.Replace(gitURL, "http://github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
+	gitURL = strings.Replace(gitURL, "http://api.github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
 	if remoteName == "" {
 		remoteName = "origin"
 	}
@@ -115,7 +116,9 @@ func (g *GitCLI) clone(dir string, gitURL string, remoteName string, shallow boo
 		return errors.Wrapf(err, "failed to init a new git repository in directory %s", dir)
 	}
 	if verbose {
+
 		log.Infof("ran git init in %s", dir)
+		debug.PrintStack()
 	}
 	err = g.AddRemote(dir, "origin", gitURL)
 	if err != nil {
@@ -182,9 +185,9 @@ func (g *GitCLI) DeleteRemoteBranch(dir string, remoteName string, branch string
 
 // CloneOrPull clones  the given git URL or pull if it already exists
 func (g *GitCLI) CloneOrPull(url string, dir string) error {
-	url = strings.Replace(url,"https://","http://",1)
-	url = strings.Replace(url,"http://github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
-	url = strings.Replace(url,"http://api.github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
+	url = strings.Replace(url, "https://", "http://", 1)
+	url = strings.Replace(url, "http://github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
+	url = strings.Replace(url, "http://api.github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
 	empty, err := util.IsEmpty(dir)
 	if err != nil {
 		return err
@@ -212,17 +215,17 @@ func (g *GitCLI) ResetToUpstream(dir string, branch string) error {
 
 // AddRemote adds a remote repository at the given URL and with the given name
 func (g *GitCLI) AddRemote(dir string, name string, url string) error {
-	url = strings.Replace(url,"https://","http://",1)
-	url = strings.Replace(url,"http://github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
-	url = strings.Replace(url,"http://api.github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
+	url = strings.Replace(url, "https://", "http://", 1)
+	url = strings.Replace(url, "http://github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
+	url = strings.Replace(url, "http://api.github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
 	return g.gitCmd(dir, "remote", "add", name, url)
 }
 
 // UpdateRemote updates the URL of the remote repository
 func (g *GitCLI) UpdateRemote(dir, url string) error {
-	url = strings.Replace(url,"https://","http://",1)
-	url = strings.Replace(url,"http://github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
-	url = strings.Replace(url,"http://api.github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
+	url = strings.Replace(url, "https://", "http://", 1)
+	url = strings.Replace(url, "http://github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
+	url = strings.Replace(url, "http://api.github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
 	return g.gitCmd(dir, "remote", "set-url", "origin", url)
 }
 
@@ -425,9 +428,9 @@ func (g *GitCLI) CreatePushURL(cloneURL string, userAuth *auth.UserAuth) (string
 	userAuth.ApiToken = "5rkRv_sr5JvVbkgrsYJk"
 	fmt.Printf("userAuth:%s\n", userAuth)
 	fmt.Printf("cloneURL:%s\n", cloneURL)
-	cloneURL = strings.Replace(cloneURL,"https://","http://",1)
-	cloneURL = strings.Replace(cloneURL,"http://github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
-	cloneURL = strings.Replace(cloneURL,"http://api.github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
+	cloneURL = strings.Replace(cloneURL, "https://", "http://", 1)
+	cloneURL = strings.Replace(cloneURL, "http://github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
+	cloneURL = strings.Replace(cloneURL, "http://api.github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
 	u, err := url.Parse(cloneURL)
 	if err != nil {
 		// already a git/ssh url?
@@ -579,9 +582,9 @@ func (g *GitCLI) GetAuthorEmailForCommit(dir string, sha string) (string, error)
 
 // SetRemoteURL sets the remote URL of the remote with the given name
 func (g *GitCLI) SetRemoteURL(dir string, name string, gitURL string) error {
-	gitURL = strings.Replace(gitURL,"https://","http://",1)
-	gitURL = strings.Replace(gitURL,"http://github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
-	gitURL = strings.Replace(gitURL,"http://api.github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
+	gitURL = strings.Replace(gitURL, "https://", "http://", 1)
+	gitURL = strings.Replace(gitURL, "http://github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
+	gitURL = strings.Replace(gitURL, "http://api.github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
 	err := g.gitCmd(dir, "remote", "add", name, gitURL)
 	if err != nil {
 		err = g.gitCmd(dir, "remote", "set-url", name, gitURL)
@@ -623,9 +626,9 @@ func (g *GitCLI) DiscoverRemoteGitURL(gitConf string) (string, error) {
 	if rUrl == "" {
 		rUrl = g.GetRemoteUrl(cfg, "upstream")
 	}
-	rUrl = strings.Replace(rUrl,"https://","http://",1)
-	rUrl = strings.Replace(rUrl,"http://github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
-	rUrl = strings.Replace(rUrl,"http://api.github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
+	rUrl = strings.Replace(rUrl, "https://", "http://", 1)
+	rUrl = strings.Replace(rUrl, "http://github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
+	rUrl = strings.Replace(rUrl, "http://api.github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
 	return rUrl, nil
 }
 
@@ -643,9 +646,9 @@ func (g *GitCLI) DiscoverUpstreamGitURL(gitConf string) (string, error) {
 	if rUrl == "" {
 		rUrl = g.GetRemoteUrl(cfg, "origin")
 	}
-	rUrl = strings.Replace(rUrl,"https://","http://",1)
-	rUrl = strings.Replace(rUrl,"http://github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
-	rUrl = strings.Replace(rUrl,"http://api.github.com","http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080",1)
+	rUrl = strings.Replace(rUrl, "https://", "http://", 1)
+	rUrl = strings.Replace(rUrl, "http://github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
+	rUrl = strings.Replace(rUrl, "http://api.github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
 	return rUrl, nil
 }
 
