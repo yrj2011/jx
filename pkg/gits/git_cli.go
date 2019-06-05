@@ -552,14 +552,21 @@ func (g *GitCLI) fetchBranch(dir string, repo string, unshallow bool, shallow bo
 	for _, refspec := range refspecs {
 		args = append(args, refspec)
 	}
+	err := g.gitCmd(dir, args...)
+	if err != nil {
+		log.Infof("gitCmd error:%s", err)
+		return errors.WithStack(err)
+	}
+
 	log.Infof("origin cmd args:%s", args)
 	args2 := []string{"pull", repo}
 	for _, refspec := range refspecs {
 		args2 = append(args2, refspec)
 	}
 	log.Infof("modify cmd args:%s", args2)
-	err := g.gitCmd(dir, args2...)
+	err = g.gitCmd(dir, args2...)
 	if err != nil {
+		log.Infof("gitCmd error:%s", err)
 		return errors.WithStack(err)
 	}
 
