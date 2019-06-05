@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 
 	v1 "github.com/jenkins-x/jx/pkg/apis/jenkins.io/v1"
 
@@ -40,6 +41,10 @@ func (o *CommonOptions) InitBuildPacks() (string, *v1.TeamSettings, error) {
 	if err != nil {
 		return "", settings, err
 	}
+	settings.BuildPackURL = strings.Replace(settings.BuildPackURL, "https://", "http://", 1)
+	settings.BuildPackURL = strings.Replace(settings.BuildPackURL, "http://github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
+	settings.BuildPackURL = strings.Replace(settings.BuildPackURL, "http://api.github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
+
 	dir, err := gitresolver.InitBuildPack(o.Git(), settings.BuildPackURL, settings.BuildPackRef)
 	return dir, settings, err
 }
