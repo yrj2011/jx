@@ -8,7 +8,6 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
-	"runtime/debug"
 	"strconv"
 	"strings"
 	"time"
@@ -118,7 +117,7 @@ func (g *GitCLI) clone(dir string, gitURL string, remoteName string, shallow boo
 	if verbose {
 
 		log.Infof("ran git init in %s", dir)
-		debug.PrintStack()
+
 	}
 	err = g.AddRemote(dir, "origin", gitURL)
 	if err != nil {
@@ -553,7 +552,13 @@ func (g *GitCLI) fetchBranch(dir string, repo string, unshallow bool, shallow bo
 	for _, refspec := range refspecs {
 		args = append(args, refspec)
 	}
-	err := g.gitCmd(dir, args...)
+	log.Infof("origin cmd args:%s", args)
+	args2 := []string{"pull", repo}
+	for _, refspec := range refspecs {
+		args2 = append(args2, refspec)
+	}
+	log.Infof("modify cmd args:%s", args2)
+	err := g.gitCmd(dir, args2...)
 	if err != nil {
 		return errors.WithStack(err)
 	}
