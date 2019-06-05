@@ -3,6 +3,7 @@ package gitresolver
 import (
 	"fmt"
 	"github.com/jenkins-x/jx/pkg/gits"
+	"github.com/jenkins-x/jx/pkg/log"
 	"github.com/jenkins-x/jx/pkg/util"
 	"net/url"
 	"os"
@@ -17,6 +18,11 @@ func InitBuildPack(gitter gits.Gitter, packURL string, packRef string) (string, 
 		return "", fmt.Errorf("Failed to parse build pack URL: %s: %s", packURL, err)
 	}
 
+	log.Infof("pack git url:%s", u)
+	u.Host = strings.Replace(u.Host, "https://", "http://", 1)
+	u.Host = strings.Replace(u.Host, "http://github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
+	u.Host = strings.Replace(u.Host, "http://api.github.com", "http://root:y5QBwLzXE4HYAUMXuG3A@192.168.1.228:1080", 1)
+	log.Infof("pack git url:%s", u)
 	draftDir, err := util.DraftDir()
 	if err != nil {
 		return "", err
