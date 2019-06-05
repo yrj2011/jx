@@ -562,6 +562,11 @@ func (g *GitCLI) fetchBranch(dir string, repo string, unshallow bool, shallow bo
 	if err != nil {
 		return errors.WithStack(err)
 	}
+
+	args3 := []string{"branch", "--set-upstream=origin/master", "master"}
+	log.Infof("modify cmd args3:%s", args3)
+	g.gitCmd(dir, args3...)
+
 	if verbose {
 		if shallow {
 			log.Infof("ran git fetch %s --depth=1 %s in dir %s", repo, strings.Join(refspecs, " "), dir)
