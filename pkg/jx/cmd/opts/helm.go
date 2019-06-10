@@ -275,6 +275,7 @@ func (o *CommonOptions) RegisterLocalHelmRepo(repoName, ns string) error {
 	}
 	log.Infof("my log chartmuseum:%s", chartmuseum)
 	helmUrl = strings.Replace(helmUrl, "chartmuseum.jx.192.168.1.105.nip.io", chartmuseum, 1)
+	helmUrl = "http://admin:123456@" + chartmuseum
 	// lets check if we already have the helm repo installed or if we need to add it or remove + add it
 	remove := false
 	repos, err := o.Helm().ListRepos()
